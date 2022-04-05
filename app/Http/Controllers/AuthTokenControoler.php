@@ -9,11 +9,12 @@ use Salla\OAuth2\Client\Provider\Salla;
 
 class AuthTokenControoler extends Controller
 {
+    public function  getTokenWithCode(){
 
     $provider = new Salla([
-            'clientId'     => '{client-id}', // The client ID assigned to you by Salla
-            'clientSecret' => '{client-secret}', // The client password assigned to you by Salla
-            'redirectUri'  => 'https://yourservice.com/callback_url', // the url for current page in your service
+            'clientId'     => 'c5e26ae228c097732386852c0194ade7', // The client ID assigned to you by Salla
+            'clientSecret' => '470e3ce6a091ce4a43fe30be1792313c', // The client password assigned to you by Salla
+            'redirectUri'  => 'https://dev.faster.themsc.net', // the url for current page in your service
     ]);
 
 if (!isset($_GET['code']) || empty($_GET['code'])) {
@@ -123,5 +124,6 @@ try {
     // Failed to get the access token or merchant details.
     // show a error message to the merchant with good UI
     exit($e->getMessage());
+}
 }
 }
