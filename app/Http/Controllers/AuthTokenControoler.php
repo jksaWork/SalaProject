@@ -15,7 +15,7 @@ class AuthTokenControoler extends Controller
             $token = $SalaInstance->provider->getAccessToken('authorization_code', [
                 'code' => $_GET['code']
             ]);
-
+            dd($token);
             //
             // ## Access Token
             //
