@@ -48,19 +48,24 @@ class NewCleintInitAppListner
             ];
 
             Product::create([
-                'name' => $Pro->name, 
+                'name' => $Pro->name,
+                'sku' => $Pro->sku, 
+                'type' => $Pro->type, 
+                'short_link_code' => $Pro->short_link_code, 
+                'price' => $Pro->price->amount, 
             ]);
-            dd($Pro);
+            dd('good from here');
             Product::create([
                 'name' => $Pro->name,
                 'sku' => $Pro->sku, 
                 'type' => $Pro->type, 
-                'price' => $Pro->price, 
+                'short_link_code' => $Pro->short_link_code, 
+                'price' => $Pro->price->amount, 
                 'status' => $Pro->status ?? ' ', 
                 'sale_price' => $Pro->sale_price, 
-                'short_link_code' => $Pro->short_link_code, 
                 'url' => $Pro->url, 
                 'is_available' => $Pro->is_available, 
+                'quantity' => $Pro->quantity ?? '', 
             ]); 
             // dd('name is undefinded');
             Product::create($Data);
