@@ -54,9 +54,9 @@ class NewCleintInitAppListner
                 'short_link_code' => $Pro->short_link_code, 
                 'price' => $Pro->price->amount, 
                 'status' => $Pro->status ?? ' ', 
-                'sale_price' => $Pro->sale_price->amount, 
-                // 'url' => $Pro->url, 
-                // 'is_available' => $Pro->is_available, 
+                'sale_price' => $Pro->sale_price->amount ?? 'not null', 
+                'url' => $Pro->urls->customer ?? ' ', 
+                'is_available' => $Pro->is_available, 
             ]);
             dd($Pro);
             Product::create([
