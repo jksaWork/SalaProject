@@ -34,18 +34,18 @@ class NewCleintInitAppListner
         // dd($Products);
         foreach($Products as $Pro){
             // dd($Pro);
-            $Data = [
-                'name' => $Pro->name, 
-                'sku' => $Pro->sku, 
-                'type' => $Pro->type, 
-                'price' => $Pro->price, 
-                'status' => $Pro->status, 
-                'sale_price' => $Pro->sale_price, 
-                'short_link_code' => $Pro->short_link_code, 
-                'url' => $Pro->url, 
-                'is_available' => $Pro->is_available, 
-                'quantity' => $Pro->quantity, 
-            ];
+            // $Data = [
+            //     'name' => $Pro->name, 
+            //     'sku' => $Pro->sku, 
+            //     'type' => $Pro->type, 
+            //     'price' => $Pro->price, 
+            //     'status' => $Pro->status, 
+            //     'sale_price' => $Pro->sale_price, 
+            //     'short_link_code' => $Pro->short_link_code, 
+            //     'url' => $Pro->url, 
+            //     'is_available' => $Pro->is_available, 
+            //     'quantity' => $Pro->quantity, 
+            // ];
 
             Product::create([
                 'name' => $Pro->name,
@@ -73,8 +73,8 @@ class NewCleintInitAppListner
             //     'quantity' => $Pro->quantity ?? '', 
             // ]); 
             // dd('name is undefinded');
-            Product::create($Data);
-            dd('done');
+            // Product::create($Data);
+            // dd('done');
         }
             
     }
