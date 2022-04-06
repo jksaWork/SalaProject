@@ -5,7 +5,7 @@ name: Deploy TO The Dev Serve
 on:
   push:
     branches:
-      - main
+      - mainn
   # pull_request:
 
 
