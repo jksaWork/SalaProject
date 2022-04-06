@@ -29,6 +29,6 @@ class NewCleintInitAppListner
         // Http
         // dd($event);
         $response = Http::get('https://stoplight.io/mocks/salla/merchant/68673/products');
-        dd($response);
+        dd($response->body());
     }
 }
