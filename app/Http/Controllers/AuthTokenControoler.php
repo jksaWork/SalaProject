@@ -81,6 +81,7 @@ class AuthTokenControoler extends Controller
             // ]);
 
             event(new NewCleintInitApp('asdas'));#$token->getToken()));
+            return 'done';
             // header('Location: https://s.salla.sa/apps');
         
         $response = $provider->fetchResource(
