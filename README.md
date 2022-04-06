@@ -1,1 +1,1 @@
-jksa altigani d jksa 
+jksa altigani d jks
