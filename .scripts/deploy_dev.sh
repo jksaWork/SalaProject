@@ -38,6 +38,7 @@ php artisan migrate --force
 
 # Exit maintenance mode
 php artisan up
+echo 'server is avaliable'
 
 echo "Deployment finished!"
 
