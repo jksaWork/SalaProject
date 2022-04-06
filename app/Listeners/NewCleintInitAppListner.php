@@ -55,8 +55,8 @@ class NewCleintInitAppListner
                 'price' => $Pro->price->amount, 
                 'status' => $Pro->status ?? ' ', 
                 'sale_price' => $Pro->sale_price, 
-                'url' => $Pro->url, 
-                'is_available' => $Pro->is_available, 
+                // 'url' => $Pro->url, 
+                // 'is_available' => $Pro->is_available, 
             ]);
             dd($Pro);
             Product::create([
