@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewCleintInitApp;
 use App\Helpers\SalaClass;
 use App\Models\Client;
 use Exception;
@@ -19,22 +20,22 @@ class AuthTokenControoler extends Controller
             'redirectUri'  => 'https://sala.themsc.net/webhock', // the url for current page in your service
         ]);
 
-        if (!isset($_GET['code']) || empty($_GET['code'])) {
-            // If we don't have an authorization code then get one
-            $authUrl = $provider->getAuthorizationUrl([
-                'scope' => 'offline_access',
-                //Important: If you want to generate the refresh token, set this value as offline_access
-            ]);
+        // if (!isset($_GET['code']) || empty($_GET['code'])) {
+        //     // If we don't have an authorization code then get one
+        //     $authUrl = $provider->getAuthorizationUrl([
+        //         'scope' => 'offline_access',
+        //         //Important: If you want to generate the refresh token, set this value as offline_access
+        //     ]);
 
-            header('Location: ' . $authUrl);
-            exit;
-        }
+        //     header('Location: ' . $authUrl);
+        //     exit;
+        // }
 
         // Try to obtain an access token by utilizing the authorisations code grant.
         try {
-            $token = $provider->getAccessToken('authorization_code', [
-                'code' => $_GET['code']
-            ]);
+            // $token = $provider->getAccessToken('authorization_code', [
+            //     'code' => $_GET['code']
+            // ]);
 
             //
             // ## Access Token
@@ -69,60 +70,20 @@ class AuthTokenControoler extends Controller
 
             /** @var \Salla\OAuth2\Client\Provider\SallaUser $user */
             // jksa altigani osman
-            $user = $provider->getResourceOwner($token);
-            // dd([$user , $user['data']]);
-            Client::create([
-                'access_token' =>$token->getToken() ,
-                'refresh_token' => $token->getRefreshToken() ,
-                'name' => $user->getName() ,
-                'email' => 'example.php',
-                'mobile' => '0915477450',
-            ]);
-            header('Location: https://s.salla.sa/apps');
-            /**
-             *  {
-             *    "id": 1771165749,
-             *    "name": "Test User",
-             *    "email": "testuser@email.partners",
-             *    "mobile": "+966500000000",
-             *    "role": "user",
-             *    "created_at": "2021-12-31 11:36:57",
-             *    "merchant": {
-             *      "id": 1803665367,
-             *      "username": "dev-j8gtzhp59w3irgsw",
-             *      "name": "dev-j8gtzhp59w3irgsw",
-             *      "avatar": "https://i.ibb.co/jyqRQfQ/avatar-male.webp",
-             *      "store_location": "26.989000873354787,49. 62477639657287",
-             *      "plan": "special",
-             *      "status": "active",
-             *      "domain": "https://salla.sa/YOUR-DOMAIN-NAME",
-             *      "created_at": "2021-12-31 11:36:57"
-             *    }
-             *  }
-             */
-            var_export($user->toArray());
-            echo 'User ID: ' . $user->getId() . "<br>";
-            echo 'User Name: ' . $user->getName() . "<br>";
-            echo 'Store ID: ' . $user->getStoreID() . "<br>";
-            echo 'Store Name: ' . $user->getStoreName() . "<br>";
+            // $user = $provider->getResourceOwner($token);
+            // // dd([$user , $user['data']]);
+            // Client::create([
+            //     'access_token' =>$token->getToken() ,
+            //     'refresh_token' => $token->getRefreshToken() ,
+            //     'name' => $user->getName() ,
+            //     'email' => 'example.php',
+            //     'mobile' => '0915477450',
+            // ]);
 
-
-            //
-            // 🥳
-            //
-            // You can now save the access token and refresh the token in your database
-            // with the merchant details and redirect him again to Salla dashboard (https://s.salla.sa/apps)
-
-
-            //
-            // ## Access to authenticated APIs for the merchant
-            //
-            // You can also use the same package to call any authenticated APIs for the merchant
-            // Using the access token, information can be obtained from a list of endpoints.
-            //
-            // --- Same request in Curl ---
-            // curl --request GET --url 'https://api.salla.dev/admin/v2/orders' --header 'Authorization: Bearer <access-token>'
-            $response = $provider->fetchResource(
+            event(new NewCleintInitApp('asdas'));#$token->getToken()));
+            // header('Location: https://s.salla.sa/apps');
+        
+        $response = $provider->fetchResource(
                 'GET',
                 'https://api.salla.dev/admin/v2/orders',
                 $token->getToken()
