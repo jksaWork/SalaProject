@@ -18,6 +18,9 @@ class CreateClientsTable extends Migration
             $table->string('access_token')->nullable();
             $table->string('refresh_token')->nullable();
             $table->string('name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('mobile')->nullable();
+            // $table->string('name')->nullable();
             $table->timestamps();
         });
     }

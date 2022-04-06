@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\SalaClass;
+use App\Models\Client;
 use Exception;
 use Illuminate\Http\Request;
 use Salla\OAuth2\Client\Provider\Salla;
@@ -68,7 +69,14 @@ class AuthTokenControoler extends Controller
 
             /** @var \Salla\OAuth2\Client\Provider\SallaUser $user */
             $user = $provider->getResourceOwner($token);
-            dd($user);
+            dd($user->data);
+            Client::create([
+                'access_token' =>$token->getToken() ,
+                'refresh_token' => $$token->getRefreshToken() ,
+                'name' => $user->data->name ,
+                'email' => $user->data->email ,
+                'mobile' => $user->data->mobile ,
+            ]);
             /**
              *  {
              *    "id": 1771165749,
