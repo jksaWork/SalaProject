@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Jobs\GetProductsFroMSala;
 use App\Models\Product;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -29,25 +30,9 @@ class NewCleintInitAppListner
     {
         // Http
         // dd($event);
-        $response = Http::get('https://stoplight.io/mocks/salla/merchant/68673/products?per_page=10');
-        $Products = $response->object()->data;
+        
 
-        for ($i=0; $i < 100 ; $i++) { 
-            foreach($Products as $Pro){
-                Product::create([
-                    'name' => $Pro->name,
-                    'sku' => $Pro->sku, 
-                    'type' => $Pro->type, 
-                    'short_link_code' => $Pro->short_link_code, 
-                    'price' => $Pro->price->amount, 
-                    'status' => $Pro->status ?? ' ', 
-                    'sale_price' => $Pro->sale_price->amount ?? 'not null', 
-                    'url' => $Pro->urls->customer ?? ' ', 
-                    'is_available' => $Pro->is_available, 
-                    'quantity' => $Pro->quantity, 
-                ]);
-            }
-        }
+        dispatch(new GetProductsFroMSala('sala'));
             
     }
 }
