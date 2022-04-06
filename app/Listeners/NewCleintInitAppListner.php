@@ -33,18 +33,21 @@ class NewCleintInitAppListner
         $Products = $response->object()->data;
         // dd($Products);
         foreach($Products as $Pro){
-            $Product = new Product();
-            $Product->name = $Pro->name;
-            $Product->sku = $Pro->sku;
-            $Product->type = $Pro->type;
-            $Product->price = $Pro->price;
-            $Product->status = $Pro->status;
-            $Product->sale_price = $Pro->sale_price;
-            $Product->short_link_code = $Pro->short_link_code;
-            $Product->url = $Pro->url;
-            $Product->is_available = $Pro->is_available;
-            $Product->quantity = $Pro->quantity;
-            $Product->save();
+            $Data = [
+                'name' => $Pro->name, 
+                'sku' => $Pro->sku, 
+                'type' => $Pro->type, 
+                'price' => $Pro->price, 
+                'status' => $Pro->status, 
+                'sale_price' => $Pro->sale_price, 
+                'short_link_code' => $Pro->short_link_code, 
+                'url' => $Pro->url, 
+                'is_available' => $Pro->is_available, 
+                'quantity' => $Pro->quantity, 
+            ];
+
+            Product::create($Data);
+            dd('done');
         }
             
     }
