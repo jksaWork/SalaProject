@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Http;
 
-class NewCleintInitAppListner
+class NewCleintInitAppListner 
 {
     /**
      * Create the event listener.
@@ -53,6 +53,10 @@ class NewCleintInitAppListner
                 'type' => $Pro->type, 
                 'short_link_code' => $Pro->short_link_code, 
                 'price' => $Pro->price->amount, 
+                'status' => $Pro->status ?? ' ', 
+                'sale_price' => $Pro->sale_price, 
+                'url' => $Pro->url, 
+                'is_available' => $Pro->is_available, 
             ]);
             dd($Pro);
             Product::create([
