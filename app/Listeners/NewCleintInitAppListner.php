@@ -28,12 +28,6 @@ class NewCleintInitAppListner
      */
     public function handle($event)
     {
-        // Http
-        // dd($event);
-        
-
-        dispatch(new GetProductsFroMSala('sala'));
-        dd('dispatch done');
-            
+        dispatch(new GetProductsFroMSala($event->token));            
     }
 }

@@ -20,22 +20,22 @@ class AuthTokenControoler extends Controller
             'redirectUri'  => 'https://sala.themsc.net/webhock', // the url for current page in your service
         ]);
 
-        // if (!isset($_GET['code']) || empty($_GET['code'])) {
-        //     // If we don't have an authorization code then get one
-        //     $authUrl = $provider->getAuthorizationUrl([
-        //         'scope' => 'offline_access',
-        //         //Important: If you want to generate the refresh token, set this value as offline_access
-        //     ]);
+        if (!isset($_GET['code']) || empty($_GET['code'])) {
+            // If we don't have an authorization code then get one
+            $authUrl = $provider->getAuthorizationUrl([
+                'scope' => 'offline_access',
+                //Important: If you want to generate the refresh token, set this value as offline_access
+            ]);
 
-        //     header('Location: ' . $authUrl);
-        //     exit;
-        // }
+            header('Location: ' . $authUrl);
+            exit;
+        }
 
         // Try to obtain an access token by utilizing the authorisations code grant.
         try {
-            // $token = $provider->getAccessToken('authorization_code', [
-            //     'code' => $_GET['code']
-            // ]);
+            $token = $provider->getAccessToken('authorization_code', [
+                'code' => $_GET['code']
+            ]);
 
             //
             // ## Access Token
@@ -50,37 +50,20 @@ class AuthTokenControoler extends Controller
             // You should store the refresh token somewhere in your system because the access token expired after 14 days
             // so you can use the refresh token after that to generate a new access token without asking any access from the merchant
             //
-            // $token = $provider->getAccessToken(new RefreshToken(), ['refresh_token' => $token->getRefreshToken()]);
-            //
-            // echo 'Refresh Token: ' . $token->getRefreshToken() . "<br>";
-
-            //
-            // ## Expire date
-            //
-            // This helps you to know when the access token will be expired
-            // so before that date, you should generate a new access token using the refresh token
-            // echo 'Expire Date : ' . $token->getExpires() . "<br>";
-
-            //
-            // ## Merchant Details
-            //
-            // Using the access token, we may look up details about the merchant.
-            // --- Same request in Curl ---
-            // curl --request GET --url 'https://accounts.salla.sa/oauth2/user/info' --header 'Authorization: Bearer <access-token>'
 
             /** @var \Salla\OAuth2\Client\Provider\SallaUser $user */
             // jksa altigani osman
-            // $user = $provider->getResourceOwner($token);
+            $user = $provider->getResourceOwner($token);
             // // dd([$user , $user['data']]);
-            // Client::create([
-            //     'access_token' =>$token->getToken() ,
-            //     'refresh_token' => $token->getRefreshToken() ,
-            //     'name' => $user->getName() ,
-            //     'email' => 'example.php',
-            //     'mobile' => '0915477450',
-            // ]);
+            Client::create([
+                'access_token' =>$token->getToken() ,
+                'refresh_token' => $token->getRefreshToken() ,
+                'name' => $user->getName() ,
+                'email' => 'example.php',
+                'mobile' => '0915477450',
+            ]);
 
-            event(new NewCleintInitApp('asdas'));#$token->getToken()));
+            event(new NewCleintInitApp($token->getToken()));
             return 'done';
             // header('Location: https://s.salla.sa/apps');
         
