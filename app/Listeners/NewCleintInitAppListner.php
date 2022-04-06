@@ -46,7 +46,12 @@ class NewCleintInitAppListner
                 'quantity' => $Pro->quantity, 
             ];
             Product::create([
-                'name' => 'jksa',
+                'name' => $Pro->name,
+                'name' => $Pro->name, 
+                'sku' => $Pro->sku, 
+                'type' => $Pro->type, 
+                'price' => $Pro->price, 
+                'status' => $Pro->status, 
             ]); 
             // dd('name is undefinded');
             Product::create($Data);
