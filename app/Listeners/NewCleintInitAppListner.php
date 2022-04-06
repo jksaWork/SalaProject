@@ -31,7 +31,7 @@ class NewCleintInitAppListner
         // dd($event);
         $response = Http::get('https://stoplight.io/mocks/salla/merchant/68673/products?per_page=10');
         $Products = $response->object()->data;
-        dd($Products);
+        // dd($Products);
         foreach($Products as $Pro){
             $Product = new Product();
             $Product->name = $Pro->name;
