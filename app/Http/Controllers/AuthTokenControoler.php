@@ -12,7 +12,7 @@ class AuthTokenControoler extends Controller
 {
     public function  getTokenWithCode(Request $req)
     {
-        info($req);
+        // info($req);
         $provider = new Salla([
             'clientId'     => 'c5e26ae228c097732386852c0194ade7', // The client ID assigned to you by Salla
             'clientSecret' => '470e3ce6a091ce4a43fe30be1792313c', // The client password assigned to you by Salla
@@ -41,7 +41,7 @@ class AuthTokenControoler extends Controller
             //
             // You should store the access token
             // which may use in authenticated requests against the Salla's API
-            echo 'Access Token: ' . $token->getToken() . "<br>";
+            // echo 'Access Token: ' . $token->getToken() . "<br>";
 
             //
             // ## Refresh Token
@@ -51,14 +51,14 @@ class AuthTokenControoler extends Controller
             //
             // $token = $provider->getAccessToken(new RefreshToken(), ['refresh_token' => $token->getRefreshToken()]);
             //
-            echo 'Refresh Token: ' . $token->getRefreshToken() . "<br>";
+            // echo 'Refresh Token: ' . $token->getRefreshToken() . "<br>";
 
             //
             // ## Expire date
             //
             // This helps you to know when the access token will be expired
             // so before that date, you should generate a new access token using the refresh token
-            echo 'Expire Date : ' . $token->getExpires() . "<br>";
+            // echo 'Expire Date : ' . $token->getExpires() . "<br>";
 
             //
             // ## Merchant Details
@@ -78,6 +78,7 @@ class AuthTokenControoler extends Controller
                 'email' => 'example.php',
                 'mobile' => '0915477450',
             ]);
+            header('Location: https://s.salla.sa/apps');
             /**
              *  {
              *    "id": 1771165749,
@@ -100,7 +101,6 @@ class AuthTokenControoler extends Controller
              *  }
              */
             var_export($user->toArray());
-
             echo 'User ID: ' . $user->getId() . "<br>";
             echo 'User Name: ' . $user->getName() . "<br>";
             echo 'Store ID: ' . $user->getStoreID() . "<br>";
@@ -127,8 +127,7 @@ class AuthTokenControoler extends Controller
                 'https://api.salla.dev/admin/v2/orders',
                 $token->getToken()
             );
-            // dd($response);
-            var_export($response);
+            
         } catch (\League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
             // Failed to get the access token or merchant details.
             // show a error message to the merchant with good UI

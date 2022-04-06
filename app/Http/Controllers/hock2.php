@@ -6,10 +6,10 @@ use Exception;
 use Illuminate\Http\Request;
 class hock2 extends Controller
 {
-    public function  hock2(Request $req)
+    public function  hock2(Request $request)
     {
-        info($req);
-        }
+            
+    }
 
     
 }
