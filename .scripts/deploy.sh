@@ -35,6 +35,8 @@ php artisan optimize
 # npm run prod
 
 # Run database migrations
+php artisan queue:table
+
 php artisan migrate:fr #--force
 
 # Exit maintenance mode
