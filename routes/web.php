@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 Route::get('/webhock' , [AuthTokenControoler::class , 'getTokenWithCode']);
+Route::get('/webhock2' , [hock2::class , 'hock2']);

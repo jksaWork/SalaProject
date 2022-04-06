@@ -127,7 +127,7 @@ class AuthTokenControoler extends Controller
                 'https://api.salla.dev/admin/v2/orders',
                 $token->getToken()
             );
-            dd($response);
+            // dd($response);
             var_export($response);
         } catch (\League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
             // Failed to get the access token or merchant details.
@@ -135,4 +135,6 @@ class AuthTokenControoler extends Controller
             exit($e->getMessage());
         }
     }
+
+    
 }
