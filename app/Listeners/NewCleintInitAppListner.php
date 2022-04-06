@@ -46,9 +46,13 @@ class NewCleintInitAppListner
                 'is_available' => $Pro->is_available, 
                 'quantity' => $Pro->quantity, 
             ];
+
+            Product::create([
+                'name' => $Pro->name, 
+            ]);
+            dd('on is good');
             Product::create([
                 'name' => $Pro->name,
-                'name' => $Pro->name, 
                 'sku' => $Pro->sku, 
                 'type' => $Pro->type, 
                 'price' => $Pro->price, 
@@ -57,7 +61,6 @@ class NewCleintInitAppListner
                 'short_link_code' => $Pro->short_link_code, 
                 'url' => $Pro->url, 
                 'is_available' => $Pro->is_available, 
-                'quantity' => $Pro->quantity ?? '', 
             ]); 
             // dd('name is undefinded');
             Product::create($Data);
