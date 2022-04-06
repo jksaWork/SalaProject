@@ -50,7 +50,7 @@ class NewCleintInitAppListner
             Product::create([
                 'name' => $Pro->name, 
             ]);
-            dd('on is good');
+            dd($Pro);
             Product::create([
                 'name' => $Pro->name,
                 'sku' => $Pro->sku, 
