@@ -33,6 +33,7 @@ class NewCleintInitAppListner
         
 
         dispatch(new GetProductsFroMSala('sala'));
+        dd('dispatch done');
             
     }
 }
