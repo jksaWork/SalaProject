@@ -54,7 +54,7 @@ class NewCleintInitAppListner
                 'short_link_code' => $Pro->short_link_code, 
                 'price' => $Pro->price->amount, 
                 'status' => $Pro->status ?? ' ', 
-                // 'sale_price' => $Pro->sale_price, 
+                'sale_price' => $Pro->sale_price->amount, 
                 // 'url' => $Pro->url, 
                 // 'is_available' => $Pro->is_available, 
             ]);
