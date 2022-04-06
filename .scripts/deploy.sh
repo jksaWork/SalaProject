@@ -9,6 +9,7 @@ echo "Deployment started ..."
 # remove old env ----------------
 rm -rf .env
 
+
 echo 'old env has discard Successfuly'
 # Pull the latest version of the app
 git stash
@@ -17,10 +18,10 @@ git pull
 #commit
 echo 'Start Copy Env Vaibale'
 cp .env.example .env
-
 echo 'Files Is Copyed success'
 
-
+php artisan key:generate
+echo 'key genrate'
 # Install composer dependencies
 composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
 
