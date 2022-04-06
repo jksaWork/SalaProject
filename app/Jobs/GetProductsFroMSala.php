@@ -23,7 +23,7 @@ class GetProductsFroMSala implements ShouldQueue
     public $token;
     public function __construct($token)
     {
-        dd('from Job');
+        // dd('from Job');
         $this->token =$token;
     }
 
