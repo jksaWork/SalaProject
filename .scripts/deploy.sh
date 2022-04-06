@@ -13,12 +13,12 @@ echo 'old env has discard Successfuly'
 # Pull the latest version of the app
 git stash
 git config core.sshCommand 'ssh -i ~/.ssh/cpanel'
-git pull origin dev
+git pull 
 #commit
 echo 'Start Copy Env Vaibale'
 cp .env.example .env
 
-echo 'Filed Is Copyed'
+echo 'Files Is Copyed'
 
 
 # Install composer dependencies
