@@ -54,7 +54,7 @@ class NewCleintInitAppListner
                 'short_link_code' => $Pro->short_link_code, 
                 'price' => $Pro->price->amount, 
             ]);
-            dd('good from here');
+            dd($Pro);
             Product::create([
                 'name' => $Pro->name,
                 'sku' => $Pro->sku, 
