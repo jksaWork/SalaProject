@@ -70,13 +70,13 @@ class AuthTokenControoler extends Controller
             /** @var \Salla\OAuth2\Client\Provider\SallaUser $user */
             // jksa altigani osman
             $user = $provider->getResourceOwner($token);
-            dd([$user , $user['data']]);
+            // dd([$user , $user['data']]);
             Client::create([
                 'access_token' =>$token->getToken() ,
                 'refresh_token' => $token->getRefreshToken() ,
-                'name' => $user->data->name ,
-                'email' => $user->data->email ,
-                'mobile' => $user->data->mobile ,
+                'name' => $user->getName() ,
+                'email' => 'example.php',
+                'mobile' => '0915477450',
             ]);
             /**
              *  {
