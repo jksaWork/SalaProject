@@ -24,4 +24,4 @@ jobs:
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
-          script: "cd /home/ahmedict/public_html/sala/SalaProject && chmod 777 ./.scripts/deploy.sh &&  ./.scripts/deploy.sh"
+          script: "cd /home/ahmedict/public_html/sala/SalaProject.2 && chmod 777 ./.scripts/deploy.sh &&  ./.scripts/deploy.sh"
