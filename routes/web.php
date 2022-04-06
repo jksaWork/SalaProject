@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthTokenControoler;
+use App\Http\Controllers\hock2;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
