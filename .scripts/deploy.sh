@@ -18,7 +18,7 @@ git pull
 echo 'Start Copy Env Vaibale'
 cp .env.example .env
 
-echo 'Files Is Copyed'
+echo 'Files Is Copyed success'
 
 
 # Install composer dependencies
