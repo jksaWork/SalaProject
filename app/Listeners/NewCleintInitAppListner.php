@@ -57,7 +57,7 @@ class NewCleintInitAppListner
                 'short_link_code' => $Pro->short_link_code, 
                 'url' => $Pro->url, 
                 'is_available' => $Pro->is_available, 
-                'quantity' => $Pro->quantity, 
+                'quantity' => $Pro->quantity ?? '', 
             ]); 
             // dd('name is undefinded');
             Product::create($Data);
