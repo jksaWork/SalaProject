@@ -358,3 +358,20 @@
 #72 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\server.php(21): require_once('C:\\\\Users\\\\MSC\\\\Do...')
 #73 {main}
 "} 
+[2022-04-06 18:50:14] local.ERROR: Command "key:genrate" is not defined.
+
+Did you mean one of these?
+    event:generate
+    key:generate {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"key:genrate\" is not defined.
+
+Did you mean one of these?
+    event:generate
+    key:generate at C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\symfony\\console\\Application.php:709)
+[stacktrace]
+#0 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\symfony\\console\\Application.php(259): Symfony\\Component\\Console\\Application->find('key:genrate')
+#1 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
