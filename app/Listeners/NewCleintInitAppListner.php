@@ -47,8 +47,8 @@ class NewCleintInitAppListner
             ];
             Product::create([
                 'name' => 'jksa',
-            ]);
-            dd('name is undefinded');
+            ]); 
+            // dd('name is undefinded');
             Product::create($Data);
             dd('done');
         }
