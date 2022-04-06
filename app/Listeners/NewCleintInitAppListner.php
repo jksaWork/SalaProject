@@ -57,20 +57,21 @@ class NewCleintInitAppListner
                 'sale_price' => $Pro->sale_price->amount ?? 'not null', 
                 'url' => $Pro->urls->customer ?? ' ', 
                 'is_available' => $Pro->is_available, 
+                'quantity' => $Pro->quantity, 
             ]);
-            dd($Pro);
-            Product::create([
-                'name' => $Pro->name,
-                'sku' => $Pro->sku, 
-                'type' => $Pro->type, 
-                'short_link_code' => $Pro->short_link_code, 
-                'price' => $Pro->price->amount, 
-                'status' => $Pro->status ?? ' ', 
-                'sale_price' => $Pro->sale_price, 
-                'url' => $Pro->url, 
-                'is_available' => $Pro->is_available, 
-                'quantity' => $Pro->quantity ?? '', 
-            ]); 
+            // dd($Pro);
+            // Product::create([
+            //     'name' => $Pro->name,
+            //     'sku' => $Pro->sku, 
+            //     'type' => $Pro->type, 
+            //     'short_link_code' => $Pro->short_link_code, 
+            //     'price' => $Pro->price->amount, 
+            //     'status' => $Pro->status ?? ' ', 
+            //     'sale_price' => $Pro->sale_price, 
+            //     'url' => $Pro->url, 
+            //     'is_available' => $Pro->is_available, 
+            //     'quantity' => $Pro->quantity ?? '', 
+            // ]); 
             // dd('name is undefinded');
             Product::create($Data);
             dd('done');
