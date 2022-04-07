@@ -21,10 +21,12 @@ class GetProductsFroMSala implements ShouldQueue
      * @return void
      */
     public $token;
-    public function __construct($token)
+    public $client_id;
+    public function __construct($token , $client_id)
     {
         // dd($token);
         $this->token = $token;
+        $this->client_id = $client_id;
     }
 
     /**
@@ -34,18 +36,18 @@ class GetProductsFroMSala implements ShouldQueue
      */
     public function handle()
     {
-        // Http
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer '.$this->token, 
-            'Accept' => 'Application/json', 
-        ])->
-        get('https://stoplight.io/mocks/salla/merchant/68673/products?per_page=10');
-        $Counts = $response->object()->pagination->count;
-        dd( 'Account is ' .$Counts);
+            'Authorization' => 'Bearer ' . $event->token,
+            'Accept' => 'Application/json',
+        ])->get('https://api.salla.dev/admin/v2/products');
+        $Counts = $response->object()->pagination->totalPages;
         for ($i = 0; $i < $Counts; $i++) {
-            $response = Http::get('https://stoplight.io/mocks/salla/merchant/68673/products?per_page=10');
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $this->token,
+                'Accept' => 'Application/json',
+            ])->get('https://api.salla.dev/admin/v2/products?page=' .$i);
             $Products = $response->object()->data;
-            if(!$Products) break;
+            if (!$Products) break;
             foreach ($Products as $Pro) {
                 Product::create([
                     'client_id' => $this->client_id,
@@ -61,6 +63,10 @@ class GetProductsFroMSala implements ShouldQueue
                     'quantity' => $Pro->quantity,
                 ]);
             }
+
+
+            // dd( 'Account is ' .$Counts);
+            // dispatch(new GetProductsFroMSala($event->token , $event->clientId));#->delay(now()->addMinutes(2));            
         }
     }
 }
