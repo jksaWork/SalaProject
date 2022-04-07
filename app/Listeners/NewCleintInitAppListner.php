@@ -28,7 +28,7 @@ class NewCleintInitAppListner implements ShouldQueue
      */
     public function handle($event)
     {
-        dd($event);
+        info('the event is ' .$event);
         $Client = $event->clientId;
         $Token  = $event->Token;
 
