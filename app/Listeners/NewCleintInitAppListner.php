@@ -30,7 +30,7 @@ class NewCleintInitAppListner implements ShouldQueue
     {
         $Token  = $event->Token;
         $Client = $event->clientId;
-
+        // success r .1
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $Token,
             'Accept' => 'Application/json',
