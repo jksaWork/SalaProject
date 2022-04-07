@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Http;
 
-class NewCleintInitAppListner implements ShouldQueue
+class NewCleintInitAppListner #implements ShouldQueue
 {
     /**
      * Create the event listener.
@@ -28,21 +28,24 @@ class NewCleintInitAppListner implements ShouldQueue
      */
     public function handle($event)
     {
+        $Token  = $event->token;
+        $Client = $event->clientId;
+
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer ' . $event->token,
+            'Authorization' => 'Bearer ' . $Token,
             'Accept' => 'Application/json',
         ])->get('https://api.salla.dev/admin/v2/products');
         $Counts = $response->object()->pagination->totalPages;
         for ($i = 1; $i <= $Counts; $i++) {
             $response = Http::withHeaders([
-                'Authorization' => 'Bearer ' . $event->token,
+                'Authorization' => 'Bearer ' . $Token,
                 'Accept' => 'Application/json',
             ])->get('https://api.salla.dev/admin/v2/products?page=' . $i);
             $Products = $response->object()->data;
             if (!$Products) break;
             foreach ($Products as $Pro) {
                 Product::create([
-                    'client_id' => $event->clientId,
+                    'client_id' => $Client,
                     'product_id' => $Pro->id,
                     'name' => $Pro->name,
                     'sku' => $Pro->sku,
