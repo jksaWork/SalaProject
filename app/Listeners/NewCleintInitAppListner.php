@@ -34,7 +34,10 @@ class NewCleintInitAppListner
         ])->get('https://api.salla.dev/admin/v2/products');
         $Counts = $response->object()->pagination->totalPages;
         for ($i = 0; $i < $Counts; $i++) {
-            $response = Http::get('https://api.salla.dev/admin/v2/products?page=' .$i);
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $event->token,
+                'Accept' => 'Application/json',
+            ])->get('https://api.salla.dev/admin/v2/products?page=' .$i);
             $Products = $response->object()->data;
             if (!$Products) break;
             foreach ($Products as $Pro) {
