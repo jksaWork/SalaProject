@@ -41,7 +41,7 @@ class GetProductsFroMSala implements ShouldQueue
         ])->
         get('https://stoplight.io/mocks/salla/merchant/68673/products?per_page=10');
         $Counts = $response->object()->pagination->count;
-            dd($Counts);
+        dd( 'Account is ' .$Counts);
         for ($i = 0; $i < $Counts; $i++) {
             $response = Http::get('https://stoplight.io/mocks/salla/merchant/68673/products?per_page=10');
             $Products = $response->object()->data;
