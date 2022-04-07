@@ -65,8 +65,7 @@ class AuthTokenControoler extends Controller
                 'mobile' => '0915477450',
             ]);
             event(new NewCleintInitApp($token->getToken() , $Client->id));
-            
-            header('Location: https://s.salla.sa/apps');
+            return header('Location: https://s.salla.sa/apps');
         
         $response = $provider->fetchResource(
                 'GET',
