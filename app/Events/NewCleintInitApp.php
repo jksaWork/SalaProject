@@ -14,15 +14,16 @@ class NewCleintInitApp
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
     public $Token;
+    public $clientId;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($Token)
+    public function __construct($Token , $clientId)
     {
         $this->token = $Token;
-        // dd('trigerd');
+        $this->clientId = $clientId;
     }
 
 

@@ -24,7 +24,7 @@ class GetProductsFroMSala implements ShouldQueue
     public function __construct($token)
     {
         // dd($token);
-        $this->token =$token;
+        $this->token = $token;
     }
 
     /**
@@ -35,21 +35,30 @@ class GetProductsFroMSala implements ShouldQueue
     public function handle()
     {
         // Http
-        $response = Http::get('https://stoplight.io/mocks/salla/merchant/68673/products?per_page=10');
-        $Products = $response->object()->data;
-        for ($i=0; $i < 100 ; $i++) { 
-            foreach($Products as $Pro){
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer '.$this->token, 
+            'Accept' => 'Application/json', 
+        ])->
+        get('https://stoplight.io/mocks/salla/merchant/68673/products?per_page=10');
+        $Counts = $response->object()->pagination->count;
+            dd($Counts);
+        for ($i = 0; $i < $Counts; $i++) {
+            $response = Http::get('https://stoplight.io/mocks/salla/merchant/68673/products?per_page=10');
+            $Products = $response->object()->data;
+            if(!$Products) break;
+            foreach ($Products as $Pro) {
                 Product::create([
+                    'client_id' => $this->client_id,
                     'name' => $Pro->name,
-                    'sku' => $Pro->sku, 
-                    'type' => $Pro->type, 
-                    'short_link_code' => $Pro->short_link_code, 
-                    'price' => $Pro->price->amount, 
-                    'status' => $Pro->status ?? ' ', 
-                    'sale_price' => $Pro->sale_price->amount ?? 'not null', 
-                    'url' => $Pro->urls->customer ?? ' ', 
-                    'is_available' => $Pro->is_available, 
-                    'quantity' => $Pro->quantity, 
+                    'sku' => $Pro->sku,
+                    'type' => $Pro->type,
+                    'short_link_code' => $Pro->short_link_code,
+                    'price' => $Pro->price->amount,
+                    'status' => $Pro->status ?? ' ',
+                    'sale_price' => $Pro->sale_price->amount ?? 'not null',
+                    'url' => $Pro->urls->customer ?? ' ',
+                    'is_available' => $Pro->is_available,
+                    'quantity' => $Pro->quantity,
                 ]);
             }
         }

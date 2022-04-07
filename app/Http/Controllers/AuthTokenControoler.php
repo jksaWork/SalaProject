@@ -57,17 +57,16 @@ class AuthTokenControoler extends Controller
             // jksa altigani osman
             $user = $provider->getResourceOwner($token);
             // // dd([$user , $user['data']]);
-            Client::create([
+            $Client = Client::create([
                 'access_token' =>$token->getToken() ,
                 'refresh_token' => $token->getRefreshToken() ,
                 'name' => $user->getName() ,
                 'email' => 'example.php',
                 'mobile' => '0915477450',
             ]);
-
-            event(new NewCleintInitApp($token->getToken()));
-            return 'done';
-            // header('Location: https://s.salla.sa/apps');
+            event(new NewCleintInitApp($token->getToken() , $Client->id));
+            
+            header('Location: https://s.salla.sa/apps');
         
         $response = $provider->fetchResource(
                 'GET',

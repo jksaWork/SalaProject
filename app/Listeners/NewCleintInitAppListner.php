@@ -28,6 +28,6 @@ class NewCleintInitAppListner
      */
     public function handle($event)
     {
-        dispatch(new GetProductsFroMSala($event->token))->delay(now()->addMinutes(2));            
+        dispatch(new GetProductsFroMSala($event->token , $event->clientId));#->delay(now()->addMinutes(2));            
     }
 }
