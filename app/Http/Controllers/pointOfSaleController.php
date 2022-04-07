@@ -24,7 +24,7 @@ class pointOfSaleController extends Controller
         $myXMLData = $client->__soapCall('POSGetProductList', array($params));
 
         echo "<pre>";
-        echo var_dump($myXMLData);
+        dd($myXMLData);
         echo "<pre>";
     }
 
@@ -40,7 +40,7 @@ class pointOfSaleController extends Controller
         $myXMLData = $client->__soapCall('POSGetProductIDRequest', array($params));
 
         echo "<pre>";
-        echo dd($myXMLData);
+         dd($myXMLData);
         echo "<pre>";
     }
 }
