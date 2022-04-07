@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Events\NewCleintInitApp;
+use App\Jobs\GetProductsFroMSala;
+use App\Listeners\GetProductFromSalePoint;
 use App\Listeners\NewCleintInitAppListner;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -21,6 +23,7 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         NewCleintInitApp::class => [
+            GetProductFromSalePoint::class , 
             NewCleintInitAppListner::class , 
         ]
     ];
