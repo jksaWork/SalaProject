@@ -38,7 +38,7 @@ class GetProductFromSalePoint
         );
         $response = $client->__soapCall('POSGetProductList', array($params));
         $Products = $response->productList->product;
-        dd($Products);
+        // dd($Products);
         foreach ($Products as $Product) {
             PosProducts::create([
                 "product_code" => $Product->productCode,
