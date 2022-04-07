@@ -29,7 +29,7 @@ class NewCleintInitAppListner
     public function handle($event)
     {
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer '.$this->token, 
+            'Authorization' => 'Bearer '.$event->token, 
             'Accept' => 'Application/json', 
         ])->
         get('https://stoplight.io/mocks/salla/merchant/68673/products?per_page=10');
