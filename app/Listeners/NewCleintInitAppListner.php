@@ -29,6 +29,6 @@ class NewCleintInitAppListner
     public function handle($event)
     {
         dispatch(new GetProductsFroMSala($event->token , $event->clientId))->delay(now()->addMinutes(2));            
-        dd('code is dispatched');
+        // dd('code is dispatched');
     }
 }
