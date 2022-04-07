@@ -51,6 +51,7 @@ class GetProductsFroMSala implements ShouldQueue
             foreach ($Products as $Pro) {
                 Product::create([
                     'client_id' => $this->client_id,
+                    'product_id' => $Pro->id , 
                     'name' => $Pro->name,
                     'sku' => $Pro->sku,
                     'type' => $Pro->type,
