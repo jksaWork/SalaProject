@@ -51,7 +51,7 @@ class GetProductsFroMSala implements ShouldQueue
             foreach ($Products as $Pro) {
                 Product::create([
                     'client_id' => $this->client_id,
-                    'product_id' => $Pro->id , 
+                    'product_id' => $Pro->id, 
                     'name' => $Pro->name,
                     'sku' => $Pro->sku,
                     'type' => $Pro->type,
@@ -64,10 +64,6 @@ class GetProductsFroMSala implements ShouldQueue
                     'quantity' => $Pro->quantity,
                 ]);
             }
-
-
-            // dd( 'Account is ' .$Counts);
-            // dispatch(new GetProductsFroMSala($event->token , $event->clientId));#->delay(now()->addMinutes(2));            
-        }
+         }
     }
-}
+}   
