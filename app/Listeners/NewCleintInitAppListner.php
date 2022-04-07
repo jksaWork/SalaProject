@@ -28,6 +28,13 @@ class NewCleintInitAppListner
      */
     public function handle($event)
     {
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer '.$this->token, 
+            'Accept' => 'Application/json', 
+        ])->
+        get('https://stoplight.io/mocks/salla/merchant/68673/products?per_page=10');
+        $Counts = $response->object()->pagination->count;
+        dd( 'Account is ' .$Counts);
         dispatch(new GetProductsFroMSala($event->token , $event->clientId));#->delay(now()->addMinutes(2));            
     }
 }
