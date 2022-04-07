@@ -40,7 +40,7 @@ class pointOfSaleController extends Controller
         $myXMLData = $client->__soapCall('POSGetProductIDRequest', array($params));
 
         echo "<pre>";
-        echo var_dump($myXMLData);
+        echo dd($myXMLData);
         echo "<pre>";
     }
 }
