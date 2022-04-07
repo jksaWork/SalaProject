@@ -14,7 +14,7 @@ class pointOfSaleController extends Controller
         $signature = md5($posUsername . $secret);
         // dd($signature);
         // SoapClient
-        $client = new SoapClient('https://www.netader.com/webservice/OneCardPOSSystem.wsdl');
+        $client = new SoapClient('https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl');
 
         $params = array(
             'posUsername' => $posUsername,
