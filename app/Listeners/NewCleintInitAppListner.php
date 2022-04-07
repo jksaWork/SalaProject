@@ -28,7 +28,7 @@ class NewCleintInitAppListner implements ShouldQueue
      */
     public function handle($event)
     {
-        $Token  = $event->token;
+        $Token  = $event->Token;
         $Client = $event->clientId;
 
         $response = Http::withHeaders([

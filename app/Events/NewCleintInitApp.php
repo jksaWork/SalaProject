@@ -22,7 +22,7 @@ class NewCleintInitApp
      */
     public function __construct($Token , $clientId)
     {
-        $this->token = $Token;
+        $this->Token = $Token;
         $this->clientId = $clientId;
     }
 
