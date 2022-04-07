@@ -31,10 +31,10 @@ class NewCleintInitAppListner
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $event->token,
             'Accept' => 'Application/json',
-        ])->get('https://stoplight.io/mocks/salla/merchant/68673/products?per_page=10');
+        ])->get('https://api.salla.dev/admin/v2/products');
         $Counts = $response->object()->pagination->totalPages;
         for ($i = 0; $i < $Counts; $i++) {
-            $response = Http::get('https://stoplight.io/mocks/salla/merchant/68673/products?page=' .$i);
+            $response = Http::get('https://api.salla.dev/admin/v2/products?page=' .$i);
             $Products = $response->object()->data;
             if (!$Products) break;
             foreach ($Products as $Pro) {
