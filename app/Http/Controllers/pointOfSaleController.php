@@ -10,7 +10,9 @@ class pointOfSaleController extends Controller
     public function index()
     {
         $posUsername = 'info@dataked.com';
-        $signature = 'v35r#UhJgT$AJzN3BB';
+        $secret = 'v35r#UhJgT$AJzN3BB';
+        $signature = md5($posUsername . $secret);
+        // dd($signature);
         // SoapClient
         $client = new SoapClient('https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl');
 

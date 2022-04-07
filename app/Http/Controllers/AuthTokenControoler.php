@@ -66,8 +66,7 @@ class AuthTokenControoler extends Controller
             ]);
             event(new NewCleintInitApp($token->getToken() , $Client->id));
             return redirect()->to('https://s.salla.sa/apps');
-            // return 'quesed';
-        $response = $provider->fetchResource(
+            $response = $provider->fetchResource(
                 'GET',
                 'https://api.salla.dev/admin/v2/orders',
                 $token->getToken()
