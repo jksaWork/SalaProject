@@ -39,7 +39,7 @@ class NewCleintInitAppListner
             if (!$Products) break;
             foreach ($Products as $Pro) {
                 Product::create([
-                    'client_id' => $this->client_id,
+                    'client_id' => $event->clientId,
                     'name' => $Pro->name,
                     'sku' => $Pro->sku,
                     'type' => $Pro->type,
