@@ -41,7 +41,7 @@ class GetProductsFroMSala implements ShouldQueue
             'Accept' => 'Application/json',
         ])->get('https://api.salla.dev/admin/v2/products');
         $Counts = $response->object()->pagination->totalPages;
-        for ($i = 0; $i < $Counts; $i++) {
+        for ($i = 1; $i <= $Counts; $i++) {
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $this->token,
                 'Accept' => 'Application/json',
