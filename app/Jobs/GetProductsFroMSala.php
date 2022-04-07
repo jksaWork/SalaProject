@@ -27,6 +27,7 @@ class GetProductsFroMSala implements ShouldQueue
         // dd($token);
         $this->token = $token;
         $this->client_id = $client_id;
+        info($this->token);
     }
 
     /**

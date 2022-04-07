@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Http;
 
-class NewCleintInitAppListner implements ShouldQueue
+class NewCleintInitAppListner 
 {
     /**
      * Create the event listener.
