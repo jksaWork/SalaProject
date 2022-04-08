@@ -23,6 +23,8 @@ Route::get('/', function () {
 
 Route::get('/webhock' , [AuthTokenControoler::class , 'getTokenWithCode']);
 Route::get('/webhock2' , [hock2::class , 'hock2']);
+Route::post('/webhock2' , [hock2::class , 'hock2']);
+
 Route::get('point-of-sale' , [pointOfSaleController::class , 'index']);
 Route::get('get-products' , [pointOfSaleController::class , 'Products']);
 Route::get('get-products-tables' , [GEtTables::class , 'products']);
