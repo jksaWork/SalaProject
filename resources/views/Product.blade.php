@@ -75,6 +75,9 @@
             </tr>
         </tfoot>
     </table>
+    <div>
+        {{ $Products->links() }}
+    </div>
 </body>
 
 </html>

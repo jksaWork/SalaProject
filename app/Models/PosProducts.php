@@ -9,4 +9,8 @@ class PosProducts extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    public function getNameAttribute($key)
+    {
+        return json_decode($key);
+    }
 }

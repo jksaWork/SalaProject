@@ -57,4 +57,15 @@ class GetProductFromSalePoint implements ShouldQueue
 
 /*
 
+PosProducts::create([
+                "product_code" => 'mohmmmed' ,
+                "name" => json_encode(['ar' => 'sadsd' , 'en' => 'sads']),
+                "product_price" => '2133',
+                "product_currency" => 'sar',
+                "pos_price" => '2131' ,
+                "available" =>'true',
+                "merchant_id" => 'sadsd',
+                "merchant_name" => json_encode(['ar' => 'mohammed '])
+            ]);
+
 */
