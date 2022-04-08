@@ -8,7 +8,10 @@ class hock2 extends Controller
 {
     public function  hock2(Request $request)
     {
-            dd($request);
+        $info = 'route is here';
+        info($info);
+        return $info;
+            // dd($request);
     }
 
 
