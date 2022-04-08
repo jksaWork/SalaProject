@@ -27,7 +27,6 @@ class GetProductsFroMSala implements ShouldQueue
         // dd($token);
         $this->token = $token;
         $this->client_id = $client_id;
-        info($this->token);
     }
 
     /**
@@ -52,7 +51,7 @@ class GetProductsFroMSala implements ShouldQueue
             foreach ($Products as $Pro) {
                 Product::create([
                     'client_id' => $this->client_id,
-                    'product_id' => $Pro->id, 
+                    'product_id' => $Pro->id,
                     'name' => $Pro->name,
                     'sku' => $Pro->sku,
                     'type' => $Pro->type,
@@ -67,4 +66,21 @@ class GetProductsFroMSala implements ShouldQueue
             }
          }
     }
-}   
+    /*
+        Product::create([
+                    'client_id' => null,
+                    'product_id' => "jksa",
+                    'name' =>"sadsda",
+                    'sku' => "sadsad",
+                    'type' => "$Pro->type",
+                    'short_link_code' => "$Pro->short_link_code",
+                    'price' => "$Pro->price->amount",
+                    'status' => "$Pro->status ?? ' '",
+                    'sale_price' => "$Pro->sale_price->amount ?? 'not null'",
+                    'url' => "$Pro->urls->customer ?? ' '",
+                    'is_available' => "$Pro->is_available",
+                    'quantity' => "$Pro->quantity",
+                ]);
+
+    */
+}

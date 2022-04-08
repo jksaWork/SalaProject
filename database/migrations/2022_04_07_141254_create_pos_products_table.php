@@ -21,7 +21,7 @@ class CreatePosProductsTable extends Migration
             $table->string('product_currency')->nullable();
             $table->string('pos_price')->nullable();
             $table->string('available')->nullable();
-            $table->string('merchant_id')->nullable();    
+            $table->string('merchant_id')->nullable();
             $table->json('merchant_name')->nullable();
             $table->timestamps();
         });

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthTokenControoler;
+use App\Http\Controllers\GEtTables;
 use App\Http\Controllers\hock2;
 use App\Http\Controllers\pointOfSaleController;
 
@@ -24,3 +25,5 @@ Route::get('/webhock' , [AuthTokenControoler::class , 'getTokenWithCode']);
 Route::get('/webhock2' , [hock2::class , 'hock2']);
 Route::get('point-of-sale' , [pointOfSaleController::class , 'index']);
 Route::get('get-products' , [pointOfSaleController::class , 'Products']);
+Route::get('get-products-tables' , [GEtTables::class , 'products']);
+Route::get('get-pos-products-tables' , [GEtTables::class , 'PosProducts']);
