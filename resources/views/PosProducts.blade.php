@@ -34,7 +34,8 @@
             @forelse ($Products as $Product )
             <tr>
                 <th>{{$Product->product_code}}</th>
-                <th>{{$Product->name ->ar ." | ". $Product->name->en }}</th>
+                <th>{{$Product->name ->ar ."
+                ?| ". $Product->name->en }}</th>
                 <th>{{$Product->product_price}}</th>
                 <th>{{$Product->product_currency}} </th>
                 <th>{{$Product->pos_price }}</th>

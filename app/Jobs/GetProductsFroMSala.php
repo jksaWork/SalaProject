@@ -67,7 +67,7 @@ class GetProductsFroMSala implements ShouldQueue
          }
     }
     /*
-        Product::create([
+    Product::create([
                     'client_id' => null,
                     'product_id' => "jksa",
                     'name' =>"sadsda",

@@ -8,8 +8,8 @@ class hock2 extends Controller
 {
     public function  hock2(Request $request)
     {
-            
+            dd($request);
     }
 
-    
+
 }
