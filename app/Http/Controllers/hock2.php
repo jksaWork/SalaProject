@@ -8,9 +8,9 @@ class hock2 extends Controller
 {
     public function  hock2(Request $request)
     {
-        $info = 'route is here';
-        info($request);
-        return $info;
+            if($request->event == 'order.created'){
+                info($request);
+            }
             // dd($request);
     }
 
