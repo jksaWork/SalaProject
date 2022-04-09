@@ -29,6 +29,8 @@ class SalaOrderCreatedListner
     public function handle($event)
     {
         // dd('jksa');
+        $Url = "https://api.salla.dev/admin/v2/products/{$event->ProductId}/digital-codes";
+        dd($Url);
         $FinalResponse = [];
         $SecretNumbers = [];
         $Token = 'WlQr7CX5deEPmfLOIaGF4ZMNX11gMVTgV_ftyKdzYtU.1AcFdmOQPm3vnuJ87KPNTI4BNcXccCZd1hsEzHJKIfo';
@@ -51,16 +53,11 @@ class SalaOrderCreatedListner
             $FinalResponse[] =  $myXMLData;
             $SecretNumbers[] = $myXMLData->secret;
         }
-
+        $Data = json_encode(['codes' => $SecretNumbers]);
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $Token,
             'Accept' => 'Application/json',
-        ])->post("https://api.salla.dev/admin/v2
-        /products/1893255320/digital-codes" ,
-        [
-            'codes' =>$SecretNumbers,
-        ]
-        );
+        ])->post($Url,[$Data]);
         dd([$FinalResponse , $SecretNumbers , $response,  'sended Succesffuly']);
     }
 }
