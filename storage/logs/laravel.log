@@ -1,0 +1,8 @@
+[2022-04-09 01:01:43] local.ERROR: syntax error, unexpected '$table' (T_VARIABLE), expecting function (T_FUNCTION) or const (T_CONST) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): syntax error, unexpected '$table' (T_VARIABLE), expecting function (T_FUNCTION) or const (T_CONST) at C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\app\\Models\\Product.php:11)
+[stacktrace]
+#0 {main}
+"} 
+[2022-04-09 01:01:48] local.ERROR: syntax error, unexpected '$table' (T_VARIABLE), expecting function (T_FUNCTION) or const (T_CONST) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): syntax error, unexpected '$table' (T_VARIABLE), expecting function (T_FUNCTION) or const (T_CONST) at C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\app\\Models\\Product.php:11)
+[stacktrace]
+#0 {main}
+"} 

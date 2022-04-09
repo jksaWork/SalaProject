@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class PosProducts extends Model
 {
     use HasFactory;
+    protected $table = 'botagaty_pos_products';
     protected $guarded = [];
     public function getNameAttribute($key)
     {

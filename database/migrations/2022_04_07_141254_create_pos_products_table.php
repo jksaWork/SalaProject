@@ -13,8 +13,9 @@ class CreatePosProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('pos_products', function (Blueprint $table) {
+        Schema::create('botagaty_pos_products', function (Blueprint $table) {
             $table->id();
+            $table->integer('client_id')->nullable();
             $table->string('product_code')->nullable();
             $table->json('name')->nullable();
             $table->string('product_price')->nullable();

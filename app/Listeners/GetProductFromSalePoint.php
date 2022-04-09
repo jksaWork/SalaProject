@@ -41,6 +41,7 @@ class GetProductFromSalePoint implements ShouldQueue
         // dd($Products);
         foreach ($Products as $Product) {
             PosProducts::create([
+                'client_id' => $event->clientId,
                 "product_code" => $Product->productCode,
                 "name" => json_encode(['ar' => $Product->nameAr , 'en' => $Product->nameEn]),
                 "product_price" => $Product->productPrice,

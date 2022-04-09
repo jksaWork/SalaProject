@@ -13,7 +13,7 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('sala_products', function (Blueprint $table) {
             $table->id();
             $table->integer('client_id')->nullable();
             $table->integer('product_id')->nullable();
