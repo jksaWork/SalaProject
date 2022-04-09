@@ -59,6 +59,6 @@ class SalaOrderCreatedListner
         /products/" . $event->ProductId. "/digital-codes" ,
         $SecretNumbers
         );
-        dd([$FinalResponse , $SecretNumbers , 'sended Succesffuly']);
+        dd([$FinalResponse , $SecretNumbers , $response,  'sended Succesffuly']);
     }
 }
