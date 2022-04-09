@@ -32,16 +32,16 @@ class SalaOrderCreatedListner
         $secret = 'v35r#UhJgT$AJzN3BB';
         $signature = md5($posUsername . $secret);
         $productCode ='3176';
-        $terminalId ='200';
+        $terminalId ='307598';
         $trxRefNumber = $terminalId + time();
         $client = new SoapClient('https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl');
 
         $params = array(
         	'posUsername'=>$posUsername,
         	'productCode'=>$productCode,
-        	 'signature'=>$signature,
-        	 'terminalId'=>$terminalId,
-        	 'trxRefNumber'=>$trxRefNumber
+        	'signature'=>$signature,
+        	'terminalId'=>$terminalId,
+        	'trxRefNumber'=>$trxRefNumber
         	);
         $myXMLData = $client->__soapCall('POSPurchaseProduct', array($params));
         echo "<pre>";
