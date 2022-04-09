@@ -23,8 +23,8 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         NewCleintInitApp::class => [
-            GetProductFromSalePoint::class , 
-            NewCleintInitAppListner::class , 
+            GetProductFromSalePoint::class,
+            NewCleintInitAppListner::class,
         ]
     ];
 
