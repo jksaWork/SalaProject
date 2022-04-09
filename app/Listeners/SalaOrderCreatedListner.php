@@ -34,7 +34,7 @@ class SalaOrderCreatedListner
             $secret = 'v35r#UhJgT$AJzN3BB';
             $productCode ='3176';
             $signature = md5($posUsername . $productCode .$secret);
-            $terminalId ='307598';
+            $terminalId =random_int(0 , 10000);
             $trxRefNumber = $terminalId . "" . time();
             $client = new SoapClient('https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl');
             $params = array(
