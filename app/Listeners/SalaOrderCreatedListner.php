@@ -56,7 +56,7 @@ class SalaOrderCreatedListner
             'Authorization' => 'Bearer ' . $Token,
             'Accept' => 'Application/json',
         ])->post("https://api.salla.dev/admin/v2
-        /products/" . $event->ProductId. "/digital-codes" ,
+        /products/1893255320/digital-codes" ,
         [
             'codes' =>$SecretNumbers,
         ]
