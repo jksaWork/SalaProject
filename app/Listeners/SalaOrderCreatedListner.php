@@ -57,7 +57,9 @@ class SalaOrderCreatedListner
             'Accept' => 'Application/json',
         ])->post("https://api.salla.dev/admin/v2
         /products/" . $event->ProductId. "/digital-codes" ,
-        $SecretNumbers
+        [
+            'codes' =>$SecretNumbers,
+        ]
         );
         dd([$FinalResponse , $SecretNumbers , $response,  'sended Succesffuly']);
     }
