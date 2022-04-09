@@ -3,9 +3,11 @@
 namespace App\Providers;
 
 use App\Events\NewCleintInitApp;
+use App\Events\SalaOrderCreated;
 use App\Jobs\GetProductsFroMSala;
 use App\Listeners\GetProductFromSalePoint;
 use App\Listeners\NewCleintInitAppListner;
+use App\Listeners\SalaOrderCreatedListner;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -25,7 +27,10 @@ class EventServiceProvider extends ServiceProvider
         NewCleintInitApp::class => [
             GetProductFromSalePoint::class,
             NewCleintInitAppListner::class,
-        ]
+        ],
+          SalaOrderCreated::class => [
+            SalaOrderCreatedListner::class
+         ]
     ];
 
     /**
