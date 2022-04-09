@@ -14,8 +14,7 @@ class hock2 extends Controller
                 info($request);
                 info($request->data['items']);
                 info($request->data['items'][0]);
-                info($request->data['items'][0]['products']);
-                event(new SalaOrderCreated($request->data['items'][0]['products']));
+                event(new SalaOrderCreated($request->data['items'][0]['products'] ?? $request->data['items'][0]['product']));
             }
     }
 }
