@@ -30,7 +30,7 @@ class SalaOrderCreatedListner
     {
         // dd('jksa');
         $Url = "https://api.salla.dev/admin/v2/products/{$event->ProductId}/digital-codes";
-        dd($Url);
+        // dd($Url);
         $FinalResponse = [];
         $SecretNumbers = [];
         $Token = 'WlQr7CX5deEPmfLOIaGF4ZMNX11gMVTgV_ftyKdzYtU.1AcFdmOQPm3vnuJ87KPNTI4BNcXccCZd1hsEzHJKIfo';
