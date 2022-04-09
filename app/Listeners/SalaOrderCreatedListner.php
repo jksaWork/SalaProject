@@ -53,11 +53,11 @@ class SalaOrderCreatedListner
             $FinalResponse[] =  $myXMLData;
             $SecretNumbers[] = $myXMLData->secret;
         }
-        $Data = json_encode(['codes' => $SecretNumbers]);
+        // $Data = json_encode(['codes' => $SecretNumbers]);
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $Token,
             'Accept' => 'Application/json',
-        ])->post($Url,[$Data]);
+        ])->post($Url,['codes' => $SecretNumbers]);
         dd([$FinalResponse , $SecretNumbers , $response,  'sended Succesffuly']);
     }
 }
