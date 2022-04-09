@@ -5,8 +5,9 @@ namespace App\Listeners;
 use App\Models\PointOfSaleEqualSalaProduct;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use SoapClient;
 
-class SalaOrderCreatedListner implements ShouldQueue
+class SalaOrderCreatedListner
 {
     /**
      * Create the event listener.
@@ -15,7 +16,7 @@ class SalaOrderCreatedListner implements ShouldQueue
      */
     public function __construct()
     {
-        //
+        // dd('jksa');
     }
 
     /**
@@ -26,8 +27,28 @@ class SalaOrderCreatedListner implements ShouldQueue
      */
     public function handle($event)
     {
-            PointOfSaleEqualSalaProduct::create([
-                'sala_product_id' => $event->Products['id'],
-            ]);
+        // dd('jksa');
+        $posUsername = 'info@dataked.com';
+        $secret = 'v35r#UhJgT$AJzN3BB';
+        $signature = md5($posUsername . $secret);
+        $productCode ='3176';
+        $terminalId ='200';
+        $trxRefNumber = $terminalId + time();
+        $client = new SoapClient('https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl');
+
+        $params = array(
+        	'posUsername'=>$posUsername,
+        	'productCode'=>$productCode,
+        	 'signature'=>$signature,
+        	 'terminalId'=>$terminalId,
+        	 'trxRefNumber'=>$trxRefNumber
+        	);
+        $myXMLData = $client->__soapCall('POSPurchaseProduct', array($params));
+        echo "<pre>";
+        echo var_dump($myXMLData);
+        echo "<pre>";
+
+
+
     }
 }

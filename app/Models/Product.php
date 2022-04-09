@@ -10,4 +10,10 @@ class Product extends Model
     use HasFactory;
     protected $table = 'sala_products';
     protected $guarded = [];
+
+    public function Pos(){
+        $BotagateId =  PointOfSaleEqualSalaProduct::firstWhere('sala_product_id' , $this->product_id);
+        return $BotagateId;
+        // PosProducts::find($BotagateId);
+    }
 }

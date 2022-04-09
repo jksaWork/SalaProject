@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\NewCleintInitApp;
+use App\Events\SalaOrderCreated;
 use Illuminate\Http\Request;
 use SoapClient;
 
@@ -14,7 +15,7 @@ class pointOfSaleController extends Controller
         $posUsername = 'info@dataked.com';
         $secret = 'v35r#UhJgT$AJzN3BB';
         $signature = md5($posUsername . $secret);
-        
+
         $client = new SoapClient('https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl');
         $params = array(
             'posUsername' => $posUsername,
@@ -41,5 +42,10 @@ class pointOfSaleController extends Controller
         echo "<pre>";
          dd($myXMLData);
         echo "<pre>";
+    }
+
+    public function pay(){
+        event(new SalaOrderCreated('jksa'));
+
     }
 }

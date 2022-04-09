@@ -27,5 +27,8 @@ Route::post('/webhock2' , [hock2::class , 'hock2']);
 
 Route::get('point-of-sale' , [pointOfSaleController::class , 'index']);
 Route::get('get-products' , [pointOfSaleController::class , 'Products']);
+Route::get('pay-product' ,  [pointOfSaleController::class , 'Pay']);
 Route::get('get-products-tables' , [GEtTables::class , 'products']);
 Route::get('get-pos-products-tables' , [GEtTables::class , 'PosProducts']);
+Route::get('product-code' , [GEtTables::class , 'ProductCode']);
+Route::post('product-code' , [GEtTables::class , 'ProductCodeStore'])->name('product.code.store');
