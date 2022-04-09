@@ -6,7 +6,7 @@ use App\Models\PointOfSaleEqualSalaProduct;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
-class SalaOrderCreatedListner
+class SalaOrderCreatedListner implements ShouldQueue
 {
     /**
      * Create the event listener.
@@ -26,10 +26,8 @@ class SalaOrderCreatedListner
      */
     public function handle($event)
     {
-        foreach($event->Products as $Pro){
             PointOfSaleEqualSalaProduct::create([
-                'sala_product_id' => $Pro->id,
+                'sala_product_id' => $event->Products['id'],
             ]);
-        }
     }
 }

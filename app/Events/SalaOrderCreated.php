@@ -23,6 +23,7 @@ class SalaOrderCreated
     public function __construct($Products)
     {
         $this->Products =$Products;
+        info($Products);
     }
 
     /**
