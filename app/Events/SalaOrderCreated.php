@@ -20,10 +20,11 @@ class SalaOrderCreated
      * @return void
      */
     public $Products;
-    public function __construct($Products)
+    public $ProductId;
+    public function __construct($Products , $ProductId = '1893255320')
     {
         $this->Products =$Products;
-        info($Products);
+        $this->ProductId = $ProductId;
     }
 
     /**

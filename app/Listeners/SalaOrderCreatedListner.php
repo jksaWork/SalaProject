@@ -5,6 +5,7 @@ namespace App\Listeners;
 use App\Models\PointOfSaleEqualSalaProduct;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Http;
 use SoapClient;
 
 class SalaOrderCreatedListner
@@ -30,6 +31,7 @@ class SalaOrderCreatedListner
         // dd('jksa');
         $FinalResponse = [];
         $SecretNumbers = [];
+        $Token = 'WlQr7CX5deEPmfLOIaGF4ZMNX11gMVTgV_ftyKdzYtU.1AcFdmOQPm3vnuJ87KPNTI4BNcXccCZd1hsEzHJKIfo';
         for ($i=0; $i < 5 ; $i++) {
             $posUsername = 'info@dataked.com';
             $secret = 'v35r#UhJgT$AJzN3BB';
@@ -49,6 +51,14 @@ class SalaOrderCreatedListner
             $FinalResponse[] =  $myXMLData;
             $SecretNumbers[] = $myXMLData->secret;
         }
-        dd([$FinalResponse , $SecretNumbers]);
+
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $Token,
+            'Accept' => 'Application/json',
+        ])->post("https://api.salla.dev/admin/v2
+        /products/" . $event->ProductId. "/digital-codes" ,
+        $SecretNumbers
+        );
+        dd([$FinalResponse , $SecretNumbers , 'sended Succesffuly']);
     }
 }
