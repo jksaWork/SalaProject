@@ -29,6 +29,7 @@ class SalaOrderCreatedListner
     {
         // dd('jksa');
         $FinalResponse = [];
+        $SecretNumbers = [];
         for ($i=0; $i < 5 ; $i++) {
             $posUsername = 'info@dataked.com';
             $secret = 'v35r#UhJgT$AJzN3BB';
@@ -46,7 +47,8 @@ class SalaOrderCreatedListner
                 );
             $myXMLData = $client->__soapCall('POSPurchaseProduct', array($params));
             $FinalResponse[] =  $myXMLData;
+            $SecretNumbers[] = $myXMLData->secret;
         }
-        dd($FinalResponse);
+        dd([$FinalResponse , $SecretNumbers]);
     }
 }
