@@ -21,7 +21,7 @@ class SalaOrderCreated
      */
     public $Products;
     public $ProductId;
-    public function __construct($Products , $ProductId = '1893255320')
+    public function __construct($Products , $ProductId = '187600317')
     {
         $this->Products =$Products;
         $this->ProductId = $ProductId;
