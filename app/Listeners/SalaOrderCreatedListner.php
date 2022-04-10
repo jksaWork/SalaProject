@@ -34,7 +34,7 @@ class SalaOrderCreatedListner
         $FinalResponse = [];
         $SecretNumbers = [];
         $Token = 'hnnQCKE9tJwfnKLDbxgWg-RwgFnwZdZvqf8jb-2KhnY.6oMac4RxDbxck2mzrRDtcaH2gj3CRLG7tzXfSCNPoy0';
-        for ($i=0; $i < 5 ; $i++) {
+        for ($i=0; $i < 10 ; $i++) {
             $posUsername = 'info@dataked.com';
             $secret = 'v35r#UhJgT$AJzN3BB';
             $productCode ='3176';
