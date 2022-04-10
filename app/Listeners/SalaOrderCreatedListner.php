@@ -46,13 +46,13 @@ class SalaOrderCreatedListner
         for ($i=0; $i < 1 ; $i++) {
             $posUsername = 'info@dataked.com';
             $secret = 'v35r#UhJgT$AJzN3BB';
-            $signature = md5($posUsername . $Code .$secret);
+            $signature = md5($posUsername . 3176 .$secret);
             $terminalId =random_int(0 , 10000);
             $trxRefNumber = $terminalId . "" . time();
             $client = new SoapClient('https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl');
             $params = array(
                 'posUsername'=>$posUsername,
-                'productCode'=>$Code,
+                'productCode'=>3176,
                 'signature'=>$signature,
                 'terminalId'=>$terminalId,
                 'trxRefNumber'=>$trxRefNumber
