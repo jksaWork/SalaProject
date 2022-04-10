@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Events\OrderCreatedWebHock;
 use App\Events\SalaOrderCreated;
 use App\Helpers\SalaClass;
 use App\Models\Client;
@@ -11,7 +12,8 @@ class hock2 extends Controller
     public function  hock2(Request $request)
     {
             if($request->event == 'order.created'){
-                info('product_created'. $request);
+                // OrderCreatedWebHock
+                // event( new OrderCreatedWebHock($request->Prodcut_id));
             }
             info($request);
     }
