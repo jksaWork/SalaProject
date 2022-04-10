@@ -36,12 +36,13 @@ class SalaOrderCreatedListner
             'Authorization' => 'Bearer ' . $Token,
             'Accept' => 'Application/json',
         ])->get($ProductUrl);
-        dd($ProductUrl->object()->data->quantity);
-        $Url = "https://api.salla.dev/admin/v2/products/{$event->ProductId}/digital-codes";        
+        $Quantity = $ProductUrl->object()->data->quantity;
+        if($Quantity  == 0){
+            $Url = "https://api.salla.dev/admin/v2/products/{$event->ProductId}/digital-codes";        
         // dd($Url);
         $FinalResponse = [];
         $SecretNumbers = [];
-        for ($i=0; $i < 10 ; $i++) {
+        for ($i=0; $i < 1 ; $i++) {
             $posUsername = 'info@dataked.com';
             $secret = 'v35r#UhJgT$AJzN3BB';
             $productCode ='3176';
@@ -66,5 +67,7 @@ class SalaOrderCreatedListner
             'Accept' => 'Application/json',
         ])->post($Url,['codes' => $SecretNumbers]);
         dd([$FinalResponse , $SecretNumbers , $response,  'sended Succesffuly']);
+        }
+        dd('guantity is coode');
     }
 }
