@@ -35,7 +35,7 @@ class SalaOrderCreatedListner
         $FinalResponse = [];
         $SecretNumbers = [];
         $Token = Client::orderBy('id' , 'DESC')->first()->access_token;
-        for ($i=0; $i < 1 ; $i++) {
+        for ($i=0; $i < 10 ; $i++) {
             $posUsername = 'info@dataked.com';
             $secret = 'v35r#UhJgT$AJzN3BB';
             $productCode ='3176';
