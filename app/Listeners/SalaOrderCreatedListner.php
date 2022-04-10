@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Models\Client;
 use App\Models\PointOfSaleEqualSalaProduct;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -33,7 +34,7 @@ class SalaOrderCreatedListner
         // dd($Url);
         $FinalResponse = [];
         $SecretNumbers = [];
-        $Token = 'hnnQCKE9tJwfnKLDbxgWg-RwgFnwZdZvqf8jb-2KhnY.6oMac4RxDbxck2mzrRDtcaH2gj3CRLG7tzXfSCNPoy0';
+        $Token = Client::orderBy('id' , 'DESC')->first()->access_token;
         for ($i=0; $i < 1 ; $i++) {
             $posUsername = 'info@dataked.com';
             $secret = 'v35r#UhJgT$AJzN3BB';
