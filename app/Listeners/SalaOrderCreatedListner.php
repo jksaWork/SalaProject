@@ -36,7 +36,7 @@ class SalaOrderCreatedListner
             'Authorization' => 'Bearer ' . $Token,
             'Accept' => 'Application/json',
         ])->get($ProductUrl);
-        dd($ProductUrl->data->quantity);
+        dd($ProductUrl->object()->data->quantity);
         $Url = "https://api.salla.dev/admin/v2/products/{$event->ProductId}/digital-codes";        
         // dd($Url);
         $FinalResponse = [];
