@@ -10,11 +10,13 @@ class hock2 extends Controller
 {
     public function  hock2(Request $request)
     {
-            if($request->event == 'order.created'){
-                info($request);
-                info($request->data['items']);
-                info($request->data['items'][0]);
-                event(new SalaOrderCreated($request->data['items'][0]['products'] ?? $request->data['items'][0]['product']));
+            if($request->event == 'product.created'){
+                info('product_created');
+            //     info($request->data['items']);
+            //     info($request->data['items'][0]);
+            //     event(new SalaOrderCreated($request->data['items'][0]['products'] ?? $request->data['items'][0]['product']));
             }
+            info($request);
+
     }
 }
