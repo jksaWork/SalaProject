@@ -30,11 +30,17 @@ class SalaOrderCreatedListner
     public function handle($event)
     {
         // dd('jksa');
-        $Url = "https://api.salla.dev/admin/v2/products/{$event->ProductId}/digital-codes";
+        $Token = Client::orderBy('id' , 'DESC')->first()->access_token;
+        $ProductUrl = "https://api.salla.dev/admin/v2/products/{$event->ProductId}";
+        $ProductUrl = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $Token,
+            'Accept' => 'Application/json',
+        ])->get($ProductUrl);
+        dd($ProductUrl);
+        $Url = "https://api.salla.dev/admin/v2/products/{$event->ProductId}/digital-codes";        
         // dd($Url);
         $FinalResponse = [];
         $SecretNumbers = [];
-        $Token = Client::orderBy('id' , 'DESC')->first()->access_token;
         for ($i=0; $i < 10 ; $i++) {
             $posUsername = 'info@dataked.com';
             $secret = 'v35r#UhJgT$AJzN3BB';
