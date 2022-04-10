@@ -13,7 +13,8 @@ class hock2 extends Controller
     {
             if($request->event == 'order.created'){
                 // OrderCreatedWebHock
-                // event( new OrderCreatedWebHock($request->Prodcut_id));
+                info('order_created' , $request->data['items'][0]['Prodcut']);
+                // event( new OrderCreatedWebHock($request->data['items'][0]['Prodcut']));
             }
             info($request);
     }
