@@ -68,6 +68,6 @@ class SalaOrderCreatedListner
         ])->post($Url,['codes' => $SecretNumbers]);
         dd([$FinalResponse , $SecretNumbers , $response,  'sended Succesffuly']);
         }
-        dd('guantity is coode');
+        dd($Quantity);
     }
 }
