@@ -58,7 +58,7 @@ class SalaOrderCreatedListner
                 'trxRefNumber'=>$trxRefNumber
                 );
             $myXMLData = $client->__soapCall('POSPurchaseProduct', array($params));
-            dd($myXMLData);
+            dd([$myXMLData , $Code]);
             $FinalResponse[] =  $myXMLData;
             $SecretNumbers[] = $myXMLData->secret;
         }
