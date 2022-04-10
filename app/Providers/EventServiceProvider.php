@@ -3,10 +3,12 @@
 namespace App\Providers;
 
 use App\Events\NewCleintInitApp;
+use App\Events\OrderCreatedWebHock;
 use App\Events\SalaOrderCreated;
 use App\Jobs\GetProductsFroMSala;
 use App\Listeners\GetProductFromSalePoint;
 use App\Listeners\NewCleintInitAppListner;
+use App\Listeners\OrderCreatedWebHockListener;
 use App\Listeners\SalaOrderCreatedListner;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -30,7 +32,10 @@ class EventServiceProvider extends ServiceProvider
         ],
           SalaOrderCreated::class => [
             SalaOrderCreatedListner::class
-         ]
+          ], 
+          OrderCreatedWebHock::class => [
+              OrderCreatedWebHockListener::class
+          ]
     ];
 
     /**

@@ -10,7 +10,7 @@ class hock2 extends Controller
 {
     public function  hock2(Request $request)
     {
-            if($request->event == 'product.created'){
+            if($request->event == 'order.created'){
                 info('product_created'. $request);
             }
             info($request);

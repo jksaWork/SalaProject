@@ -29,30 +29,30 @@ class SalaOrderCreatedListner
      */
     public function handle($event)
     {
-        // dd('jksa');
+        $Code = $event->POSCode;
+        $ProductId = $event->ProductId;
         $Token = Client::orderBy('id' , 'DESC')->first()->access_token;
-        $ProductUrl = "https://api.salla.dev/admin/v2/products/{$event->ProductId}";
-        $ProductUrl = Http::withHeaders([
+        $ProductUrl = "https://api.salla.dev/admin/v2/products/{$ProductId}";
+        $ProductUrlReponse = Http::withHeaders([
             'Authorization' => 'Bearer ' . $Token,
             'Accept' => 'Application/json',
         ])->get($ProductUrl);
-        $Quantity = $ProductUrl->object()->data->quantity;
+        $Quantity = $ProductUrlReponse->object()->data->quantity;
         if($Quantity  == 0){
-            $Url = "https://api.salla.dev/admin/v2/products/{$event->ProductId}/digital-codes";        
+            $Url = "https://api.salla.dev/admin/v2/products/{$ProductId}/digital-codes";        
         // dd($Url);
         $FinalResponse = [];
         $SecretNumbers = [];
         for ($i=0; $i < 1 ; $i++) {
             $posUsername = 'info@dataked.com';
             $secret = 'v35r#UhJgT$AJzN3BB';
-            $productCode ='3176';
-            $signature = md5($posUsername . $productCode .$secret);
+            $signature = md5($posUsername . $Code .$secret);
             $terminalId =random_int(0 , 10000);
             $trxRefNumber = $terminalId . "" . time();
             $client = new SoapClient('https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl');
             $params = array(
                 'posUsername'=>$posUsername,
-                'productCode'=>$productCode,
+                'productCode'=>$Code,
                 'signature'=>$signature,
                 'terminalId'=>$terminalId,
                 'trxRefNumber'=>$trxRefNumber

@@ -10,7 +10,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class SalaOrderCreated
+class OrderCreatedWebHock
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -19,12 +19,10 @@ class SalaOrderCreated
      *
      * @return void
      */
-    public $POSCode;
-    public $ProductId;
-    public function __construct($POSCode , $ProductId = '728723488')
+    public $ProdcutId;
+    public function __construct($ProdcutId)
     {
-        $this->POSCode =$POSCode;
-        $this->ProductId = $ProductId;
+        $this->ProdcutId = $ProdcutId;    
     }
 
     /**
@@ -32,8 +30,5 @@ class SalaOrderCreated
      *
      * @return \Illuminate\Broadcasting\Channel|array
      */
-    public function broadcastOn()
-    {
-        return new PrivateChannel('channel-name');
-    }
+    
 }

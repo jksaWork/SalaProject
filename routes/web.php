@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\OrderCreatedWebHock;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthTokenControoler;
 use App\Http\Controllers\GEtTables;
@@ -32,3 +33,6 @@ Route::get('get-products-tables' , [GEtTables::class , 'products']);
 Route::get('get-pos-products-tables' , [GEtTables::class , 'PosProducts']);
 Route::get('product-code' , [GEtTables::class , 'ProductCode']);
 Route::post('product-code' , [GEtTables::class , 'ProductCodeStore'])->name('product.code.store');
+Route::get('test' , function(){
+    event( new OrderCreatedWebHock('728723488'));
+});
