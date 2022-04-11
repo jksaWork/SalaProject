@@ -17,11 +17,11 @@ class hock2 extends Controller
                 event(new OrderCreatedWebHock($request->data['items'][0]['product']['id']));
             }
 
-            if($request->event == 'order.creatsed'){
+            if($request->event == 'order.creatscliented'){
                 // OrderCreatedWebHock
                 info('order_created' . $request->data['items'][0]['product']['id']);
                 event(new OrderCreatedWebHock($request->data['items'][0]['product']['id']));
             }
-            // info($request);
+            info($request);
     }
 }
