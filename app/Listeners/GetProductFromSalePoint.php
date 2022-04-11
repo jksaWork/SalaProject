@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use App\Models\Client;
 use App\Models\PosProducts;
+use Exception;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use SoapClient;
@@ -42,12 +43,17 @@ class GetProductFromSalePoint
         );
         $response = $client->__soapCall('POSGetProductList', array($params));
         info('before_line.44');
-        info("$response");
+        
         info('before_line.46');
-        info("$response->productList");
+        try
+        {
+            info("$response->productList");
+        }catch(Exception $e){
+
+        }
         info('before_line.48');
         $Products = $response->productList->product;
-        // dd($Products);
+        info($Products);
         foreach ($Products as $Product) {
             PosProducts::create([
                 'client_id' => $event->clientId,
