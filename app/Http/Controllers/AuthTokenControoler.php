@@ -17,9 +17,9 @@ class AuthTokenControoler extends Controller
 
         // return $req;
         $provider = new Salla([
-            'clientId'     => 'c5e26ae228c097732386852c0194ade7', // The client ID assigned to you by Salla
-            'clientSecret' => '470e3ce6a091ce4a43fe30be1792313c', // The client password assigned to you by Salla
-            'redirectUri'  => 'https://sala.gulfsmo.net/webhock', // the url for current page in your service
+            'clientId'     =>   'f1049ec2dfaa96a4f5407ff173af915d' , #'c5e26ae228c097732386852c0194ade7', // The client ID assigned to you by Salla
+            'clientSecret' =>  'f7ee0eb49de36711d015c21a6ebb5f02' ,  #'470e3ce6a091ce4a43fe30be1792313c', // The client password assigned to you by Salla
+            'redirectUri'  => 'https://sala.gulfsmo.net/webhock' , // the url for current page in your service
         ]);
 
         if (!isset($_GET['code']) || empty($_GET['code'])) {
