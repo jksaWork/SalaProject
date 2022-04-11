@@ -14,7 +14,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
-
+use App\Events\getProductFromPOS;
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -27,7 +27,7 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         NewCleintInitApp::class => [
-            GetProductFromSalePoint::class,
+            // GetProductFromSalePoint::class,
             NewCleintInitAppListner::class,
         ],
           SalaOrderCreated::class => [
@@ -35,7 +35,11 @@ class EventServiceProvider extends ServiceProvider
           ], 
           OrderCreatedWebHock::class => [
               OrderCreatedWebHockListener::class
+          ], 
+          getProductFromPOS::class => [
+            GetProductFromSalePoint::class, 
           ]
+
     ];
 
     /**

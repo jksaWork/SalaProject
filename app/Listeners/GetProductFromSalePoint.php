@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use SoapClient;
 
-class GetProductFromSalePoint implements ShouldQueue
+class GetProductFromSalePoint 
 {
     /**
      * Create the event listener.

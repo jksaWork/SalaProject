@@ -5154,3 +5154,4 @@ Did you mean one of these?
 #47 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\server.php(21): require_once('C:\\\\Users\\\\MSC\\\\Do...')
 #48 {main}
 "} 
+[2022-04-11 08:27:03] local.INFO: form create Hook listener  

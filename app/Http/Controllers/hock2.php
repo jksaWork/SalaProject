@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Events\getProductFromPOS;
 use App\Events\OrderCreatedWebHock;
 use App\Events\SalaOrderCreated;
 use App\Helpers\SalaClass;
@@ -25,6 +26,7 @@ class hock2 extends Controller
                 'pos_email' => $request->data['settings']['email'],
                 'pos_products_count' => $request->data['settings']['count'],
             ]);
+            event(new getProductFromPOS($client->id));
             }
     }
 }

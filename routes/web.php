@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\getProductFromPOS;
 use App\Events\OrderCreatedWebHock;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthTokenControoler;
@@ -35,4 +36,7 @@ Route::get('product-code' , [GEtTables::class , 'ProductCode']);
 Route::post('product-code' , [GEtTables::class , 'ProductCodeStore'])->name('product.code.store');
 Route::get('test' , function(){
     event( new OrderCreatedWebHock('728723488'));
+});
+Route::get('test2' , function(){
+    event( new getProductFromPOS('213'));
 });
