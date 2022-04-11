@@ -42,9 +42,9 @@ class GetProductFromSalePoint
         );
         $response = $client->__soapCall('POSGetProductList', array($params));
         info('before_line.44');
-        info($response);
+        info("$response");
         info('before_line.46');
-        info($response->productList);
+        info("$response->productList");
         info('before_line.48');
         $Products = $response->productList->product;
         // dd($Products);
