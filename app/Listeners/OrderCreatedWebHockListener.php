@@ -26,9 +26,8 @@ class OrderCreatedWebHockListener
      * @return void
      */
     public function handle($event)
-    {
-        // dd($event->ProdcutId);
+    {   info('form create Hook listener');
         $Code = PointOfSaleEqualSalaProduct::Where('sala_product_id' , $event->ProdcutId)->firstOrFail()->botagate_product_code;
-        event(new SalaOrderCreated($Code,$event->ProdcutId ));
+        event(new SalaOrderCreated($Code,$event->ProdcutId));
     }
 }

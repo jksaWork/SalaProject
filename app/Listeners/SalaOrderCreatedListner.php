@@ -29,6 +29,7 @@ class SalaOrderCreatedListner
      */
     public function handle($event)
     {
+        info('from SalaOrderCreateListgertn');
         $Code = $event->POSCode;
         $ProductId = $event->ProductId;
         $Token = Client::orderBy('id' , 'DESC')->first()->access_token;

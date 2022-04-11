@@ -23,6 +23,7 @@ class SalaOrderCreated
     public $ProductId;
     public function __construct($POSCode , $ProductId = '728723488')
     {
+        info('form create Hook listener');
         $this->POSCode =$POSCode;
         $this->ProductId = $ProductId;
     }
