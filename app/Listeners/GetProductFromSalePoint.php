@@ -30,7 +30,7 @@ class GetProductFromSalePoint
     public function handle($event)
     {
         $Client = Client::first();
-        $posUsername = $Client->pos_email ;
+        $posUsername = $Client->pos_email;
         info($posUsername); // must be #'info@dataked.com';
         $secret =$Client->pos_secret  ;
         info($secret); //must be #'v35r#UhJgT$AJzN3BB';
