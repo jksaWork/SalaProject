@@ -22,7 +22,7 @@ class hock2 extends Controller
                 info($request->data['settings']);
                 $client  = Client::first();
                 $client->update([
-                'pos_server_key' => $request->data['settings']['email'],
+                'pos_server_key' => $request->data['settings']['secret_key'],
                 'pos_secret' => $request->data['settings']['secret_key'],
                 'pos_email' => $request->data['settings']['email'],
                 'pos_products_count' => $request->data['settings']['count'],

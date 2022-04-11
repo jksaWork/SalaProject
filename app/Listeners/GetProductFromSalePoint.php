@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Models\Client;
 use App\Models\PosProducts;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -27,8 +28,9 @@ class GetProductFromSalePoint
      */
     public function handle($event)
     {
-        $posUsername = 'info@dataked.com';
-        $secret = 'v35r#UhJgT$AJzN3BB';
+        $Client = Client::first();
+        $posUsername = $Client->pos_email ; #'info@dataked.com';
+        $secret =$Client->pos_secret  ;#'v35r#UhJgT$AJzN3BB';
         $signature = md5($posUsername . $secret);
         // SoapClient
         $client = new SoapClient('https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl');
