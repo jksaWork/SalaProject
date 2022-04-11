@@ -52,7 +52,7 @@ class GetProductsFroMSala implements ShouldQueue
             foreach ($Products as $Pro) {
                 try{
                     $Image = $Pro->images[0]->url;
-                    info($Image);
+                    // info($Image);
                 }catch(Exception $e){ 
                 }
                 Product::create([
@@ -68,6 +68,7 @@ class GetProductsFroMSala implements ShouldQueue
                     'url' => $Pro->urls->customer ?? ' ',
                     'is_available' => $Pro->is_available,
                     'quantity' => $Pro->quantity,
+                    'image' => $Image, 
                 ]);
             }
          }
