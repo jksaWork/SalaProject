@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\Product;
+use Exception;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -49,6 +50,11 @@ class GetProductsFroMSala implements ShouldQueue
             $Products = $response->object()->data;
             if (!$Products) break;
             foreach ($Products as $Pro) {
+                try{
+                    $Image = $Pro->images[0]['url'];
+                    info($Image);
+                }catch(Exception $e)
+                }
                 Product::create([
                     'client_id' => $this->client_id,
                     'product_id' => $Pro->id,
