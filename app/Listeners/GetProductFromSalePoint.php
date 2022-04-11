@@ -42,15 +42,6 @@ class GetProductFromSalePoint
             'signature' => $signature,
         );
         $response = $client->__soapCall('POSGetProductList', array($params));
-        info('before_line.44');
-        
-        info('before_line.46');
-        try
-        {
-            info("$response->productList");
-        }catch(Exception $e){
-
-        }
         info('before_line.48');
         $Products = $response->productList->product;
         info($Products);
