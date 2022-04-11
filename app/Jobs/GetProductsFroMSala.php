@@ -51,7 +51,7 @@ class GetProductsFroMSala implements ShouldQueue
             if (!$Products) break;
             foreach ($Products as $Pro) {
                 try{
-                    $Image = $Pro->images[0]['url'];
+                    $Image = $Pro->images[0]->url;
                     info($Image);
                 }catch(Exception $e){ 
                 }
