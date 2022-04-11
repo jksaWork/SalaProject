@@ -20,10 +20,10 @@ class hock2 extends Controller
             if($request->event == 'app.settings.updated'){
                 info($request->data['settings']);
                 $client  = Client::first()->update([
-                'pos_server_key' => 'mohammed@altigani.com',
-                'pos_secret' => 'jksa altignai',
-                'pos_email' => 'jksaaltiganiosamn',
-                'pos_products_count' => '3',
+                'pos_server_key' => $request->data['settings']['email'],
+                'pos_secret' => $request->data['settings']['secret_key'],
+                'pos_email' => $request->data['settings']['email'],
+                'pos_products_count' => $request->data['settings']['count'],
             ]);
             }
     }
