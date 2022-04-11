@@ -29,8 +29,10 @@ class GetProductFromSalePoint
     public function handle($event)
     {
         $Client = Client::first();
-        $posUsername = $Client->pos_email ; #'info@dataked.com';
-        $secret =$Client->pos_secret  ;#'v35r#UhJgT$AJzN3BB';
+        $posUsername = $Client->pos_email ;
+        info($posUsername); // must be #'info@dataked.com';
+        $secret =$Client->pos_secret  ;
+        info($secret); //must be #'v35r#UhJgT$AJzN3BB';
         $signature = md5($posUsername . $secret);
         // SoapClient
         $client = new SoapClient('https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl');
