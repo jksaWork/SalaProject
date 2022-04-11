@@ -53,7 +53,7 @@ class GetProductsFroMSala implements ShouldQueue
                 try{
                     $Image = $Pro->images[0]['url'];
                     info($Image);
-                }catch(Exception $e)
+                }catch(Exception $e){ 
                 }
                 Product::create([
                     'client_id' => $this->client_id,
