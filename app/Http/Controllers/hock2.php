@@ -18,7 +18,7 @@ class hock2 extends Controller
             }
 
             if($request->event == 'app.settings.updated'){
-                info($data['settings']);
+                info($request->data['settings']);
                 $client  = Client::latest();
                 $client->pos_server_key = $request->data['settings']['email'];
                 $client->pos_secret = $request->data['settings']['secret_key'];
