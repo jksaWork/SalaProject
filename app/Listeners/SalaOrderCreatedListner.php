@@ -32,7 +32,8 @@ class SalaOrderCreatedListner
         info('from SalaOrderCreateListgertn');
         $Code = $event->POSCode;
         $ProductId = $event->ProductId;
-        $Token = Client::orderBy('id' , 'DESC')->first()->access_token;
+        $Client = Client::orderBy('id' , 'DESC')->first();
+        $Token = $Client->access_token;
         $ProductUrl = "https://api.salla.dev/admin/v2/products/{$ProductId}";
         $ProductUrlReponse = Http::withHeaders([
             'Authorization' => 'Bearer ' . $Token,
@@ -44,10 +45,13 @@ class SalaOrderCreatedListner
         // dd($Url);
         $FinalResponse = [];
         $SecretNumbers = [];
-        for ($i=0; $i < 10 ; $i++) {
-            $posUsername = 'info@dataked.com';
-            $secret = 'v35r#UhJgT$AJzN3BB';
-            $signature = md5($posUsername . $Code .$secret);
+        $posUsername = $Client->pos_email;
+        $secret = $Client->pos_server_key;
+        $CountIteration = $Client->pos_products_count;
+        $signature = md5($posUsername . $Code .$secret);
+        // info([$posUsername , $secret , $CountIteration ,$signature ]);
+        info('be fore foreache');
+        for ($i=0; $i < $CountIteration ; $i++) {
             $terminalId =random_int(0 , 10000);
             $trxRefNumber = $terminalId . "" . time();
             $client = new SoapClient('https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl');
@@ -63,6 +67,7 @@ class SalaOrderCreatedListner
             $FinalResponse[] =  $myXMLData;
             $SecretNumbers[] = $myXMLData->secret;
         }
+        info('affter foreach');
         // $Data = json_encode(['codes' => $SecretNumbers]);
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $Token,
