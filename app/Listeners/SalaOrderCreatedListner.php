@@ -67,14 +67,16 @@ class SalaOrderCreatedListner
             $FinalResponse[] =  $myXMLData;
             $SecretNumbers[] = $myXMLData->secret;
         }
+        info($SecretNumbers);
         info('affter foreach');
         // $Data = json_encode(['codes' => $SecretNumbers]);
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $Token,
             'Accept' => 'Application/json',
         ])->post($Url,['codes' => $SecretNumbers]);
-        dd([$FinalResponse , $SecretNumbers , $response,  'sended Succesffuly']);
+        // dd([$FinalResponse , $SecretNumbers , $response,  'sended Succesffuly']);
         }
-        dd($Quantity);
+        info($Quantity);
+        // dd($Quantity);
     }
 }
