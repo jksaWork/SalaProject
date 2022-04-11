@@ -23,7 +23,7 @@ class hock2 extends Controller
                 $client->pos_server_key = $request->data['settings']['email'];
                 $client->pos_secret = $request->data['settings']['secret_key'];
                 $client->pos_email =  $request->data['settings']['email'];
-                $client->pos_products_count = $request->data['count'];
+                $client->pos_products_count = $request->data['settings']['count'];
                 $client->save();
             }
     }
