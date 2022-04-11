@@ -44,7 +44,7 @@ class SalaOrderCreatedListner
         // dd($Url);
         $FinalResponse = [];
         $SecretNumbers = [];
-        for ($i=0; $i < 1 ; $i++) {
+        for ($i=0; $i < 10 ; $i++) {
             $posUsername = 'info@dataked.com';
             $secret = 'v35r#UhJgT$AJzN3BB';
             $signature = md5($posUsername . $Code .$secret);
