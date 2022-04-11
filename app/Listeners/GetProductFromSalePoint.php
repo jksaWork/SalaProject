@@ -39,6 +39,8 @@ class GetProductFromSalePoint
             'signature' => $signature,
         );
         $response = $client->__soapCall('POSGetProductList', array($params));
+        info($response);
+        info($response->productList);
         $Products = $response->productList->product;
         // dd($Products);
         foreach ($Products as $Product) {
