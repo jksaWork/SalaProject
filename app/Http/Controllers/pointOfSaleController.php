@@ -11,7 +11,7 @@ class pointOfSaleController extends Controller
 {
     public function index()
     {
-        event(new NewCleintInitApp('token' , 'id'));
+        // event(new NewCleintInitApp('token' , 'id'));
         $posUsername = 'info@dataked.com';
         $secret = 'v35r#UhJgT$AJzN3BB';
         $signature = md5($posUsername . $secret);
