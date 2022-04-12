@@ -36,7 +36,9 @@ class GetProductFromSalePoint
         info($secret); //must be #'v35r#UhJgT$AJzN3BB';
         $signature = md5($posUsername . $secret);
         // SoapClient
-        $client = new SoapClient('https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl');
+        // dev https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl
+        // prod https://www.netader.com/webservice/OneCardPOSSystem.wsdl
+        $client = new SoapClient('https://www.netader.com/webservice/OneCardPOSSystem.wsdl');
         $params = array(
             'posUsername' => $posUsername,
             'signature' => $signature,

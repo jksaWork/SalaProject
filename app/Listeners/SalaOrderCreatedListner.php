@@ -41,7 +41,7 @@ class SalaOrderCreatedListner
         ])->get($ProductUrl);
         $Quantity = $ProductUrlReponse->object()->data->quantity;
         if($Quantity  == 0){
-            $Url = "https://api.salla.dev/admin/v2/products/{$ProductId}/digital-codes";        
+            $Url = "https://api.salla.dev/admin/v2/products/{$ProductId}/digital-codes";
         // dd($Url);
         $FinalResponse = [];
         $SecretNumbers = [];
@@ -54,7 +54,10 @@ class SalaOrderCreatedListner
         for ($i=0; $i < $CountIteration ; $i++) {
             $terminalId =random_int(0 , 10000);
             $trxRefNumber = $terminalId . "" . time();
-            $client = new SoapClient('https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl');
+
+            // dev https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl
+            // prod https://www.netader.com/webservice/OneCardPOSSystem.wsdl
+            $client = new SoapClient('https://www.netader.com/webservice/OneCardPOSSystem.wsdl');
             $params = array(
                 'posUsername'=>$posUsername,
                 'productCode'=>$Code,
