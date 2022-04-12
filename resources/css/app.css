@@ -1,0 +1,5 @@
+@media print {
+    .contact-text .paragraph-text {
+        display: block;
+    }
+}
