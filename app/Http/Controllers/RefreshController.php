@@ -15,7 +15,7 @@ class RefreshController extends Controller
     public function PosProduct(){
         // NewCleintInitApp
         $Client = Client::first();
-        PosProducts::where('client_id' , $Client->id)->delete;
+        PosProducts::where('client_id' , $Client->id)->delete();
         // GetProductsFroMSala
         // getProductFromPOS
         event(new getProductFromPOS($Client->id));
