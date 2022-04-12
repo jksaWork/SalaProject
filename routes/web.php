@@ -49,5 +49,5 @@ Route::get('test2', function () {
     event(new getProductFromPOS('213'));
 });
 
-Route::get('refresh-product' , [RefreshController::class , 'Product']);
-Route::get('refresh-pos-product' , [RefreshController::class , 'PosProduct']);
+Route::get('refresh-product' , [RefreshController::class , 'Product'])->name('refresh.product');
+Route::get('refresh-pos-product' , [RefreshController::class , 'PosProduct'])->name('refresh.pos.product');
