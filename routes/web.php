@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthTokenControoler;
 use App\Http\Controllers\GEtTables;
 use App\Http\Controllers\hock2;
 use App\Http\Controllers\pointOfSaleController;
+use App\Http\Controllers\RefreshController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,3 +48,6 @@ Route::get('test', function () {
 Route::get('test2', function () {
     event(new getProductFromPOS('213'));
 });
+
+Route::get('refresh-product' , [RefreshController::class , 'Product']);
+Route::get('refresh-pos-product' , [RefreshController::class , 'PosProduct']);
