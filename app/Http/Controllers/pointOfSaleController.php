@@ -12,8 +12,8 @@ class pointOfSaleController extends Controller
     public function index()
     {
         // event(new NewCleintInitApp('token' , 'id'));
-        $posUsername = 'info@dataked.com';
-        $secret = 'v35r#UhJgT$AJzN3BB';
+        $posUsername = 'onebrand.1b@outlook.com';
+        $secret = 'MsF!43$Q5ZbMtHQ4';
         $signature = md5($posUsername . $secret);
 
         $client = new SoapClient('https://www.netader.com/webservice/OneCardPOSSystem.wsdl');
