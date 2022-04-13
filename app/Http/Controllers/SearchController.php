@@ -15,7 +15,7 @@ class SearchController extends Controller
         //  return $request;
         $search = $request->search;
 
-        $Products =  Product::where('price', 'like', "%" . $search . "%")->orWhere('name', 'like', "%" . $search . "%");
+        $Products =  Product::where('price', 'like', "%" . $search . "%")->orWhere('name', 'like', "%" . $search . "%")->paginate(70);
         $PosProducts = PosProducts::get();
         return view('ProductCode', ['Products' => $Products, 'PosProducts' => $PosProducts]);
     }
