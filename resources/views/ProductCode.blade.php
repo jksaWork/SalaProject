@@ -204,7 +204,11 @@
 {
     for(i = 0 ;selectoption.length-1 ; i++)
     {
-        $(this).append(new option(selectoption[i].name.ar,selectoption[i].product_code));
+     //   $(this).append(new option(selectoption[i].name.ar,selectoption[i].product_code));
+     $(this).append($(document.createElement('option')).prop({
+                value: selectoption[i].product_code,
+                text: electoption[i].name.ar,
+            }))
     }
   });
     
