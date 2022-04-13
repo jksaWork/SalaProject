@@ -1,5 +1,5 @@
 <h3>البطاقات التي تم ربطها</h3>
-<table class="table table-striped table-inverse " style="max-width: 100%">
+<table class="table table-border">
     <thead class="thead-inverse">
         <tr>
             <th>#</th>
@@ -66,7 +66,7 @@
 
 
 <h3>البطاقات التي الغير  موجوده لدى المزود</h3>
-<table class="table table-striped table-inverse " style="max-width: 100%">
+<table class="table table-border">
     <thead class="thead-inverse">
         <tr>
             <th>#</th>
