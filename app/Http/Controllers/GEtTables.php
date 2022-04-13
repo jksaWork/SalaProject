@@ -23,7 +23,7 @@ class GEtTables extends Controller
     public function ProductCode()
     {
         $Products = Product::paginate(20);
-        $PosProducts = PosProducts::get();
+        $PosProducts = PosProducts::get()->where("type" , "codes");
         return view('ProductCode', compact('Products', 'PosProducts'));
     }
     public function Productprint()
@@ -31,7 +31,7 @@ class GEtTables extends Controller
 
 
 
-        $Products = \DB::select('SELECT * from sala_products where  product_id  in( select sala_product_id from point_of_sale_equal_sala_products )');
+        $Products = \DB::select("SELECT * from sala_products where  product_id  in( select sala_product_id from point_of_sale_equal_sala_products ) and type ='codes' ");
         // Product::get()->where("sala_product_id" in);
         $PosProducts = PosProducts::get();
         return view('welcome', compact('Products', 'PosProducts'));
