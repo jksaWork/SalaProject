@@ -199,9 +199,10 @@
 <script>
 var option =   {!! json_encode($PosProducts) !!};
 
-{{ dd($PosProducts)  }}
-$(select).each(function( this ) {
+{{ dd($Products)  }}
 
+$(select).each(function( this ) 
+{
     for(i = 0 ;option.count() ; i++)
     {
         $(this).append(new Option());
