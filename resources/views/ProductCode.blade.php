@@ -102,11 +102,11 @@
                                                                 }
 
                                                             @endphp
-                                                            <select id="basic" class="form-control" name="ProductCode"
+                                                            <select  class="form-control" name="ProductCode"
                                                                 id="" onchange="this.form.submit()">
                                                                 {{-- <input type="text" placeholder="Search.." id="myInput"
                                                                     onkeyup="filterFunction()"> --}}
-                                                                @forelse ($PosProducts as $i => $Pos)
+                                                                {{-- @forelse ($PosProducts as $i => $Pos)
                                                                     @if ($i == 0)
                                                                         <option value="">chose product</option>
                                                                     @endif
@@ -116,7 +116,7 @@
                                                                         {{ $Pos->name->ar }}</option>
                                                                 @empty
                                                                     <option value="">please File your Product </option>
-                                                                @endempty
+                                                                @endempty --}}
                                                         </select>
 
                                                     </form>
@@ -196,4 +196,18 @@
 </main>
 @endsection
 @section('scripts')
+
+var option ={{ $PosProducts }};
+
+
+$(select).each(function( this ) {
+
+    for(i = 0 ;option.count() ; i++){
+        $(this).append(new Option());
+    }
+  });
+    
+@endforeach
+
+
 @endsection

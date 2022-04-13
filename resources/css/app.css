@@ -3,3 +3,5 @@
         display: block;
     }
 }
+
+@import "~select2/dist/css/select2.css";
