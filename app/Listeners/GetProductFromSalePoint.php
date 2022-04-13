@@ -9,7 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use SoapClient;
 
-class GetProductFromSalePoint 
+class GetProductFromSalePoint
 {
     /**
      * Create the event listener.
@@ -36,7 +36,9 @@ class GetProductFromSalePoint
         info($secret); //must be #'v35r#UhJgT$AJzN3BB';
         $signature = md5($posUsername . $secret);
         // SoapClient
-        $client = new SoapClient('https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl');
+        // dev https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl
+        // prod https://www.netader.com/webservice/OneCardPOSSystem.wsdl
+        $client = new SoapClient('https://www.netader.com/webservice/OneCardPOSSystem.wsdl');
         $params = array(
             'posUsername' => $posUsername,
             'signature' => $signature,
@@ -44,6 +46,7 @@ class GetProductFromSalePoint
         $response = $client->__soapCall('POSGetProductList', array($params));
         info('before_line.48');
         $Products = $response->productList->product;
+        // info('')
         info($Products);
         foreach ($Products as $Product) {
             PosProducts::create([
