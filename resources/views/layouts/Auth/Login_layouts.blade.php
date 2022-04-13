@@ -57,7 +57,13 @@
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{ asset('assets/js/argon-dashboard.min.js?v=2.0.0') }}"></script>
 
-    <script> $('select').select2(); </script>
+    <script> 
+    $('select').select2({
+    width: '100%',
+    placeholder: "Select an Option",
+    allowClear: true
+  });
+    </script>
     @yield('scripts')
     <style>
         @media print {

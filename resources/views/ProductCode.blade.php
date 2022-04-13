@@ -196,17 +196,18 @@
 </main>
 @endsection
 @section('scripts')
-
+<script>
 var option =   {!! json_encode($PosProducts) !!};
 
 {{ dd($PosProducts)  }}
 $(select).each(function( this ) {
 
-    for(i = 0 ;option.count() ; i++){
+    for(i = 0 ;option.count() ; i++)
+    {
         $(this).append(new Option());
     }
   });
     
-
+</script>
 
 @endsection
