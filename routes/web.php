@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthTokenControoler;
 use App\Http\Controllers\GEtTables;
 use App\Http\Controllers\hock2;
 use App\Http\Controllers\pointOfSaleController;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,7 @@ Route::get('/', function () {
 Route::get('/welcome', function () {
     return view('welcome');
 });
-
+Route::post('product-search', [SearchController::class, 'search'])->name('search');
 Route::get('/webhock', [AuthTokenControoler::class, 'getTokenWithCode']);
 Route::get('/webhock2', [hock2::class, 'hock2']);
 Route::post('/webhock2', [hock2::class, 'hock2']);
