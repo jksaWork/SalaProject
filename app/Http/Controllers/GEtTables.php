@@ -43,6 +43,6 @@ class GEtTables extends Controller
             'botagate_product_code' => $request->ProductCode,
             'sala_product_id' => $request->product_id,
         ]);
-        return true;
+        return redirect()->back();
     }
 }
