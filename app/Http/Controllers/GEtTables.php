@@ -22,8 +22,9 @@ class GEtTables extends Controller
 
     public function ProductCode()
     {
-        $Products = Product::paginate(20);
-        $PosProducts = PosProducts::get()->where("type" , "codes");
+        $Products = Product::get()->where("type" , "codes")->paginate(20);
+        $PosProducts = PosProducts::get();
+
         return view('ProductCode', compact('Products', 'PosProducts'));
     }
     public function Productprint()
