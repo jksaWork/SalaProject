@@ -6,6 +6,11 @@ table{
 td {
     border: 1px solid;
 }
+
+@media print{
+table {page-break-after: always;}
+
+}
 </style>
 
 
@@ -75,6 +80,7 @@ td {
 </tfoot>
 </table>
 
+<span class="pageprak"></span>
 
 <h3>البطاقات التي الغير  موجوده لدى المزود</h3>
 <table class="table table-border">
