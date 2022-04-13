@@ -22,7 +22,6 @@ class pointOfSaleController extends Controller
             'signature' => $signature,
         );
         $myXMLData = $client->__soapCall('POSGetProductList', array($params));
-
         echo "<pre>";
         dd($myXMLData);
         echo "<pre>";
