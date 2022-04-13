@@ -53,10 +53,11 @@
                                                                 }
                                                                 
                                                             @endphp
-                                                            <select id="basic" class="form-control" name="ProductCode"
+                                                            $x->name->ar;
+
+                                                            {{-- <select id="basic" class="form-control" name="ProductCode"
                                                                 id="" onchange="this.form.submit()">
-                                                                {{-- <input type="text" placeholder="Search.." id="myInput"
-                                                                    onkeyup="filterFunction()"> --}}
+                                                                 
                                                                 @forelse ($PosProducts as $i => $Pos)
                                                                     @if ($i == 0)
                                                                         <option value="">chose product</option>
@@ -68,7 +69,7 @@
                                                                 @empty
                                                                     <option value="">please File your Product </option>
                                                                 @endempty
-                                                        </select>
+                                                        </select> --}}
 
                                                     </form>
                                                 </div>
