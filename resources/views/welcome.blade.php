@@ -45,16 +45,20 @@
                                                             @php
                                                                 $x;
                                                                 try {
-                                                                    $x = App\Models\PointOfSaleEqualSalaProduct::get()
+                                                                    $botagate_product_code = App\Models\PointOfSaleEqualSalaProduct::get()
                                                                         ->where('sala_product_id', $Product->product_id)
+                                                                        ->first()->botagate_product_code;
+
+                                                                        $botagate_product = App\Models\PosProducts:::get()
+                                                                        ->where('product_code', $botagate_product_code)
                                                                         ->first();
                                                                 } catch (Exception $e) {
-                                                                    
+                                                                    $x = 0;
                                                                 }
                                                                 
                                                             @endphp
-                                                           {{  $x->name->ar;
-                                                           }}
+                                                           {{  $botagate_product->name->ar;
+ }}
                                                             {{-- <select id="basic" class="form-control" name="ProductCode"
                                                                 id="" onchange="this.form.submit()">
                                                                  
