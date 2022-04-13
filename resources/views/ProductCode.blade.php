@@ -207,7 +207,6 @@ $(select).each(function( this ) {
     }
   });
     
-@endforeach
 
 
 @endsection
