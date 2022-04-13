@@ -3,6 +3,9 @@
 table{
     border: 1px solid;
 }
+td {
+    border: 1px solid;
+}
 </style>
 
 
@@ -25,7 +28,7 @@ table{
         @endphp
         @forelse ($Products as $Product)
             <tr>
-                <td><td>{{ $i++; }}</td></td>
+                <td>{{ $i++; }}</td>
                 <td> <img src="{{ $Product->image }}" widtd="50px" height="50px" alt="">
                 </td>
                 <td>{{ $Product->name }}</td>
