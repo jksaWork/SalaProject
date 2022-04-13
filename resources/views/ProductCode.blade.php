@@ -202,9 +202,9 @@ var option =   {!! json_encode($PosProducts) !!};
 
 $(select).each(function( this ) 
 {
-    for(i = 0 ;option.count() ; i++)
+    for(i = 0 ;option.length ; i++)
     {
-        $(this).append(new Option());
+        $(this).append(new Option(option[i].product_code,option[i].name.ar)));
     }
   });
     
