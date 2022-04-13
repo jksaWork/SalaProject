@@ -13,7 +13,13 @@ class AuthTokenControoler extends Controller
 {
     public function  getTokenWithCode(Request $req)
     {
-
+        // for dev -----------------------------
+        // $provider = new Salla([
+        //     'clientId'     =>   'c5e26ae228c097732386852c0194ade7' , #'c5e26ae228c097732386852c0194ade7', // The client ID assigned to you by Salla
+        //     'clientSecret' =>  '470e3ce6a091ce4a43fe30be1792313c' ,  #'470e3ce6a091ce4a43fe30be1792313c', // The client password assigned to you by Salla
+        //     'redirectUri'  => 'https://dev.sala.gulfsmo.net/webhock' , // the url for current page in your service
+        // ]);
+        // for prodction  --------------------------
         $provider = new Salla([
             'clientId'     =>   '321c9c607655a619a3de84cc171b4365' , #'c5e26ae228c097732386852c0194ade7', // The client ID assigned to you by Salla
             'clientSecret' =>  '65976caae352444b8c304ca5e0b991d8' ,  #'470e3ce6a091ce4a43fe30be1792313c', // The client password assigned to you by Salla
