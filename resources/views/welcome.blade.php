@@ -53,8 +53,8 @@
                                                                 }
                                                                 
                                                             @endphp
-                                                            $x->name->ar;
-
+                                                           {{  $x->name->ar;
+                                                           }}
                                                             {{-- <select id="basic" class="form-control" name="ProductCode"
                                                                 id="" onchange="this.form.submit()">
                                                                  
