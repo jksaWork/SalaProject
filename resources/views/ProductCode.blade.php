@@ -197,14 +197,14 @@
 @endsection
 @section('scripts')
 <script>
- option =   {!! json_encode($PosProducts) !!};
+ selectoption =   {!! json_encode($PosProducts) !!};
 
 
-$(select).each(function( this ) 
+ $('select').each(function() 
 {
-    for(i = 0 ;option.length ; i++)
+    for(i = 0 ;option.length-1 ; i++)
     {
-        $(this).append(new Option(option[i].product_code,option[i].name.ar)));
+        $(this).append(new option(selectoption[i].name.ar,selectoption[i].product_code));
     }
   });
     
