@@ -47,9 +47,9 @@
                                                                 try {
                                                                     $x = App\Models\PointOfSaleEqualSalaProduct::get()
                                                                         ->where('sala_product_id', $Product->product_id)
-                                                                        ->first()->botagate_product_code;
+                                                                        ->first();
                                                                 } catch (Exception $e) {
-                                                                    $x = 0;
+                                                                    
                                                                 }
                                                                 
                                                             @endphp
