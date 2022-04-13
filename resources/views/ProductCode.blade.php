@@ -202,7 +202,7 @@
 
  $('select').each(function() 
 {
-    for(i = 0 ;option.length-1 ; i++)
+    for(i = 0 ;selectoption.length-1 ; i++)
     {
         $(this).append(new option(selectoption[i].name.ar,selectoption[i].product_code));
     }
