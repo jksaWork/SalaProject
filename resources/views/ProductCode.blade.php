@@ -199,18 +199,21 @@
 <script>
  selectoption =   {!! json_encode($PosProducts) !!};
 
+ $( document ).ready(function() {
+    
 
  $('select').each(function() 
 {
     for(i = 0 ;selectoption.length-1 ; i++)
     {
-     //   $(this).append(new option(selectoption[i].name.ar,selectoption[i].product_code));
-     $(this).append($(document.createElement('option')).prop({
+      $(this).append($(document.createElement('option')).prop({
                 value: selectoption[i].product_code,
-                text: electoption[i].name.ar,
+                text: selectoption[i].name.ar,
             }))
     }
   });
+
+});
     
 </script>
 
