@@ -49,7 +49,7 @@
                                                                         ->where('sala_product_id', $Product->product_id)
                                                                         ->first()->botagate_product_code;
 
-                                                                        $botagate_product = App\Models\PosProducts:::get()
+                                                                        $botagate_product = App\Models\PosProducts::get()
                                                                         ->where('product_code', $botagate_product_code)
                                                                         ->first();
                                                                 } catch (Exception $e) {
