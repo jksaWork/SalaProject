@@ -1,5 +1,13 @@
+
+<style>
+table{
+    border: 1px solid;
+}
+</style>
+
+
 <h3>البطاقات التي تم ربطها</h3>
-<table class="table table-border">
+<table class="table table-border" >
     <thead class="thead-inverse">
         <tr>
             <th>#</th>
