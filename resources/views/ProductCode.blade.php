@@ -106,7 +106,7 @@
                                                                 id="" onchange="this.form.submit()">
                                                                 {{-- <input type="text" placeholder="Search.." id="myInput"
                                                                     onkeyup="filterFunction()"> --}}
-                                                                {{-- @forelse ($PosProducts as $i => $Pos)
+                                                                @forelse ($PosProducts as $i => $Pos)
                                                                     @if ($i == 0)
                                                                         <option value="">chose product</option>
                                                                     @endif
@@ -116,7 +116,7 @@
                                                                         {{ $Pos->name->ar }}</option>
                                                                 @empty
                                                                     <option value="">please File your Product </option>
-                                                                @endempty --}}
+                                                                @endempty
                                                         </select>
 
                                                     </form>
@@ -196,25 +196,4 @@
 </main>
 @endsection
 @section('scripts')
-<script>
- selectoption =   {!! json_encode($PosProducts) !!};
-
- $( document ).ready(function() {
-    
-
- $('select').each(function() 
-{
-    for(i = 0 ;selectoption.length-1 ; i++)
-    {
-      $(this).append($(document.createElement('option')).prop({
-                value: selectoption[i].product_code,
-                text: selectoption[i].name.ar,
-            }))
-    }
-  });
-
-});
-    
-</script>
-
 @endsection
