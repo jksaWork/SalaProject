@@ -199,7 +199,6 @@
 <script>
 var option =   {!! json_encode($PosProducts) !!};
 
-{{ dd($Products)  }}
 
 $(select).each(function( this ) 
 {
