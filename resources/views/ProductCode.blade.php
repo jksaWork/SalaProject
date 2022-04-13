@@ -197,7 +197,7 @@
 @endsection
 @section('scripts')
 <script>
-var option =   {!! json_encode($PosProducts) !!};
+ option =   {!! json_encode($PosProducts) !!};
 
 
 $(select).each(function( this ) 
