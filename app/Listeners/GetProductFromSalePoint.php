@@ -55,7 +55,7 @@ class GetProductFromSalePoint
                 "name" => json_encode(['ar' => $Product->nameAr , 'en' => $Product->nameEn]),
                 "product_price" => $Product->productPrice,
                 "product_currency" => $Product->productCurrency,
-                "pos_price" => $Product->productCurrency,
+                "pos_price" => $Product->posPrice,
                 "available" => $Product->available,
                 "merchant_id" => $Product->merchantID,
                 "merchant_name" => json_encode(['ar' => $Product->merchantNameEn, 'en' => $Product->merchantNameAr])
