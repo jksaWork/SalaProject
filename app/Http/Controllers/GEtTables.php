@@ -31,7 +31,7 @@ class GEtTables extends Controller
     public function FirestCode()
     {
 
-      return  $PosProducts = PointOfSaleEqualSalaProduct::get();
+        $PosProducts = PointOfSaleEqualSalaProduct::get();
 $data="";
         foreach($PosProducts as $PosProduct ){
 
