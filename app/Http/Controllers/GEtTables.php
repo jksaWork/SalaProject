@@ -7,7 +7,7 @@ use App\Models\PointOfSaleEqualSalaProduct;
 use App\Models\PosProducts;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use SoapClient;
+
 
 class GEtTables extends Controller
 {
@@ -26,7 +26,7 @@ class GEtTables extends Controller
     {
         $Products = Product::where("type" , "codes")->paginate(20);
         $PosProducts = PosProducts::get();
-
+dd( $Products);
         return view('ProductCode', compact('Products', 'PosProducts'));
     }
 
@@ -38,7 +38,7 @@ $data="";
         foreach($PosProducts as $PosProduct )
         {
             
-            event(new OrderCreatedWebHock($PosProduct->sala_product_id));
+         //   event(new OrderCreatedWebHock($PosProduct->sala_product_id));
             info($PosProduct->sala_product_id );
 
         }
