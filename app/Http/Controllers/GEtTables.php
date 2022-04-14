@@ -33,13 +33,13 @@ class GEtTables extends Controller
 
         $PosProducts = PointOfSaleEqualSalaProduct::get();
 $data="";
-        foreach($PosProducts as $PosProduct ){
-
-            $data+= $PosProduct->sala_product_id  ." | ";
+        foreach($PosProducts as $PosProduct )
+        {
+            info($PosProduct->sala_product_id );
 
         }
 
-        
+        return true;
 
     }
 
