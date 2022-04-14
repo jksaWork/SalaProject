@@ -48,7 +48,7 @@ $data="";
 
 
     public function getblance(){
-
+        $Client = Client::orderBy('id' , 'DESC')->first();
         $FinalResponse = [];
         $SecretNumbers = [];
         $posUsername = $Client->pos_email;
