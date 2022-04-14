@@ -7,6 +7,7 @@ use App\Models\PointOfSaleEqualSalaProduct;
 use App\Models\PosProducts;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use SoapClient;
 
 class GEtTables extends Controller
 {
