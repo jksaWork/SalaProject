@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Events\OrderCreatedWebHock;
 
 use App\Models\PointOfSaleEqualSalaProduct;
 use App\Models\PosProducts;
