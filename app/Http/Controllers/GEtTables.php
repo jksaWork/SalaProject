@@ -26,7 +26,7 @@ class GEtTables extends Controller
     {
         $Products = Product::where("type" , "codes")->paginate(20);
         $PosProducts = PosProducts::get();
-dd( $Products);
+
         return view('ProductCode', compact('Products', 'PosProducts'));
     }
 
