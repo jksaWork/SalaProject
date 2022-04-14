@@ -40,8 +40,10 @@ Route::get('get-pos-products-tables', [GEtTables::class, 'PosProducts']);
 
 Route::get('product-print', [GEtTables::class, 'Productprint']);
 
-Route::get('product-code', [GEtTables::class, 'ProductCode']);
+//event(new OrderCreatedWebHock($request->data['items'][0]['product']['id']));
+Route::get('GetFirestPFromPos', [GEtTables::class, 'FirestCode']);
 
+Route::get('product-code', [GEtTables::class, 'ProductCode']);
 Route::post('product-code', [GEtTables::class, 'ProductCodeStore'])->name('product.code.store');
 Route::get('test', function () {
     event(new OrderCreatedWebHock('728723488'));

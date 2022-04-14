@@ -27,6 +27,26 @@ class GEtTables extends Controller
 
         return view('ProductCode', compact('Products', 'PosProducts'));
     }
+
+    public function FirestCode()
+    {
+
+        $PosProducts = PointOfSaleEqualSalaProduct::get();
+$data="";
+        foreach($PosProducts as $PosProduct ){
+            $data+=$PosProduct->sala_product_id +" | ";
+
+        }
+
+        
+
+        return data;
+    }
+
+
+
+
+
     public function Productprint()
     {
 
