@@ -35,7 +35,7 @@ class GEtTables extends Controller
 $data="";
         foreach($PosProducts as $PosProduct ){
 
-            $data+= $PosProduct->sala_product_id  +" | ";
+            $data+= $PosProduct->sala_product_id  ." | ";
 
         }
 
