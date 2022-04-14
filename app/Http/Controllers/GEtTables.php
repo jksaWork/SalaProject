@@ -11,7 +11,7 @@ class GEtTables extends Controller
 {
     public function products()
     {
-        $Products = Product::paginate(20);
+        $Products = Product::all();
         return view('Product', compact('Products'));
     }
     public function PosProducts()
