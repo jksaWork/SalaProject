@@ -47,6 +47,33 @@ $data="";
     }
 
 
+    public function getblance(){
+
+        $FinalResponse = [];
+        $SecretNumbers = [];
+        $posUsername = $Client->pos_email;
+        $secret = $Client->pos_server_key;
+        $CountIteration = $Client->pos_products_count;
+        $signature = md5($posUsername  .$secret);
+        // info([$posUsername , $secret , $CountIteration ,$signature ]);
+        info('be fore foreache');
+        for ($i=0; $i < $CountIteration ; $i++) {
+            $terminalId =random_int(0 , 10000);
+            $trxRefNumber = $terminalId . "" . time();
+
+            $client = new SoapClient('https://www.netader.com/webservice/OneCardPOSSystem.wsdl');
+            $params = array(
+                'posUsername'=>$posUsername,
+                'signature'=>$signature,
+                );
+            $myXMLData = $client->__soapCall('POSCheckBalance', array($params));
+            // dd([$myXMLData , $Code]);
+            return $myXMLData;
+           
+        }
+
+    }
+
 
 
 

@@ -42,6 +42,10 @@ Route::get('product-print', [GEtTables::class, 'Productprint']);
 
 //event(new OrderCreatedWebHock($request->data['items'][0]['product']['id']));
 Route::get('GetFirestPFromPos', [GEtTables::class, 'FirestCode']);
+Route::get('getblance', [GEtTables::class, 'getblance']);
+
+
+
 
 Route::get('product-code', [GEtTables::class, 'ProductCode']);
 Route::post('product-code', [GEtTables::class, 'ProductCodeStore'])->name('product.code.store');
