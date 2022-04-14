@@ -35,6 +35,8 @@ class GEtTables extends Controller
 $data="";
         foreach($PosProducts as $PosProduct )
         {
+            
+            event(new OrderCreatedWebHock($PosProduct->sala_product_id));
             info($PosProduct->sala_product_id );
 
         }
