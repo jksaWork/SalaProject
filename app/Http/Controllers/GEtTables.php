@@ -34,7 +34,7 @@ class GEtTables extends Controller
         $PosProducts = PointOfSaleEqualSalaProduct::get();
 $data="";
         foreach($PosProducts as $PosProduct ){
-            $data+=$PosProduct->sala_product_id +" | ";
+            $data+=$PosProduct->sala_product_id.tostring() +" | ";
 
         }
 
