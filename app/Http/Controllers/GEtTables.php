@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Events\OrderCreatedWebHock;
-
+use App\Http\Controllers\Client;
 use App\Models\PointOfSaleEqualSalaProduct;
 use App\Models\PosProducts;
 use App\Models\Product;
