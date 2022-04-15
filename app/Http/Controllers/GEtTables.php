@@ -119,6 +119,7 @@ $data="";
         
         */
             $Url = "https://api.salla.dev/admin/v2/products/{$ProductId}/digital-codes";
+            return $Url;
         // dd($Url);
      //  dd($request);
         $FinalResponse = [];
