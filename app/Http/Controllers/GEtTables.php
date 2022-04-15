@@ -157,7 +157,7 @@ $data="";
         ])->post($Url,['codes' => $SecretNumbers]);
          dd([$FinalResponse , $SecretNumbers , $response,  'sended Succesffuly']);
         }
-        info($Quantity);
+        info($response);
 
     }
 }
