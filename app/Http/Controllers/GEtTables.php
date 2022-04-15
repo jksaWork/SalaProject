@@ -162,10 +162,10 @@ $data="";
             'Authorization' => 'Bearer ' . $Token,
             'Accept' => 'Application/json',
         ])->post($Url,['codes' => $SecretNumbers]);
-         dd([$FinalResponse , $SecretNumbers , $response,  'sended Succesffuly']);
+         //dd([$FinalResponse , $SecretNumbers , $response,  'sended Succesffuly']);
 
 
-        info($response);
+       // info($response);
 
         return redirect()->back();
 
