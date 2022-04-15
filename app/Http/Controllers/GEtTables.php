@@ -86,9 +86,7 @@ $data="";
 
         $Products = \DB::select("SELECT * from sala_products where  product_id  in( select sala_product_id from point_of_sale_equal_sala_products ) ");
         $notFoundProducts = \DB::select("SELECT * from sala_products where  product_id  not in ( select sala_product_id from point_of_sale_equal_sala_products )  and type='codes'");
-
-        
-  $PosProducts = PosProducts::get();
+        $PosProducts = PosProducts::get();
         return view('welcome', compact('Products', 'PosProducts','notFoundProducts'));
     }
     public function ProductCodeStore(Request $request)
@@ -122,7 +120,7 @@ $data="";
         */
             $Url = "https://api.salla.dev/admin/v2/products/{$ProductId}/digital-codes";
         // dd($Url);
-       
+       dd($request);
         $FinalResponse = [];
         $SecretNumbers = [];
         $posUsername = $Client->pos_email;
@@ -150,16 +148,18 @@ $data="";
             $FinalResponse[] =  $myXMLData;
             $SecretNumbers[] = $myXMLData->secret;
         
-        // info($SecretNumbers);
+        info($SecretNumbers);
         info('affter foreach');
         // $Data = json_encode(['codes' => $SecretNumbers]);
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $Token,
             'Accept' => 'Application/json',
         ])->post($Url,['codes' => $SecretNumbers]);
-        // dd([$FinalResponse , $SecretNumbers , $response,  'sended Succesffuly']);
+         dd([$FinalResponse , $SecretNumbers , $response,  'sended Succesffuly']);
         }
         info($Quantity);
 
     }
 }
+
+
