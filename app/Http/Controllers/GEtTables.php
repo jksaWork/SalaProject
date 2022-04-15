@@ -103,6 +103,8 @@ $data="";
     public function GetOneProdectFromPosToSalla(Request $request)
     {
 
+try {
+
 
         
         info('from SalaOrderCreateListgertn');
@@ -168,6 +170,12 @@ $data="";
        // info($response);
 
         return redirect()->back();
+
+    }
+    catch(Expation $e){
+        return "Erro . check your blance";
+        
+    }
 
     }
 }
