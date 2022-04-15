@@ -7,6 +7,8 @@ use App\Models\PointOfSaleEqualSalaProduct;
 use App\Models\PosProducts;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+
 
 use SoapClient;
 class GEtTables extends Controller
@@ -102,6 +104,9 @@ $data="";
 
     public function GetOneProdectFromPosToSalla(Request $request)
     {
+
+
+        
         info('from SalaOrderCreateListgertn');
         $Code = $request->POSCode;
         $ProductId = $request->ProductId;
@@ -124,7 +129,7 @@ $data="";
         $secret = $Client->pos_server_key;
         $CountIteration = $request->quabitiy;
         $signature = md5($posUsername . $Code .$secret);
-        
+
          info('be fore foreache');
         for ($i=0; $i < $CountIteration ; $i++) {
             $terminalId =random_int(0 , 10000);
