@@ -107,7 +107,7 @@ $data="";
         
         info('from SalaOrderCreateListgertn');
         $Code = $request->POSCode;
-        $ProductId = $request->ProductId;
+        $ProductId = $request->product_id;
         $Client = Client::orderBy('id' , 'DESC')->first();
         $Token = $Client->access_token;
 
@@ -119,7 +119,7 @@ $data="";
         
         */
             $Url = "https://api.salla.dev/admin/v2/products/{$ProductId}/digital-codes";
-            return $Url;
+           // return $Url;
         // dd($Url);
      //  dd($request);
         $FinalResponse = [];
