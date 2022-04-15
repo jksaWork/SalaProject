@@ -131,17 +131,7 @@ $data="";
 
          info('be fore foreache');
 
-         $SecretNumbers[] = "ss";
-         $SecretNumbers[] = "ssw";
-
-
-         $response = Http::withHeaders([
-            'Authorization' => 'Bearer ' . $Token,
-            'Accept' => 'Application/json',
-        ])->post($Url,['codes' => $SecretNumbers]);
-
-
-return $response;
+         
 
         for ($i=0; $i < $CountIteration ; $i++) {
             $terminalId =random_int(0 , 10000);
@@ -165,12 +155,16 @@ return $response;
         info($SecretNumbers);
         info('affter foreach');
         // $Data = json_encode(['codes' => $SecretNumbers]);
+        
+        }
+
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $Token,
             'Accept' => 'Application/json',
         ])->post($Url,['codes' => $SecretNumbers]);
          dd([$FinalResponse , $SecretNumbers , $response,  'sended Succesffuly']);
-        }
+
+         
         info($response);
 
     }
