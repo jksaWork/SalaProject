@@ -98,4 +98,63 @@ $data="";
         ]);
         return redirect()->back();
     }
+
+
+    public function GetOneProdectFromPosToSalla(Request $request)
+    {
+        info('from SalaOrderCreateListgertn');
+        $Code = $request->POSCode;
+        $ProductId = $request->ProductId;
+        $Client = Client::orderBy('id' , 'DESC')->first();
+        $Token = $Client->access_token;
+
+       /* $ProductUrl = "https://api.salla.dev/admin/v2/products/{$ProductId}";
+        $ProductUrlReponse = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $Token,
+            'Accept' => 'Application/json',
+        ])->get($ProductUrl);
+        
+        */
+            $Url = "https://api.salla.dev/admin/v2/products/{$ProductId}/digital-codes";
+        // dd($Url);
+       
+        $FinalResponse = [];
+        $SecretNumbers = [];
+        $posUsername = $Client->pos_email;
+        $secret = $Client->pos_server_key;
+        $CountIteration = $request->quabitiy;
+        $signature = md5($posUsername . $Code .$secret);
+        
+         info('be fore foreache');
+        for ($i=0; $i < $CountIteration ; $i++) {
+            $terminalId =random_int(0 , 10000);
+            $trxRefNumber = $terminalId . "" . time();
+
+            // dev https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl
+            // prod https://www.netader.com/webservice/OneCardPOSSystem.wsdl
+            $client = new SoapClient('https://www.netader.com/webservice/OneCardPOSSystem.wsdl');
+            $params = array(
+                'posUsername'=>$posUsername,
+                'productCode'=>$Code,
+                'signature'=>$signature,
+                'terminalId'=>$terminalId,
+                'trxRefNumber'=>$trxRefNumber
+                );
+            $myXMLData = $client->__soapCall('POSPurchaseProduct', array($params));
+            // dd([$myXMLData , $Code]);
+            $FinalResponse[] =  $myXMLData;
+            $SecretNumbers[] = $myXMLData->secret;
+        
+        // info($SecretNumbers);
+        info('affter foreach');
+        // $Data = json_encode(['codes' => $SecretNumbers]);
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $Token,
+            'Accept' => 'Application/json',
+        ])->post($Url,['codes' => $SecretNumbers]);
+        // dd([$FinalResponse , $SecretNumbers , $response,  'sended Succesffuly']);
+        }
+        info($Quantity);
+
+    }
 }

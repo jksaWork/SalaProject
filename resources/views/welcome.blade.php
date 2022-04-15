@@ -23,6 +23,8 @@ table {page-break-after: always;}
             <th>الاسم</th>
             <th>السعر</th>
             <th>بطاقاتي</th>
+            <th>سحب منتج </th>
+            
 
 
         </tr>
@@ -57,6 +59,17 @@ table {page-break-after: always;}
                {{  $botagate_product->name->ar}}
 
             </td>
+            <td>
+                
+<form action="{{ Route("GetOneProdectFromPosToSalla") }}" method="POST">
+    @csrf
+    <input type="number" name="quabitiy">
+    <input type="hidden" value="{{ $botagate_product->product_code }}" name="POSCode">
+    <input type="hidden" value="{{ $Product->product_id }}" name="product_id">
+    <button type="submit" >سحب</button>
+</form>
+
+            </td>
 
         </tr>
     @empty
@@ -76,6 +89,8 @@ table {page-break-after: always;}
             <th>الاسم</th>
             <th>السعر</th>
             <th>بطاقاتي</th>
+            <th>سحب منتج </th>
+
     </tr>
 </tfoot>
 </table>

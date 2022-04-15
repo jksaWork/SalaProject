@@ -44,6 +44,7 @@ Route::get('product-print', [GEtTables::class, 'Productprint']);
 Route::get('GetFirestPFromPos', [GEtTables::class, 'FirestCode']);
 Route::get('getblance', [GEtTables::class, 'getblance']);
 
+Route::post('GetOneProdectFromPosToSalla', [GEtTables::class, 'GetOneProdectFromPosToSalla'])->name("GetOneProdectFromPosToSalla");
 
 
 
