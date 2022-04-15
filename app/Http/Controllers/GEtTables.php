@@ -120,7 +120,7 @@ $data="";
         */
             $Url = "https://api.salla.dev/admin/v2/products/{$ProductId}/digital-codes";
         // dd($Url);
-       dd($request);
+     //  dd($request);
         $FinalResponse = [];
         $SecretNumbers = [];
         $posUsername = $Client->pos_email;
