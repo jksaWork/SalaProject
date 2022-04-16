@@ -6,6 +6,7 @@ use App\Models\Client;
 use App\Models\PointOfSaleEqualSalaProduct;
 use App\Models\PosProducts;
 use App\Models\Product;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -15,6 +16,7 @@ class GEtTables extends Controller
 {
     public function products()
     {
+        // dd(auth()->user()->id);
         $Products = Product::all();
         return view('Product', compact('Products'));
     }
@@ -36,17 +38,13 @@ class GEtTables extends Controller
     {
 
         $PosProducts = PointOfSaleEqualSalaProduct::get();
-$data="";
+        $data="";
         foreach($PosProducts as $PosProduct )
         {
-            
-         //   event(new OrderCreatedWebHock($PosProduct->sala_product_id));
+              //   event(new OrderCreatedWebHock($PosProduct->sala_product_id));
             info($PosProduct->sala_product_id );
-
         }
-
         return true;
-
     }
 
 
@@ -130,15 +128,10 @@ try {
         $secret = $Client->pos_server_key;
         $CountIteration = $request->quabitiy;
         $signature = md5($posUsername . $Code .$secret);
-
          info('be fore foreache');
-
-         
-
         for ($i=0; $i < $CountIteration ; $i++) {
             $terminalId =random_int(0 , 10000);
             $trxRefNumber = $terminalId . "" . time();
-
             // dev https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl
             // prod https://www.netader.com/webservice/OneCardPOSSystem.wsdl
             $client = new SoapClient('https://www.netader.com/webservice/OneCardPOSSystem.wsdl');
@@ -153,13 +146,9 @@ try {
             // dd([$myXMLData , $Code]);
             $FinalResponse[] =  $myXMLData;
             $SecretNumbers[] = $myXMLData->secret;
-        
-        info($SecretNumbers);
-        info('affter foreach');
-        // $Data = json_encode(['codes' => $SecretNumbers]);
-        
+            info($SecretNumbers);
+            info('affter foreach');
         }
-
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $Token,
             'Accept' => 'Application/json',
@@ -172,7 +161,7 @@ try {
         return redirect()->back();
 
     }
-    catch(Expation $e){
+    catch(Exception $e){
         return "Erro . check your blance";
         
     }

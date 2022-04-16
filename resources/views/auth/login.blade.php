@@ -12,7 +12,7 @@
                 <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
                     <div class="card z-index-0 p-1">
                         <div class="card-body">
-                            <form role="form" action="" method='post'>
+                            <form role="form" action="{{route('login')}}" method='post'>
                                 @csrf
                                 <div class="mb-3">
                                     <input type="email" class="form-control" placeholder="{{ __('translation.Email') }}"
@@ -35,18 +35,13 @@
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" id="rememberMe">
                                     <label class="form-check-label"
-                                        for="rememberMe">{{ __('translation.Remember_me') }}</label>
+                                        for="rememberMe"> remember me</label>
                                 </div>
                         </div>
                         <div class="text-center px-3">
                             <button type="submit"
-                                class="btn bg-gradient-dark w-100 mb-2">{{ __('translation.Remember_me') }}</button>
+                                class="btn bg-gradient-dark w-100 mb-2">login </button>
                         </div>
-                        <p class="mb-4 text-sm mx-auto">
-                            {{ __('translation.No_account') }} ?
-                            <a href="{{ route('register') }}"
-                                class="text-primary text-gradient font-weight-bold">{{ __('translation.Sign_up') }}</a>
-                        </p>
                         </form>
                     </div>
                 </div>
