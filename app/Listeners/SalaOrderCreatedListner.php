@@ -57,7 +57,7 @@ class SalaOrderCreatedListner
 
             // dev https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl
             // prod https://www.netader.com/webservice/OneCardPOSSystem.wsdl
-            $client = new SoapClient('https://www.netader.com/webservice/OneCardPOSSystem.wsdl');
+            $client = new SoapClient('https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl');
             $params = array(
                 'posUsername'=>$posUsername,
                 'productCode'=>$Code,

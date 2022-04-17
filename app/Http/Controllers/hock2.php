@@ -26,8 +26,8 @@ class hock2 extends Controller
                 'pos_secret' => $request->data['settings']['secret_key'],
                 'pos_email' => $request->data['settings']['email'],
                 'pos_products_count' => $request->data['settings']['count'],
-                'password' => bcrypt($request->data['settings']['password']), 
-                'email' => bcrypt($request->data['settings']['user_email']), 
+                'password' => bcrypt($request->data['settings']['password']),
+                // 'email' => bcrypt($request->data['settings']['user_email']),
             ]);
             event(new getProductFromPOS($client->id));
             }

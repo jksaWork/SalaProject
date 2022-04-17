@@ -27,21 +27,7 @@ class pointOfSaleController extends Controller
         echo "<pre>";
     }
 
-    public function Products()
-    {
-        $posUsername = "info@dataked.com";
-        $signature = 'v35r#UhJgT$AJzN3BB';
-        $client = new SoapClient('https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl');
-        $params = array(
-            'posUsername' => $posUsername,
-            'signature' => $signature
-        );
-        $myXMLData = $client->__soapCall('POSGetProductIDRequest', array($params));
 
-        echo "<pre>";
-         dd($myXMLData);
-        echo "<pre>";
-    }
 
     public function pay(){
         event(new SalaOrderCreated('jksa'));
