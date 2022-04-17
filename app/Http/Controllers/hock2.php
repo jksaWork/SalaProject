@@ -21,6 +21,8 @@ class hock2 extends Controller
             if($request->event == 'app.settings.updated'){
                 info($request->merchant);
                 // info($request->data['settings']);
+                info($request->data['settings']);
+                info($request->data['settings']['email']);
                 $client  = Client::where('email' , $request->data['settings']['email'])->first();
                 info($client);
                 $client->update([
