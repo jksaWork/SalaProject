@@ -2,27 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Order;
-use Redirect;
-use Auth;
 use DB;
+use App\Models\Product;
+use App\Models\PosProducts;
+use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
-    public function index(Request $request)
-    {
-        $order = Order::all();
-        return view('welcome', compact(search));
-    }
-
     public function search(Request $request)
+
     {
+        //  return $request;
         $search = $request->search;
 
-        $orders = DB::table('order')
-            ->where('product_id', 'like', "%" . $search . "%");
-
-        return view('search.index', compact('orders'));
+        $Products =  Product::where('price', 'like', "%" . $search . "%")->orWhere('name', 'like', "%" . $search . "%")->paginate(70);
+        $PosProducts = PosProducts::get();
+        return view('ProductCode', ['Products' => $Products, 'PosProducts' => $PosProducts]);
     }
 }

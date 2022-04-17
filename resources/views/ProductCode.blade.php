@@ -33,16 +33,47 @@
                                 <table class="table table-striped table-inverse " style="max-width: 100%">
                                     <thead class="thead-inverse">
                                         <tr>
-                                            <th>image</th>
-                                            <th>name</th>
-                                            <th>price</th>
+                                            <th>Image</th>
+                                            <th>Name</th>
+                                            <th>Price</th>
                                             {{-- <th>type</th> --}}
                                             {{-- <th>stauts</th> --}}
-                                            <th>botagate Product</th>
-                                            <th>quantity</th>
+                                            <th>Cards Type</th>
+                                            <th>Quantity</th>
                                             <th>Option</th>
                                         </tr>
                                     </thead>
+
+                                    <br>
+
+                                    <tr>
+
+                                        <div>
+                                            <div class=" p-2 bd-highlight col-md-5">
+                                                <form action="{{ route('search') }}" method="post">
+                                                    @csrf
+                                                    <label for="">
+                                                        <h3 class="font-weight-bold">Search</h3>
+                                                    </label>
+                                                    <div class="d-inline"> <input name="search" type="text"
+                                                            class="d-flex justify-content-end form-control"
+                                                            onchange="this.form.submit()">
+                                                        <button type="button" class="btn btn-primary">Save</button>
+
+                                                    </div>
+                                                </form>
+
+
+                                            </div>
+
+                                        </div>
+
+                                    </tr>
+
+
+
+                                    <br>
+                                    <br>
                                     <tbody>
                                         @forelse ($Products as $Product)
                                             <tr>
@@ -71,7 +102,7 @@
                                                                 }
 
                                                             @endphp
-                                                            <select id="basic" class="form-control" name="ProductCode"
+                                                            <select  class="form-control" name="ProductCode"
                                                                 id="" onchange="this.form.submit()">
                                                                 {{-- <input type="text" placeholder="Search.." id="myInput"
                                                                     onkeyup="filterFunction()"> --}}
@@ -108,7 +139,9 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td> jksa altifani</td>
+                                            <td colspan="6">
+                                                <div class="d-flex justify-content-center p-2">No Data To Show</div>
+                                            </td>
                                         </tr>
 
                                     @endforelse
@@ -130,14 +163,14 @@
                                 <tfoot>
                                     <tr>
                                         {{-- <th>id</th> --}}
-                                        <th>image</th>
-                                        <th>name</th>
-                                        <th>price</th>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
                                         {{-- <th>type</th> --}}
                                         {{-- <th>stauts</th> --}}
-                                        <th>botagate Product</th>
-                                        <th>quantity</th>
-                                        <th>option</th>
+                                        <th>Card Type</th>
+                                        <th>Quantity</th>
+                                        <th>Option</th>
 
                                         {{-- <th>avilable</th> --}}
                                     </tr>

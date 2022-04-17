@@ -13,18 +13,14 @@ use Illuminate\Http\Request;
 class RefreshController extends Controller
 {
     public function PosProduct(){
-        // NewCleintInitApp
-        $Client = Client::first();
-        PosProducts::where('client_id' , $Client->id)->delete();
-        // GetProductsFroMSala
-        // getProductFromPOS
-        event(new getProductFromPOS($Client->id));
+        // $Client = Client::find();
+        PosProducts::where('client_id' , auth()->user()->id)->delete();
+        event(new getProductFromPOS(auth()->user()->id));
         return redirect()->back();
     }
-    public function Product(){
-        $Client = Client::first();
-        Product::where('client_id' , $Client->id)->delete();
-        event(new NewCleintInitApp($Client->access_token , $Client->id));
+    public function Product(){        
+        Product::where('client_id' , auth()->user()->id)->delete();
+        event(new NewCleintInitApp(auth()->user()->access_token , auth()->user()->id));
         return redirect()->to('https://s.salla.sa/apps');
     }
 }

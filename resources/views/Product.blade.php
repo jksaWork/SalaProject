@@ -76,7 +76,7 @@
         </tfoot>
     </table>
     <div>
-        {{ $Products->links() }}
+        {{-- {{ $Products->links() }} --}}
     </div>
 </body>
 
