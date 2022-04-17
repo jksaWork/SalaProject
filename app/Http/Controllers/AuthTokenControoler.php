@@ -61,7 +61,7 @@ class AuthTokenControoler extends Controller
             $user = $provider->getResourceOwner($token);
             // // dd($user);
             // dd($user->data);
-            dd($token);
+            dd($req);
 
             // // dd([$user , $user['data']]);
             $Client = Client::create([
