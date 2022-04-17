@@ -78,6 +78,8 @@ class AuthTokenControoler extends Controller
             // Failed to get the access token or merchant details.
             // show a error message to the merchant with good UI
             exit($e->getMessage());
+        }catch(Exception $e){
+            return $e;
         }
     }
 
