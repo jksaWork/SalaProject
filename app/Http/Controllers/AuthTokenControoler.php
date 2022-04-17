@@ -58,14 +58,13 @@ class AuthTokenControoler extends Controller
             /** @var \Salla\OAuth2\Client\Provider\SallaUser $user */
             // jksa altigani osma
 
-            $user = $provider->getResourceOwner($token);
-            dd( $user->getEmail() , $user->getStoreID() , $user);
             $Client = Client::create([
                 'access_token' =>$token->getToken() ,
                 'refresh_token' => $token->getRefreshToken() ,
                 'name' => $user->getName() ,
-                'email' => 'example.php',
-                'mobile' => '0915477450',
+                'email' => $user->getEmail(),
+                'mobile' => $user->getMobile(),
+                'merchant_id' => $user->getStoreID() ,
             ]);
             event(new NewCleintInitApp($token->getToken() , $Client->id));
             return redirect()->to('https://s.salla.sa/apps');
