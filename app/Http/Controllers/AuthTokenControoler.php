@@ -41,20 +41,6 @@ class AuthTokenControoler extends Controller
                 'code' => $_GET['code']
             ]);
 
-            //
-            // ## Access Token
-            //
-            // You should store the access token
-            // which may use in authenticated requests against the Salla's API
-            // echo 'Access Token: ' . $token->getToken() . "<br>";
-
-            //
-            // ## Refresh Token
-            //
-            // You should store the refresh token somewhere in your system because the access token expired after 14 days
-            // so you can use the refresh token after that to generate a new access token without asking any access from the merchant
-            //
-
             /** @var \Salla\OAuth2\Client\Provider\SallaUser $user */
             // jksa altigani osma
 
@@ -62,9 +48,9 @@ class AuthTokenControoler extends Controller
                 'access_token' =>$token->getToken() ,
                 'refresh_token' => $token->getRefreshToken() ,
                 'name' => $user->getName() ,
-                'email' => $user->getEmail(),
-                'mobile' => $user->getMobile(),
-                'merchant_id' => $user->getStoreID() ,
+                // 'email' => $user->getEmail(),
+                // 'mobile' => $user->getMobile(),
+                // 'merchant_id' => $user->getStoreID() ,
             ]);
             event(new NewCleintInitApp($token->getToken() , $Client->id));
             return redirect()->to('https://s.salla.sa/apps');
