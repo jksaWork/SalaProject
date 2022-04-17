@@ -32,12 +32,12 @@ class GetProductFromSalePoint
         $Client = Client::first();
         $posUsername = $Client->pos_email;
         info($posUsername); // must be #'info@dataked.com';
-        $secret =$Client->pos_secret  ;
+        $secret =$Client->pos_secret ;
         info($secret); //must be #'v35r#UhJgT$AJzN3BB';
         $signature = md5($posUsername . $secret);
         // SoapClient
         // dev https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl
-        // prod https://www.netader.com/webservice/OneCardPOSSystem.wsdl
+        // prod
         $client = new SoapClient('https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl');
         $params = array(
             'posUsername' => $posUsername,
