@@ -31,5 +31,7 @@ class hock2 extends Controller
             ]);
             event(new getProductFromPOS($client->id));
             }
-    }
+            info($request);
+
+        }
 }
