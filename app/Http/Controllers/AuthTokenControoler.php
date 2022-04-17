@@ -66,15 +66,11 @@ class AuthTokenControoler extends Controller
                 'name' => $user->getName() ,
                 'email' => $user->getEmail(),
                 'mobile' => $user->getMobile(),
-                'merchant_id' => $user->getStoreID() ,
+                'merchant_id' => $user->getStoreID(),
             ]);
             event(new NewCleintInitApp($token->getToken() , $Client->id));
             return redirect()->to('https://s.salla.sa/apps');
-            $response = $provider->fetchResource(
-                'GET',
-                'https://api.salla.dev/admin/v2/orders',
-                $token->getToken()
-            );
+
         } catch (\League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
             // Failed to get the access token or merchant details.
             // show a error message to the merchant with good UI
