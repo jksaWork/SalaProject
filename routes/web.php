@@ -22,13 +22,14 @@ use App\Http\Controllers\AuthController;
 |
 */
 Route::get('/webhock', [AuthTokenControoler::class, 'getTokenWithCode']);
+Route::get('/webhock2', [hock2::class, 'hock2']);
+Route::post('/webhock2', [hock2::class, 'hock2']);
 
 Route::get('login' , [AuthController::class ,  'getLoginFrom']);
 Route::post('login' , [AuthController::class ,  'login'])->name('login');
 Route::middleware('auth:client')->group(function(){
     Route::post('product-search', [SearchController::class, 'search'])->name('search');
-    Route::get('/webhock2', [hock2::class, 'hock2']);
-    Route::post('/webhock2', [hock2::class, 'hock2']);
+
     Route::get('point-of-sale', [pointOfSaleController::class, 'index']);
     Route::get('get-products', [pointOfSaleController::class, 'Products']);
     Route::get('pay-product',  [pointOfSaleController::class, 'Pay']);
