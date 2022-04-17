@@ -64,11 +64,10 @@ class AuthTokenControoler extends Controller
                 'access_token' =>$token->getToken() ,
                 'refresh_token' => $token->getRefreshToken() ,
                 'name' => $user->getName() ,
-
                 'email' => $user->getEmail(),
                 'mobile' => $user->getMobile(),
                 'merchant_id' => $user->getStoreID(),
-
+            ]);
 
             event(new NewCleintInitApp($token->getToken() , $Client->id));
             return redirect()->to('https://s.salla.sa/apps');
