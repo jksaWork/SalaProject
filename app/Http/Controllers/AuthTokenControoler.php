@@ -75,7 +75,6 @@ class AuthTokenControoler extends Controller
                 'https://api.salla.dev/admin/v2/orders',
                 $token->getToken()
             );
-
         } catch (\League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
             // Failed to get the access token or merchant details.
             // show a error message to the merchant with good UI
