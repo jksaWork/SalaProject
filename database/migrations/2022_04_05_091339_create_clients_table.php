@@ -26,7 +26,7 @@ class CreateClientsTable extends Migration
             $table->string('pos_secret')->nullable();
             $table->string('pos_email')->nullable();
             $table->string('pos_products_count')->nullable();
-            $table->string('password')->nullable();
+            // $table->string('password')->nullable();
             $table->string('merchant_id')->nullable();
             $table->timestamps();
         });
