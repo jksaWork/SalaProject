@@ -70,8 +70,8 @@ class AuthTokenControoler extends Controller
             return redirect()->to('https://s.salla.sa/apps');
         } catch (\League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
            exit($e->getMessage());
-        }catch(Exception $e){
-            return $e;
+        }catch(\Throwable $th){
+            return $th;
         }
     }
 
