@@ -57,13 +57,13 @@ class SalaOrderCreatedListner
 
             // dev https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl
             // prod https://www.netader.com/webservice/OneCardPOSSystem.wsdl
-            $client = new SoapClient('https://www.netader.com/webservice/OneCardPOSSystem.wsdl');
+            $client = new SoapClient('https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl');
             $params = array(
-                'posUsername'=>$posUsername,
-                'productCode'=>$Code,
-                'signature'=>$signature,
-                'terminalId'=>$terminalId,
-                'trxRefNumber'=>$trxRefNumber
+                'posUsername'  =>  $posUsername,
+                'productCode'  => $Code,
+                'signature'    => $signature,
+                'terminalId'   => $terminalId,
+                'trxRefNumber' => $trxRefNumber
                 );
             $myXMLData = $client->__soapCall('POSPurchaseProduct', array($params));
             // dd([$myXMLData , $Code]);

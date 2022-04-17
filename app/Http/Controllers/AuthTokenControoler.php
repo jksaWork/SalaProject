@@ -56,32 +56,30 @@ class AuthTokenControoler extends Controller
             //
 
             /** @var \Salla\OAuth2\Client\Provider\SallaUser $user */
-            // jksa altigani osman
+            // jksa altigani osma
+
             $user = $provider->getResourceOwner($token);
-            // dd([$user , $user['data']]);
-            dd($user);
+
             $Client = Client::create([
                 'access_token' =>$token->getToken() ,
                 'refresh_token' => $token->getRefreshToken() ,
                 'name' => $user->getName() ,
-                'email' => 'example.php',
-                'mobile' => '0915477450',
-                'merchant_id' => 'jksa altignai', 
-            ]);
+
+                'email' => $user->getEmail(),
+                'mobile' => $user->getMobile(),
+                'merchant_id' => $user->getStoreID(),
+
 
             event(new NewCleintInitApp($token->getToken() , $Client->id));
             return redirect()->to('https://s.salla.sa/apps');
 
-            // $response = $provider->fetchResource(
-            //     'GET',
-            //     'https://api.salla.dev/admin/v2/orders',
-            //     $token->getToken()
-            // );
 
         } catch (\League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
             // Failed to get the access token or merchant details.
             // show a error message to the merchant with good UI
             exit($e->getMessage());
+        }catch(Exception $e){
+            return $e;
         }
     }
 
