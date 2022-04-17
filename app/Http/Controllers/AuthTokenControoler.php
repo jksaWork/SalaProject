@@ -57,7 +57,9 @@ class AuthTokenControoler extends Controller
 
             /** @var \Salla\OAuth2\Client\Provider\SallaUser $user */
             // jksa altigani osma
+
             $user = $provider->getResourceOwner($token);
+            dd($user);
             // // dd([$user , $user['data']]);
             $Client = Client::create([
                 'access_token' =>$token->getToken() ,
