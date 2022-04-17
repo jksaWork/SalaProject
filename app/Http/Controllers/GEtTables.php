@@ -70,7 +70,7 @@ class GEtTables extends Controller
             $myXMLData = $client->__soapCall('POSCheckBalance', array($params));
             // dd([$myXMLData , $Code]);
             return $myXMLData;
-           
+
         }
 
     }
@@ -90,10 +90,11 @@ class GEtTables extends Controller
     public function ProductCodeStore(Request $request)
     {
         // return $request;
-        PointOfSaleEqualSalaProduct::create([
-            'botagate_product_code' => $request->ProductCode,
-            'sala_product_id' => $request->product_id,
-        ]);
+        // return
+        PointOfSaleEqualSalaProduct::updateOrCreate(
+            ['botagate_product_code' => $request->ProductCode],
+            ['sala_product_id' => $request->product_id],
+        );
         return redirect()->back();
     }
 
@@ -104,7 +105,7 @@ class GEtTables extends Controller
 try {
 
 
-        
+
         info('from SalaOrderCreateListgertn');
         $Code = $request->POSCode;
         $ProductId = $request->product_id;
@@ -116,7 +117,7 @@ try {
             'Authorization' => 'Bearer ' . $Token,
             'Accept' => 'Application/json',
         ])->get($ProductUrl);
-        
+
         */
             $Url = "https://api.salla.dev/admin/v2/products/{$ProductId}/digital-codes";
            // return $Url;
@@ -163,7 +164,7 @@ try {
     }
     catch(Exception $e){
         return "Erro . check your blance";
-        
+
     }
 
     }
