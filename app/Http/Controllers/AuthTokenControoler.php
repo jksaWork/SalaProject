@@ -59,14 +59,7 @@ class AuthTokenControoler extends Controller
             // jksa altigani osma
 
             $user = $provider->getResourceOwner($token);
-            dd($user->data);
-            // $userData = json_decode(json_encode($user), true);
-            // dd($userData);
-            // // dd($user);
-            // dd($user->data);
-            // dd($req);
-
-            // // dd([$user , $user['data']]);
+            dd( $user->getEmail() , $user->getStoreID() , $user);
             $Client = Client::create([
                 'access_token' =>$token->getToken() ,
                 'refresh_token' => $token->getRefreshToken() ,
