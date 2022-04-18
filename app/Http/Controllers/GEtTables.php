@@ -133,7 +133,10 @@ class GEtTables extends Controller
                 'Authorization' => 'Bearer ' . $Token,
                 'Accept' => 'Application/json',
             ])->get($ProdcutUrl);
-            dd($requestToGetQunantity->object()->data);
+            $newQuantity = $requestToGetQunantity->object()->data->quantity;
+            Product::where('product_id', $ProductId)->update(['quantity' => $newQuantity ]);
+            dd('quantity_done');
+            // dd();
             // old code and Workin successfuly  -------------------
             $Url = "https://api.salla.dev/admin/v2/products/{$ProductId}/digital-codes";
             $FinalResponse = [];
