@@ -9,6 +9,7 @@ use App\Models\PosProducts;
 use App\Models\Product;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
 
@@ -82,8 +83,8 @@ class GEtTables extends Controller
     {
 
 
-        $Products = \DB::select("SELECT * from sala_products where  product_id  in( select sala_product_id from point_of_sale_equal_sala_products ) ");
-        $notFoundProducts = \DB::select("SELECT * from sala_products where  product_id  not in ( select sala_product_id from point_of_sale_equal_sala_products )  and type='codes'");
+        $Products = DB::select("SELECT * from sala_products where  product_id  in( select sala_product_id from point_of_sale_equal_sala_products ) ");
+        $notFoundProducts = DB::select("SELECT * from sala_products where  product_id  not in ( select sala_product_id from point_of_sale_equal_sala_products )  and type='codes'");
         $PosProducts = PosProducts::get();
         return view('welcome', compact('Products', 'PosProducts', 'notFoundProducts'));
     }
@@ -168,7 +169,8 @@ class GEtTables extends Controller
             // info($response);
             return redirect()->back();
         } catch (Exception $e) {
-            return "Erro . check your blance";
+            return $e;
+            // return "Erro . check your blance";
         }
     }
 }
