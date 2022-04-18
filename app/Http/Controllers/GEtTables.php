@@ -127,6 +127,14 @@ class GEtTables extends Controller
             ]);
 
         */
+            // New Code TO Get Product Quantity Code  -------TEST-------
+            $ProdcutUrl = "https://api.salla.dev/admin/v2/products/{$ProductId}";
+            $requestToGetQunantity = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $Token,
+                'Accept' => 'Application/json',
+            ])->get($ProdcutUrl);
+            dd($requestToGetQunantity->object()->data);
+            // old code and Workin successfuly  -------------------
             $Url = "https://api.salla.dev/admin/v2/products/{$ProductId}/digital-codes";
             $FinalResponse = [];
             $SecretNumbers = [];
@@ -160,12 +168,7 @@ class GEtTables extends Controller
                 'Accept' => 'Application/json',
             ])->post($Url, ['codes' => $SecretNumbers]);
             //dd([$FinalResponse , $SecretNumbers , $response,  'sended Succesffuly']);
-            $ProdcutUrl = "https://api.salla.dev/admin/v2/products/{$ProductId}";
-            $requestToGetQunantity = Http::withHeaders([
-                'Authorization' => 'Bearer ' . $Token,
-                'Accept' => 'Application/json',
-            ])->get($ProdcutUrl);
-            dd($requestToGetQunantity->object()->data);
+
             return redirect()->back();
         } catch (Exception $e) {
             return $e;
