@@ -140,7 +140,7 @@ class GEtTables extends Controller
                 $trxRefNumber = $terminalId . "" . time();
                 // dev https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl
                 // prod https://www.netader.com/webservice/OneCardPOSSystem.wsdl
-                $client = new SoapClient(' https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl');
+                $client = new SoapClient('https://www.netader.com/webservice/OneCardPOSSystem.wsdl');
                 $params = array(
                     'posUsername' => $posUsername,
                     'productCode' => $Code,
@@ -166,11 +166,9 @@ class GEtTables extends Controller
                 'Accept' => 'Application/json',
             ])->get($ProdcutUrl);
             dd($requestToGetQunantity->object()->data);
-            // info($response);
             return redirect()->back();
         } catch (Exception $e) {
             return $e;
-            // return "Erro . check your blance";
         }
     }
 }
