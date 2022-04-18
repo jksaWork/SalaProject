@@ -13,11 +13,9 @@ class hock2 extends Controller
     public function  hock2(Request $request)
     {
             if($request->event == 'order.created'){
-                // OrderCreatedWebHock
                 info('order_created' . $request->data['items'][0]['product']['id']);
                 event(new OrderCreatedWebHock($request->data['items'][0]['product']['id']));
             }
-
             if($request->event == 'app.settings.updated'){
                 info($request->merchant);
                 // info($request->data['settings']);
