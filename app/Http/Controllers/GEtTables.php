@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Events\OrderCreatedWebHock;
 use App\Models\Client;
 use App\Models\PointOfSaleEqualSalaProduct;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Http;
 
 
 use SoapClient;
+
 class GEtTables extends Controller
 {
     public function products()
@@ -28,7 +30,7 @@ class GEtTables extends Controller
 
     public function ProductCode()
     {
-        $Products = Product::where("type" , "codes")->paginate(20);
+        $Products = Product::where("type", "codes")->paginate(20);
         $PosProducts = PosProducts::get();
 
         return view('ProductCode', compact('Products', 'PosProducts'));
@@ -38,41 +40,39 @@ class GEtTables extends Controller
     {
 
         $PosProducts = PointOfSaleEqualSalaProduct::get();
-        $data="";
-        foreach($PosProducts as $PosProduct )
-        {
-              //   event(new OrderCreatedWebHock($PosProduct->sala_product_id));
-            info($PosProduct->sala_product_id );
+        $data = "";
+        foreach ($PosProducts as $PosProduct) {
+            //   event(new OrderCreatedWebHock($PosProduct->sala_product_id));
+            info($PosProduct->sala_product_id);
         }
         return true;
     }
 
 
-    public function getblance(){
-        $Client = Client::orderBy('id' , 'DESC')->first();
+    public function getblance()
+    {
+        $Client = Client::orderBy('id', 'DESC')->first();
         $FinalResponse = [];
         $SecretNumbers = [];
         $posUsername = $Client->pos_email;
         $secret = $Client->pos_server_key;
         $CountIteration = $Client->pos_products_count;
-        $signature = md5($posUsername  .$secret);
+        $signature = md5($posUsername  . $secret);
         // info([$posUsername , $secret , $CountIteration ,$signature ]);
         info('be fore foreache');
-        for ($i=0; $i < $CountIteration ; $i++) {
-            $terminalId =random_int(0 , 10000);
+        for ($i = 0; $i < $CountIteration; $i++) {
+            $terminalId = random_int(0, 10000);
             $trxRefNumber = $terminalId . "" . time();
 
             $client = new SoapClient('https://www.netader.com/webservice/OneCardPOSSystem.wsdl');
             $params = array(
-                'posUsername'=>$posUsername,
-                'signature'=>$signature,
-                );
+                'posUsername' => $posUsername,
+                'signature' => $signature,
+            );
             $myXMLData = $client->__soapCall('POSCheckBalance', array($params));
             // dd([$myXMLData , $Code]);
             return $myXMLData;
-
         }
-
     }
 
 
@@ -85,7 +85,7 @@ class GEtTables extends Controller
         $Products = \DB::select("SELECT * from sala_products where  product_id  in( select sala_product_id from point_of_sale_equal_sala_products ) ");
         $notFoundProducts = \DB::select("SELECT * from sala_products where  product_id  not in ( select sala_product_id from point_of_sale_equal_sala_products )  and type='codes'");
         $PosProducts = PosProducts::get();
-        return view('welcome', compact('Products', 'PosProducts','notFoundProducts'));
+        return view('welcome', compact('Products', 'PosProducts', 'notFoundProducts'));
     }
     public function ProductCodeStore(Request $request)
     {
@@ -102,72 +102,73 @@ class GEtTables extends Controller
     public function GetOneProdectFromPosToSalla(Request $request)
     {
 
-try {
+        try {
+            info('from SalaOrderCreateListgertn');
+            $Code = $request->POSCode;
+            $ProductId = $request->product_id;
+            $Client = Client::orderBy('id', 'DESC')->first();
+            $Token = $Client->access_token;
 
-
-
-        info('from SalaOrderCreateListgertn');
-        $Code = $request->POSCode;
-        $ProductId = $request->product_id;
-        $Client = Client::orderBy('id' , 'DESC')->first();
-        $Token = $Client->access_token;
-
-       /* $ProductUrl = "https://api.salla.dev/admin/v2/products/{$ProductId}";
+            /* $ProductUrl = "https://api.salla.dev/admin/v2/products/{$ProductId}";
         $ProductUrlReponse = Http::withHeaders([
             'Authorization' => 'Bearer ' . $Token,
             'Accept' => 'Application/json',
         ])->get($ProductUrl);
+        PosProducts::create([
+                "product_code" => 'mohmmmed' ,
+                "name" => json_encode(['ar' => 'sadsd' , 'en' => 'sads']),
+                "product_price" => '2133',
+                "product_currency" => 'sar',
+                "pos_price" => '2131' ,
+                "available" =>'true',
+                "merchant_id" => 'sadsd',
+                "merchant_name" => json_encode(['ar' => 'mohammed '])
+            ]);
 
         */
             $Url = "https://api.salla.dev/admin/v2/products/{$ProductId}/digital-codes";
-           // return $Url;
-        // dd($Url);
-     //  dd($request);
-        $FinalResponse = [];
-        $SecretNumbers = [];
-        $posUsername = $Client->pos_email;
-        $secret = $Client->pos_server_key;
-        $CountIteration = $request->quabitiy;
-        $signature = md5($posUsername . $Code .$secret);
-         info('be fore foreache');
-        for ($i=0; $i < $CountIteration ; $i++) {
-            $terminalId =random_int(0 , 10000);
-            $trxRefNumber = $terminalId . "" . time();
-            // dev https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl
-            // prod https://www.netader.com/webservice/OneCardPOSSystem.wsdl
-            $client = new SoapClient('https://www.netader.com/webservice/OneCardPOSSystem.wsdl');
-            $params = array(
-                'posUsername'=>$posUsername,
-                'productCode'=>$Code,
-                'signature'=>$signature,
-                'terminalId'=>$terminalId,
-                'trxRefNumber'=>$trxRefNumber
+            $FinalResponse = [];
+            $SecretNumbers = [];
+            $posUsername = $Client->pos_email;
+            $secret = $Client->pos_server_key;
+            $CountIteration = $request->quabitiy;
+            $signature = md5($posUsername . $Code . $secret);
+            info('be fore foreache');
+            for ($i = 0; $i < $CountIteration; $i++) {
+                $terminalId = random_int(0, 10000);
+                $trxRefNumber = $terminalId . "" . time();
+                // dev https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl
+                // prod https://www.netader.com/webservice/OneCardPOSSystem.wsdl
+                $client = new SoapClient(' https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl');
+                $params = array(
+                    'posUsername' => $posUsername,
+                    'productCode' => $Code,
+                    'signature' => $signature,
+                    'terminalId' => $terminalId,
+                    'trxRefNumber' => $trxRefNumber
                 );
-            $myXMLData = $client->__soapCall('POSPurchaseProduct', array($params));
-            // dd([$myXMLData , $Code]);
-            $FinalResponse[] =  $myXMLData;
-            $SecretNumbers[] = $myXMLData->secret;
-            info($SecretNumbers);
-            info('affter foreach');
+                $myXMLData = $client->__soapCall('POSPurchaseProduct', array($params));
+                // dd([$myXMLData , $Code]);
+                $FinalResponse[] =  $myXMLData;
+                $SecretNumbers[] = $myXMLData->secret;
+                info($SecretNumbers);
+                info('affter foreach');
+            }
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $Token,
+                'Accept' => 'Application/json',
+            ])->post($Url, ['codes' => $SecretNumbers]);
+            //dd([$FinalResponse , $SecretNumbers , $response,  'sended Succesffuly']);
+            $ProdcutUrl = "https://api.salla.dev/admin/v2/products/{$ProductId}";
+            $requestToGetQunantity = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $Token,
+                'Accept' => 'Application/json',
+            ])->get($ProdcutUrl);
+            dd($requestToGetQunantity->object()->data);
+            // info($response);
+            return redirect()->back();
+        } catch (Exception $e) {
+            return "Erro . check your blance";
         }
-        $response = Http::withHeaders([
-            'Authorization' => 'Bearer ' . $Token,
-            'Accept' => 'Application/json',
-        ])->post($Url,['codes' => $SecretNumbers]);
-         //dd([$FinalResponse , $SecretNumbers , $response,  'sended Succesffuly']);
-
-
-       // info($response);
-
-        return redirect()->back();
-
-    }
-    catch(Exception $e){
-        return "Erro . check your blance";
-
-    }
-
     }
 }
-
-
