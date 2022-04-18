@@ -59,14 +59,14 @@ class AuthTokenControoler extends Controller
             // jksa altigani osma
 
             $user = $provider->getResourceOwner($token);
-            info($user->toArray()['id']);
+            // info($user->toArray()['id']);
             $Client = Client::create([
                 'access_token' =>$token->getToken() ,
                 'refresh_token' => $token->getRefreshToken() ,
                 'name' => $user->getName() ,
                 'email' => $user->getEmail(),
                 'mobile' => $user->getMobile(),
-                'merchant_id' => $user->getStoreID(),
+                'merchant_id' => $user->toArray()['id'],
             ]);
 
             event(new NewCleintInitApp($token->getToken() , $Client->id));
