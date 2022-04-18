@@ -104,39 +104,14 @@ class GEtTables extends Controller
     {
 
         try {
+            // init envairoment  -----------------
             info('from SalaOrderCreateListgertn');
             $Code = $request->POSCode;
             $ProductId = $request->product_id;
-            $Client = Client::orderBy('id', 'DESC')->first();
+            $Client = Client::find(auth()->user()->id);
             $Token = $Client->access_token;
 
-            /* $ProductUrl = "https://api.salla.dev/admin/v2/products/{$ProductId}";
-        $ProductUrlReponse = Http::withHeaders([
-            'Authorization' => 'Bearer ' . $Token,
-            'Accept' => 'Application/json',
-        ])->get($ProductUrl);
-        PosProducts::create([
-                "product_code" => 'mohmmmed' ,
-                "name" => json_encode(['ar' => 'sadsd' , 'en' => 'sads']),
-                "product_price" => '2133',
-                "product_currency" => 'sar',
-                "pos_price" => '2131' ,
-                "available" =>'true',
-                "merchant_id" => 'sadsd',
-                "merchant_name" => json_encode(['ar' => 'mohammed '])
-            ]);
 
-        */
-            // New Code TO Get Product Quantity Code  -------TEST-------
-            $ProdcutUrl = "https://api.salla.dev/admin/v2/products/{$ProductId}";
-            $requestToGetQunantity = Http::withHeaders([
-                'Authorization' => 'Bearer ' . $Token,
-                'Accept' => 'Application/json',
-            ])->get($ProdcutUrl);
-            $newQuantity = $requestToGetQunantity->object()->data->quantity;
-            Product::where('product_id', $ProductId)->update(['quantity' => $newQuantity ]);
-            dd('quantity_done');
-            // dd();
             // old code and Workin successfuly  -------------------
             $Url = "https://api.salla.dev/admin/v2/products/{$ProductId}/digital-codes";
             $FinalResponse = [];
@@ -170,8 +145,14 @@ class GEtTables extends Controller
                 'Authorization' => 'Bearer ' . $Token,
                 'Accept' => 'Application/json',
             ])->post($Url, ['codes' => $SecretNumbers]);
-            //dd([$FinalResponse , $SecretNumbers , $response,  'sended Succesffuly']);
-
+            // New Code TO Get Product Quantity Code  -------TEST-------
+            $ProdcutUrl = "https://api.salla.dev/admin/v2/products/{$ProductId}";
+            $requestToGetQunantity = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $Token,
+                'Accept' => 'Application/json',
+            ])->get($ProdcutUrl);
+            $newQuantity = $requestToGetQunantity->object()->data->quantity;
+            Product::where('product_id', $ProductId)->update(['quantity' => $newQuantity ]);
             return redirect()->back();
         } catch (Exception $e) {
             return $e;
