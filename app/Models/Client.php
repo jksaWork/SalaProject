@@ -10,10 +10,10 @@ class Client extends Authenticatable
     use HasFactory;
     protected $guarded = [];
 
-    public function setPosSecretAttribute($value)
-    {
-        $this->attributes['pos_secret'] = encrypt($value); #([encrypt($value) , decrypt(encrypt($value))]);
-    }
+    // public function setPosSecretAttribute($value)
+    // {
+    //     $this->attributes['pos_secret'] = encrypt($value); #([encrypt($value) , decrypt(encrypt($value))]);
+    // }
 
     public function getPosSecretAttribute($key)
     {

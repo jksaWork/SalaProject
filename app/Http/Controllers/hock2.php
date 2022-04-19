@@ -23,9 +23,10 @@ class hock2 extends Controller
                 // info($request->data['settings']['email']);
                 $client  = Client::where('merchant_id' , $request->merchant)->first();
                 info($client);
+                info(encrypt($request->data['settings']['secret_key']));
+                // update user ----------------------------------------;
                 $client->update([
-                // 'pos_server_key' => $request->data['settings']['secret_key'],
-                'pos_secret' => $request->data['settings']['secret_key'],
+                'pos_secret' => encrypt($request->data['settings']['secret_key']),
                 'pos_email' => $request->data['settings']['pos_email'],
                 'pos_products_count' => $request->data['settings']['count'],
                 'password' => bcrypt($request->data['settings']['password']),
