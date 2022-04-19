@@ -1,0 +1,81 @@
+[2022-04-19 14:26:00] local.ERROR: Target class [App\Console\RefreshAcessToken] does not exist. {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Target class [App\\Console\\RefreshAcessToken] does not exist. at C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:879)
+[stacktrace]
+#0 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(758): Illuminate\\Container\\Container->build('App\\\\Console\\\\Ref...')
+#1 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(851): Illuminate\\Container\\Container->resolve('App\\\\Console\\\\Ref...', Array, true)
+#2 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(694): Illuminate\\Foundation\\Application->resolve('App\\\\Console\\\\Ref...', Array)
+#3 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(836): Illuminate\\Container\\Container->make('App\\\\Console\\\\Ref...', Array)
+#4 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(262): Illuminate\\Foundation\\Application->make('App\\\\Console\\\\Ref...')
+#5 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(276): Illuminate\\Console\\Application->resolve('App\\\\Console\\\\Ref...')
+#6 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(331): Illuminate\\Console\\Application->resolveCommands(Array)
+#7 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Foundation\\Console\\Kernel->getArtisan()
+#8 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#9 {main}
+
+[previous exception] [object] (ReflectionException(code: -1): Class App\\Console\\RefreshAcessToken does not exist at C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:877)
+[stacktrace]
+#0 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(877): ReflectionClass->__construct('App\\\\Console\\\\Ref...')
+#1 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(758): Illuminate\\Container\\Container->build('App\\\\Console\\\\Ref...')
+#2 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(851): Illuminate\\Container\\Container->resolve('App\\\\Console\\\\Ref...', Array, true)
+#3 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(694): Illuminate\\Foundation\\Application->resolve('App\\\\Console\\\\Ref...', Array)
+#4 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(836): Illuminate\\Container\\Container->make('App\\\\Console\\\\Ref...', Array)
+#5 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(262): Illuminate\\Foundation\\Application->make('App\\\\Console\\\\Ref...')
+#6 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(276): Illuminate\\Console\\Application->resolve('App\\\\Console\\\\Ref...')
+#7 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(331): Illuminate\\Console\\Application->resolveCommands(Array)
+#8 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Foundation\\Console\\Kernel->getArtisan()
+#9 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#10 {main}
+"} 
+[2022-04-19 14:26:01] local.ERROR: Target class [App\Console\RefreshAcessToken] does not exist. {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Target class [App\\Console\\RefreshAcessToken] does not exist. at C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:879)
+[stacktrace]
+#0 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(758): Illuminate\\Container\\Container->build('App\\\\Console\\\\Ref...')
+#1 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(851): Illuminate\\Container\\Container->resolve('App\\\\Console\\\\Ref...', Array, true)
+#2 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(694): Illuminate\\Foundation\\Application->resolve('App\\\\Console\\\\Ref...', Array)
+#3 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(836): Illuminate\\Container\\Container->make('App\\\\Console\\\\Ref...', Array)
+#4 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(262): Illuminate\\Foundation\\Application->make('App\\\\Console\\\\Ref...')
+#5 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(276): Illuminate\\Console\\Application->resolve('App\\\\Console\\\\Ref...')
+#6 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(331): Illuminate\\Console\\Application->resolveCommands(Array)
+#7 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Foundation\\Console\\Kernel->getArtisan()
+#8 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#9 {main}
+
+[previous exception] [object] (ReflectionException(code: -1): Class App\\Console\\RefreshAcessToken does not exist at C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:877)
+[stacktrace]
+#0 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(877): ReflectionClass->__construct('App\\\\Console\\\\Ref...')
+#1 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(758): Illuminate\\Container\\Container->build('App\\\\Console\\\\Ref...')
+#2 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(851): Illuminate\\Container\\Container->resolve('App\\\\Console\\\\Ref...', Array, true)
+#3 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(694): Illuminate\\Foundation\\Application->resolve('App\\\\Console\\\\Ref...', Array)
+#4 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(836): Illuminate\\Container\\Container->make('App\\\\Console\\\\Ref...', Array)
+#5 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(262): Illuminate\\Foundation\\Application->make('App\\\\Console\\\\Ref...')
+#6 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(276): Illuminate\\Console\\Application->resolve('App\\\\Console\\\\Ref...')
+#7 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(331): Illuminate\\Console\\Application->resolveCommands(Array)
+#8 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Foundation\\Console\\Kernel->getArtisan()
+#9 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#10 {main}
+"} 
+[2022-04-19 14:26:01] local.ERROR: Target class [App\Console\RefreshAcessToken] does not exist. {"exception":"[object] (Illuminate\\Contracts\\Container\\BindingResolutionException(code: 0): Target class [App\\Console\\RefreshAcessToken] does not exist. at C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:879)
+[stacktrace]
+#0 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(758): Illuminate\\Container\\Container->build('App\\\\Console\\\\Ref...')
+#1 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(851): Illuminate\\Container\\Container->resolve('App\\\\Console\\\\Ref...', Array, true)
+#2 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(694): Illuminate\\Foundation\\Application->resolve('App\\\\Console\\\\Ref...', Array)
+#3 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(836): Illuminate\\Container\\Container->make('App\\\\Console\\\\Ref...', Array)
+#4 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(262): Illuminate\\Foundation\\Application->make('App\\\\Console\\\\Ref...')
+#5 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(276): Illuminate\\Console\\Application->resolve('App\\\\Console\\\\Ref...')
+#6 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(331): Illuminate\\Console\\Application->resolveCommands(Array)
+#7 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Foundation\\Console\\Kernel->getArtisan()
+#8 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#9 {main}
+
+[previous exception] [object] (ReflectionException(code: -1): Class App\\Console\\RefreshAcessToken does not exist at C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php:877)
+[stacktrace]
+#0 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(877): ReflectionClass->__construct('App\\\\Console\\\\Ref...')
+#1 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(758): Illuminate\\Container\\Container->build('App\\\\Console\\\\Ref...')
+#2 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(851): Illuminate\\Container\\Container->resolve('App\\\\Console\\\\Ref...', Array, true)
+#3 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(694): Illuminate\\Foundation\\Application->resolve('App\\\\Console\\\\Ref...', Array)
+#4 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(836): Illuminate\\Container\\Container->make('App\\\\Console\\\\Ref...', Array)
+#5 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(262): Illuminate\\Foundation\\Application->make('App\\\\Console\\\\Ref...')
+#6 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(276): Illuminate\\Console\\Application->resolve('App\\\\Console\\\\Ref...')
+#7 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(331): Illuminate\\Console\\Application->resolveCommands(Array)
+#8 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Foundation\\Console\\Kernel->getArtisan()
+#9 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#10 {main}
+"} 
