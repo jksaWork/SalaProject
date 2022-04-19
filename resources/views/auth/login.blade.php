@@ -15,7 +15,7 @@
                             <form role="form" action="{{route('login')}}" method='post'>
                                 @csrf
                                 <div class="mb-3">
-                                    <input type="email" class="form-control" placeholder="{{ __('translation.Email') }}"
+                                    <input type="email" class="form-control" placeholder="email"
                                         aria-label="Email" name="email">
                                     @error('email')
                                         <small class="text-danger">
@@ -25,7 +25,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <input type="password" name='password' class="form-control"
-                                        placeholder="{{ __('translation.Password') }}" aria-label="Password">
+                                        placeholder="password" aria-label="Password">
                                     @error('password')
                                         <small class="text-danger">
                                             {{ $message }}

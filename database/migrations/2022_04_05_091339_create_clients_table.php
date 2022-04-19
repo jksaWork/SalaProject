@@ -22,10 +22,10 @@ class CreateClientsTable extends Migration
             $table->string('password')->nullable();
             $table->string('email')->nullable();
             $table->string('mobile')->nullable();
-            $table->string('pos_server_key')->nullable();
             $table->string('pos_secret')->nullable();
             $table->string('pos_email')->nullable();
             $table->string('pos_products_count')->nullable();
+            $table->string('expired_date')->nullable();
             $table->timestamps();
         });
     }

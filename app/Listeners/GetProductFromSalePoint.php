@@ -32,7 +32,7 @@ class GetProductFromSalePoint
         $Client = Client::first();
         $posUsername = $Client->pos_email;
         info($posUsername); // must be #'info@dataked.com';
-        $secret =$Client->pos_secret  ;
+        $secret =$Client->pos_secret ;
         info($secret); //must be #'v35r#UhJgT$AJzN3BB';
         $signature = md5($posUsername . $secret);
         // SoapClient
@@ -46,7 +46,6 @@ class GetProductFromSalePoint
         $response = $client->__soapCall('POSGetProductList', array($params));
         info('before_line.48');
         $Products = $response->productList->product;
-        // info('')
         info($Products);
         foreach ($Products as $Product) {
             PosProducts::create([
