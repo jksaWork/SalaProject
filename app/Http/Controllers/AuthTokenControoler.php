@@ -54,6 +54,7 @@ class AuthTokenControoler extends Controller
                 'name' => $user->getName() ,
                 'email' => $user->getEmail(),
                 'mobile' => $user->getMobile(),
+                'expired_date' => $token->getExpires(),
             ]);
 
             /*
