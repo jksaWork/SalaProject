@@ -44,7 +44,7 @@ class RefreshAcessToken extends Command
         $Clients = DB::select('SELECT id , UNIX_TIMESTAMP() as toDay , expired_date FROM `clients`');
         // dd($Clients);
         foreach($Clients as $Client){
-            if($Client->toDay > $Client->expired_date) dispatch(new RefreshUserToken($Client->id))->delay(now()->addMinute());
+            if($Client->toDay > $Client->expired_date) dispatch(new RefreshUserToken($Client->id));
         }
         echo 'End Refrshing Task';
     }

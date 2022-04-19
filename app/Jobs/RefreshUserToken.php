@@ -26,11 +26,7 @@ class RefreshUserToken implements ShouldQueue
     public function __construct($clientId)
     {
         $this->clientId =  $clientId;
-        $this->provider = new Salla([
-            'clientId'     =>   'c5e26ae228c097732386852c0194ade7' , #'c5e26ae228c097732386852c0194ade7', // The client ID assigned to you by Salla
-            'clientSecret' =>  '470e3ce6a091ce4a43fe30be1792313c' ,  #'470e3ce6a091ce4a43fe30be1792313c', // The client password assigned to you by Salla
-            // 'redirectUri'  => 'https://dev.sala.gulfsmo.net/webhock' , // the url for current page in your service
-        ]);
+
     }
 
     /**
@@ -41,7 +37,14 @@ class RefreshUserToken implements ShouldQueue
     public function handle()
     {
         $client =  Client::find($this->clientId);
-        $token = $this->provider->getAccessToken('refresh_token', ['refresh_token' => $client->refresh_token]);
+        $provider = new Salla([
+            'clientId'     =>   'c5e26ae228c097732386852c0194ade7' , #'c5e26ae228c097732386852c0194ade7', // The client ID assigned to you by Salla
+            'clientSecret' =>  '470e3ce6a091ce4a43fe30be1792313c' ,  #'470e3ce6a091ce4a43fe30be1792313c', // The client password assigned to you by Salla
+            // 'redirectUri'  => 'https://dev.sala.gulfsmo.net/webhock' , // the url for current page in your service
+        ]);
+
+        $token = $provider->getAccessToken('refresh_token', ['refresh_token' => $client->refresh_token]);
+
         $client->update(
             [
                 'access_token' => $token->getToken(),
