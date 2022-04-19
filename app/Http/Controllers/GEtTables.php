@@ -56,9 +56,9 @@ class GEtTables extends Controller
         $FinalResponse = [];
         $SecretNumbers = [];
         $posUsername = $Client->pos_email;
-        $secret = $Client->pos_server_key;
+        $secret = $Client->pos_secret;
         $CountIteration = $Client->pos_products_count;
-        return $Client->pos_server_key;
+        return $Client->pos_secret;
         $signature = md5($posUsername  . $secret);
         // info([$posUsername , $secret , $CountIteration ,$signature ]);
         info('be fore foreache');
