@@ -81,8 +81,6 @@ class GEtTables extends Controller
 
     public function Productprint()
     {
-
-
         $Products = DB::select("SELECT * from sala_products where  product_id  in( select sala_product_id from point_of_sale_equal_sala_products ) ");
         $notFoundProducts = DB::select("SELECT * from sala_products where  product_id  not in ( select sala_product_id from point_of_sale_equal_sala_products )  and type='codes'");
         $PosProducts = PosProducts::get();
@@ -110,10 +108,10 @@ class GEtTables extends Controller
             $ProductId = $request->product_id;
             $Client = Client::find(auth()->user()->id);
             $Token = $Client->access_token;
+            $Url = "https://api.salla.dev/admin/v2/products/{$ProductId}/digital-codes";
 
 
             // old code and Workin successfuly  -------------------
-            $Url = "https://api.salla.dev/admin/v2/products/{$ProductId}/digital-codes";
             $FinalResponse = [];
             $SecretNumbers = [];
             $posUsername = $Client->pos_email;
@@ -151,6 +149,7 @@ class GEtTables extends Controller
                 'Authorization' => 'Bearer ' . $Token,
                 'Accept' => 'Application/json',
             ])->get($ProdcutUrl);
+            // update Quantity
             $newQuantity = $requestToGetQunantity->object()->data->quantity;
             Product::where('product_id', $ProductId)->update(['quantity' => $newQuantity ]);
             return redirect()->back();
