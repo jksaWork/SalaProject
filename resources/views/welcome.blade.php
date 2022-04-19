@@ -22,11 +22,9 @@ table {page-break-after: always;}
             <th>الصوره</th>
             <th>الاسم</th>
             <th>السعر</th>
+            <th>الكميه</th>
             <th>بطاقاتي</th>
             <th>سحب منتج </th>
-            
-
-
         </tr>
     </thead>
     <tbody>
@@ -40,6 +38,7 @@ table {page-break-after: always;}
                 </td>
                 <td>{{ $Product->name }}</td>
                 <td>{{ $Product->price }}</td>
+                <td>{{ $Product->quantity }}</td>
                 <td>
                     @php
                     $x;
