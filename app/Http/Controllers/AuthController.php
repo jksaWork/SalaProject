@@ -18,7 +18,7 @@ class AuthController extends Controller
         // return $credentials;
         if (Auth::guard('client')->attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/product-code');
+            return redirect()->intended('/product-print');
         }
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',

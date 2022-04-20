@@ -52,16 +52,17 @@ class GEtTables extends Controller
 
     public function getblance()
     {
-        $Client = Client::orderBy('id', 'DESC')->first();
+        $Client = Client::find(auth()->user()->id);
         $FinalResponse = [];
         $SecretNumbers = [];
         $posUsername = $Client->pos_email;
-        $secret = $Client->pos_server_key;
+        $secret = $Client->pos_secret;
         $CountIteration = $Client->pos_products_count;
+       // return $Client->pos_secret;
         $signature = md5($posUsername  . $secret);
         // info([$posUsername , $secret , $CountIteration ,$signature ]);
         info('be fore foreache');
-        for ($i = 0; $i < $CountIteration; $i++) {
+
             $terminalId = random_int(0, 10000);
             $trxRefNumber = $terminalId . "" . time();
 
@@ -73,7 +74,7 @@ class GEtTables extends Controller
             $myXMLData = $client->__soapCall('POSCheckBalance', array($params));
             // dd([$myXMLData , $Code]);
             return $myXMLData;
-        }
+        
     }
 
 
@@ -115,15 +116,13 @@ class GEtTables extends Controller
             $FinalResponse = [];
             $SecretNumbers = [];
             $posUsername = $Client->pos_email;
-            $secret = $Client->pos_server_key;
+            $secret = $Client->pos_secret;
             $CountIteration = $request->quabitiy;
             $signature = md5($posUsername . $Code . $secret);
             info('be fore foreache');
             for ($i = 0; $i < $CountIteration; $i++) {
                 $terminalId = random_int(0, 10000);
                 $trxRefNumber = $terminalId . "" . time();
-                // dev https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl
-                // prod https://www.netader.com/webservice/OneCardPOSSystem.wsdl
                 $client = new SoapClient('https://www.netader.com/webservice/OneCardPOSSystem.wsdl');
                 $params = array(
                     'posUsername' => $posUsername,
