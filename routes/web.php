@@ -10,6 +10,7 @@ use App\Http\Controllers\pointOfSaleController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RefreshController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,13 +22,33 @@ use App\Http\Controllers\AuthController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::post('Admin.home', [SearchController::class, 'search'])->name('search');
+Route::get('welecome', [GEtTables::class, 'Productscode']);
+Route::post('welecome', [GEtTables::class, 'ProductStore'])->name('product.store');
+
+Route::get('home', function () {
+    return view('Admin.home');
+});
+
+Route::get('Dashboard', [Dashboard::class, 'index'])->name('Dashboard');
+
+Route::get('notification', function () {
+    return view('Admin.notification');
+});
+
+Route::get('subscription', function () {
+    return view('Admin.subscription');
+});;
+
 Route::get('/webhock', [AuthTokenControoler::class, 'getTokenWithCode']);
+Route::get('/', [AuthTokenControoler::class, 'getTokenWithCode']);
 Route::get('/webhock2', [hock2::class, 'hock2']);
 Route::post('/webhock2', [hock2::class, 'hock2']);
 
-Route::get('login' , [AuthController::class ,  'getLoginFrom']);
-Route::post('login' , [AuthController::class ,  'login'])->name('login');
-Route::middleware('auth:client')->group(function(){
+Route::get('login', [AuthController::class,  'getLoginFrom']);
+Route::post('login', [AuthController::class,  'login'])->name('login');
+Route::middleware('auth:client')->group(function () {
     Route::post('product-search', [SearchController::class, 'search'])->name('search');
 
     Route::get('point-of-sale', [pointOfSaleController::class, 'index']);
@@ -47,5 +68,5 @@ Route::middleware('auth:client')->group(function(){
 
     Route::get('refresh-product', [RefreshController::class, 'Product'])->name('refresh.product');
     Route::get('refresh-pos-product', [RefreshController::class, 'PosProduct'])->name('refresh.pos.product');
-
 });
+Route::get('hggj', function () { })->name('AdmZDzdsdain.clinets');
