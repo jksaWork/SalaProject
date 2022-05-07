@@ -1,1 +1,266 @@
 [2022-04-19 15:45:32] local.INFO: 22-04-19 03:45:32the task was create  
+[2022-05-07 07:01:17] local.INFO: 22-05-07 07:01:16the task was create  
+[2022-05-07 07:02:07] local.ERROR: Command "queue" is not defined.
+
+Did you mean one of these?
+    queue:batches-table
+    queue:clear
+    queue:failed
+    queue:failed-table
+    queue:flush
+    queue:forget
+    queue:listen
+    queue:monitor
+    queue:prune-batches
+    queue:prune-failed
+    queue:restart
+    queue:retry
+    queue:retry-batch
+    queue:table
+    queue:work {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"queue\" is not defined.
+
+Did you mean one of these?
+    queue:batches-table
+    queue:clear
+    queue:failed
+    queue:failed-table
+    queue:flush
+    queue:forget
+    queue:listen
+    queue:monitor
+    queue:prune-batches
+    queue:prune-failed
+    queue:restart
+    queue:retry
+    queue:retry-batch
+    queue:table
+    queue:work at C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\symfony\\console\\Application.php:709)
+[stacktrace]
+#0 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\symfony\\console\\Application.php(259): Symfony\\Component\\Console\\Application->find('queue')
+#1 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2022-05-07 07:02:16] local.ERROR: cURL error 60: SSL certificate problem: unable to get local issuer certificate (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://accounts.salla.sa/oauth2/token {"exception":"[object] (GuzzleHttp\\Exception\\RequestException(code: 0): cURL error 60: SSL certificate problem: unable to get local issuer certificate (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://accounts.salla.sa/oauth2/token at C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlFactory.php:211)
+[stacktrace]
+#0 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlFactory.php(158): GuzzleHttp\\Handler\\CurlFactory::createRejection(Object(GuzzleHttp\\Handler\\EasyHandle), Array)
+#1 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlFactory.php(110): GuzzleHttp\\Handler\\CurlFactory::finishError(Object(GuzzleHttp\\Handler\\CurlHandler), Object(GuzzleHttp\\Handler\\EasyHandle), Object(GuzzleHttp\\Handler\\CurlFactory))
+#2 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlHandler.php(47): GuzzleHttp\\Handler\\CurlFactory::finish(Object(GuzzleHttp\\Handler\\CurlHandler), Object(GuzzleHttp\\Handler\\EasyHandle), Object(GuzzleHttp\\Handler\\CurlFactory))
+#3 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\Proxy.php(28): GuzzleHttp\\Handler\\CurlHandler->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#4 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\Proxy.php(48): GuzzleHttp\\Handler\\Proxy::GuzzleHttp\\Handler\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#5 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\PrepareBodyMiddleware.php(64): GuzzleHttp\\Handler\\Proxy::GuzzleHttp\\Handler\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#6 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Middleware.php(31): GuzzleHttp\\PrepareBodyMiddleware->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#7 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\RedirectMiddleware.php(71): GuzzleHttp\\Middleware::GuzzleHttp\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#8 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Middleware.php(63): GuzzleHttp\\RedirectMiddleware->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#9 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\HandlerStack.php(75): GuzzleHttp\\Middleware::GuzzleHttp\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#10 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Client.php(331): GuzzleHttp\\HandlerStack->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#11 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Client.php(107): GuzzleHttp\\Client->transfer(Object(GuzzleHttp\\Psr7\\Request), Array)
+#12 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Client.php(123): GuzzleHttp\\Client->sendAsync(Object(GuzzleHttp\\Psr7\\Request), Array)
+#13 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\league\\oauth2-client\\src\\Provider\\AbstractProvider.php(608): GuzzleHttp\\Client->send(Object(GuzzleHttp\\Psr7\\Request))
+#14 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\league\\oauth2-client\\src\\Provider\\AbstractProvider.php(621): League\\OAuth2\\Client\\Provider\\AbstractProvider->getResponse(Object(GuzzleHttp\\Psr7\\Request))
+#15 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\league\\oauth2-client\\src\\Provider\\AbstractProvider.php(537): League\\OAuth2\\Client\\Provider\\AbstractProvider->getParsedResponse(Object(GuzzleHttp\\Psr7\\Request))
+#16 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\app\\Jobs\\RefreshUserToken.php(46): League\\OAuth2\\Client\\Provider\\AbstractProvider->getAccessToken(Object(League\\OAuth2\\Client\\Grant\\RefreshToken), Array)
+#17 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): App\\Jobs\\RefreshUserToken->handle()
+#18 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#19 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#20 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#21 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(653): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#22 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Bus\\Dispatcher.php(128): Illuminate\\Container\\Container->call(Array)
+#23 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(128): Illuminate\\Bus\\Dispatcher->Illuminate\\Bus\\{closure}(Object(App\\Jobs\\RefreshUserToken))
+#24 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(App\\Jobs\\RefreshUserToken))
+#25 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Bus\\Dispatcher.php(132): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#26 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\CallQueuedHandler.php(120): Illuminate\\Bus\\Dispatcher->dispatchNow(Object(App\\Jobs\\RefreshUserToken), false)
+#27 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(128): Illuminate\\Queue\\CallQueuedHandler->Illuminate\\Queue\\{closure}(Object(App\\Jobs\\RefreshUserToken))
+#28 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(App\\Jobs\\RefreshUserToken))
+#29 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\CallQueuedHandler.php(122): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#30 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\CallQueuedHandler.php(70): Illuminate\\Queue\\CallQueuedHandler->dispatchThroughMiddleware(Object(Illuminate\\Queue\\Jobs\\DatabaseJob), Object(App\\Jobs\\RefreshUserToken))
+#31 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Jobs\\Job.php(98): Illuminate\\Queue\\CallQueuedHandler->call(Object(Illuminate\\Queue\\Jobs\\DatabaseJob), Array)
+#32 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(428): Illuminate\\Queue\\Jobs\\Job->fire()
+#33 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(378): Illuminate\\Queue\\Worker->process('database', Object(Illuminate\\Queue\\Jobs\\DatabaseJob), Object(Illuminate\\Queue\\WorkerOptions))
+#34 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(172): Illuminate\\Queue\\Worker->runJob(Object(Illuminate\\Queue\\Jobs\\DatabaseJob), 'database', Object(Illuminate\\Queue\\WorkerOptions))
+#35 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Console\\WorkCommand.php(117): Illuminate\\Queue\\Worker->daemon('database', 'default', Object(Illuminate\\Queue\\WorkerOptions))
+#36 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Console\\WorkCommand.php(101): Illuminate\\Queue\\Console\\WorkCommand->runWorker('database', 'default')
+#37 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Queue\\Console\\WorkCommand->handle()
+#38 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#39 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#40 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#41 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(653): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#42 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(136): Illuminate\\Container\\Container->call(Array)
+#43 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\symfony\\console\\Command\\Command.php(298): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#44 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#45 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\symfony\\console\\Application.php(1015): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#46 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\symfony\\console\\Application.php(299): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Queue\\Console\\WorkCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#47 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#48 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#49 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#50 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#51 {main}
+"} 
+[2022-05-07 07:02:17] local.ERROR: cURL error 60: SSL certificate problem: unable to get local issuer certificate (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://accounts.salla.sa/oauth2/token {"exception":"[object] (GuzzleHttp\\Exception\\RequestException(code: 0): cURL error 60: SSL certificate problem: unable to get local issuer certificate (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://accounts.salla.sa/oauth2/token at C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlFactory.php:211)
+[stacktrace]
+#0 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlFactory.php(158): GuzzleHttp\\Handler\\CurlFactory::createRejection(Object(GuzzleHttp\\Handler\\EasyHandle), Array)
+#1 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlFactory.php(110): GuzzleHttp\\Handler\\CurlFactory::finishError(Object(GuzzleHttp\\Handler\\CurlHandler), Object(GuzzleHttp\\Handler\\EasyHandle), Object(GuzzleHttp\\Handler\\CurlFactory))
+#2 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlHandler.php(47): GuzzleHttp\\Handler\\CurlFactory::finish(Object(GuzzleHttp\\Handler\\CurlHandler), Object(GuzzleHttp\\Handler\\EasyHandle), Object(GuzzleHttp\\Handler\\CurlFactory))
+#3 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\Proxy.php(28): GuzzleHttp\\Handler\\CurlHandler->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#4 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\Proxy.php(48): GuzzleHttp\\Handler\\Proxy::GuzzleHttp\\Handler\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#5 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\PrepareBodyMiddleware.php(64): GuzzleHttp\\Handler\\Proxy::GuzzleHttp\\Handler\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#6 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Middleware.php(31): GuzzleHttp\\PrepareBodyMiddleware->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#7 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\RedirectMiddleware.php(71): GuzzleHttp\\Middleware::GuzzleHttp\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#8 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Middleware.php(63): GuzzleHttp\\RedirectMiddleware->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#9 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\HandlerStack.php(75): GuzzleHttp\\Middleware::GuzzleHttp\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#10 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Client.php(331): GuzzleHttp\\HandlerStack->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#11 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Client.php(107): GuzzleHttp\\Client->transfer(Object(GuzzleHttp\\Psr7\\Request), Array)
+#12 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Client.php(123): GuzzleHttp\\Client->sendAsync(Object(GuzzleHttp\\Psr7\\Request), Array)
+#13 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\league\\oauth2-client\\src\\Provider\\AbstractProvider.php(608): GuzzleHttp\\Client->send(Object(GuzzleHttp\\Psr7\\Request))
+#14 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\league\\oauth2-client\\src\\Provider\\AbstractProvider.php(621): League\\OAuth2\\Client\\Provider\\AbstractProvider->getResponse(Object(GuzzleHttp\\Psr7\\Request))
+#15 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\league\\oauth2-client\\src\\Provider\\AbstractProvider.php(537): League\\OAuth2\\Client\\Provider\\AbstractProvider->getParsedResponse(Object(GuzzleHttp\\Psr7\\Request))
+#16 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\app\\Jobs\\RefreshUserToken.php(46): League\\OAuth2\\Client\\Provider\\AbstractProvider->getAccessToken(Object(League\\OAuth2\\Client\\Grant\\RefreshToken), Array)
+#17 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): App\\Jobs\\RefreshUserToken->handle()
+#18 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#19 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#20 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#21 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(653): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#22 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Bus\\Dispatcher.php(128): Illuminate\\Container\\Container->call(Array)
+#23 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(128): Illuminate\\Bus\\Dispatcher->Illuminate\\Bus\\{closure}(Object(App\\Jobs\\RefreshUserToken))
+#24 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(App\\Jobs\\RefreshUserToken))
+#25 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Bus\\Dispatcher.php(132): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#26 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\CallQueuedHandler.php(120): Illuminate\\Bus\\Dispatcher->dispatchNow(Object(App\\Jobs\\RefreshUserToken), false)
+#27 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(128): Illuminate\\Queue\\CallQueuedHandler->Illuminate\\Queue\\{closure}(Object(App\\Jobs\\RefreshUserToken))
+#28 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(App\\Jobs\\RefreshUserToken))
+#29 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\CallQueuedHandler.php(122): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#30 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\CallQueuedHandler.php(70): Illuminate\\Queue\\CallQueuedHandler->dispatchThroughMiddleware(Object(Illuminate\\Queue\\Jobs\\DatabaseJob), Object(App\\Jobs\\RefreshUserToken))
+#31 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Jobs\\Job.php(98): Illuminate\\Queue\\CallQueuedHandler->call(Object(Illuminate\\Queue\\Jobs\\DatabaseJob), Array)
+#32 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(428): Illuminate\\Queue\\Jobs\\Job->fire()
+#33 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(378): Illuminate\\Queue\\Worker->process('database', Object(Illuminate\\Queue\\Jobs\\DatabaseJob), Object(Illuminate\\Queue\\WorkerOptions))
+#34 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(172): Illuminate\\Queue\\Worker->runJob(Object(Illuminate\\Queue\\Jobs\\DatabaseJob), 'database', Object(Illuminate\\Queue\\WorkerOptions))
+#35 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Console\\WorkCommand.php(117): Illuminate\\Queue\\Worker->daemon('database', 'default', Object(Illuminate\\Queue\\WorkerOptions))
+#36 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Console\\WorkCommand.php(101): Illuminate\\Queue\\Console\\WorkCommand->runWorker('database', 'default')
+#37 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Queue\\Console\\WorkCommand->handle()
+#38 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#39 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#40 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#41 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(653): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#42 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(136): Illuminate\\Container\\Container->call(Array)
+#43 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\symfony\\console\\Command\\Command.php(298): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#44 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#45 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\symfony\\console\\Application.php(1015): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#46 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\symfony\\console\\Application.php(299): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Queue\\Console\\WorkCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#47 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#48 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#49 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#50 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#51 {main}
+"} 
+[2022-05-07 07:02:17] local.ERROR: cURL error 60: SSL certificate problem: unable to get local issuer certificate (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://accounts.salla.sa/oauth2/token {"exception":"[object] (GuzzleHttp\\Exception\\RequestException(code: 0): cURL error 60: SSL certificate problem: unable to get local issuer certificate (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://accounts.salla.sa/oauth2/token at C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlFactory.php:211)
+[stacktrace]
+#0 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlFactory.php(158): GuzzleHttp\\Handler\\CurlFactory::createRejection(Object(GuzzleHttp\\Handler\\EasyHandle), Array)
+#1 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlFactory.php(110): GuzzleHttp\\Handler\\CurlFactory::finishError(Object(GuzzleHttp\\Handler\\CurlHandler), Object(GuzzleHttp\\Handler\\EasyHandle), Object(GuzzleHttp\\Handler\\CurlFactory))
+#2 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlHandler.php(47): GuzzleHttp\\Handler\\CurlFactory::finish(Object(GuzzleHttp\\Handler\\CurlHandler), Object(GuzzleHttp\\Handler\\EasyHandle), Object(GuzzleHttp\\Handler\\CurlFactory))
+#3 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\Proxy.php(28): GuzzleHttp\\Handler\\CurlHandler->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#4 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\Proxy.php(48): GuzzleHttp\\Handler\\Proxy::GuzzleHttp\\Handler\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#5 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\PrepareBodyMiddleware.php(64): GuzzleHttp\\Handler\\Proxy::GuzzleHttp\\Handler\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#6 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Middleware.php(31): GuzzleHttp\\PrepareBodyMiddleware->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#7 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\RedirectMiddleware.php(71): GuzzleHttp\\Middleware::GuzzleHttp\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#8 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Middleware.php(63): GuzzleHttp\\RedirectMiddleware->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#9 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\HandlerStack.php(75): GuzzleHttp\\Middleware::GuzzleHttp\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#10 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Client.php(331): GuzzleHttp\\HandlerStack->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#11 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Client.php(107): GuzzleHttp\\Client->transfer(Object(GuzzleHttp\\Psr7\\Request), Array)
+#12 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Client.php(123): GuzzleHttp\\Client->sendAsync(Object(GuzzleHttp\\Psr7\\Request), Array)
+#13 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\league\\oauth2-client\\src\\Provider\\AbstractProvider.php(608): GuzzleHttp\\Client->send(Object(GuzzleHttp\\Psr7\\Request))
+#14 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\league\\oauth2-client\\src\\Provider\\AbstractProvider.php(621): League\\OAuth2\\Client\\Provider\\AbstractProvider->getResponse(Object(GuzzleHttp\\Psr7\\Request))
+#15 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\league\\oauth2-client\\src\\Provider\\AbstractProvider.php(537): League\\OAuth2\\Client\\Provider\\AbstractProvider->getParsedResponse(Object(GuzzleHttp\\Psr7\\Request))
+#16 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\app\\Jobs\\RefreshUserToken.php(46): League\\OAuth2\\Client\\Provider\\AbstractProvider->getAccessToken(Object(League\\OAuth2\\Client\\Grant\\RefreshToken), Array)
+#17 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): App\\Jobs\\RefreshUserToken->handle()
+#18 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#19 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#20 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#21 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(653): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#22 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Bus\\Dispatcher.php(128): Illuminate\\Container\\Container->call(Array)
+#23 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(128): Illuminate\\Bus\\Dispatcher->Illuminate\\Bus\\{closure}(Object(App\\Jobs\\RefreshUserToken))
+#24 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(App\\Jobs\\RefreshUserToken))
+#25 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Bus\\Dispatcher.php(132): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#26 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\CallQueuedHandler.php(120): Illuminate\\Bus\\Dispatcher->dispatchNow(Object(App\\Jobs\\RefreshUserToken), false)
+#27 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(128): Illuminate\\Queue\\CallQueuedHandler->Illuminate\\Queue\\{closure}(Object(App\\Jobs\\RefreshUserToken))
+#28 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(App\\Jobs\\RefreshUserToken))
+#29 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\CallQueuedHandler.php(122): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#30 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\CallQueuedHandler.php(70): Illuminate\\Queue\\CallQueuedHandler->dispatchThroughMiddleware(Object(Illuminate\\Queue\\Jobs\\DatabaseJob), Object(App\\Jobs\\RefreshUserToken))
+#31 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Jobs\\Job.php(98): Illuminate\\Queue\\CallQueuedHandler->call(Object(Illuminate\\Queue\\Jobs\\DatabaseJob), Array)
+#32 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(428): Illuminate\\Queue\\Jobs\\Job->fire()
+#33 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(378): Illuminate\\Queue\\Worker->process('database', Object(Illuminate\\Queue\\Jobs\\DatabaseJob), Object(Illuminate\\Queue\\WorkerOptions))
+#34 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(172): Illuminate\\Queue\\Worker->runJob(Object(Illuminate\\Queue\\Jobs\\DatabaseJob), 'database', Object(Illuminate\\Queue\\WorkerOptions))
+#35 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Console\\WorkCommand.php(117): Illuminate\\Queue\\Worker->daemon('database', 'default', Object(Illuminate\\Queue\\WorkerOptions))
+#36 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Console\\WorkCommand.php(101): Illuminate\\Queue\\Console\\WorkCommand->runWorker('database', 'default')
+#37 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Queue\\Console\\WorkCommand->handle()
+#38 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#39 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#40 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#41 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(653): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#42 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(136): Illuminate\\Container\\Container->call(Array)
+#43 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\symfony\\console\\Command\\Command.php(298): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#44 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#45 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\symfony\\console\\Application.php(1015): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#46 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\symfony\\console\\Application.php(299): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Queue\\Console\\WorkCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#47 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#48 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#49 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#50 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#51 {main}
+"} 
+[2022-05-07 07:02:18] local.ERROR: cURL error 60: SSL certificate problem: unable to get local issuer certificate (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://accounts.salla.sa/oauth2/token {"exception":"[object] (GuzzleHttp\\Exception\\RequestException(code: 0): cURL error 60: SSL certificate problem: unable to get local issuer certificate (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for https://accounts.salla.sa/oauth2/token at C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlFactory.php:211)
+[stacktrace]
+#0 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlFactory.php(158): GuzzleHttp\\Handler\\CurlFactory::createRejection(Object(GuzzleHttp\\Handler\\EasyHandle), Array)
+#1 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlFactory.php(110): GuzzleHttp\\Handler\\CurlFactory::finishError(Object(GuzzleHttp\\Handler\\CurlHandler), Object(GuzzleHttp\\Handler\\EasyHandle), Object(GuzzleHttp\\Handler\\CurlFactory))
+#2 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\CurlHandler.php(47): GuzzleHttp\\Handler\\CurlFactory::finish(Object(GuzzleHttp\\Handler\\CurlHandler), Object(GuzzleHttp\\Handler\\EasyHandle), Object(GuzzleHttp\\Handler\\CurlFactory))
+#3 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\Proxy.php(28): GuzzleHttp\\Handler\\CurlHandler->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#4 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Handler\\Proxy.php(48): GuzzleHttp\\Handler\\Proxy::GuzzleHttp\\Handler\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#5 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\PrepareBodyMiddleware.php(64): GuzzleHttp\\Handler\\Proxy::GuzzleHttp\\Handler\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#6 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Middleware.php(31): GuzzleHttp\\PrepareBodyMiddleware->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#7 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\RedirectMiddleware.php(71): GuzzleHttp\\Middleware::GuzzleHttp\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#8 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Middleware.php(63): GuzzleHttp\\RedirectMiddleware->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#9 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\HandlerStack.php(75): GuzzleHttp\\Middleware::GuzzleHttp\\{closure}(Object(GuzzleHttp\\Psr7\\Request), Array)
+#10 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Client.php(331): GuzzleHttp\\HandlerStack->__invoke(Object(GuzzleHttp\\Psr7\\Request), Array)
+#11 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Client.php(107): GuzzleHttp\\Client->transfer(Object(GuzzleHttp\\Psr7\\Request), Array)
+#12 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\guzzlehttp\\guzzle\\src\\Client.php(123): GuzzleHttp\\Client->sendAsync(Object(GuzzleHttp\\Psr7\\Request), Array)
+#13 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\league\\oauth2-client\\src\\Provider\\AbstractProvider.php(608): GuzzleHttp\\Client->send(Object(GuzzleHttp\\Psr7\\Request))
+#14 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\league\\oauth2-client\\src\\Provider\\AbstractProvider.php(621): League\\OAuth2\\Client\\Provider\\AbstractProvider->getResponse(Object(GuzzleHttp\\Psr7\\Request))
+#15 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\league\\oauth2-client\\src\\Provider\\AbstractProvider.php(537): League\\OAuth2\\Client\\Provider\\AbstractProvider->getParsedResponse(Object(GuzzleHttp\\Psr7\\Request))
+#16 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\app\\Jobs\\RefreshUserToken.php(46): League\\OAuth2\\Client\\Provider\\AbstractProvider->getAccessToken(Object(League\\OAuth2\\Client\\Grant\\RefreshToken), Array)
+#17 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): App\\Jobs\\RefreshUserToken->handle()
+#18 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#19 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#20 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#21 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(653): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#22 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Bus\\Dispatcher.php(128): Illuminate\\Container\\Container->call(Array)
+#23 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(128): Illuminate\\Bus\\Dispatcher->Illuminate\\Bus\\{closure}(Object(App\\Jobs\\RefreshUserToken))
+#24 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(App\\Jobs\\RefreshUserToken))
+#25 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Bus\\Dispatcher.php(132): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#26 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\CallQueuedHandler.php(120): Illuminate\\Bus\\Dispatcher->dispatchNow(Object(App\\Jobs\\RefreshUserToken), false)
+#27 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(128): Illuminate\\Queue\\CallQueuedHandler->Illuminate\\Queue\\{closure}(Object(App\\Jobs\\RefreshUserToken))
+#28 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(103): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(App\\Jobs\\RefreshUserToken))
+#29 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\CallQueuedHandler.php(122): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#30 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\CallQueuedHandler.php(70): Illuminate\\Queue\\CallQueuedHandler->dispatchThroughMiddleware(Object(Illuminate\\Queue\\Jobs\\DatabaseJob), Object(App\\Jobs\\RefreshUserToken))
+#31 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Jobs\\Job.php(98): Illuminate\\Queue\\CallQueuedHandler->call(Object(Illuminate\\Queue\\Jobs\\DatabaseJob), Array)
+#32 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(428): Illuminate\\Queue\\Jobs\\Job->fire()
+#33 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(378): Illuminate\\Queue\\Worker->process('database', Object(Illuminate\\Queue\\Jobs\\DatabaseJob), Object(Illuminate\\Queue\\WorkerOptions))
+#34 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Worker.php(172): Illuminate\\Queue\\Worker->runJob(Object(Illuminate\\Queue\\Jobs\\DatabaseJob), 'database', Object(Illuminate\\Queue\\WorkerOptions))
+#35 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Console\\WorkCommand.php(117): Illuminate\\Queue\\Worker->daemon('database', 'default', Object(Illuminate\\Queue\\WorkerOptions))
+#36 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Queue\\Console\\WorkCommand.php(101): Illuminate\\Queue\\Console\\WorkCommand->runWorker('database', 'default')
+#37 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Queue\\Console\\WorkCommand->handle()
+#38 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#39 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#40 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#41 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(653): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#42 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(136): Illuminate\\Container\\Container->call(Array)
+#43 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\symfony\\console\\Command\\Command.php(298): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#44 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#45 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\symfony\\console\\Application.php(1015): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#46 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\symfony\\console\\Application.php(299): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Queue\\Console\\WorkCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#47 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#48 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#49 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#50 C:\\Users\\MSC\\Documents\\GitHub\\SalaProject\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#51 {main}
+"} 
+[2022-05-07 07:02:53] local.INFO: 22-05-07 07:02:53the task was create  
