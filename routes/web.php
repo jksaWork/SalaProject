@@ -37,14 +37,11 @@ Route::middleware('auth:client')->group(function(){
     Route::get('get-pos-products-tables', [GEtTables::class, 'PosProducts']);
 
     Route::get('product-print', [GEtTables::class, 'Productprint']);
-
-    //event(new OrderCreatedWebHock($request->data['items'][0]['product']['id']));
     Route::get('GetFirestPFromPos', [GEtTables::class, 'FirestCode']);
     Route::get('getblance', [GEtTables::class, 'getblance']);
     Route::post('GetOneProdectFromPosToSalla', [GEtTables::class, 'GetOneProdectFromPosToSalla'])->name("GetOneProdectFromPosToSalla");
     Route::get('product-code', [GEtTables::class, 'ProductCode']);
     Route::post('product-code', [GEtTables::class, 'ProductCodeStore'])->name('product.code.store');
-
     Route::get('refresh-product', [RefreshController::class, 'Product'])->name('refresh.product');
     Route::get('refresh-pos-product', [RefreshController::class, 'PosProduct'])->name('refresh.pos.product');
 

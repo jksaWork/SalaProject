@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\OrderCreatedWebHock;
 use App\Models\Client;
+use App\Models\OrderHistory;
 use App\Models\PointOfSaleEqualSalaProduct;
 use App\Models\PosProducts;
 use App\Models\Product;
@@ -110,7 +111,6 @@ class GEtTables extends Controller
             $Token = $Client->access_token;
             $Url = "https://api.salla.dev/admin/v2/products/{$ProductId}/digital-codes";
 
-
             // old code and Workin successfuly  -------------------
             $FinalResponse = [];
             $SecretNumbers = [];
@@ -137,8 +137,16 @@ class GEtTables extends Controller
                 $FinalResponse[] =  $myXMLData;
                 $SecretNumbers[] = $myXMLData->secret;
                 info($SecretNumbers);
-                info('affter foreach');
             }
+            info('affter foreach');
+            try{
+                OrderHistory::create([
+                    'product_id' => $request->product_id,
+                    'history_code' => json_encode($SecretNumbers),
+                ]);
+            }catch(Exception $e){
+            }
+
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $Token,
                 'Accept' => 'Application/json',

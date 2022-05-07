@@ -15,7 +15,6 @@ class pointOfSaleController extends Controller
         $posUsername = 'onebrand.1b@outlook.com';
         $secret = 'MsF!43$Q5ZbMtHQ4';
         $signature = md5($posUsername . $secret);
-
         $client = new SoapClient('https://www.netader.com/webservice/OneCardPOSSystem.wsdl');
         $params = array(
             'posUsername' => $posUsername,
@@ -31,6 +30,5 @@ class pointOfSaleController extends Controller
 
     public function pay(){
         event(new SalaOrderCreated('jksa'));
-
     }
 }
