@@ -46,7 +46,7 @@ class SalaOrderCreatedListner
         $FinalResponse = [];
         $SecretNumbers = [];
         $posUsername = $Client->pos_email;
-        $secret = $Client->pos_server_key;
+        $secret = $Client->pos_secret;
         $CountIteration = $Client->pos_products_count;
         $signature = md5($posUsername . $Code .$secret);
         // info([$posUsername , $secret , $CountIteration ,$signature ]);
@@ -66,7 +66,7 @@ class SalaOrderCreatedListner
                 'trxRefNumber' => $trxRefNumber
                 );
             $myXMLData = $client->__soapCall('POSPurchaseProduct', array($params));
-            // dd([$myXMLData , $Code]);
+            
             $FinalResponse[] =  $myXMLData;
             $SecretNumbers[] = $myXMLData->secret;
         }
