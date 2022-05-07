@@ -152,11 +152,12 @@ class GEtTables extends Controller
             ])->post($Url, ['codes' => $SecretNumbers]);
             // New Code TO Get Product Quantity Code  -------TEST-------
             $ProdcutUrl = "https://api.salla.dev/admin/v2/products/{$ProductId}";
+            // old Exception Comming From Here  -----------------
             $requestToGetQunantity = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $Token,
                 'Accept' => 'Application/json',
             ])->get($ProdcutUrl);
-            // update Quantity
+            // Update Quantity           --------------------
             $newQuantity = $requestToGetQunantity->object()->data->quantity;
             Product::where('product_id', $ProductId)->update(['quantity' => $newQuantity ]);
             return redirect()->back();
