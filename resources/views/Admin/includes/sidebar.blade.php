@@ -27,10 +27,10 @@
                 </a>
                 <ul class="submenu">
                     <li class="submenu-item ">
-                        <a href="">salla Product</a>
+                        <a href="{{ route('SallaProduct') }}">salla Product</a>
                     </li>
                     <li class="submenu-item ">
-                        <a href="">Card Product</a>
+                        <a href="{{ route('Card') }}">Card Product</a>
                     </li>
                 </ul>
                 {{-- <li class="sidebar-title">Menu</li>

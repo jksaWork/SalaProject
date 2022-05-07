@@ -1,16 +1,19 @@
 <?php
 
+use App\Http\Controllers\hock2;
 use App\Events\getProductFromPOS;
 use App\Events\OrderCreatedWebHock;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthTokenControoler;
+use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\GEtTables;
-use App\Http\Controllers\hock2;
-use App\Http\Controllers\pointOfSaleController;
+use App\Http\Controllers\CardProduct;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SallaProduct;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RefreshController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\Dashboard;
+use App\Http\Controllers\AuthTokenControoler;
+use App\Http\Controllers\pointOfSaleController;
+use App\Http\Controllers\SallaProducts;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,13 +28,15 @@ use App\Http\Controllers\Dashboard;
 
 Route::post('Admin.home', [SearchController::class, 'search'])->name('search');
 Route::get('welecome', [GEtTables::class, 'Productscode']);
-Route::post('welecome', [GEtTables::class, 'ProductStore'])->name('product.store');
+Route::post('', [GEtTables::class, 'ProductStore'])->name('product.store');
 
 Route::get('home', function () {
     return view('Admin.home');
 });
 
 Route::get('Dashboard', [Dashboard::class, 'index'])->name('Dashboard');
+Route::get('SallaProduct', [SallaProducts::class, 'index'])->name('SallaProduct');
+Route::get('salla-card', [CardProduct::class, 'PosProducts'])->name('Card');
 
 Route::get('notification', function () {
     return view('Admin.notification');
