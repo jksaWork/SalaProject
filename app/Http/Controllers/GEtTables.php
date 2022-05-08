@@ -88,6 +88,7 @@ class GEtTables extends Controller
 
 
 
+
     public function Productprint()
     {
         $Products = DB::select("SELECT * from sala_products where  product_id  in( select sala_product_id from point_of_sale_equal_sala_products ) ");
