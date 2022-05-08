@@ -32,8 +32,13 @@ class SallaProduct extends Controller
         }
         return true;
     }
-    public function sallProduct()
+    public function DeletedRelatedProduct($id)
     {
-        return 'jks aatiani';
+        try{
+            PointOfSaleEqualSalaProduct::find($id)->delete();
+            return redirect()->back();
+        }catch(Exception $ex){
+            return redirect()->back();
+        }
     }
 }

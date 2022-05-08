@@ -11,8 +11,7 @@
     </div>
     <div class="sidebar-menu">
         <ul class="menu">
-
-            <li class="sidebar-item  ">
+            <li class="sidebar-item ">
                 <a href="{{ route('Dashboard') }}" class='sidebar-link'>
                     {{-- <i class="fa fa-assistive-listening-systems"></i> --}}
                     <i class="bi bi-flag"></i>
@@ -29,8 +28,11 @@
                     <li class="submenu-item ">
                         <a href="{{ route('SallaProduct') }}">salla Product</a>
                     </li>
-                    <li class="submenu-item ">
+                    <li class="submenu-item">
                         <a href="{{ route('Card') }}">Card Product</a>
+                    </li>
+                    <li class="submenu-item">
+                        <a href="{{ route('related.Products') }}">Related Products</a>
                     </li>
                 </ul>
                 {{-- <li class="sidebar-title">Menu</li>
@@ -40,7 +42,17 @@
                     <span>Dashboard</span>
                 </a>
             </li> --}}
-
+            <li class="sidebar-item  has-sub">
+                <a href="#" class='sidebar-link'>
+                    <i class="bi bi-bag-check-fill"></i>
+                    <span>Orders</span>
+                </a>
+                <ul class="submenu">
+                    <li class="submenu-item ">
+                        <a href="{{ route('SallaProduct') }}">Orders History</a>
+                    </li>
+                </ul>
+            </li>
             <li class="sidebar-item  ">
                 <a href="" class='sidebar-link'>
                     {{-- <i class="fa fa-assistive-listening-systems"></i> --}}
@@ -48,36 +60,7 @@
                     <span>linked Product</span>
                 </a>
             </li>
-            <li class="sidebar-item ">
-                <a href="" class='sidebar-link'>
-                    {{-- <i class="fa fa-assistive-listening-systems"></i> --}}
-                    <i class="bi bi-bag-check-fill"></i>
-                    <span>Order History</span>
-                </a>
-            </li>
-
-            </li>
-            {{-- <li class="sidebar-item  has-sub">
-                <a href="#" class='sidebar-link'>
-                    <i class="bi bi-stack"></i>
-                    <span>reports</span>
-                </a>
-                <ul class="submenu">
-                    <li class="submenu-item ">
-                        <a href="">client reports</a>
-                    </li>
-                    <li class="submenu-item ">
-                        <a href="">subscription report</a>
-                    </li>
-                    <li class="submenu-item ">
-                        <a href="">notification reports</a>
-                    </li>
-                </ul>
-            </li> --}}
-
-
             <li class="sidebar-title">clients Mangement</li>
-
             <li class="sidebar-item  ">
                 <a href="#" class='sidebar-link'>
                     <i class="bi bi-chat-dots-fill"></i>
