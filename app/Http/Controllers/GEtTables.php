@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\OrderCreatedWebHock;
 use App\Models\Client;
+use App\Models\OrderHistory;
 use App\Models\PointOfSaleEqualSalaProduct;
 use App\Models\PosProducts;
 use App\Models\Product;
@@ -37,6 +38,15 @@ class GEtTables extends Controller
         return view('ProductCode', compact('Products', 'PosProducts'));
     }
 
+    public function Productscode()
+    {
+        $Products = Product::where("type", "codes")->paginate(20);
+        $PosProducts = PosProducts::get();
+
+        return view('Admin.SallaProduct', compact('Products', 'PosProducts'));
+    }
+
+
     public function FirestCode()
     {
 
@@ -58,23 +68,22 @@ class GEtTables extends Controller
         $posUsername = $Client->pos_email;
         $secret = $Client->pos_secret;
         $CountIteration = $Client->pos_products_count;
-       // return $Client->pos_secret;
+        // return $Client->pos_secret;
         $signature = md5($posUsername  . $secret);
         // info([$posUsername , $secret , $CountIteration ,$signature ]);
         info('be fore foreache');
 
-            $terminalId = random_int(0, 10000);
-            $trxRefNumber = $terminalId . "" . time();
+        $terminalId = random_int(0, 10000);
+        $trxRefNumber = $terminalId . "" . time();
 
-            $client = new SoapClient('https://www.netader.com/webservice/OneCardPOSSystem.wsdl');
-            $params = array(
-                'posUsername' => $posUsername,
-                'signature' => $signature,
-            );
-            $myXMLData = $client->__soapCall('POSCheckBalance', array($params));
-            // dd([$myXMLData , $Code]);
-            return $myXMLData;
-        
+        $client = new SoapClient('https://www.netader.com/webservice/OneCardPOSSystem.wsdl');
+        $params = array(
+            'posUsername' => $posUsername,
+            'signature' => $signature,
+        );
+        $myXMLData = $client->__soapCall('POSCheckBalance', array($params));
+        // dd([$myXMLData , $Code]);
+        return $myXMLData;
     }
 
 
@@ -99,6 +108,18 @@ class GEtTables extends Controller
     }
 
 
+    public function ProductStore(Request $request)
+    {
+        // return $request;
+        // return
+        PointOfSaleEqualSalaProduct::updateOrCreate(
+            ['botagate_product_code' => $request->ProductCode],
+            ['sala_product_id' => $request->product_id],
+        );
+        return redirect()->back();
+    }
+
+
     public function GetOneProdectFromPosToSalla(Request $request)
     {
 
@@ -110,7 +131,6 @@ class GEtTables extends Controller
             $Client = Client::find(auth()->user()->id);
             $Token = $Client->access_token;
             $Url = "https://api.salla.dev/admin/v2/products/{$ProductId}/digital-codes";
-
 
             // old code and Workin successfuly  -------------------
             $FinalResponse = [];
@@ -136,21 +156,30 @@ class GEtTables extends Controller
                 $FinalResponse[] =  $myXMLData;
                 $SecretNumbers[] = $myXMLData->secret;
                 info($SecretNumbers);
-                info('affter foreach');
             }
+            info('affter foreach');
+            try{
+                OrderHistory::create([
+                    'product_id' => $request->product_id,
+                    'history_code' => json_encode($SecretNumbers),
+                ]);
+            }catch(Exception $e){
+            }
+
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $Token,
                 'Accept' => 'Application/json',
             ])->post($Url, ['codes' => $SecretNumbers]);
             // New Code TO Get Product Quantity Code  -------TEST-------
             $ProdcutUrl = "https://api.salla.dev/admin/v2/products/{$ProductId}";
+            // old Exception Comming From Here  -----------------
             $requestToGetQunantity = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $Token,
                 'Accept' => 'Application/json',
             ])->get($ProdcutUrl);
-            // update Quantity
+            // Update Quantity           --------------------
             $newQuantity = $requestToGetQunantity->object()->data->quantity;
-            Product::where('product_id', $ProductId)->update(['quantity' => $newQuantity ]);
+            Product::where('product_id', $ProductId)->update(['quantity' => $newQuantity]);
             return redirect()->back();
         } catch (Exception $e) {
             return $e;

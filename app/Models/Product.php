@@ -16,4 +16,7 @@ class Product extends Model
         return $BotagateId;
         // PosProducts::find($BotagateId);
     }
+    public function Related(){
+        return $this->hasOne(PointOfSaleEqualSalaProduct::class, 'sala_product_id' , 'product_id');
+    }
 }
