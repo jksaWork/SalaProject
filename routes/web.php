@@ -69,7 +69,6 @@ Route::middleware('auth:client')->group(function () {
     Route::post('GetOneProdectFromPosToSalla', [GEtTables::class, 'GetOneProdectFromPosToSalla'])->name("GetOneProdectFromPosToSalla");
     Route::get('product-code', [GEtTables::class, 'ProductCode']);
     Route::post('product-code', [GEtTables::class, 'ProductCodeStore'])->name('product.code.store');
-
     Route::get('refresh-product', [RefreshController::class, 'Product'])->name('refresh.product');
     Route::get('refresh-pos-product', [RefreshController::class, 'PosProduct'])->name('refresh.pos.product');
 });
