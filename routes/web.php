@@ -7,13 +7,15 @@ use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\GEtTables;
 use App\Http\Controllers\CardProduct;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CardProducts;
 use App\Http\Controllers\SallaProduct;
+use App\Http\Controllers\SallaProducts;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RefreshController;
 use App\Http\Controllers\AuthTokenControoler;
+use App\Http\Controllers\linkedProduct;
 use App\Http\Controllers\pointOfSaleController;
-use App\Http\Controllers\SallaProducts;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +38,8 @@ Route::get('home', function () {
 
 Route::get('Dashboard', [Dashboard::class, 'index'])->name('Dashboard');
 Route::get('SallaProduct', [SallaProducts::class, 'index'])->name('SallaProduct');
-Route::get('salla-card', [CardProduct::class, 'PosProducts'])->name('Card');
+Route::get('salla-card', [CardProducts::class, 'index'])->name('Card');
+Route::get('Linked-Product', [linkedProduct::class, 'index'])->name('linked-Product');
 
 Route::get('notification', function () {
     return view('Admin.notification');

@@ -42,7 +42,7 @@
             </li> --}}
 
             <li class="sidebar-item  ">
-                <a href="" class='sidebar-link'>
+                <a href="{{ route('linked-Product') }}" class='sidebar-link'>
                     {{-- <i class="fa fa-assistive-listening-systems"></i> --}}
                     <i class="bi bi-flag"></i>
                     <span>linked Product</span>
