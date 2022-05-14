@@ -10,6 +10,8 @@ class Product extends Model
     use HasFactory;
     protected $table = 'sala_products';
     protected $guarded = [];
+    // protected modelK = [];
+    // protected $fileable = ['name'];
 
     public function Pos(){
         $BotagateId =  PointOfSaleEqualSalaProduct::firstWhere('sala_product_id' , $this->product_id);
@@ -19,4 +21,8 @@ class Product extends Model
     public function Related(){
         return $this->hasOne(PointOfSaleEqualSalaProduct::class, 'sala_product_id' , 'product_id');
     }
+
+    // public function history(){
+        // return $this->hasMany(PointOfSaleEqualSalaProduct::class , 'product_code');
+    // }
 }

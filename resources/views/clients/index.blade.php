@@ -1,5 +1,5 @@
 @extends('Admin.app')
-@section('BreadCrumbs', 'Linked Product')
+@section('BreadCrumbs', 'Client Mangement')
 @section('content')
     <div class="container-fluid py-4">
         <div class="row mt-4">
@@ -7,10 +7,7 @@
                 <div class="card z-index-2 h-100">
                     <div class="card-header pb-0 pt-3 bg-transparent">
                         <div class="d-flex justify-content-between">
-                            <h6 class="text-capitalize col-4">Linked Proudct</h6>
-                        <a href="{{route('link.product')}}" class="btn btn-sm btn-outline-primary">
-                            links Products
-                        </a>
+                            <h6 class="text-capitalize col-4">Client Table</h6>
                         </div>
                         <div class="table-responsive mt-5">
                             <table class="table align-items-center table-bordered  ">

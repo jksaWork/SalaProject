@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Client;
+use App\Models\TiketMessage;
 use Illuminate\Http\Request;
 
-class ClientController extends Controller
+class TiketMessageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $Clients =  Client::paginate();
-        return view('clients.index' ,['Clients' =>$Clients]);
+        //
     }
 
     /**
@@ -36,16 +35,26 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request;
+        $validaotr = validator($request->all(), [
+            'text' => 'required',
+        ]);
+        if($validaotr->fails()) return redirect()->back()->withErrors($validaotr->errors());
+        TiketMessage::create([
+            'content' => $request->text,
+            'ticket_id' => $request->ticket_id,
+            'sender' => auth()->user()->id,
+        ]);
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Client  $client
+     * @param  \App\Models\TiketMessage  $tiketMessage
      * @return \Illuminate\Http\Response
      */
-    public function show(Client $client)
+    public function show(TiketMessage $tiketMessage)
     {
         //
     }
@@ -53,10 +62,10 @@ class ClientController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Client  $client
+     * @param  \App\Models\TiketMessage  $tiketMessage
      * @return \Illuminate\Http\Response
      */
-    public function edit(Client $client)
+    public function edit(TiketMessage $tiketMessage)
     {
         //
     }
@@ -65,10 +74,10 @@ class ClientController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Client  $client
+     * @param  \App\Models\TiketMessage  $tiketMessage
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Client $client)
+    public function update(Request $request, TiketMessage $tiketMessage)
     {
         //
     }
@@ -76,10 +85,10 @@ class ClientController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Client  $client
+     * @param  \App\Models\TiketMessage  $tiketMessage
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Client $client)
+    public function destroy(TiketMessage $tiketMessage)
     {
         //
     }
