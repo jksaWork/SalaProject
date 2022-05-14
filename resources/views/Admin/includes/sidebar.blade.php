@@ -11,15 +11,23 @@
     </div>
     <div class="sidebar-menu">
         <ul class="menu">
-
-            <li class="sidebar-item  ">
-                <a href="{{ route('Dashboard') }}" class='sidebar-link'>
+            {{-- @dd(auth()->guard('')->check()) --}}
+            @Admin
+            <li class="sidebar-item">
+                <a href="{{ route('admin.dashboard') }}" class='sidebar-link'>
                     {{-- <i class="fa fa-assistive-listening-systems"></i> --}}
-                    <i class="bi bi-flag"></i>
+                    <i class="bi bi-menu-button-wide-fill"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
-
+            <li class="sidebar-item">
+                <a href="{{ route('client.index') }}" class='sidebar-link'>
+                    <i class="bi bi-person-bounding-box"></i>
+                    <span>Client Mangemtn</span>
+                </a>
+            </li>
+            @elseAdmin
+            {{-- @dd(auth()->guard('client')->check()) --}}
             <li class="sidebar-item  has-sub">
                 <a href="#" class='sidebar-link'>
                     <i class="bi bi-calendar2-week"></i>
@@ -29,60 +37,45 @@
                     <li class="submenu-item ">
                         <a href="{{ route('SallaProduct') }}">salla Product</a>
                     </li>
-                    <li class="submenu-item ">
+                    <li class="submenu-item">
                         <a href="{{ route('Card') }}">Card Product</a>
                     </li>
+                    {{-- <li class="submenu-item">
+                        <a href="{{ route('related.Products') }}">Related Products</a>
+                    </li> --}}
                 </ul>
-                {{-- <li class="sidebar-title">Menu</li>
-            <li class="sidebar-item ">
-                <a href="index.html" class='sidebar-link'>
-                    <i class="bi bi-grid-fill"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li> --}}
 
-            <li class="sidebar-item  ">
-                <a href="{{ route('linked-Product') }}" class='sidebar-link'>
-                    {{-- <i class="fa fa-assistive-listening-systems"></i> --}}
-                    <i class="bi bi-flag"></i>
-                    <span>linked Product</span>
-                </a>
-            </li>
-            <li class="sidebar-item ">
-                <a href="" class='sidebar-link'>
-                    {{-- <i class="fa fa-assistive-listening-systems"></i> --}}
-                    <i class="bi bi-bag-check-fill"></i>
-                    <span>Order History</span>
-                </a>
-            </li>
-
-            </li>
-            {{-- <li class="sidebar-item  has-sub">
+            <li class="sidebar-item  has-sub">
                 <a href="#" class='sidebar-link'>
-                    <i class="bi bi-stack"></i>
-                    <span>reports</span>
+                    <i class="bi bi-bag-check-fill"></i>
+                    <span>Orders</span>
                 </a>
                 <ul class="submenu">
                     <li class="submenu-item ">
-                        <a href="">client reports</a>
-                    </li>
-                    <li class="submenu-item ">
-                        <a href="">subscription report</a>
-                    </li>
-                    <li class="submenu-item ">
-                        <a href="">notification reports</a>
+                        <a href="{{ route('OrderHistory') }}">Orders History</a>
                     </li>
                 </ul>
-            </li> --}}
-
-
-            <li class="sidebar-title">clients Mangement</li>
-
-            <li class="sidebar-item  ">
+            </li>
+            <li class="sidebar-item   has-sub">
                 <a href="#" class='sidebar-link'>
+                    <i class="bi bi-flag"></i>
+                    <span>linked Product</span>
+                </a>
+                <ul class="submenu">
+                    <li class="submenu-item ">
+                        <a href="{{ route('related.Products') }}">Show Linked Product</a>
+                    </li>
+                    <li class="submenu-item ">
+                        <a href="{{ route('link.product') }}">Link Product</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="sidebar-item">
+                <a href="{{ route('technical.support') }}" class='sidebar-link'>
                     <i class="bi bi-chat-dots-fill"></i>
                     <span>Support Ticket</span>
                 </a>
+                @endAdmin
                 {{-- <ul class="submenu">
                     <li class="submenu-item ">
                         <a href="">Add User </a>
@@ -92,7 +85,6 @@
                     </li>
                 </ul>
             </li>
-
             <li class="sidebar-item  has-sub">
                 <a href="#" class='sidebar-link'>
                     <i class="bi bi-person"></i>
@@ -108,7 +100,7 @@
                 </ul> --}}
             </li>
             <li class="sidebar-item  ">
-                <a href="#" class='sidebar-link'>
+                <a href="{{ route('setting') }}" class='sidebar-link'>
                     <i class="bi bi-gear"></i>
                     <span>Setting</span>
                 </a>

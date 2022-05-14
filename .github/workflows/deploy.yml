@@ -1,4 +1,4 @@
-name: Deploy TO The Dev Serve
+name: Deploy TO The Gualf Dev Serve
 
 # Trigger the workflow on push and
 # pull request events on the production branch
@@ -25,4 +25,4 @@ jobs:
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
-          script: "cd /home/ahmedict/public_html/sala/SalaProject.2 && chmod 777 ./.scripts/deploy.sh &&  ./.scripts/deploy.sh"
+          script: "cd /home/ahmedict/public_html/dev.sala/SalaProject && chmod 777 ./.scripts/deploy.sh &&  ./.scripts/deploy.sh"

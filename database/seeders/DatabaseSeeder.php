@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\OrderHistory;
+use App\Models\Topic;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +15,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        \App\Models\User::factory(1)->create([
+            'email' => 'admin@gmail.com',
+            'password' =>bcrypt('123456'),
+        ]);
+        $Codes = ['123123', '123123' , '12312' , 'mohamme' , 'hd3' , 'mohammed' , 'mohammed'];
+        \App\Models\OrderHistory::create(
+            [
+                'product_id' => 123123,
+                'product_name' => 'mohammed altignai',
+                'history_code' => json_encode($Codes),
+            ]
+            );
+            Topic::create(['topicname'=> 'topic 1']);
     }
 }
