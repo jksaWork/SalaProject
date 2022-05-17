@@ -6,7 +6,6 @@
         <div class="row mt-1">
             <div class="col-lg-12 mb-lg-0 mb-4">
                 <div class="content-header-right text-md-right col-md-6 col-12">
-
                 </div>
             </div>
             <div class="content-body">
@@ -14,7 +13,6 @@
                 <section id="configuration">
                     <div class="row">
                         <div class="col-md-4">
-
                                 <div class="card">
                                     <div class="pt-4 px-3">
                                     <h6>Tickets</h6>
@@ -31,7 +29,7 @@
                                                 <a
                                                 {{-- style="color:r" --}}
                                                 class="text-black"
-                                                href="{{route('ShowMssages' ,$ticket->id )}}">
+                                                href="{{IsClient() ? route('ShowMssages' ,$ticket->id ) : route('admin.ShowMssages' ,$ticket->id) }}">
                                                     <span>
                                                         {{$ticket->subject}}
                                                     </span>
@@ -69,7 +67,7 @@
                                         </div>
                                     </div>
                                     <div class="card-content collapse show">
-                                        <div class="card-body card-dashboard">
+                                        <div class="card-body card-dashboard" style='min-height:300px'>
                                             <div class="">
                                                 @php
                                                 $isFirest = true
@@ -90,7 +88,7 @@
                                                 </div>
                                                 @endif
                                                 {{-- @if($data->sender ==$ticketmassege->sender) --}}
-                                                <div class="d-flex justify-content-{{($data->sender ==$ticketmassege->sender)?"
+                                                <div class="d-flex justify-content-{{($data->sender == $ticketmassege->sender)?"
                                                     start":"end"}} ">
                                                 <span class=" {{ $data->sender == $ticketmassege->sender ? "bg-light
                                                     text-black" : 'bg-primary text-white'}} m-2 py-1 px-3 btn-rounded"
@@ -100,11 +98,11 @@
                                                     </span>
                                                 </div>
                                                 @endforeach
-                                                <form action="{{route('store.message' , $id)}}" method="post">
+                                                <form action="{{ IsClient() ? route('store.message' , $id) : route('admin.store.message' , $id)}}" method="post">
                                                     @csrf
                                                     @php
-                                                    $ticket = \App\Models\Ticket::find($id)->update(['status' =>
-                                                    'inprogress']);
+                                                        $ticket = \App\Models\Ticket::find($id)
+                                                        ->update(['status' => 'inprogress']);
                                                     @endphp
                                                     <div class="d-flex justify-content-between mt-5 align-content-center">
                                                         <input placeholder="Type a message" name="text"
@@ -198,5 +196,4 @@
                 })
             }
 </script>
-
 @endpush

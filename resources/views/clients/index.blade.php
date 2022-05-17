@@ -14,26 +14,29 @@
                                 <thead>
                                     <tr>
                                         <td>id</td>
-                                        <td>sala Product Image </td>
-                                        <td>sala Product </td>
-                                        <td>Point of Sala Product  </td>
-                                        <td>Purches Quantity   </td>
+                                        <td>merchant id </td>
+                                        <td>client name </td>
+                                        <td>email  </td>
+                                        <td>token Expired Data</td>
                                         <td>option</td>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($Products as $Product)
+                                    @forelse ($Clients as $Client)
                                         <tr>
-                                            <td>{{ $Product->id }}</td>
-                                            <td><img src="{{$Product['sala_product_image']}}" width="50px" height="50px" alt=""></td>
-                                            </td>
-                                            <td>{{ $Product['sala_product_name'] ?? ' ' }}</td>
-                                            <td>{{ $Product['botagaty_product_name']->ar ?? ' ' }}</td>
-                                            <td>{{ $Product->quantitiy }} </td>
+                                            <td>{{$Client->id}}</td>
+                                            <td>{{$Client->name}}</td>
+                                            <td>{{$Client->merchant_id}}</td>
+                                            <td>{{$Client->email}}</td>
+                                            <td> {{$Client->ExpiredDate2}} </td>
                                             <td>
-                                                <a href="{{route('DeletedRelatedProduct', $Product->id)}}" type="button" class="btn btn-sm btn-outline-danger">
+                                                <form action="{{route('client.destroy' , $Client->id)}}" method="post">
+                                                @csrf
+                                                @method("DELETE")
+                                                <button class="btn btn-sm btn-outline-danger">
                                                     <i class="bi bi-trash2"></i>
-                                                </a>
+                                                </button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @empty
@@ -45,12 +48,14 @@
                                     @endforelse
                                 </tbody>
                                 <tfoot>
+                                    <tr>
                                         <td>id</td>
-                                        <td>sala Product Image </td>
-                                        <td>sala Product </td>
-                                        <td>Point of Sala Product  </td>
-                                        <td>Purches Quantity  </td>
+                                        <td>merchant id </td>
+                                        <td>client name </td>
+                                        <td>email  </td>
+                                        <td>token Expired Data</td>
                                         <td>option</td>
+                                    </tr>
                                 </tfoot>
                             </table>
                         </div>

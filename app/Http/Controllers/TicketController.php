@@ -15,7 +15,12 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $allTicket = Ticket::where('client_id' , auth()->user()->id)->paginate(10);
+        // if()
+        if(IsClient()){
+            $allTicket = Ticket::where('client_id' , auth()->user()->id)->paginate(10);
+        }else{
+            $allTicket = Ticket::paginate(10);
+        }
         return view('support.index' , compact('allTicket'));
     }
 
@@ -56,8 +61,14 @@ class TicketController extends Controller
      */
     public function show($id)
     {
-        $data =   Ticket::with('Messages')->find($id);
-        $tickets = Ticket::where('client_id' , auth()->user()->id)->get();
+        if(IsClient()){
+            $data =   Ticket::with('Messages')->find($id);
+            $tickets = Ticket::where('client_id' , auth()->user()->id)->get();
+        }else{
+            $data =   Ticket::with('Messages')->find($id);
+            $tickets = Ticket::limit(10)->get();
+        }
+
         // dd($ticket);
         return view('support.messages' , compact('data' , 'id' , 'tickets'));
     }

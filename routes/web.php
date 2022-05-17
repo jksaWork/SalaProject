@@ -24,6 +24,8 @@ use Salla\OAuth2\Client\Provider\Salla;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\TiketMessageController;
 use App\Models\TiketMessage;
+use App\Traits\TestInterFace;
+use League\CommonMark\Node\Block\Document;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +48,7 @@ Route::prefix('admin')->group(function () {
     Route::get('dashboard', [Dashboard::class, 'index'])->name('admin.dashboard');
 
     Route::resource('client', ClientController::class);
+    Route::get('ticket-support', [TicketController::class, 'index'])->name('admin.technical.support');
 });
 
 Route::post('Admin.home', [SearchController::class, 'Salasearch'])->name('search');
@@ -113,7 +116,10 @@ Route::middleware('auth:client')->group(function () {
 });
 
 
-
-Route::get('test', function () {
-    // return;
+Route::name('admin.')->prefix('admin')->group(function () {
+    Route::get('tick-support', [TicketController::class, 'index'])->name('technical.support');
+    Route::get('create-ticket', [TicketController::class, 'create'])->name('ticket.create');
+    Route::post('store-tickt', [TicketController::class, 'store'])->name('ticket.store');
+    Route::get('show-ticket-message/{id}', [TicketController::class, 'show'])->name('ShowMssages');
+    Route::post('store-message/{id}', [TiketMessageController::class, 'store'])->name('store.message');
 });
