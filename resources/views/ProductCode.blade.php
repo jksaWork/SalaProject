@@ -100,7 +100,6 @@
                                                                 } catch (Exception $e) {
                                                                     $x = 0;
                                                                 }
-
                                                             @endphp
                                                             <select  class="form-control" name="ProductCode"
                                                                 id="" onchange="this.form.submit()">
@@ -118,10 +117,8 @@
                                                                     <option value="">please File your Product </option>
                                                                 @endempty
                                                         </select>
-
                                                     </form>
                                                 </div>
-
                                             </td>
                                             <td>
                                                 <div class="form-group">
@@ -135,7 +132,6 @@
                                                 </div>
                                             </td>
                                             <td><button type="button" class="btn btn-primary">Save</button></td>
-
                                         </tr>
                                     @empty
                                         <tr>
@@ -143,9 +139,7 @@
                                                 <div class="d-flex justify-content-center p-2">No Data To Show</div>
                                             </td>
                                         </tr>
-
                                     @endforelse
-
                                     {{-- <td>
                                         @if ($Product->is_available == 1)
                                         avalible
@@ -158,7 +152,6 @@
                                     <tr>
                                         <td> jksa altifani</td>
                                     </tr> --}}
-
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -182,17 +175,9 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
             </div>
         </div>
     </div>
-
-
-
-
 </main>
 @endsection
 @section('scripts')

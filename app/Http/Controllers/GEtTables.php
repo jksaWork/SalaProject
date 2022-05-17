@@ -38,6 +38,15 @@ class GEtTables extends Controller
         return view('ProductCode', compact('Products', 'PosProducts'));
     }
 
+    public function Productscode()
+    {
+        $Products = Product::where("type", "codes")->paginate(20);
+        $PosProducts = PosProducts::get();
+
+        return view('Admin.SallaProduct', compact('Products', 'PosProducts'));
+    }
+
+
     public function FirestCode()
     {
 
@@ -59,23 +68,22 @@ class GEtTables extends Controller
         $posUsername = $Client->pos_email;
         $secret = $Client->pos_secret;
         $CountIteration = $Client->pos_products_count;
-       // return $Client->pos_secret;
+        // return $Client->pos_secret;
         $signature = md5($posUsername  . $secret);
         // info([$posUsername , $secret , $CountIteration ,$signature ]);
         info('be fore foreache');
 
-            $terminalId = random_int(0, 10000);
-            $trxRefNumber = $terminalId . "" . time();
+        $terminalId = random_int(0, 10000);
+        $trxRefNumber = $terminalId . "" . time();
 
-            $client = new SoapClient('https://www.netader.com/webservice/OneCardPOSSystem.wsdl');
-            $params = array(
-                'posUsername' => $posUsername,
-                'signature' => $signature,
-            );
-            $myXMLData = $client->__soapCall('POSCheckBalance', array($params));
-            // dd([$myXMLData , $Code]);
-            return $myXMLData;
-        
+        $client = new SoapClient('https://www.netader.com/webservice/OneCardPOSSystem.wsdl');
+        $params = array(
+            'posUsername' => $posUsername,
+            'signature' => $signature,
+        );
+        $myXMLData = $client->__soapCall('POSCheckBalance', array($params));
+        // dd([$myXMLData , $Code]);
+        return $myXMLData;
     }
 
 
@@ -89,6 +97,18 @@ class GEtTables extends Controller
         return view('welcome', compact('Products', 'PosProducts', 'notFoundProducts'));
     }
     public function ProductCodeStore(Request $request)
+    {
+        // return $request;
+        // return
+        PointOfSaleEqualSalaProduct::updateOrCreate(
+            ['botagate_product_code' => $request->ProductCode],
+            ['sala_product_id' => $request->product_id],
+        );
+        return redirect()->back();
+    }
+
+
+    public function ProductStore(Request $request)
     {
         // return $request;
         // return
@@ -159,7 +179,7 @@ class GEtTables extends Controller
             ])->get($ProdcutUrl);
             // Update Quantity           --------------------
             $newQuantity = $requestToGetQunantity->object()->data->quantity;
-            Product::where('product_id', $ProductId)->update(['quantity' => $newQuantity ]);
+            Product::where('product_id', $ProductId)->update(['quantity' => $newQuantity]);
             return redirect()->back();
         } catch (Exception $e) {
             return $e;
