@@ -37,7 +37,7 @@
                                             <td>{{__('translation.' . $data->status);}}</td>
                                             <td>{{$data->created_at}}</td>
                                             <td>
-                                                <a href="{{route('ShowMssages' , $data->id)}}" class="btn btn-sm btn-outline-primary">
+                                                <a href="{{IsClient() ? route('ShowMssages' , $data->id) : route('admin.ShowMssages' , $data->id)}}" class="btn btn-sm btn-outline-primary">
                                                 View
                                                 </a>
                                             </td>

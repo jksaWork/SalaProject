@@ -79,8 +79,13 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Client $client)
+    public function destroy($client_id)
     {
-        //
+        try{
+            Client::find($client_id)->delete();
+            return redirect()->back();
+        }catch(\Exception $e){
+            return redirect()->back();
+        }
     }
 }

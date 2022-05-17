@@ -40,10 +40,13 @@ class TiketMessageController extends Controller
             'text' => 'required',
         ]);
         if($validaotr->fails()) return redirect()->back()->withErrors($validaotr->errors());
+        // $senderArray =   [] ;
+        // dd();
+
         TiketMessage::create([
             'content' => $request->text,
             'ticket_id' => $request->ticket_id,
-            'sender' => auth()->user()->id,
+            IsClient() ? 'sender':'admin_id' => auth()->user()->id,
         ]);
         return redirect()->back();
     }

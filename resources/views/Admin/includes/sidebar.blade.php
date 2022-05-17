@@ -70,50 +70,39 @@
                     </li>
                 </ul>
             </li>
-            <li class="sidebar-item">
+            {{-- <li class="sidebar-item">
                 <a href="{{ route('technical.support') }}" class='sidebar-link'>
                     <i class="bi bi-chat-dots-fill"></i>
                     <span>Support Ticket</span>
                 </a>
-                @endAdmin
-                {{-- <ul class="submenu">
-                    <li class="submenu-item ">
-                        <a href="">Add User </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a href="">Show Users</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="sidebar-item  has-sub">
-                <a href="#" class='sidebar-link'>
-                    <i class="bi bi-person"></i>
-                    <span>Client Mangemnt</span>
+            </li> --}}
+            @endAdmin
+            <li class="sidebar-item">
+                <a href="{{ IsClient() ?? auth()->guard('client')->check() ? route('technical.support') : route('admin.technical.support'); }}" class='sidebar-link'>
+                    <i class="bi bi-chat-dots-fill"></i>
+                    <span>Support Ticket</span>
                 </a>
-                <ul class="submenu">
-                    {{-- <li class="submenu-item ">
-                                <a href="{{route('client.create')}}">Add Client </a>
-                            </li> --}}
-                {{-- <li class="submenu-item ">
-                        <a href="">Show Clients </a>
-                    </li>
-                </ul> --}}
             </li>
             <li class="sidebar-item  ">
                 <a href="{{route('setting')}}" class='sidebar-link'>
                     <i class="bi bi-gear"></i>
                     <span>Setting</span>
                 </a>
-                {{-- <ul class="submenu">
-                    <li class="submenu-item ">
-                        <a href=""> orgnazation profile </a>
-                    </li>
-                    <li class="submenu-item ">
-                        <a href="">Logout</a>
-                    </li>
-                </ul> --}}
             </li>
-
+            <li class="sidebar-item  has-sub">
+                <a href="#" class='sidebar-link'>
+                    <i class="bi bi-grid-1x2-fill"></i>
+                    <span> Reports </span>
+                </a>
+                <ul class="submenu">
+                    <li class="submenu-item">
+                        <a href="layout-default.html">Client Reports</a>
+                    </li>
+                    <li class="submenu-item">
+                        <a href="layout-vertical-1-column.html">Orders History Reports</a>
+                    </li>
+                </ul>
+            </li>
             {{-- <li class="sidebar-item  has-sub">
                 <a href="#" class='sidebar-link'>
                     <i class="bi bi-collection-fill"></i>
