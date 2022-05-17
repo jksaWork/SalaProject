@@ -26,8 +26,6 @@
                                         <th>Image</th>
                                         <th>Name</th>
                                         <th>Price</th>
-                                        {{-- <th>type</th> --}}
-                                        {{-- <th>stauts</th> --}}
                                         <th>Cards Type</th>
                                         <th>Quantity</th>
                                         <th>Option</th>
@@ -178,6 +176,7 @@
 </div>
 </div>
 </div>
+
 @endsection
 
 

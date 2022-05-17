@@ -14,7 +14,7 @@ class CardProducts extends Controller
      */
     public function index()
     {
-        $PosProducts = PosProducts::paginate(20);
+        $PosProducts = PosProducts::where('client_id', auth()->user()->id)->paginate(20);
         return view('Admin.CardProduct.index', compact('PosProducts'));
     }
 

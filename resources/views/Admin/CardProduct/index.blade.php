@@ -11,6 +11,23 @@
                             <div class="col-6"></div>
                             {{-- <div class="col-2"> --}}
                             {{-- </div> --}}
+
+
+
+                            <form action="{{ route('cardsearch') }}" method="Post">
+                                @csrf
+                                <div>
+                                    <div class="input-group rounded ">
+                                        <input type="search" class="form-control rounded" placeholder="Search" name="search"
+                                            aria-label="Search" aria-describedby="search-addon" />
+                                        <span class="input-group-text border-0" id="search-addon">
+
+                                            <button class="gg-search"></button>
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </form>
                         </div>
                         {{-- // <a href="{{ route('refresh.PosProducts') }}" class="btn btn-sm btn-outline-primary">
                             <svg style="width:20px;height:20px" viewBox="0 0 24 24">
@@ -23,10 +40,10 @@
                             <table class="table align-items-center table-bordered  ">
                                 <thead>
                                     <tr>
-                                        <td>id</td>
-                                        <td>name</td>
-                                        <td> subscription </td>
-                                        <td> application</td>
+
+                                        <td>Name</td>
+                                        <td> Price </td>
+                                        <td> Action</td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -34,17 +51,18 @@
                                         <tr>
 
                                             {{-- <td>{{ $PosProducts->id }}</td> --}}
-                                            <td> <img src="{{ $PosProduct->image }}" widtd="50px" height="50px" alt="">
+
+                                            <td style="text-align: center">{{ $PosProduct->name->ar }}</td>
+                                            <td style="text-align: center">{{ $PosProduct->product_price }}&nbsp;&nbsp;
+                                                {{ $PosProduct->product_currency }}
                                             </td>
-                                            <td>{{ $PosProduct->name->ar }}</td>
-                                            <td>{{ $PosProduct->price }}</td>
                                             {{-- <td>{{ $PosProducts->quantity }}</td> --}}
                                             {{-- <td>{{ $PosProducts->type }}</td>
                                             <td>{{ $PosProducts->status }}</td> --}}
-                                            <td>
+                                            {{-- <td>
                                                 <div class="form-group">
-                                                    <form action="{{-- route('PosProducts.code.store') --}}" method="post">
-                                                        @csrf
+                                                    <form action="route('PosProducts.code.store')" method="post"> --}}
+                                            {{-- @csrf
                                                         <input type='hidden' name="PosProducts_id"
                                                             value="{{ $PosProduct->id }}">
 
@@ -63,7 +81,7 @@
                                                         <option>5</option>
                                                     </select>
                                                 </div>
-                                            </td>
+                                            </td> --}}
                                             <td><button type="button" class="btn btn-primary">Save</button></td>
 
                                         </tr>
@@ -90,10 +108,9 @@
 
                                 </tbody>
                                 <tfoot>
-                                    <td>id</td>
-                                    <td>name</td>
-                                    <td>subscrption</td>
-                                    <td>application</td>
+                                    <td>Name</td>
+                                    <td>Price</td>
+                                    <td>Action</td>
                                 </tfoot>
                             </table>
                         </div>
@@ -108,4 +125,11 @@
     </div>
     </div>
     </div>
+
+    <style>
+        td {
+            text-align: center;
+        }
+
+    </style>
 @endsection

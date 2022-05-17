@@ -48,7 +48,8 @@ Route::prefix('admin')->group(function () {
     Route::resource('client', ClientController::class);
 });
 
-Route::post('Admin.home', [SearchController::class, 'search'])->name('search');
+Route::post('Admin.home', [SearchController::class, 'Salasearch'])->name('search');
+Route::post('Admin.home', [SearchController::class, 'Cardsearch'])->name('cardsearch');
 Route::get('welecome', [GEtTables::class, 'Productscode']);
 Route::post('', [GEtTables::class, 'ProductStore'])->name('product.store');
 
@@ -57,7 +58,7 @@ Route::get('home', function () {
 });
 
 Route::get('salla-product', [SallaProducts::class, 'index'])->name('SallaProduct');
-Route::get('salla-card', [CardProduct::class, 'PosProducts'])->name('Card');
+
 Route::get('notification', function () {
     return view('Admin.notification');
 });
@@ -74,6 +75,7 @@ Route::get('order-history', [OrderController::class, 'OrderHistory'])->name('Ord
 Route::get('login', [AuthController::class,  'getLoginFrom'])->middleware('guest');
 Route::post('login', [AuthController::class,  'login'])->name('login');
 Route::middleware('auth:client')->group(function () {
+    Route::get('salla-card', [CardProducts::class, 'index'])->name('Card');
     Route::get('/', [Dashboard::class, 'index']);
     Route::get('dashboard', [Dashboard::class, 'index'])->name('Dashboard');
 
@@ -93,7 +95,7 @@ Route::middleware('auth:client')->group(function () {
     // Setting Mangment ###################################################
     Route::get('setting', [SettingController::class, 'getSeting'])->name('setting');
     Route::post('saveSetting', [SettingController::class, 'update'])->name('SaveSetting');
-    Route::post('product-search', [SearchController::class, 'search'])->name('search');
+    // Route::post('product-search', [SearchController::class, 'search'])->name('searches');
     Route::get('point-of-sale', [pointOfSaleController::class, 'index']);
     Route::get('get-products', [pointOfSaleController::class, 'Products']);
     Route::get('pay-product',  [pointOfSaleController::class, 'Pay']);
