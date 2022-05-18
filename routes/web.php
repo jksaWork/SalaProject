@@ -18,6 +18,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\pointOfSaleController;
 use App\Http\Controllers\SallaProducts;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\SubscriptionControoller;
 use Illuminate\Support\Facades\Request;
 use Salla\OAuth2\Client\Provider\Salla;
 use App\Http\Controllers\TicketController;
@@ -119,4 +120,6 @@ Route::name('admin.')->prefix('admin')->group(function(){
         Route::post('store-tickt' , [TicketController::class , 'store' ])->name('ticket.store');
         Route::get('show-ticket-message/{id}', [TicketController::class , 'show'])->name('ShowMssages');
         Route::post('store-message/{id}', [TiketMessageController::class , 'store'])->name('store.message');
-});
+        Route::get('subscriptions' , [SubscriptionControoller::class , 'index'])->name('subscription.index');
+
+    });

@@ -26,6 +26,12 @@
                         <span>Client Mangemtn</span>
                     </a>
                 </li>
+                <li class="sidebar-item">
+                    <a href="{{ route('admin.subscription.index') }}" class='sidebar-link'>
+                        <i class="bi bi-credit-card-2-front"></i>
+                        <span>Subscription </span>
+                    </a>
+                </li>
                 @elseAdmin
                 {{-- @dd(auth()->guard('client')->check()) --}}
             <li class="sidebar-item  has-sub">
@@ -89,6 +95,7 @@
                     <span>Setting</span>
                 </a>
             </li>
+            @Admin
             <li class="sidebar-item  has-sub">
                 <a href="#" class='sidebar-link'>
                     <i class="bi bi-grid-1x2-fill"></i>
@@ -103,6 +110,7 @@
                     </li>
                 </ul>
             </li>
+            @endAdmin
             {{-- <li class="sidebar-item  has-sub">
                 <a href="#" class='sidebar-link'>
                     <i class="bi bi-collection-fill"></i>
