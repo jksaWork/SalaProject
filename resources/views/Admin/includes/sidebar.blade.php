@@ -90,7 +90,7 @@
                 </a>
             </li>
             <li class="sidebar-item  ">
-                <a href="{{route('setting')}}" class='sidebar-link'>
+                <a href="{{ route('setting') }}" class='sidebar-link'>
                     <i class="bi bi-gear"></i>
                     <span>Setting</span>
                 </a>

@@ -7,7 +7,9 @@ use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\GEtTables;
 use App\Http\Controllers\CardProduct;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CardProducts;
 use App\Http\Controllers\SallaProduct;
+use App\Http\Controllers\SallaProducts;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RefreshController;
@@ -16,7 +18,6 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\LinkedProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\pointOfSaleController;
-use App\Http\Controllers\SallaProducts;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SubscriptionControoller;
 use Illuminate\Support\Facades\Request;
@@ -44,14 +45,15 @@ Admin Route ______________________________--
 */
 
 Route::prefix('admin')->group(function () {
-    Route::get('' , [Dashboard::class , 'index']);
-    Route::get('dashboard' , [Dashboard::class , 'index'])->name('admin.dashboard');
+    Route::get('', [Dashboard::class, 'index']);
+    Route::get('dashboard', [Dashboard::class, 'index'])->name('admin.dashboard');
 
-    Route::resource('client' , ClientController::class);
-    Route::get('ticket-support' , [TicketController::class , 'index'])->name('admin.technical.support');
+    Route::resource('client', ClientController::class);
+    Route::get('ticket-support', [TicketController::class, 'index'])->name('admin.technical.support');
 });
 
-Route::post('Admin.home', [SearchController::class, 'search'])->name('search');
+Route::post('Admin.home', [SearchController::class, 'Salasearch'])->name('search');
+Route::post('Admin.home', [SearchController::class, 'Cardsearch'])->name('cardsearch');
 Route::get('welecome', [GEtTables::class, 'Productscode']);
 Route::post('', [GEtTables::class, 'ProductStore'])->name('product.store');
 
@@ -60,7 +62,7 @@ Route::get('home', function () {
 });
 
 Route::get('salla-product', [SallaProducts::class, 'index'])->name('SallaProduct');
-Route::get('salla-card', [CardProduct::class, 'PosProducts'])->name('Card');
+
 Route::get('notification', function () {
     return view('Admin.notification');
 });
@@ -73,30 +75,31 @@ Route::get('/webhock', [AuthTokenControoler::class, 'getTokenWithCode']);
 Route::get('/webhock2', [hock2::class, 'hock2']);
 Route::post('/webhock2', [hock2::class, 'hock2']);
 
-Route::get('order-history' , [OrderController::class , 'OrderHistory'])->name('OrderHistory');
+Route::get('order-history', [OrderController::class, 'OrderHistory'])->name('OrderHistory');
 Route::get('login', [AuthController::class,  'getLoginFrom'])->middleware('guest');
 Route::post('login', [AuthController::class,  'login'])->name('login');
 Route::middleware('auth:client')->group(function () {
+    Route::get('salla-card', [CardProducts::class, 'index'])->name('Card');
     Route::get('/', [Dashboard::class, 'index']);
     Route::get('dashboard', [Dashboard::class, 'index'])->name('Dashboard');
 
     // Link Product                         ############################################
-    Route::get('related-product' , [SallaProducts::class , 'selectedProduct'])->name('related.Products');
-    Route::get('delete-related-product/{id}' , [SallaProduct::class , 'DeletedRelatedProduct'])->name('DeletedRelatedProduct');
-    Route::get('link-products' , [LinkedProductController::class, 'LinkProduct'] )->name('link.product');
+    Route::get('related-product', [SallaProducts::class, 'selectedProduct'])->name('related.Products');
+    Route::get('delete-related-product/{id}', [SallaProduct::class, 'DeletedRelatedProduct'])->name('DeletedRelatedProduct');
+    Route::get('link-products', [LinkedProductController::class, 'LinkProduct'])->name('link.product');
 
     // Tickt And Ticknical Support          ########################################
 
-    Route::get('tick-support' , [TicketController::class , 'index'])->name('technical.support');
-    Route::get('create-ticket' , [TicketController::class , 'create'])->name('ticket.create');
-    Route::post('store-tickt' , [TicketController::class , 'store' ])->name('ticket.store');
-    Route::get('show-ticket-message/{id}', [TicketController::class , 'show'])->name('ShowMssages');
-    Route::post('store-message/{id}', [TiketMessageController::class , 'store'])->name('store.message');
+    Route::get('tick-support', [TicketController::class, 'index'])->name('technical.support');
+    Route::get('create-ticket', [TicketController::class, 'create'])->name('ticket.create');
+    Route::post('store-tickt', [TicketController::class, 'store'])->name('ticket.store');
+    Route::get('show-ticket-message/{id}', [TicketController::class, 'show'])->name('ShowMssages');
+    Route::post('store-message/{id}', [TiketMessageController::class, 'store'])->name('store.message');
 
     // Setting Mangment ###################################################
-    Route::get('setting' , [SettingController::class, 'getSeting'])->name('setting');
-    Route::post('saveSetting' , [SettingController::class , 'update'])->name('SaveSetting');
-    Route::post('product-search', [SearchController::class, 'search'])->name('search');
+    Route::get('setting', [SettingController::class, 'getSeting'])->name('setting');
+    Route::post('saveSetting', [SettingController::class, 'update'])->name('SaveSetting');
+    // Route::post('product-search', [SearchController::class, 'search'])->name('searches');
     Route::get('point-of-sale', [pointOfSaleController::class, 'index']);
     Route::get('get-products', [pointOfSaleController::class, 'Products']);
     Route::get('pay-product',  [pointOfSaleController::class, 'Pay']);
@@ -114,12 +117,10 @@ Route::middleware('auth:client')->group(function () {
 });
 
 
-Route::name('admin.')->prefix('admin')->group(function(){
-        Route::get('tick-support' , [TicketController::class , 'index'])->name('technical.support');
-        Route::get('create-ticket' , [TicketController::class , 'create'])->name('ticket.create');
-        Route::post('store-tickt' , [TicketController::class , 'store' ])->name('ticket.store');
-        Route::get('show-ticket-message/{id}', [TicketController::class , 'show'])->name('ShowMssages');
-        Route::post('store-message/{id}', [TiketMessageController::class , 'store'])->name('store.message');
-        Route::get('subscriptions' , [SubscriptionControoller::class , 'index'])->name('subscription.index');
-
-    });
+Route::name('admin.')->prefix('admin')->group(function () {
+    Route::get('tick-support', [TicketController::class, 'index'])->name('technical.support');
+    Route::get('create-ticket', [TicketController::class, 'create'])->name('ticket.create');
+    Route::post('store-tickt', [TicketController::class, 'store'])->name('ticket.store');
+    Route::get('show-ticket-message/{id}', [TicketController::class, 'show'])->name('ShowMssages');
+    Route::post('store-message/{id}', [TiketMessageController::class, 'store'])->name('store.message');
+});

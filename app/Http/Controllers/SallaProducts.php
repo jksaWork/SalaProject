@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\PointOfSaleEqualSalaProduct;
 use App\Models\PosProducts;
 use App\Models\Product;
-use Illuminate\Auth\EloquentUserProvider;
 use Illuminate\Http\Request;
 
 class SallaProducts extends Controller
@@ -22,13 +21,14 @@ class SallaProducts extends Controller
         return view('Admin.SallaProduct.index', compact('Products'));
     }
 
-    public function selectedProduct(){
-        $Products =  PointOfSaleEqualSalaProduct::where('client_id' , auth()->user()->id)->paginate(10);
+    public function selectedProduct()
+    {
+        $Products =  PointOfSaleEqualSalaProduct::where('client_id', auth()->user()->id)->paginate(10);
         $ProductsIds = $Products->pluck('sala_product_id');
         $BotagatyProductsIds = $Products->pluck('botagate_product_code');
-        $SalaProducts = Product::select('product_id', 'name', 'image')->whereIn('product_id' ,$ProductsIds )->get()->keyBy('product_id');
-        $BotagatyProducts = PosProducts::select('product_code', 'name')->whereIn('product_code' ,$BotagatyProductsIds )->get()->keyBy('product_code');
-        foreach($Products as $Product){
+        $SalaProducts = Product::select('product_id', 'name', 'image')->whereIn('product_id', $ProductsIds)->get()->keyBy('product_id');
+        $BotagatyProducts = PosProducts::select('product_code', 'name')->whereIn('product_code', $BotagatyProductsIds)->get()->keyBy('product_code');
+        foreach ($Products as $Product) {
             $Product['sala_product_image'] = $SalaProducts[$Product->sala_product_id]->image ?? 'No Name';
             $Product['sala_product_name'] = $SalaProducts[$Product->sala_product_id]->name ?? 'No Name';
             $Product['botagaty_product_name'] = $BotagatyProducts[$Product->botagate_product_code]->name ?? 'No Name';
@@ -105,8 +105,4 @@ class SallaProducts extends Controller
     {
         //
     }
-
-
-
-
 }
