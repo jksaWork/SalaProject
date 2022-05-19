@@ -47,9 +47,8 @@ Admin Route ______________________________--
 Route::prefix('admin')->group(function () {
     Route::get('', [Dashboard::class, 'index']);
     Route::get('dashboard', [Dashboard::class, 'index'])->name('admin.dashboard');
-
     Route::resource('client', ClientController::class);
-    Route::get('ticket-support', [TicketController::class, 'index'])->name('admin.technical.support');
+    // Route::get('ticket-support', [TicketController::class, 'index'])->name('admin.technical.support');
 });
 
 Route::post('Admin.home', [SearchController::class, 'Salasearch'])->name('search');
