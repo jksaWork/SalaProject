@@ -16,10 +16,12 @@ use App\Http\Controllers\RefreshController;
 use App\Http\Controllers\AuthTokenControoler;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\LinkedProductController;
+use App\Http\Controllers\logout;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\pointOfSaleController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SubscriptionControoller;
+use App\Http\Controllers\TestMiddle;
 use Illuminate\Support\Facades\Request;
 use Salla\OAuth2\Client\Provider\Salla;
 use App\Http\Controllers\TicketController;
@@ -44,6 +46,11 @@ use League\CommonMark\Node\Block\Document;
 Admin Route ______________________________--
 */
 
+Route::middleware(['auth:client', 'subscription'])->get('role', [TestMiddle::class, 'index']);
+
+
+
+
 Route::prefix('admin')->group(function () {
     Route::get('', [Dashboard::class, 'index']);
     Route::get('dashboard', [Dashboard::class, 'index'])->name('admin.dashboard');
@@ -52,8 +59,8 @@ Route::prefix('admin')->group(function () {
     Route::get('ticket-support', [TicketController::class, 'index'])->name('admin.technical.support');
 });
 
-Route::post('Admin.home', [SearchController::class, 'Salasearch'])->name('search');
-Route::post('Admin.home', [SearchController::class, 'Cardsearch'])->name('cardsearch');
+Route::post('Salasearch', [SearchController::class, 'Salasearch'])->name('search');
+Route::post('Cardsearch', [SearchController::class, 'Cardsearch'])->name('cardsearch');
 Route::get('welecome', [GEtTables::class, 'Productscode']);
 Route::post('', [GEtTables::class, 'ProductStore'])->name('product.store');
 
@@ -79,6 +86,7 @@ Route::get('order-history', [OrderController::class, 'OrderHistory'])->name('Ord
 Route::get('login', [AuthController::class,  'getLoginFrom'])->middleware('guest');
 Route::post('login', [AuthController::class,  'login'])->name('login');
 Route::middleware('auth:client')->group(function () {
+    Route::post('logout', [logout::class, 'logout'])->name('logout');
     Route::get('salla-card', [CardProducts::class, 'index'])->name('Card');
     Route::get('/', [Dashboard::class, 'index']);
     Route::get('dashboard', [Dashboard::class, 'index'])->name('Dashboard');
