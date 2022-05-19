@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('Admin/assets/css/bootstrap.css') }}">
-
+    <link href='https://css.gg/search.css' rel='stylesheet'>
     <link rel="stylesheet" href="{{ asset('Admin/assets/vendors/iconly/bold.css') }}">
     <link rel="stylesheet" href="{{ asset('Admin/assets/vendors/perfect-scrollbar/perfect-scrollbar.css') }}">
     <link rel="stylesheet" href="{{ asset('Admin/assets/vendors/bootstrap-icons/bootstrap-icons.css') }}">
@@ -28,7 +28,7 @@
                 </a>
             </header>
             <div class="page-heading">
-                <h3>@yield('BreadCrumbs' , 'Admin Dashboard')</h3>
+                <h3>@yield('BreadCrumbs', 'Admin Dashboard')</h3>
             </div>
             <div class="page-content">
                 @yield('content')
