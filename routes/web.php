@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Request;
 use Salla\OAuth2\Client\Provider\Salla;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\TiketMessageController;
+use App\Models\Subscription;
 use App\Models\TiketMessage;
 use App\Traits\TestInterFace;
 use League\CommonMark\Node\Block\Document;
@@ -54,9 +55,8 @@ Route::middleware(['auth:client', 'subscription'])->get('role', [TestMiddle::cla
 Route::prefix('admin')->group(function () {
     Route::get('', [Dashboard::class, 'index']);
     Route::get('dashboard', [Dashboard::class, 'index'])->name('admin.dashboard');
-
     Route::resource('client', ClientController::class);
-    Route::get('ticket-support', [TicketController::class, 'index'])->name('admin.technical.support');
+    // Route::get('ticket-support', [TicketController::class, 'index'])->name('admin.technical.support');
 });
 
 Route::post('Salasearch', [SearchController::class, 'Salasearch'])->name('search');
@@ -131,4 +131,5 @@ Route::name('admin.')->prefix('admin')->group(function () {
     Route::post('store-tickt', [TicketController::class, 'store'])->name('ticket.store');
     Route::get('show-ticket-message/{id}', [TicketController::class, 'show'])->name('ShowMssages');
     Route::post('store-message/{id}', [TiketMessageController::class, 'store'])->name('store.message');
+    Route::get('subscription' , [SubscriptionControoller::class , 'index'])->name('subscription.index');
 });
