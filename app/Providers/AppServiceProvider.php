@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\OrganizationProfile;
+use Exception;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
@@ -16,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         Paginator::useBootstrap();
+
     }
 
     /**
@@ -25,11 +28,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Blade::directive('Hitem' , function(){
-        //     return 'hello iam hitem ilearn the How To mack Custom Directive';
-        // });
 
-
+        try{
+            $Profile = OrganizationProfile::first();
+            // dd($Profile);
+            view()->share('OrganizationProfile' , $Profile);
+        }catch(Exception $e){
+        }
         Blade::directive('Admin', function () {
             return "<?php if(auth()->guard('web')->check()) { ?>";
         });

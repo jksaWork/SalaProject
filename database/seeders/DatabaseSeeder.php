@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\OrderHistory;
+use App\Models\OrganizationProfile;
 use App\Models\Topic;
 use Illuminate\Database\Seeder;
 
@@ -15,7 +16,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(1)->create([
+        \App\Models\User::create([
+            'name' =>'Test Admin',
             'email' => 'admin@gmail.com',
             'password' =>bcrypt('123456'),
         ]);
@@ -28,5 +30,9 @@ class DatabaseSeeder extends Seeder
             ]
             );
             Topic::create(['topicname'=> 'topic 1']);
+            OrganizationProfile::create([
+                'name' => 'Sall & Point f sala',
+                'logo' => 'logo/logo.svg',
+            ]);
     }
 }

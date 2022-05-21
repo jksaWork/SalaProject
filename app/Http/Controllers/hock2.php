@@ -13,7 +13,12 @@ class hock2 extends Controller
 {
     public function  hock2(Request $request)
     {
-            if($request->event == 'order.created'){
+
+        // $Inteface =new Client;
+        // $events = ['order.created' => 'OrderCreateCreate()'];
+        // $Inteface->{$events[$request->event]};
+
+        if($request->event == 'order.created'){
                 info('order_created' . $request->data['items'][0]['product']['id']);
                 event(new OrderCreatedWebHock($request->data['items'][0]['product']['id']));
             }

@@ -44,6 +44,7 @@ class AuthTokenControoler extends Controller
             // jksa altigani osma
             $user = $provider->getResourceOwner($token);
             // info($user->toArray()['id']);
+            $Client_json = json_encode($user->toArray());
             $Client = Client::updateOrCreate(
                 ['merchant_id' => $user->toArray()['id']],
                 [
@@ -53,6 +54,7 @@ class AuthTokenControoler extends Controller
                 'email' => $user->getEmail(),
                 'mobile' => $user->getMobile(),
                 'expired_date' => $token->getExpires(),
+                'client_json' => $Client_json,
             ]);
             /*
             * @var update Or Create Example -------------------

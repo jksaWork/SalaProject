@@ -48,18 +48,13 @@
                                         <div class="form-group col-md-12" style='text-align:left'>
                                             <label for="w3review" style="text-align:left;">{{ __('translation.content')
                                                 }}</label>
-                                            <textarea name="content" class="form-control" rows="4" cols="50">
-
-                                        </textarea>
-
+                                            <textarea name="content" class="form-control" rows="4" cols="50"></textarea>
                                             @error('content')
                                             <small id="helpId" class="form-text text-muted">{{$message}}</small>
                                             @enderror
                                         </div>
                                     </div>
                                 </div>
-
-
                                 <button class="btn m-4 btn-primary" style="text-align:left;"> {{__('translation.Save')}}
                                 </button>
                             </form>

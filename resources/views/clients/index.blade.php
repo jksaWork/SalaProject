@@ -25,8 +25,9 @@
                                     @forelse ($Clients as $Client)
                                         <tr>
                                             <td>{{$Client->id}}</td>
-                                            <td>{{$Client->name}}</td>
                                             <td>{{$Client->merchant_id}}</td>
+
+                                            <td>{{$Client->name}}</td>
                                             <td>{{$Client->email}}</td>
                                             <td> {{$Client->ExpiredDate2}} </td>
                                             <td>
