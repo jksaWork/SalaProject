@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\Ticket;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -27,6 +28,10 @@ class AdminController extends Controller
         // $data['OrdersHistory']  = OrderHistory::orderBy('id', 'desc')->limit(5)->get();
         $data['chartOne'] =  DB::select("SELECT count(id)  as Data , MONTH(created_at)  as monthename , MONTHNAME(created_at) as label  from clients WHERE created_at > DATE_SUB(now(), INTERVAL 4 MONTH) GROUP BY monthename");
         $data['charttwo'] =  DB::select("SELECT count(id)  as Data , MONTH(created_at)  as monthename , MONTHNAME(created_at) as label  from subscriptions WHERE created_at > DATE_SUB(now(), INTERVAL 4 MONTH) GROUP BY monthename");
+     
+        $data['progressticket'] = Ticket::where('status' , 'inprogress')->count();
+        $data['completeticket'] = Ticket::where('status' , 'copmplated')->count();
+        $data['newticket'] = Ticket::where('status' , 'pending')->count();
         // dd($data['chartOne']);
         return view('Admin.Dashboard.index', $data);
     }
