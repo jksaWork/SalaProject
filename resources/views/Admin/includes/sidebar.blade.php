@@ -14,7 +14,7 @@
     <div class="sidebar-menu">
         <ul class="menu">
             {{-- @dd(auth()->guard('')->check()) --}}
-                @Admin
+            @Admin
                 <li class="sidebar-item">
                     <a href="{{ route('admin.dashboard') }}" class='sidebar-link'>
                         {{-- <i class="fa fa-assistive-listening-systems"></i> --}}
@@ -56,22 +56,22 @@
                 @endcan
                 @elseAdmin
                 {{-- @dd(auth()->guard('client')->check()) --}}
-            <li class="sidebar-item  has-sub">
-                <a href="#" class='sidebar-link'>
-                    <i class="bi bi-calendar2-week"></i>
-                    <span>Product</span>
-                </a>
-                <ul class="submenu">
-                    <li class="submenu-item ">
-                        <a href="{{ route('SallaProduct') }}">salla Product</a>
-                    </li>
-                    <li class="submenu-item">
-                        <a href="{{ route('Card') }}">Card Product</a>
-                    </li>
-                    {{-- <li class="submenu-item">
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-calendar2-week"></i>
+                        <span>Product</span>
+                    </a>
+                    <ul class="submenu">
+                        <li class="submenu-item ">
+                            <a href="{{ route('SallaProduct') }}">salla Product</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="{{ route('Card') }}">Card Product</a>
+                        </li>
+                        {{-- <li class="submenu-item">
                         <a href="{{ route('related.Products') }}">Related Products</a>
                     </li> --}}
-                </ul>
+                    </ul>
 
             <li class="sidebar-item  has-sub">
                 <a href="#" class='sidebar-link'>

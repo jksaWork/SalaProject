@@ -11,7 +11,7 @@
 
 
 
-                            <form action="{{ route('search') }}" method="Post">
+                            <form action="{{ route('search') }}" method="post">
                                 @csrf
                                 <div>
                                     <div class="input-group rounded ">
@@ -146,6 +146,7 @@
                     {{-- {!! $Clients->links() !!} --}}
                 </div>
             </div>
+
         </div>
     </div>
     </div>
