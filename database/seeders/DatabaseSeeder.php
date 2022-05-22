@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\OrderHistory;
 use App\Models\OrganizationProfile;
+use App\Models\Permissions;
 use App\Models\Topic;
 use Illuminate\Database\Seeder;
 
@@ -34,5 +35,17 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Sall & Point f sala',
                 'logo' => 'logo/logo.svg',
             ]);
+
+        $roles = [
+            'client',
+            'users',
+            'subscription',
+            'support',
+            'setting',
+        ];
+        Permissions::create([
+            'user_id' => 1,
+            'roles' => json_encode($roles),
+        ]);
     }
 }

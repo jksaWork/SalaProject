@@ -22,18 +22,38 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
+                @can('client')
                 <li class="sidebar-item">
                     <a href="{{ route('client.index') }}" class='sidebar-link'>
                         <i class="bi bi-person-bounding-box"></i>
                         <span>Client Mangemtn</span>
                     </a>
                 </li>
+                @endcan
+                @can('users')
+                <li class="sidebar-item">
+                    <a href="{{ route('admin.users.index') }}" class='sidebar-link'>
+                        <i class="bi bi-person"></i>
+                        <span>User Mangemtn</span>
+                    </a>
+                </li>
+                @endcan
+                @can('subscription')
                 <li class="sidebar-item">
                     <a href="{{ route('admin.subscription.index') }}" class='sidebar-link'>
                         <i class="bi bi-credit-card-2-front"></i>
-                        <span>Subscription </span>
+                        <span>Subscription</span>
                     </a>
                 </li>
+                @endcan
+                @can('support')
+                <li class="sidebar-item">
+                    <a href="{{route('admin.technical.support')}}" class='sidebar-link'>
+                        <i class="bi bi-chat-dots-fill"></i>
+                        <span>Support Ticket</span>
+                    </a>
+                </li>
+                @endcan
                 @elseAdmin
                 {{-- @dd(auth()->guard('client')->check()) --}}
             <li class="sidebar-item  has-sub">
@@ -78,26 +98,30 @@
                     </li>
                 </ul>
             </li>
-            @endAdmin
             <li class="sidebar-item">
-                <a href="{{ IsClient() ?? auth()->guard('client')->check() ? route('technical.support') : route('admin.technical.support'); }}" class='sidebar-link'>
+                <a href="{{route('technical.support')}}" class='sidebar-link'>
                     <i class="bi bi-chat-dots-fill"></i>
                     <span>Support Ticket</span>
                 </a>
             </li>
+            @endAdmin
             <li class="sidebar-item  has-sub">
                 <a href="#" class='sidebar-link'>
                     <i class="bi bi-gear"></i>
                     <span>Setting</span>
                 </a>
                 <ul class="submenu">
-                    <li class="submenu-item ">
-                        <a href="{{ route('setting') }}">POS Setting </a>
-                    </li>
                     @Admin
+                    @can("setting")
                     <li class="submenu-item">
                         <a href="{{ route('admin.orgnazition.profile') }}">Orgniazation Profile</a>
                     </li>
+                    @endcan
+                    <li class="submenu-item ">
+                        <a href="{{ route('setting') }}">POS Setting </a>
+                    </li>
+                    @elseAdmin
+
                     @endAdmin
                 </ul>
         </ul>

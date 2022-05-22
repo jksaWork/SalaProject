@@ -40,4 +40,25 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    // permissions                       --------------------
+    public function Permission(){
+        return $this->hasOne(Permissions::class);
+    }
+
+    public function hasApilty($permiss){
+
+        $roles = $this->Permission;
+        if (!$roles)
+            return false;
+
+        foreach ($roles->roles as $permission) {
+            if (is_array($permiss) && in_array($permission, $permiss))
+                return true;
+            elseif (is_string($permiss) && $permiss == $permission)
+                return true;
+        }
+        return false;
+    }
 }

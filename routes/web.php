@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Request;
 use Salla\OAuth2\Client\Provider\Salla;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\TiketMessageController;
+use App\Http\Controllers\UserController;
 use App\Models\Subscription;
 use App\Models\TiketMessage;
 use App\Traits\TestInterFace;
@@ -119,13 +120,18 @@ Route::middleware('auth:client')->group(function () {
 });
 
 
-Route::name('admin.')->prefix('admin')->group(function () {
-    Route::get('ticket-support', [TicketController::class, 'index'])->name('technical.support');
-    Route::get('create-ticket', [TicketController::class, 'create'])->name('ticket.create');
-    Route::post('store-ticket', [TicketController::class, 'store'])->name('ticket.store');
-    Route::get('show-ticket-message/{id}', [TicketController::class, 'show'])->name('ShowMssages');
-    Route::post('store-message/{id}', [TiketMessageController::class, 'store'])->name('store.message');
-    Route::get('subscription' , [SubscriptionControoller::class , 'index'])->name('subscription.index');
-    Route::get('orgnization-profile' , [OrgnazationProfile::class , 'get'])->name('orgnazition.profile');
-    Route::post('orgnization-profile' , [OrgnazationProfile::class , 'stroe'])->name('store.orgnazition.profile');
+
+Route::group(['prefix' => LaravelLocalization::setLocale()], function()
+{
+    Route::name('admin.')->prefix('admin')->group(function () {
+        Route::get('ticket-support', [TicketController::class, 'index'])->name('technical.support');
+        Route::get('create-ticket', [TicketController::class, 'create'])->name('ticket.create');
+        Route::post('store-ticket', [TicketController::class, 'store'])->name('ticket.store');
+        Route::get('show-ticket-message/{id}', [TicketController::class, 'show'])->name('ShowMssages');
+        Route::post('store-message/{id}', [TiketMessageController::class, 'store'])->name('store.message');
+        Route::get('subscription' , [SubscriptionControoller::class , 'index'])->name('subscription.index');
+        Route::get('orgnization-profile' , [OrgnazationProfile::class , 'get'])->name('orgnazition.profile');
+        Route::post('orgnization-profile' , [OrgnazationProfile::class , 'stroe'])->name('store.orgnazition.profile');
+        Route::resource('users', UserController::class);
+    });
 });

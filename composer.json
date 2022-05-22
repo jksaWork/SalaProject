@@ -15,6 +15,7 @@
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
         "livewire/livewire": "^2.10",
+        "mcamara/laravel-localization": "^1.7",
         "salla/ouath2-merchant": "^1.4"
     },
     "require-dev": {

@@ -48,13 +48,13 @@ class AuthTokenControoler extends Controller
             $Client = Client::updateOrCreate(
                 ['merchant_id' => $user->toArray()['id']],
                 [
-                'access_token' =>$token->getToken() ,
-                'refresh_token' => $token->getRefreshToken() ,
-                'name' => $user->getName() ,
-                'email' => $user->getEmail(),
-                'mobile' => $user->getMobile(),
-                'expired_date' => $token->getExpires(),
-                'client_json' => $Client_json,
+                    'access_token' =>$token->getToken() ,
+                    'refresh_token' => $token->getRefreshToken() ,
+                    'name' => $user->getName() ,
+                    'email' => $user->getEmail(),
+                    'mobile' => $user->getMobile(),
+                    'expired_date' => $token->getExpires(),
+                    'client_json' => $Client_json,
             ]);
             /*
             * @var update Or Create Example -------------------

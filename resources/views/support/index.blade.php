@@ -1,5 +1,5 @@
 @extends('Admin.app')
-@section('BreadCrumbs', 'Technical Support');
+@section('BreadCrumbs', __("translation.Technical_Support"));
     @section('content')
     <div class="container-fluid py-4">
         <div class="row mt-4">
@@ -7,10 +7,10 @@
                 <div class="card z-index-2 h-100">
                     <div class="card-header pb-0 pt-3 bg-transparent">
                         <div class="d-flex justify-content-between">
-                            <h6 class="text-capitalize col-4"> Tickts Table </h6>
+                            <h6 class="text-capitalize col-4"> {{__('translation.ticket_table')}} </h6>
                             <span><a href="{{ route('ticket.create')}}"
                                     class="btn btn-primary btn-sm" {{-- --}}
-                                    type="button">New Ticket</a></span>
+                                    type="button">{{__('translation.new_ticket')}}</a></span>
                         </div>
                         <div class="table-responsive mt-5">
                             <div class="table-responsive">
@@ -45,7 +45,9 @@
                                         {{--
                                     </tbody> --}}
                                     @empty
-                                    <p>No users</p>
+                                    <tr>
+                                    <td colspan='12'> {{ __('translation.no_titket')}}</td>
+                                    </tr>
                                     @endforelse
                                     </tbody>
                                     <tfoot>
