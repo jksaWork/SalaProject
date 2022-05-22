@@ -13,7 +13,7 @@
                                     <div class="col-md-4">
                                         <i class="bi bi-users"></i>
                                         <div class="stats-icon purple">
-                                            <i class="iconly-boldShow"></i>
+                                            <i class="iconly-boldProfile"></i>
                                         </div>
                                     </div>
                                     <div class="col-md-8">
@@ -30,7 +30,7 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="stats-icon blue">
-                                            <i class="iconly-boldProfile"></i>
+                                            <i class="iconly-boldShield-Fail"></i>
                                         </div>
                                     </div>
                                     <div class="col-md-8">
@@ -47,7 +47,7 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="stats-icon blue">
-                                            <i class="iconly-boldProfile"></i>
+                                            <i class="iconly-boldShield-Done"></i>
                                         </div>
                                     </div>
                                     <div class="col-md-8">
@@ -63,8 +63,8 @@
                             <div class="card-body px-3 py-4-5">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <div class="stats-icon green">
-                                            <i class="iconly-boldAdd-User"></i>
+                                        <div class="stats-icon red">
+                                            <i class="iconly-boldNotification"></i>
                                         </div>
                                     </div>
                                     <div class="col-md-8">
@@ -81,12 +81,30 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="stats-icon red">
+                                            <i class="iconly-boldMessage"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h6 class="text-muted font-semibold">New Ticket</h6>
+                                        <h6 class="font-extrabold mb-0">{{ $newticket }}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body px-3 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="stats-icon blue">
                                             <i class="iconly-boldBookmark"></i>
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <h6 class="text-muted font-semibold">Saved Post</h6>
-                                        <h6 class="font-extrabold mb-0">112</h6>
+                                        <h6 class="text-muted font-semibold">In progress</h6>
+                                        <h6 class="font-extrabold mb-0">{{ $progressticket }}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -97,13 +115,13 @@
                             <div class="card-body px-3 py-4-5">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <div class="stats-icon red">
-                                            <i class="iconly-boldBookmark"></i>
+                                        <div class="stats-icon green">
+                                            <i class="iconly-boldShow"></i>
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <h6 class="text-muted font-semibold">Saved Post</h6>
-                                        <h6 class="font-extrabold mb-0">112</h6>
+                                        <h6 class="text-muted font-semibold">Completed Ticket</h6>
+                                        <h6 class="font-extrabold mb-0">{{ $completeticket }}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -163,7 +181,7 @@
                                             <th>date</th>
                                         </tr>
                                     </thead>
-                                    --}}
+
                                 </table>
                             </div>
                         </div>
@@ -173,23 +191,7 @@
     </div>
     </section>
     </div>
-    <div class="col-6 col-lg-3 col-md-6">
-        <div class="card">
-            <div class="card-body px-3 py-4-5">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="stats-icon red">
-                            <i class="iconly-boldBookmark"></i>
-                        </div>
-                    </div>
-                    <div class="col-md-8">
-                        <h6 class="text-muted font-semibold">Saved Post</h6>
-                        <h6 class="font-extrabold mb-0">112</h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -229,35 +231,34 @@
                 datasets: [{
                 label:"{{ __('translation.subscriptios') }}",
                 backgroundColor: [
-                      'rgb(255 ,145, 73,0.5)',
-                      'rgb(102 ,110, 232,0.5)',
-                      'rgb(40, 208, 148,0.5)' ,
-                        'rgba(253, 73, 97, 0.5)',
+                    'rgb(255 ,145, 73,0.5)',
+                    'rgb(102 ,110, 232,0.5)',
+                    'rgb(40, 208, 148,0.5)',
+                    'rgba(253, 73, 97, 0.5)',
                 ],
-                borderColor:[
-                    'rgb(40, 208, 242 )' ,
+                borderColor: [
+                    'rgb(40, 208, 242 )',
                     'rgba(102, 110, 232)',
                     'rgb(30, 159, 242)',
                     'rgba(253, 73, 97)',
-                ] ,
+                ],
                 data: array.map(item => item.Data),
-                }]
-            };
-                const config2 = {
-                    type: 'bar',
-                    data: CartData2,
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        }
-                    },
-                };
-                const myChart2 = new Chart(
-                document.getElementById('myChart2'),
-                config2
-                );
+            }]
+        };
+        const config2 = {
+            type: 'bar',
+            data: CartData2,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            },
+        };
+        const myChart2 = new Chart(
+            document.getElementById('myChart2'),
+            config2
+        );
     </script>
 @endsection
-
