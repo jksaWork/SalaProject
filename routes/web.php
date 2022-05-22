@@ -3,6 +3,7 @@
 use App\Http\Controllers\hock2;
 use App\Events\getProductFromPOS;
 use App\Events\OrderCreatedWebHock;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\GEtTables;
 use App\Http\Controllers\CardProduct;
@@ -50,8 +51,8 @@ Route::middleware(['auth:client', 'subscription'])->get('role', [TestMiddle::cla
 
 
 Route::prefix('admin')->group(function () {
-    Route::get('', [Dashboard::class, 'index']);
-    Route::get('dashboard', [Dashboard::class, 'index'])->name('admin.dashboard');
+    Route::get('', [AdminController::class, 'index']);
+    Route::get('dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::resource('client', ClientController::class);
     // Route::get('ticket-support', [TicketController::class, 'index'])->name('admin.technical.support');
 });

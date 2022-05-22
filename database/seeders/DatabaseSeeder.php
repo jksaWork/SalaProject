@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+        $this->call(UserSedder::class);
         \App\Models\User::create([
             'name' =>'Test Admin',
             'email' => 'admin@gmail.com',

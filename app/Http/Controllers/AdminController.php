@@ -16,7 +16,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        /****Admin Dashboard */
+        /* Admin Dashboard   */
         $data = [];
         $data['UserCount'] =  Client::count();
         $data['ActivesubscriptionCount'] = Subscription::onlyTrashed()->count();
@@ -25,8 +25,9 @@ class AdminController extends Controller
         $data['AboutExpiredCount'] = Subscription::wheredate('end_date', '>=', now())->wheredate('end_date', '<=', now()->addDays(30))->count();
         $data['ProductOrdered']  = DB::select('SELECT count(product_id) as countt , product_name FROM `order_histories` GROUP BY `product_name` ORDER BY countt DESC');
         // $data['OrdersHistory']  = OrderHistory::orderBy('id', 'desc')->limit(5)->get();
-        $data['chartOne'] =  DB::select('SELECT DAYNAME(created_at) as label , Count(id) as Data FROM `order_histories` where created_at > CURRENT_DATE() -7 and client_id = ? GROUP BY date(created_at)', [auth()->user()->id]);
-
+        $data['chartOne'] =  DB::select("SELECT count(id)  as Data , MONTH(created_at)  as monthename , MONTHNAME(created_at) as label  from clients WHERE created_at > DATE_SUB(now(), INTERVAL 4 MONTH) GROUP BY monthename");
+        $data['charttwo'] =  DB::select("SELECT count(id)  as Data , MONTH(created_at)  as monthename , MONTHNAME(created_at) as label  from subscriptions WHERE created_at > DATE_SUB(now(), INTERVAL 4 MONTH) GROUP BY monthename");
+        // dd($data['chartOne']);
         return view('Admin.Dashboard.index', $data);
     }
 

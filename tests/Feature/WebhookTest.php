@@ -13,7 +13,7 @@ use function PHPUnit\Framework\assertTrue;
 
 class WebhookTest extends TestCase
 {
-    use RefreshDatabase;
+    // use RefreshDatabase;
 
     /**
      * A basic feature test example.
@@ -62,7 +62,8 @@ class WebhookTest extends TestCase
 
 
     public function test_order_create_web_hook_work_successfuly(){
-
+        $res = $this->get('/');
+        $res->assertStatus(302);
     }
 
 }

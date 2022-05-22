@@ -120,6 +120,11 @@
                         <canvas id='chart' width="600" height="400"></canvas>
                     </div>
                 </div>
+                <div class="col-6 ">
+                    <div class="card p-3">
+                        <canvas id='myChart2' width="600" height="400"></canvas>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col-12 col-xl-4">
@@ -199,7 +204,7 @@
         const CartData = {
             labels: labels,
             datasets: [{
-                label: 'orders History',
+                label: "{{ __('translation.clients') }}",
                 backgroundColor: 'rgb(30, 159, 242)',
                 borderColor: 'rgb(30, 159, 242)',
                 data: data.map(item => item.Data),
@@ -215,16 +220,15 @@
             config
         );
         console.log(CartData);
-    </script>
-@endsection
 
-{{-- const  array = @json($charttwo);
+
+ const  array = @json($charttwo);
                 // cahrt tow option -----------------------------------------
                 const labels2 =  array.map(item => item.label);
                 const CartData2 = {
                 labels: labels2,
                 datasets: [{
-                label:'{{__('translation.orders.history')}}',
+                label:"{{ __('translation.clients') }}",
                 backgroundColor: [
                       'rgb(255 ,145, 73,0.5)',
                       'rgb(102 ,110, 232,0.5)',
@@ -254,4 +258,7 @@
                 const myChart2 = new Chart(
                 document.getElementById('myChart2'),
                 config2
-                ); --}}
+                );
+    </script>
+@endsection
+

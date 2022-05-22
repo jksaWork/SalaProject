@@ -2,7 +2,6 @@
 @section('BreadCrumbs', 'Dashboard')
 @section('title', 'Dashboard')
 @section('content')
-
     <div class="page-content">
         <section class="row">
             <div class="col-12 ">

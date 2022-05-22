@@ -12,6 +12,7 @@ class Dashboard extends Controller
 {
     public function index()
     {
+        // select id , month(created_at) as monthename  from clients WHERE created_at > DATE_SUB(now(), INTERVAL 5 MONTH) GROUP BY monthename;
         $data = [];
         $data['SallaCount'] =  Product::count();
         $data['PosCount'] =  PosProducts::count();
@@ -22,5 +23,4 @@ class Dashboard extends Controller
         return view('Admin.Dashbord.index', $data);
     }
 
-    //
 }

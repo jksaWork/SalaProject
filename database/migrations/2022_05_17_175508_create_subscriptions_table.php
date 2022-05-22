@@ -24,6 +24,7 @@ class CreateSubscriptionsTable extends Migration
             $table->string('plan_type')->nullable();
             $table->string('plan_name')->nullable();
             $table->string('plan_period')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
