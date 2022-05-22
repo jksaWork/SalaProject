@@ -13,7 +13,7 @@
         <div id="sidebar" class="active">
             @include('Admin.includes.sidebar')
         </div>
-        <div id="main">
+        <div id="main" class="p-0 px-4">
         @include('Admin.includes.nav')
             <header class="mb-3">
                 <a href="#" class="burger-btn d-block d-xl-none">
