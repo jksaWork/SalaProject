@@ -138,3 +138,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
         Route::resource('users', UserController::class);
     });
 });
+
+
+Route::get('exception' , function(){
+    throw new Exception('jksa altigani omsa');
+});
