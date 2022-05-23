@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Symfony\Component\CssSelector\Node\FunctionNode;
 
-class MailException extends Mailable
+class MailException extends Mailable 
 {
     use Queueable, SerializesModels;
 
@@ -17,12 +17,13 @@ class MailException extends Mailable
      *
      * @return void
      */
-    public $message,$file,$line,$trace;
-    public function __construct($message , $file, $line)
+    public $ex , $user , $id;
+    public function __construct($ex)
     {
-        $this->message = $message;
-        $this->file = $file;
-        $this->line = $line;
+        $this->ex = $ex;
+        info('inside exception' . $ex);
+        $this->user = auth()->user()->name ?? 'anymouse';
+        $this->id = auth()->user()->id ?? 'anymouse id';
     }
 
     /**
@@ -32,7 +33,7 @@ class MailException extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.exception');
-        // ->subject('Salla Exception Occuerd');
+        return $this->view('mail.exception')
+        ->subject('Salla Exception Occuerd');
     }
 }

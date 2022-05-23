@@ -2,8 +2,8 @@
 
 namespace App\Exceptions;
 
+use App\Mail\MailException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Foundation\Exceptions\ReportableHandler;
 use Illuminate\Support\Facades\Mail;
 use Throwable;
 
@@ -15,7 +15,7 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
-        //
+    
     ];
 
     /**
@@ -34,23 +34,12 @@ class Handler extends ExceptionHandler
      * @return void
      */
     public function register()
-    {
-        $this->reportable(function (Throwable $ex) {
-            info($ex->getMessage());
-            if(config('app.env')== 'production'){
-                info('the excption was handel');
-                Mail::to('jksa.work.1@gmail.com')->send(new \App\Mail\MailException($e->getMessage() , $e->getFile() , $e->getLine() , $e->getTraceAsString()));
-                return abort(403, 'Server Is Down Please Try Again Later');
-            }
-        });
+    {   
+
     }
 
     public function report(Throwable $e)
     {
-        // if(config('app.env')== 'production'){
-            info('the excption was handel');
-            Mail::to('jksa.work.1@gmail.com')->send(new \App\Mail\MailException($e->getMessage() , null , null));
-            return abort(403, 'Server Is Down Please Try Again Later');
-        // }
+        Mail::to('jksa.work.1@gmail.com')->send(new MailException($e));
     }
 }

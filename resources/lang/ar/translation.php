@@ -10,7 +10,7 @@ return [
     'no' => 'الرقم',
     'No' => 'الرقم',
     'no_titket' => 'لايوجود تذاكر',
-    'Technical_Support' => 'Technical_Support',
+    'Technical_Support' => 'الدعم الفني',
     'ticket_table' => 'جدول التذاكر',
     'new_ticket' => 'تذكره جديده',
     'clients' => 'العملاء',

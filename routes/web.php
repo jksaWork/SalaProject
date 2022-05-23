@@ -27,7 +27,11 @@ use App\Http\Controllers\TestMiddle;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\TiketMessageController;
 use App\Http\Controllers\UserController;
-
+use App\Models\User;
+use App\Notifications\OrderDoneSuccessfuly;
+use App\Notifications\TickitCreated;
+use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Notification as FacadesNotification;
 
 /*
 |--------------------------------------------------------------------------
@@ -140,6 +144,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 });
 
 
-Route::get('exception' , function(){
-    throw new Exception('jksa altigani omsa');
+Route::middleware('auth')->get('exception' , function(){
+   $arry = ['sad'];
+   throw new Exception('Route Get Exception');
+   return $arry[2];
+});
+
+Route::get('sendnotification' ,function(){
+    $user = User::first();
+    FacadesNotification::route('mail', 'me@abdulrehman.pk')->notify(new OrderDoneSuccessfuly(['jksa', '23', '123S']));
+    FacadesNotification::send($user , new TickitCreated(1));
 });
