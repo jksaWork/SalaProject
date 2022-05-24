@@ -36,6 +36,9 @@
                                 </svg>
                                 update Products
                             </a>
+
+                            <button type="button" class="btn btn-primary btn-sm"> <a class="text-white"
+                                    href="{{ route('Add.product') }}">New Order</a></button>
                         </div>
 
                         <div class="table-responsive mt-5">
@@ -47,7 +50,7 @@
                                         <td> Price </td>
                                         <td> Product Id </td>
                                         <td>Qantity</td>
-                                        <td>Action</td>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -107,7 +110,7 @@
                                             <td>
                                                 {{ $Product->quantity }}
                                             </td>
-                                            <td><button type="button" class="btn btn-primary">Save</button></td>
+
 
                                         </tr>
                                     @empty
@@ -138,7 +141,7 @@
                                     <td> Price </td>
                                     <td> Product Id </td>
                                     <td>Qantity</td>
-                                    <td>Action</td>
+
                                 </tfoot>
                             </table>
                         </div>

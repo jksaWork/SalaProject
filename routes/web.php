@@ -3,6 +3,7 @@
 use App\Http\Controllers\hock2;
 use App\Events\getProductFromPOS;
 use App\Events\OrderCreatedWebHock;
+use App\Http\Controllers\AddProduct;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\GEtTables;
@@ -76,6 +77,13 @@ Route::get('subscription', function () {
     return view('Admin.subscription');
 });
 
+Route::get('', [LinkedProductController::class, 'LinkProduct']);
+
+
+// Route::get('', function () {
+//     return view('Admin.SallaProduct.Add New.Add');
+// })->;
+
 Route::get('/webhock', [AuthTokenControoler::class, 'getTokenWithCode']);
 Route::get('/webhock2', [hock2::class, 'hock2']);
 Route::post('/webhock2', [hock2::class, 'hock2']);
@@ -84,8 +92,9 @@ Route::get('order-history', [OrderController::class, 'OrderHistory'])->name('Ord
 Route::get('login', [AuthController::class,  'getLoginFrom'])->middleware('guest');
 Route::post('login', [AuthController::class,  'login'])->name('login');
 Route::middleware('auth:client')->group(function () {
+    Route::get('Add-products', [AddProduct::class, 'index'])->name('Add.product');
     Route::post('logout', [logout::class, 'logout'])->name('logout');
-    Route::get('salla-card', [CardProducts::class, 'index'])->name('Card');
+    Route::get('botagaty-card', [CardProducts::class, 'index'])->name('Card');
     Route::get('/', [Dashboard::class, 'index']);
     Route::get('dashboard', [Dashboard::class, 'index'])->name('Dashboard');
 
@@ -117,24 +126,23 @@ Route::middleware('auth:client')->group(function () {
     Route::get('getblance', [GEtTables::class, 'getblance']);
     Route::post('GetOneProdectFromPosToSalla', [GEtTables::class, 'GetOneProdectFromPosToSalla'])->name("GetOneProdectFromPosToSalla");
     // Route::get('product-code', [GEtTables::class, 'ProductCode']);
-    // Route::post('product-code', [GEtTables::class, 'ProductCodeStore'])->name('product.code.store');
+    Route::post('product-code', [GEtTables::class, 'ProductCodeStore'])->name('product.code.store');
     Route::get('refresh-product', [RefreshController::class, 'Product'])->name('refresh.product');
     Route::get('refresh-pos-product', [RefreshController::class, 'PosProduct'])->name('refresh.pos.product');
 });
 
 
 
-Route::group(['prefix' => LaravelLocalization::setLocale()], function()
-{
+Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::name('admin.')->prefix('admin')->group(function () {
         Route::get('ticket-support', [TicketController::class, 'index'])->name('technical.support');
         Route::get('create-ticket', [TicketController::class, 'create'])->name('ticket.create');
         Route::post('store-ticket', [TicketController::class, 'store'])->name('ticket.store');
         Route::get('show-ticket-message/{id}', [TicketController::class, 'show'])->name('ShowMssages');
         Route::post('store-message/{id}', [TiketMessageController::class, 'store'])->name('store.message');
-        Route::get('subscription' , [SubscriptionControoller::class , 'index'])->name('subscription.index');
-        Route::get('orgnization-profile' , [OrgnazationProfile::class , 'get'])->name('orgnazition.profile');
-        Route::post('orgnization-profile' , [OrgnazationProfile::class , 'stroe'])->name('store.orgnazition.profile');
+        Route::get('subscription', [SubscriptionControoller::class, 'index'])->name('subscription.index');
+        Route::get('orgnization-profile', [OrgnazationProfile::class, 'get'])->name('orgnazition.profile');
+        Route::post('orgnization-profile', [OrgnazationProfile::class, 'stroe'])->name('store.orgnazition.profile');
         Route::resource('users', UserController::class);
     });
 });
