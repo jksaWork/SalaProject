@@ -26,6 +26,7 @@ class CreateClientsTable extends Migration
             $table->string('pos_email')->nullable();
             $table->string('pos_products_count')->nullable();
             $table->string('expired_date')->nullable();
+            $table->json('client_json')->nullable();
             $table->timestamps();
         });
     }

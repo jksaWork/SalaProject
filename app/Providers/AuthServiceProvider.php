@@ -25,6 +25,10 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        foreach (config('permissions.permissions') as $premission) {
+            Gate::define($premission, function ($auth) use ($premission) {
+                return $auth->hasApilty($premission);
+            });
+        }
     }
 }
