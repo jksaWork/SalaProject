@@ -27,12 +27,13 @@ class AddProduct extends Controller
             $Product['sala_product_image'] = $SalaProducts[$Product->sala_product_id]->image ?? 'No Name';
             $Product['sala_product_name'] = $SalaProducts[$Product->sala_product_id]->name ?? 'No Name';
             $Product['botagaty_product_name'] =  $BotagatyProducts[$Product->botagate_product_code]->name->ar ?? 'No Name';
+            $Product['botagaty_product_code'] =  $BotagatyProducts[$Product->botagate_product_code]->product_code ?? 'No Name';
         }
 
         $BotagatyProducty = PosProducts::select('product_code', 'name')->whereIn('product_code', $Products)->get()->keyBy('product_code');
 
         // dd($Product);
-        return view('admin.sallaproduct.add new.add', compact('Products', 'BotagatyProducty'));
+        return view('admin.sallaproduct.add new.add', compact('Products', 'BotagatyProducty', 'SalaProducts'));
     }
 
 
@@ -70,9 +71,7 @@ class AddProduct extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
-    }
+    { }
 
     /**
      * Store a newly created resource in storage.
@@ -82,8 +81,9 @@ class AddProduct extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return ($request);
     }
+
 
     /**
      * Display the specified resource.

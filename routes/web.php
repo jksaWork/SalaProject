@@ -30,6 +30,7 @@ use App\Http\Controllers\TiketMessageController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
 use App\Notifications\OrderDoneSuccessfuly;
+use App\Notifications\ReplyTicket;
 use App\Notifications\TickitCreated;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Notification as FacadesNotification;
@@ -77,6 +78,13 @@ Route::get('notification', function () {
     return view('Admin.notification');
 });
 
+Route::get('notification', function () {
+    return view('Admin.notification');
+});
+
+
+
+
 Route::get('subscription', function () {
     return view('Admin.subscription');
 });
@@ -97,9 +105,10 @@ Route::get('login', [AuthController::class,  'getLoginFrom'])->middleware('guest
 Route::post('login', [AuthController::class,  'login'])->name('login');
 Route::middleware('auth:client')->group(function () {
     Route::get('Add-products', [AddProduct::class, 'index'])->name('Add.product');
-    Route::post('logout', [logout::class, 'logout'])->name('logout');
+    Route::post('add-order', [AddProduct::class, 'store'])->name('add.order');
+
     Route::get('botagaty-card', [CardProducts::class, 'index'])->name('Card');
-    Route::get('/', [Dashboard::class, 'index']);
+    Route::get('/', [Dashboard::class, 'index'])->name('home');
     Route::get('dashboard', [Dashboard::class, 'index'])->name('Dashboard');
 
     // Link Product                         ############################################
@@ -134,6 +143,7 @@ Route::middleware('auth:client')->group(function () {
     Route::get('refresh-product', [RefreshController::class, 'Product'])->name('refresh.product');
     Route::get('refresh-pos-product', [RefreshController::class, 'PosProduct'])->name('refresh.pos.product');
 });
+Route::post('logout', [logout::class, 'logout'])->name('logout');
 
 
 
@@ -152,14 +162,15 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 });
 
 
-Route::middleware('auth')->get('exception' , function(){
-   $arry = ['sad'];
-   throw new Exception('Route Get Exception');
-   return $arry[2];
+Route::middleware('auth')->get('exception', function () {
+    $arry = ['sad'];
+    throw new Exception('Route Get Exception');
+    return $arry[2];
 });
 
-Route::get('sendnotification' ,function(){
+Route::get('sendnotification', function () {
     $user = User::first();
-    FacadesNotification::route('mail', 'me@abdulrehman.pk')->notify(new OrderDoneSuccessfuly(['jksa', '23', '123S']));
-    FacadesNotification::send($user , new TickitCreated(1));
+    //  FacadesNotification::route('mail', 'me@abdulrehman.pk')->notify(new OrderDoneSuccessfuly(['jksa', '23', '123S']));
+    //FacadesNotification::send($user, new TickitCreated(1));
+    Notification::send($user, new ReplyTicket(1));
 });

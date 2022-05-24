@@ -2,7 +2,7 @@
     <div class="sidebar-header">
         <div class="d-flex justify-content-between">
             <div class="d-flex justify-content-between align-items-center">
-                <a href="index.html"><img src="{{ $OrganizationProfile->logo }}" alt="Logo"
+                <a href="{{ route('home') }}"><img src="{{ $OrganizationProfile->logo }}" alt="Logo"
                         style="width: 50px;height:50px; margin: 0 10pxs"></a>
                 &nbsp;&nbsp;&nbsp;
                 <small style="font-size: 15px">{{ $OrganizationProfile->name }}</small>
@@ -75,7 +75,7 @@
                             <a href="{{ route('SallaProduct') }}">salla Product</a>
                         </li>
                         <li class="submenu-item">
-                            <a href="{{ route('Card') }}">botagaty Proudct</a>
+                            <a href="{{ route('Card') }}">botagaty Card</a>
                         </li>
                         {{-- <li class="submenu-item">
                         <a href="{{ route('related.Products') }}">Related Products</a>

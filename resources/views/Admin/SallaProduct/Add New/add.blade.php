@@ -9,7 +9,7 @@
             <div class="col-lg-12 mb-lg-0 mb-4">
                 <div class="card z-index-2 h-100">
                     <div class="card-header pb-0 pt-3 bg-transparent">
-                        <form action="" method="get">
+                        <form action="{{ route('add.order') }}" method="post">
                             @csrf
                             <div>
                                 <div class="row ">
@@ -17,7 +17,7 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for=""> Sall Product </label>
-                                            <select class="form-control choices " name="" id="sallaProduct"
+                                            <select class="form-control choices " name="SallProduct" id="sallaProduct"
                                                 onchange="SelectChange()">
                                                 @foreach ($Products as $BotagatyProduct)
                                                     <option value="{{ $BotagatyProduct['sala_product_id'] ?? '' }}">
@@ -30,8 +30,8 @@
                                         <div class="form-group">
                                             <div class="form-group">
                                                 <label for="">botagaty</label>
-                                                <input type="text" class="form-control" readonly name="" id="BotagatyId"
-                                                    aria-describedby="helpId" placeholder="">
+                                                <input type="text" class="form-control" readonly name="botagaty"
+                                                    id="BotagatyId" aria-describedby="helpId" placeholder="">
                                                 {{-- <small id="helpId" class="form-text text-muted">Help text</small> --}}
                                             </div>
                                         </div>
@@ -39,21 +39,40 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for=""> Quantity Product </label>
-                                            <input type="number" class="form-control" id="Quantity">
+                                            <input name="quantity" value="quantity" type="number" class="form-control"
+                                                id="Quantity">
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <br>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for=""> Sall Product </label>
 
-                            <br>
-                            <div class="row">
-                                <div>
-                                    <button class="btn btn-primary" onclick="PerformRequestByAjax()">
-                                        buy
-                                    </button>
-                                </div>
-                            </div>
+                                            <select class="form-control choices ">
+                                                @foreach ($Products as $prducts)
+                                                    <option onchange="SelectChange2()" name="botagaty2" id="botagaty2"
+                                                        value="{{ $prducts['product_code'] ?? '' }}" id=" SalaProductId">
+                                                        {{ $prducts->sala_product_id }}</option>
+                                                @endforeach
+                                                {{-- @foreach ($Products as $prducts)
+                                                    <select class="form-control choices type=" text" class="form-control"
+                                                        readonly name="botagaty2" id="botagaty2" aria-describedby="helpId"
+                                                        onchange="">
+                                                        <option value="{{ $prducts['product_code'] ?? '' }}">
+                                                        </option>
+                                                @endforeach --}}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <br>
+
+                                    <br>
+                                    <div class="row">
+                                        <div>
+                                            <button type="submit" class="btn btn-primary" onclick="PerformRequestByAjax()">
+                                                buy
+                                            </button>
+                                        </div>
+                                    </div>
                         </FORM>
 
                     </div>
@@ -78,7 +97,21 @@
             FilterdArray = Products.data.filter((el) => el.sala_product_id == SallaCode);
             console.log(FilterdArray);
             console.log(FilterdArray.botagaty_product_name);
+
             document.getElementById("BotagatyId").value = FilterdArray[0]['botagaty_product_name'];
+            //   document.getElementById("SalaProductId").value = FilterdArray[0]['FilterdArray2.sala_product_id'];
+        }
+        Products2 = @json($prducts);
+        console.log(Products2.data);
+
+        function SelectChange2() {
+
+            sallacode2 = document.getElementById('botagaty2').value;
+            console.log(sallacode2);
+            FilterdArray2 = Products2.data.filter((el) => el.sala_product_id == SallaCode2);
+            console.log(FilterdArray2.sala_product_id);
+            console.log(FilterdArray2);
+            document.getElementById("SalaProductId").value = FilterdArray[3]['FilterdArray2.sala_product_id'];
         }
     </script>
 @endsection

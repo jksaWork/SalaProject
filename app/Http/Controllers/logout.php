@@ -17,6 +17,6 @@ class logout extends Controller
 
         return redirect('/');
 
-        dd('eslam');
+        // dd('eslam');
     }
 }

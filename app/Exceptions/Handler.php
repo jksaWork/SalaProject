@@ -14,9 +14,7 @@ class Handler extends ExceptionHandler
      *
      * @var array
      */
-    protected $dontReport = [
-    
-    ];
+    protected $dontReport = [];
 
     /**
      * A list of the inputs that are never flashed for validation exceptions.
@@ -34,12 +32,12 @@ class Handler extends ExceptionHandler
      * @return void
      */
     public function register()
-    {   
-
-    }
+    { }
 
     public function report(Throwable $e)
     {
-        Mail::to('jksa.work.1@gmail.com')->send(new MailException($e));
+        if (app()->environment('production')) {
+            Mail::to('jksa.work.1@gmail.com')->send(new MailException($e));
+        }
     }
 }
