@@ -16,14 +16,15 @@ class LocalizationTest extends TestCase
      */
     public function test_locacleization_work_good()
     {
-        $this->seed();
+        // $this->seed();
         $text = 'الدعم الفني';
-        $User =\App\Models\User::create([
-            'name' =>'Test Admin',
-            'email' => 'testadmin@gmail.com',
-            'password' =>bcrypt('123456'),
-        ]);
+        $User =\App\Models\User::first();
         $response = $this->actingAs($User, 'web')->get('/admin/ticket-support');
-        $response->assertStatus(500);
+        $response->assertStatus(200);
+        $response->assertSee("Technical_Support"); 
+        app()->setLocale('ar');
+        $response = $this->actingAs($User, 'web')->get('/admin/ticket-support');
+        $response->assertStatus(200);
+        $response->assertSee('الدعم الفني');
     }
 }

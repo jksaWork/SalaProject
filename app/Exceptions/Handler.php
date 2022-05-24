@@ -2,7 +2,10 @@
 
 namespace App\Exceptions;
 
+use App\Mail\MailException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Mail;
+use Throwable;
 
 class Handler extends ExceptionHandler
 {
@@ -12,7 +15,7 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
-        //
+    
     ];
 
     /**
@@ -31,7 +34,12 @@ class Handler extends ExceptionHandler
      * @return void
      */
     public function register()
+    {   
+
+    }
+
+    public function report(Throwable $e)
     {
-        //
+        Mail::to('jksa.work.1@gmail.com')->send(new MailException($e));
     }
 }

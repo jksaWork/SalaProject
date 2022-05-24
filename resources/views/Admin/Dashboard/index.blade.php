@@ -2,10 +2,9 @@
 @section('BreadCrumbs', 'Dashboard')
 @section('title', 'Dashboard')
 @section('content')
-
     <div class="page-content">
         <section class="row">
-            <div class="col-12 ">
+            <div class="col-12">
                 <div class="row">
                     <div class="col-6 col-lg-3 col-md-6">
                         <div class="card">
@@ -225,13 +224,13 @@
         console.log(CartData);
 
 
-        const array = @json($charttwo);
-        // cahrt tow option -----------------------------------------
-        const labels2 = array.map(item => item.label);
-        const CartData2 = {
-            labels: labels2,
-            datasets: [{
-                label: "{{ __('translation.clients') }}",
+ const  array = @json($charttwo);
+                // cahrt tow option -----------------------------------------
+                const labels2 =  array.map(item => item.label);
+                const CartData2 = {
+                labels: labels2,
+                datasets: [{
+                label:"{{ __('translation.subscriptios') }}",
                 backgroundColor: [
                     'rgb(255 ,145, 73,0.5)',
                     'rgb(102 ,110, 232,0.5)',

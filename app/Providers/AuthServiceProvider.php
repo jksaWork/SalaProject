@@ -30,9 +30,5 @@ class AuthServiceProvider extends ServiceProvider
                 return $auth->hasApilty($premission);
             });
         }
-
-        Gate::define('users2', function ($auth) {
-            return $auth->hasApilty('users');
-        });
     }
 }

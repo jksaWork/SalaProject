@@ -1,14 +1,21 @@
 <div class="card" style="border-radius: 0px">
     <div class="card-body p-3">
         <div class="d-flex justify-content-between align-items-center">
-            <div></div>
-            <div class="d-flex align-items-center">
+            <div>
+                <span>
+                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
+                    </svg>
+                </span>
                 <span class="mx-1">
                     <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                         <path fill="currentColor"
                             d="M21,19V20H3V19L5,17V11C5,7.9 7.03,5.17 10,4.29C10,4.19 10,4.1 10,4A2,2 0 0,1 12,2A2,2 0 0,1 14,4C14,4.1 14,4.19 14,4.29C16.97,5.17 19,7.9 19,11V17L21,19M14,21A2,2 0 0,1 12,23A2,2 0 0,1 10,21" />
                     </svg>
                 </span>
+            </div>
+            <div class="d-flex align-items-center">
+
                 <div class="dropdown mx-2">
                     <span style="cursor: pointer" class="dropdown-toggle show" data-bs-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="true">
@@ -17,7 +24,7 @@
                                 d="M12 4C10.08 4 8.5 5.58 8.5 7.5C8.5 8.43 8.88 9.28 9.5 9.91C7.97 10.91 7 12.62 7 14.5C7 17.53 9.47 20 12.5 20C14.26 20 16 19.54 17.5 18.66L16.5 16.93C15.28 17.63 13.9 18 12.5 18C10.56 18 9 16.45 9 14.5C9 12.91 10.06 11.53 11.59 11.12L16.8 9.72L16.28 7.79L11.83 9C11.08 8.9 10.5 8.28 10.5 7.5C10.5 6.66 11.16 6 12 6C12.26 6 12.5 6.07 12.75 6.2L13.75 4.47C13.22 4.16 12.61 4 12 4Z" />
                         </svg>
                     </span>
-                    <div class="dropdown-menu "
+                    <div class="dropdown-menu"
                         style="margin: 0px; position: absolute; inset: 0px auto auto 0px; transform: translate3d(0px, 31px, 0px);"
                         data-popper-placement="bottom-start">
                         @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
