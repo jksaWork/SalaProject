@@ -22,6 +22,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrgnazationProfile;
 use App\Http\Controllers\pointOfSaleController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\SolidPrinciple;
 use App\Http\Controllers\SubscriptionControoller;
 use App\Http\Controllers\TestMiddle;
 use App\Http\Controllers\TicketController;
@@ -92,14 +93,11 @@ Route::middleware('auth:client')->group(function () {
     Route::get('salla-card', [CardProducts::class, 'index'])->name('Card');
     Route::get('/', [Dashboard::class, 'index']);
     Route::get('dashboard', [Dashboard::class, 'index'])->name('Dashboard');
-
     // Link Product                         ############################################
     Route::get('related-product', [SallaProducts::class, 'selectedProduct'])->name('related.Products');
     Route::get('delete-related-product/{id}', [SallaProduct::class, 'DeletedRelatedProduct'])->name('DeletedRelatedProduct');
     Route::get('link-products', [LinkedProductController::class, 'LinkProduct'])->name('link.product');
-
     // Tickt And Ticknical Support          ########################################
-
     Route::get('tick-support', [TicketController::class, 'index'])->name('technical.support');
     Route::get('create-ticket', [TicketController::class, 'create'])->name('ticket.create');
     Route::post('store-tickt', [TicketController::class, 'store'])->name('ticket.store');
@@ -109,19 +107,10 @@ Route::middleware('auth:client')->group(function () {
     // Setting Mangment ###################################################
     Route::get('setting', [SettingController::class, 'getSeting'])->name('setting');
     Route::post('saveSetting', [SettingController::class, 'update'])->name('SaveSetting');
-    // Route::post('product-search', [SearchController::class, 'search'])->name('searches');
     Route::get('point-of-sale', [pointOfSaleController::class, 'index']);
     Route::get('get-products', [pointOfSaleController::class, 'Products']);
-    // Route::get('pay-product',  [pointOfSaleController::class, 'Pay']);
-    // Route::get('get-products-tables', [GEtTables::class, 'products']);
-    // Route::get('get-pos-products-tables', [GEtTables::class, 'PosProducts']);
-    // Route::get('product-print', [GEtTables::class, 'Productprint']);
-    //event(new OrderCreatedWebHock($request->data['items'][0]['product']['id']));
-    // Route::get('GetFirestPFromPos', [GEtTables::class, 'FirestCode']);
     Route::get('getblance', [GEtTables::class, 'getblance']);
     Route::post('GetOneProdectFromPosToSalla', [GEtTables::class, 'GetOneProdectFromPosToSalla'])->name("GetOneProdectFromPosToSalla");
-    // Route::get('product-code', [GEtTables::class, 'ProductCode']);
-    // Route::post('product-code', [GEtTables::class, 'ProductCodeStore'])->name('product.code.store');
     Route::get('refresh-product', [RefreshController::class, 'Product'])->name('refresh.product');
     Route::get('refresh-pos-product', [RefreshController::class, 'PosProduct'])->name('refresh.pos.product');
 });
@@ -155,3 +144,5 @@ Route::get('sendnotification' ,function(){
     FacadesNotification::route('mail', 'me@abdulrehman.pk')->notify(new OrderDoneSuccessfuly(['jksa', '23', '123S']));
     FacadesNotification::send($user , new TickitCreated(1));
 });
+
+Route::get('soild/{class}', [SolidPrinciple::class , 'index']);

@@ -15,12 +15,12 @@ class UserSedder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i <40 ; $i++) {
-            Client::create([
-                'merchant_id' => $i ,
-                'created_at' => \Carbon\Carbon::now()->subDays($i),
-            ]);
-        }
+    //     for ($i=0; $i <40 ; $i++) {
+    //         Client::create([
+    //             'merchant_id' => $i ,
+    //             'created_at' => \Carbon\Carbon::now()->subDays($i),
+    //         ]);
+    //     }
         for ($i=0; $i < 40 ; $i++) {
             Subscription::create([
                 'merchant_id' => $i ,

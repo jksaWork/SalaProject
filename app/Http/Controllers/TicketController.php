@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Ticket;
 use App\Models\Topic;
+use App\Notifications\TickitCreated;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class TicketController extends Controller
 {
@@ -43,13 +45,13 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        Ticket::create([
+        $Titket  = Ticket::create([
             'subject' => $request->subject ,
             'topic_id' => $request->topic_selected,
             'client_id' => auth()->user()->id,
             'status' =>'pending',
         ]);
-        // return $request;
+        Notification::send(auth()->user() ,new TickitCreated($Titket->id));
         return redirect()->route('technical.support');
     }
 

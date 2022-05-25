@@ -1,4 +1,4 @@
-<div class="card" style="border-radius: 0px">
+<div class="card " style="border-radius: 0px">
     <div class="card-body p-3">
         <div class="d-flex justify-content-between align-items-center">
             <div>

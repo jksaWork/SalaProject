@@ -8,9 +8,11 @@
                     <div class="card-header pb-0 pt-3 bg-transparent">
                         <div class="d-flex justify-content-between">
                             <h6 class="text-capitalize col-4"> {{__('translation.ticket_table')}} </h6>
+                            @if (IsClient())
                             <span><a href="{{ route('ticket.create')}}"
-                                    class="btn btn-primary btn-sm" {{-- --}}
-                                    type="button">{{__('translation.new_ticket')}}</a></span>
+                                class="btn btn-primary btn-sm" {{-- --}}
+                                type="button">{{__('translation.new_ticket')}}</a></span>
+                            @endif
                         </div>
                         <div class="table-responsive mt-5">
                             <div class="table-responsive">
@@ -35,7 +37,7 @@
                                             <td>{{($data->Topic->topicname) ?? ' - '}}</td>
                                             {{-- <td>{{($data->clie->name) ?? ' - '}}</td> --}}
                                             <td>{{__('translation.' . $data->status);}}</td>
-                                            <td>{{$data->created_at}}</td>
+                                            <td>{{$data->updated_at}}</td>
                                             <td>
                                                 <a href="{{IsClient() ? route('ShowMssages' , $data->id) : route('admin.ShowMssages' , $data->id)}}" class="btn btn-sm btn-outline-primary">
                                                 View

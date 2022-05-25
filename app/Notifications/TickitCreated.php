@@ -10,13 +10,12 @@ use Illuminate\Notifications\Notification;
 class TickitCreated extends Notification
 {
     use Queueable;
-
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    
+
     public function __construct($id)
     {
         $this->id = $id;

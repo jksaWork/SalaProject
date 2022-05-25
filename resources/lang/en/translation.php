@@ -14,5 +14,10 @@ return [
     'ticket_table' => 'جدول التذاكر',
     'new_ticket' => 'تذكره جديده',
     'clients' => 'العملاء',
-    'subscriptios' => 'الاشتركات'
+    'subscriptios' => 'الاشتركات',
+    'content' => 'المحتوي',
+    'Add Ticket' => 'اضافه تذكره جديد',
+    'save' => 'حفظ',
+    'Save' => 'حفظ',
+    'pending' =>'جديد',
 ];
