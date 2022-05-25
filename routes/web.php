@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\BuyOrderByDashboard;
 use App\Http\Controllers\hock2;
 use App\Events\getProductFromPOS;
 use App\Events\OrderCreatedWebHock;
@@ -27,6 +28,7 @@ use App\Http\Controllers\SubscriptionControoller;
 use App\Http\Controllers\TestMiddle;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\TiketMessageController;
+use App\Http\Controllers\UpdateOrder;
 use App\Http\Controllers\UserController;
 use App\Models\User;
 use App\Notifications\OrderDoneSuccessfuly;
@@ -173,4 +175,8 @@ Route::get('sendnotification', function () {
     //  FacadesNotification::route('mail', 'me@abdulrehman.pk')->notify(new OrderDoneSuccessfuly(['jksa', '23', '123S']));
     //FacadesNotification::send($user, new TickitCreated(1));
     Notification::send($user, new ReplyTicket(1));
+});
+
+Route::get('event', function () {
+    event(new BuyOrderByDashboard('jksa', '22'));
 });

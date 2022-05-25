@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Listeners;
+
 use App\Models\Client;
 use App\Models\OrderHistory;
 use App\Models\PointOfSaleEqualSalaProduct;
@@ -33,44 +35,43 @@ class SalaOrderCreatedListner
         $ProductId = $event->ProductId;
         $Client = Client::find(auth()->user()->name);
         $Token = $Client->access_token;
-        dd($Code ,$ProductId ,$Client , $Token);
+        dd($Code, $ProductId, $Client, $Token);
         $ProductUrl = "https://api.salla.dev/admin/v2/products/{$ProductId}";
         $ProductUrlReponse = Http::withHeaders([
             'Authorization' => 'Bearer ' . $Token,
             'Accept' => 'Application/json',
         ])->get($ProductUrl);
         $Quantity = $ProductUrlReponse->object()->data->quantity;
-        if($Quantity  == 0){
+        if ($Quantity  == 0) {
             $Url = "https://api.salla.dev/admin/v2/products/{$ProductId}/digital-codes";
-        // dd($Url);
-        $posUsername = $Client->pos_email;
-        $secret = $Client->pos_secret;
-        $CountIteration = $Client->pos_products_count;
-        $signature = md5($posUsername . $Code .$secret);
-        // info([$posUsername , $secret , $CountIteration ,$signature ]);
-        info('Be For Pruchess');
-        // PruchesProduct Function Purche The Product And return The Code gat It
-        $SecretNumbers = $this->PruchesProducts($CountIteration ,$posUsername ,$Code, $signature);
-        // info($SecretNumbers);
-        info('affter Pruchess');
-        try {
-            $this->SaveTheOprationInOrderHistory($ProductId , $SecretNumbers);
-        } catch (\Throwable $th) {
-            // Go Jksa Altigani Osman Inline Jksa Altigani
+            // dd($Url);
+            $posUsername = $Client->pos_email;
+            $secret = $Client->pos_secret;
+            $CountIteration = $Client->pos_products_count;
+            $signature = md5($posUsername . $Code . $secret);
+            // info([$posUsername , $secret , $CountIteration ,$signature ]);
+            info('Be For Pruchess');
+            // PruchesProduct Function Purche The Product And return The Code gat It
+            $SecretNumbers = $this->PruchesProducts($CountIteration, $posUsername, $Code, $signature);
+            // info($SecretNumbers);
+            info('affter Pruchess');
+            try {
+                $this->SaveTheOprationInOrderHistory($ProductId, $SecretNumbers);
+            } catch (\Throwable $th) {
+                // Go Jksa Altigani Osman Inline Jksa Altigani
+            }
+            info('------------codes-------------' . date('y-m-d h:i:s'));
+            info($SecretNumbers);
+            info('------------End Codes --------' . date('y-m-d h:i:s'));
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $Token,
+                'Accept' => 'Application/json',
+            ])->post($Url, ['codes' => $SecretNumbers]);
         }
-        info('------------codes-------------' . date('y-m-d h:i:s'));
-        info($SecretNumbers);
-        info('------------End Codes --------' . date('y-m-d h:i:s'));
-        $response = Http::withHeaders([
-            'Authorization' => 'Bearer ' . $Token,
-            'Accept' => 'Application/json',
-        ])->post($Url,['codes' => $SecretNumbers]);
-        }
-
     }
 
 
-     /**
+    /**
      * Show the form for editing the specified resource.
      * @param  CountIteration count of product to purches
      * @param  posUsername To Use In Credianles
@@ -78,11 +79,12 @@ class SalaOrderCreatedListner
      * @param  signature to Approve  Credials
      * @return SecretNumbers witch id prucehs sccuessfly
      */
-    public function PruchesProducts($CountIteration ,$posUsername ,$Code, $signature){
+    public function PruchesProducts($CountIteration, $posUsername, $Code, $signature)
+    {
         $FinalResponse = [];
         $SecretNumbers = [];
-        for ($i=0; $i < $CountIteration ; $i++) {
-            $terminalId =random_int(0 , 10000);
+        for ($i = 0; $i < $CountIteration; $i++) {
+            $terminalId = random_int(0, 10000);
             $trxRefNumber = $terminalId . "" . time();
             // dev https://www.ocstaging.net/webservice/OneCardPOSSystem.wsdl
             // prod https://www.netader.com/webservice/OneCardPOSSystem.wsdl
@@ -93,7 +95,7 @@ class SalaOrderCreatedListner
                 'signature'    => $signature,
                 'terminalId'   => $terminalId,
                 'trxRefNumber' => $trxRefNumber
-                );
+            );
             $myXMLData = $client->__soapCall('POSPurchaseProduct', array($params));
             $FinalResponse[] =  $myXMLData;
             $SecretNumbers[] = $myXMLData->secret;
@@ -103,7 +105,8 @@ class SalaOrderCreatedListner
         return  $SecretNumbers;
     }
 
-    public function SaveTheOprationInOrderHistory($ProductId  , $SecretNumbers){
+    public function SaveTheOprationInOrderHistory($ProductId, $SecretNumbers)
+    {
         OrderHistory::create([
             'product_id' => $ProductId,
             'product_name' => 'product name',

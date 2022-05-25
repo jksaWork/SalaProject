@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\PosProducts;
 use Illuminate\Http\Request;
+use App\Events\BuyOrderByDashboard;
 use App\Models\PointOfSaleEqualSalaProduct;
 
 class AddProduct extends Controller
@@ -33,6 +34,7 @@ class AddProduct extends Controller
         $BotagatyProducty = PosProducts::select('product_code', 'name')->whereIn('product_code', $Products)->get()->keyBy('product_code');
 
         // dd($Product);
+
         return view('admin.sallaproduct.add new.add', compact('Products', 'BotagatyProducty', 'SalaProducts'));
     }
 
@@ -81,7 +83,8 @@ class AddProduct extends Controller
      */
     public function store(Request $request)
     {
-        return ($request);
+
+        event(new BuyOrderByDashboard($request->SallProduct, $request->botagaty, $request->quantity));
     }
 
 
