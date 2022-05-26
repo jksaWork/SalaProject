@@ -36,6 +36,7 @@ use App\Http\Controllers\pointOfSaleController;
 use App\Http\Controllers\TiketMessageController;
 use App\Http\Controllers\LinkedProductController;
 use App\Http\Controllers\SubscriptionControoller;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Notification as FacadesNotification;
 
 /*
@@ -157,3 +158,11 @@ Route::get('low-blance', function () {
 // Route::get('event', function () {
 //     event(new BuyOrderByDashboard('jksa', '22'));
 // });
+Route::get('soild/{class}', [SolidPrinciple::class, 'index']);
+
+Route::middleware('auth:client')->get('/log', function () {
+    throw new Exception('test The Login');
+    Log::channel('userLog')->info('jksa alrifnai');
+    UserLog('conteont', 'log');
+    dd('klsa');
+});

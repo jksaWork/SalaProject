@@ -5,7 +5,7 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Client;
-use App\Notifications\LowBlance;
+use App\Notifications\TickitCreated;
 use App\Notifications\OrderDoneSuccessfuly;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Notification;
@@ -33,19 +33,29 @@ class EmialsNotificationTest extends TestCase
         Notification::assertSentTo($user, \App\Notifications\LowBlance::class);
     }
 
+
     public function test_notification_tikit_create_send_on_tickit_create()
     {
+        $this->withoutExceptionHandling();
         Notification::fake();
         $user = User::first();
         $client = Client::first();
         $data = [
-            'topic_id' => 1,
-            'subject' => 'jksa altigani',
+            'topic_selected' => 1,
+            'subject' => 'jksa altigani subject',
         ];
+
+        $res1 = $this->actingAs($client, 'client')->get(route('ticket.create'));
+        $res1->assertStatus(200);
+
+        $res1->assertSee(__('translation.topic'));
+        $res1->assertSee(__('translation.subject'));
         $res = $this->actingAs($client, 'client')->post(route('ticket.store'), $data);
 
-        // dd($res);
-        // $res->assertRedirect();
-        // $res->assertStatus(200);
+        $res->assertRedirect();
+        Notification::assertSentTo($client, TickitCreated::class);
+        $res3 = $this->actingAs($client, 'client')->get(route('technical.support'));
+        $res3->assertStatus(200);
+        $res3->assertSee('jksa altigani subject');
     }
 }
