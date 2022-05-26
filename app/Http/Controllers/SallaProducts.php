@@ -17,7 +17,7 @@ class SallaProducts extends Controller
     public function index()
     {
         //
-        $Products = Product::all();
+        $Products = Product::paginate(10);
         return view('Admin.SallaProduct.index', compact('Products'));
     }
 

@@ -117,19 +117,18 @@
                                             </td>
                                         </tr>
                                     @endforelse
-
                                     {{-- <td>
-                                    @if ($Product->is_available == 1)
-                                    avalible
-                                    @else
-                                    not available
-                                    @endif
-                                </td> --}}
+                                        @if ($Product->is_available == 1)
+                                            avalible
+                                        @else
+                                            not available
+                                        @endif
+                                    </td> --}}
                                     {{-- </tr>
                                 @empty
-                                <tr>
-                                    <td> jksa altifani</td>
-                                </tr> --}}
+                                    <tr>
+                                        <td> jksa altifani</td>
+                                    </tr> --}}
 
                                 </tbody>
                                 <tfoot>
@@ -138,12 +137,16 @@
                                     <td> Price </td>
                                     <td> Product Id </td>
                                     <td>Qantity</td>
-                                    <td>Action</td>
+
+
                                 </tfoot>
+
+
                             </table>
+                            <div class="text-center d-flex justify-content-center"> {!! $Products->links() !!}</div>
                         </div>
                     </div>
-                    {{-- {!! $Clients->links() !!} --}}
+
                 </div>
             </div>
 

@@ -114,7 +114,7 @@
                                 </tfoot>
                             </table>
                         </div>
-                    </div>
+                    </div class="text-center d-flex justify-content-center">
                     {!! $PosProducts->links() !!}
                 </div>
             </div>

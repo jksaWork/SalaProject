@@ -2,14 +2,15 @@
 
 namespace Tests\Feature;
 
-use App\Models\Client;
-use App\Models\User;
-use App\Notifications\OrderDoneSuccessfuly;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Notifications\Notification as NotificationsNotification;
-use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
+use App\Models\User;
+use App\Models\Client;
+use App\Notifications\LowBlance;
+use App\Notifications\OrderDoneSuccessfuly;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Notifications\Notification as NotificationsNotification;
 
 class EmialsNotificationTest extends TestCase
 {
@@ -20,16 +21,20 @@ class EmialsNotificationTest extends TestCase
      */
     public function test_notifiy_new_tikit_email()
     {
+
+
+
         Notification::fake();
         $user = User::first();
-        $notification = new OrderDoneSuccessfuly(['jksa', '23', '123S']);
+        $notification = new \App\Notifications\LowBlance(2);
         $content = $notification->toMail($user)->render();
-        $this->assertStringContainsString('See The Codes' , $content);
+        $this->assertStringContainsString('your Salla blance is', $content);
         $notification = $user->notify($notification);
-        Notification::assertSentTo($user , OrderDoneSuccessfuly::class);
+        Notification::assertSentTo($user, \App\Notifications\LowBlance::class);
     }
 
-    public function test_notification_tikit_create_send_on_tickit_create(){
+    public function test_notification_tikit_create_send_on_tickit_create()
+    {
         Notification::fake();
         $user = User::first();
         $client = Client::first();

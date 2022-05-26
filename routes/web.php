@@ -1,37 +1,41 @@
 <?php
 
+use App\Models\User;
 use App\Http\Controllers\hock2;
+use App\Http\Controllers\logout;
+use App\Notifications\LowBlance;
 use App\Events\getProductFromPOS;
+use App\Notifications\ReplyTicket;
+use App\Events\BuyOrderByDashboard;
 use App\Events\OrderCreatedWebHock;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\GEtTables;
+use App\Http\Controllers\AddProduct;
+use App\Http\Controllers\TestMiddle;
+use App\Notifications\TickitCreated;
 use App\Http\Controllers\CardProduct;
+use App\Http\Controllers\UpdateOrder;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CardProducts;
 use App\Http\Controllers\SallaProduct;
 use App\Http\Controllers\SallaProducts;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\SearchController;
-use App\Http\Controllers\RefreshController;
-use App\Http\Controllers\AuthTokenControoler;
-use App\Http\Controllers\ClientController;
-use App\Http\Controllers\LinkedProductController;
-use App\Http\Controllers\logout;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\OrgnazationProfile;
-use App\Http\Controllers\pointOfSaleController;
-use App\Http\Controllers\SettingController;
-use App\Http\Controllers\SolidPrinciple;
-use App\Http\Controllers\SubscriptionControoller;
-use App\Http\Controllers\TestMiddle;
-use App\Http\Controllers\TicketController;
-use App\Http\Controllers\TiketMessageController;
 use App\Http\Controllers\UserController;
-use App\Models\User;
-use App\Notifications\OrderDoneSuccessfuly;
-use App\Notifications\TickitCreated;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\TicketController;
 use Illuminate\Notifications\Notification;
+use App\Http\Controllers\RefreshController;
+use App\Http\Controllers\SettingController;
+use App\Notifications\OrderDoneSuccessfuly;
+use App\Http\Controllers\OrgnazationProfile;
+use App\Http\Controllers\AuthTokenControoler;
+use App\Http\Controllers\pointOfSaleController;
+use App\Http\Controllers\TiketMessageController;
+use App\Http\Controllers\LinkedProductController;
+use App\Http\Controllers\SubscriptionControoller;
 use Illuminate\Support\Facades\Notification as FacadesNotification;
 
 /*
@@ -117,32 +121,39 @@ Route::middleware('auth:client')->group(function () {
 
 
 
-Route::group(['prefix' => LaravelLocalization::setLocale()], function()
-{
+Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::name('admin.')->prefix('admin')->group(function () {
         Route::get('ticket-support', [TicketController::class, 'index'])->name('technical.support');
         Route::get('create-ticket', [TicketController::class, 'create'])->name('ticket.create');
         Route::post('store-ticket', [TicketController::class, 'store'])->name('ticket.store');
         Route::get('show-ticket-message/{id}', [TicketController::class, 'show'])->name('ShowMssages');
         Route::post('store-message/{id}', [TiketMessageController::class, 'store'])->name('store.message');
-        Route::get('subscription' , [SubscriptionControoller::class , 'index'])->name('subscription.index');
-        Route::get('orgnization-profile' , [OrgnazationProfile::class , 'get'])->name('orgnazition.profile');
-        Route::post('orgnization-profile' , [OrgnazationProfile::class , 'stroe'])->name('store.orgnazition.profile');
+        Route::get('subscription', [SubscriptionControoller::class, 'index'])->name('subscription.index');
+        Route::get('orgnization-profile', [OrgnazationProfile::class, 'get'])->name('orgnazition.profile');
+        Route::post('orgnization-profile', [OrgnazationProfile::class, 'stroe'])->name('store.orgnazition.profile');
         Route::resource('users', UserController::class);
     });
 });
 
 
-Route::middleware('auth')->get('exception' , function(){
-   $arry = ['sad'];
-   throw new Exception('Route Get Exception');
-   return $arry[2];
+Route::middleware('auth')->get('exception', function () {
+    $arry = ['sad'];
+    throw new Exception('Route Get Exception');
+    return $arry[2];
 });
 
-Route::get('sendnotification' ,function(){
+Route::get('sendnotification', function () {
     $user = User::first();
-    FacadesNotification::route('mail', 'me@abdulrehman.pk')->notify(new OrderDoneSuccessfuly(['jksa', '23', '123S']));
-    FacadesNotification::send($user , new TickitCreated(1));
+    //  FacadesNotification::route('mail', 'me@abdulrehman.pk')->notify(new OrderDoneSuccessfuly(['jksa', '23', '123S']));
+    FacadesNotification::send($user, new TickitCreated(1));
+    Notification::send($user, new ReplyTicket(1));
 });
 
-Route::get('soild/{class}', [SolidPrinciple::class , 'index']);
+Route::get('low-blance', function () {
+    $user = User::first();
+    FacadesNotification::send($user, new LowBlance(2));
+});
+
+// Route::get('event', function () {
+//     event(new BuyOrderByDashboard('jksa', '22'));
+// });
