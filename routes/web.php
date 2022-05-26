@@ -32,6 +32,7 @@ use App\Models\User;
 use App\Notifications\OrderDoneSuccessfuly;
 use App\Notifications\TickitCreated;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Notification as FacadesNotification;
 
 /*
@@ -146,3 +147,10 @@ Route::get('sendnotification' ,function(){
 });
 
 Route::get('soild/{class}', [SolidPrinciple::class , 'index']);
+
+Route::middleware('auth:client')->get('/log' , function(){
+    throw new Exception('test The Login');
+    Log::channel('userLog')->info('jksa alrifnai');
+    UserLog('conteont' , 'log');
+    dd('klsa');
+});

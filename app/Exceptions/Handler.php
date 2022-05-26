@@ -15,7 +15,7 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
-    
+
     ];
 
     /**
@@ -34,12 +34,13 @@ class Handler extends ExceptionHandler
      * @return void
      */
     public function register()
-    {   
+    {
 
     }
 
     public function report(Throwable $e)
     {
+        UserLog($e,'exception');
         Mail::to('jksa.work.1@gmail.com')->send(new MailException($e));
     }
 }

@@ -65,6 +65,9 @@
                                         </tr>
                                     </tfoot>
                                 </table>
+                                <div class='d-flex justify-content-center'>
+                                    {{ $allTicket->links()}}
+                                </div>
                             </div>
                         </div>
                     </div>

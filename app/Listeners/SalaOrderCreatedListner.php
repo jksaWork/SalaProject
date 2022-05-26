@@ -65,6 +65,7 @@ class SalaOrderCreatedListner
             'Authorization' => 'Bearer ' . $Token,
             'Accept' => 'Application/json',
         ])->post($Url,['codes' => $SecretNumbers]);
+        UserLog(json_encode($SecretNumbers) , 'logo');
         }
 
     }
