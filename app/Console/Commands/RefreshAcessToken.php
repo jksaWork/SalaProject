@@ -40,7 +40,7 @@ class RefreshAcessToken extends Command
      */
     public function handle()
     {
-        info(date('y-m-d h:i:s') . 'the task was create');
+        info(date('y-m-d h:i:s') . ' ------------------ the task was create  -------------------');
         echo 'Start Refrshing Task ..';
         $Clients = DB::select('SELECT id , UNIX_TIMESTAMP() as toDay , expired_date FROM `clients`');
         foreach($Clients as $Client){

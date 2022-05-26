@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Client;
 use App\Models\User;
 use App\Notifications\OrderDoneSuccessfuly;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -26,5 +27,20 @@ class EmialsNotificationTest extends TestCase
         $this->assertStringContainsString('See The Codes' , $content);
         $notification = $user->notify($notification);
         Notification::assertSentTo($user , OrderDoneSuccessfuly::class);
+    }
+
+    public function test_notification_tikit_create_send_on_tickit_create(){
+        Notification::fake();
+        $user = User::first();
+        $client = Client::first();
+        $data = [
+            'topic_id' => 1,
+            'subject' => 'jksa altigani',
+        ];
+        $res = $this->actingAs($client, 'client')->post(route('ticket.store'), $data);
+
+        // dd($res);
+        // $res->assertRedirect();
+        // $res->assertStatus(200);
     }
 }
