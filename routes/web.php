@@ -25,6 +25,7 @@ use App\Http\Controllers\OrgnazationProfile;
 use App\Http\Controllers\pointOfSaleController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SubscriptionControoller;
+<<<<<<< Updated upstream
 use App\Http\Controllers\TestMiddle;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\TiketMessageController;
@@ -35,6 +36,8 @@ use App\Notifications\OrderDoneSuccessfuly;
 use App\Notifications\ReplyTicket;
 use App\Notifications\TickitCreated;
 use Illuminate\Notifications\Notification;
+=======
+>>>>>>> Stashed changes
 use Illuminate\Support\Facades\Notification as FacadesNotification;
 
 /*
@@ -48,6 +51,14 @@ use Illuminate\Support\Facades\Notification as FacadesNotification;
 |
 */
 
+
+Route::get('test', function () {
+    return view('admin.faq.index');
+});
+
+Route::get('FAQ', function () {
+    return view('admin.faq.adminfaq');
+});
 
 /*
 Admin Route ______________________________--
@@ -177,6 +188,20 @@ Route::get('sendnotification', function () {
     Notification::send($user, new ReplyTicket(1));
 });
 
+<<<<<<< Updated upstream
 Route::get('event', function () {
     event(new BuyOrderByDashboard('jksa', '22'));
 });
+=======
+Route::get('low-blance', function () {
+    $user = User::first();
+    FacadesNotification::send($user, new LowBlance(2));
+});
+
+
+
+
+// Route::get('event', function () {
+//     event(new BuyOrderByDashboard('jksa', '22'));
+// });
+>>>>>>> Stashed changes

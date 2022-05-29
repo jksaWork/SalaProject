@@ -89,8 +89,13 @@
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item ">
-                            <a href="{{ route('Add.product') }}">New Order</a>
+                            <a href="{{ route('Add.product') }}">
+                                <i class="bi bi-cart-dash"></i>&nbsp;
+                                <span> New Order</span></a>
+
+
                         </li>
+
                         <li class="submenu-item ">
                             <a href="{{ route('OrderHistory') }}">Orders History</a>
                         </li>
