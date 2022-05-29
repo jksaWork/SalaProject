@@ -2,11 +2,11 @@
 
 namespace App\Exceptions;
 
-use Throwable;
 use App\Mail\MailException;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Throwable;
 
 class Handler extends ExceptionHandler
 {
@@ -33,17 +33,13 @@ class Handler extends ExceptionHandler
      * @return void
      */
     public function register()
-    { }
+    {}
 
     public function report(Throwable $e)
     {
-<<<<<<< Updated upstream
-        if (app()->environment('production')) {
-=======
 
         if (App::environment('production')) {
             UserLog($e, 'exception');
->>>>>>> Stashed changes
             Mail::to('jksa.work.1@gmail.com')->send(new MailException($e));
         }
     }

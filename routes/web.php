@@ -1,44 +1,27 @@
 <?php
 
-use App\Events\BuyOrderByDashboard;
-use App\Http\Controllers\hock2;
-use App\Events\getProductFromPOS;
-use App\Events\OrderCreatedWebHock;
 use App\Http\Controllers\AddProduct;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AuthTokenControoler;
+use App\Http\Controllers\CardProducts;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\GEtTables;
-use App\Http\Controllers\CardProduct;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CardProducts;
-use App\Http\Controllers\SallaProduct;
-use App\Http\Controllers\SallaProducts;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\SearchController;
-use App\Http\Controllers\RefreshController;
-use App\Http\Controllers\AuthTokenControoler;
-use App\Http\Controllers\ClientController;
+use App\Http\Controllers\hock2;
 use App\Http\Controllers\LinkedProductController;
 use App\Http\Controllers\logout;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrgnazationProfile;
 use App\Http\Controllers\pointOfSaleController;
+use App\Http\Controllers\RefreshController;
+use App\Http\Controllers\SallaProduct;
+use App\Http\Controllers\SallaProducts;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SubscriptionControoller;
-<<<<<<< Updated upstream
-use App\Http\Controllers\TestMiddle;
-use App\Http\Controllers\TicketController;
-use App\Http\Controllers\TiketMessageController;
-use App\Http\Controllers\UpdateOrder;
-use App\Http\Controllers\UserController;
-use App\Models\User;
-use App\Notifications\OrderDoneSuccessfuly;
-use App\Notifications\ReplyTicket;
-use App\Notifications\TickitCreated;
-use Illuminate\Notifications\Notification;
-=======
->>>>>>> Stashed changes
 use Illuminate\Support\Facades\Notification as FacadesNotification;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,8 +32,7 @@ use Illuminate\Support\Facades\Notification as FacadesNotification;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
-
+ */
 
 Route::get('test', function () {
     return view('admin.faq.index');
@@ -62,12 +44,9 @@ Route::get('FAQ', function () {
 
 /*
 Admin Route ______________________________--
-*/
+ */
 
 Route::middleware(['auth:client', 'subscription'])->get('role', [TestMiddle::class, 'index']);
-
-
-
 
 Route::prefix('admin')->group(function () {
     Route::get('', [AdminController::class, 'index']);
@@ -95,15 +74,11 @@ Route::get('notification', function () {
     return view('Admin.notification');
 });
 
-
-
-
 Route::get('subscription', function () {
     return view('Admin.subscription');
 });
 
 Route::get('', [LinkedProductController::class, 'LinkProduct']);
-
 
 // Route::get('', function () {
 //     return view('Admin.SallaProduct.Add New.Add');
@@ -114,8 +89,8 @@ Route::get('/webhock2', [hock2::class, 'hock2']);
 Route::post('/webhock2', [hock2::class, 'hock2']);
 
 Route::get('order-history', [OrderController::class, 'OrderHistory'])->name('OrderHistory');
-Route::get('login', [AuthController::class,  'getLoginFrom'])->middleware('guest');
-Route::post('login', [AuthController::class,  'login'])->name('login');
+Route::get('login', [AuthController::class, 'getLoginFrom'])->middleware('guest');
+Route::post('login', [AuthController::class, 'login'])->name('login');
 Route::middleware('auth:client')->group(function () {
     Route::get('Add-products', [AddProduct::class, 'index'])->name('Add.product');
     Route::post('add-order', [AddProduct::class, 'store'])->name('add.order');
@@ -158,8 +133,6 @@ Route::middleware('auth:client')->group(function () {
 });
 Route::post('logout', [logout::class, 'logout'])->name('logout');
 
-
-
 Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::name('admin.')->prefix('admin')->group(function () {
         Route::get('ticket-support', [TicketController::class, 'index'])->name('technical.support');
@@ -174,7 +147,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     });
 });
 
-
 Route::middleware('auth')->get('exception', function () {
     $arry = ['sad'];
     throw new Exception('Route Get Exception');
@@ -188,20 +160,11 @@ Route::get('sendnotification', function () {
     Notification::send($user, new ReplyTicket(1));
 });
 
-<<<<<<< Updated upstream
-Route::get('event', function () {
-    event(new BuyOrderByDashboard('jksa', '22'));
-});
-=======
 Route::get('low-blance', function () {
     $user = User::first();
     FacadesNotification::send($user, new LowBlance(2));
 });
 
-
-
-
 // Route::get('event', function () {
 //     event(new BuyOrderByDashboard('jksa', '22'));
 // });
->>>>>>> Stashed changes
