@@ -5,7 +5,7 @@
 
 </style>
 
-<div class="footer clearfix mb-0 text-muted ">
+<div class="footer1 clearfix mb-0 text-muted ">
     <div class="float-start">
         <p>2021 &copy; MSC</p>
     </div>
@@ -14,3 +14,13 @@
                 href="https://themsc.net">The . MSC</a></p>
     </div>
 </div>
+<style>
+    #footer1 {
+        position: absolute;
+        bottom: 0;
+        width: 80%;
+        height: 60px;
+
+    }
+
+</style>

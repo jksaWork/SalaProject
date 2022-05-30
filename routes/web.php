@@ -1,27 +1,30 @@
 <?php
 
-use App\Http\Controllers\AddProduct;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\AuthTokenControoler;
-use App\Http\Controllers\CardProducts;
-use App\Http\Controllers\ClientController;
+use App\Http\Controllers\hock2;
+use App\Http\Controllers\logout;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\GEtTables;
-use App\Http\Controllers\hock2;
-use App\Http\Controllers\LinkedProductController;
-use App\Http\Controllers\logout;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\OrgnazationProfile;
-use App\Http\Controllers\pointOfSaleController;
-use App\Http\Controllers\RefreshController;
+use App\Http\Controllers\AddProduct;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CardProducts;
 use App\Http\Controllers\SallaProduct;
 use App\Http\Controllers\SallaProducts;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\RefreshController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\OrgnazationProfile;
+use App\Http\Controllers\AuthTokenControoler;
+use App\Models\FrequentlyAskedQuestionsTable;
+use App\Http\Controllers\pointOfSaleController;
+use App\Http\Controllers\LinkedProductController;
 use App\Http\Controllers\SubscriptionControoller;
+use App\Http\Controllers\FrequentlyAskedQuestions;
+use App\Http\Controllers\FrequentlyAskedQuestionsTableController;
 use Illuminate\Support\Facades\Notification as FacadesNotification;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,9 +41,10 @@ Route::get('test', function () {
     return view('admin.faq.index');
 });
 
-Route::get('FAQ', function () {
-    return view('admin.faq.adminfaq');
-});
+
+
+
+Route::resource('FAQ', FrequentlyAskedQuestions::class);
 
 /*
 Admin Route ______________________________--
