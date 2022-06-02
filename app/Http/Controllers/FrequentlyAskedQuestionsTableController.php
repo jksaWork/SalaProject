@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\FrequentlyAskedQuestion;
 use App\Models\FrequentlyAskedQuestionsTable;
+use Illuminate\Support\Facades\DB;
 
 class FrequentlyAskedQuestionsTableController extends Controller
 {
@@ -14,7 +15,10 @@ class FrequentlyAskedQuestionsTableController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { }
+    {
+        $faq = DB::table('_f_a_q')->paginate(5);
+        return view('Admin.FAQ.index', compact('faq'));
+    }
 
     /**
      * Show the form for creating a new resource.

@@ -6,6 +6,7 @@ use SoftDeletes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\FrequentlyAskedQuestion;
+use phpDocumentor\Reflection\DocBlock\Tags\Return_;
 
 class FrequentlyAskedQuestions extends Controller
 {
@@ -15,11 +16,15 @@ class FrequentlyAskedQuestions extends Controller
      * @return \Illuminate\Http\Response
      */
 
+
     public function index()
     {
         $questions = DB::table('_f_a_q')->paginate(5);
+        // this->$modal = $modal;
         return view('admin.faq.AdminFAQ', compact('questions'));
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -39,6 +44,7 @@ class FrequentlyAskedQuestions extends Controller
 
     public function store(Request $request)
     {
+        // dd($request);
         FrequentlyAskedQuestion::create([
             'id' => $request->id,
             'question' => $request->question,
@@ -65,9 +71,7 @@ class FrequentlyAskedQuestions extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
-    }
+    { }
 
     /**
      * Update the specified resource in storage.
@@ -78,7 +82,11 @@ class FrequentlyAskedQuestions extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // return $request;
+
+        $fq = FrequentlyAskedQuestion::find($id);
+        $fq->update(['question' => $request->question, 'answer' => $request->answer]);
+        return redirect()->back();
     }
 
     /**
