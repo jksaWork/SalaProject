@@ -35,7 +35,7 @@
                                     </thead>
                                     {{-- @dd('jksa') --}}
                                     <tbody>
-                                        <<<<<<< HEAD @forelse ($allTicket as $i => $data)
+                                        @forelse ($allTicket as $i => $data)
                                             <tr>
                                                 <td>{{ $i + 1 }}</td>
                                                 <td>{{ $data->subject }}</td>
@@ -55,33 +55,33 @@
                                             <tr>
                                                 <td colspan='12'> {{ __('translation.no_titket') }}</td>
                                             </tr>
-                                            @endforelse
-                                            =======
-                                            @forelse ($allTicket as $i => $data)
-                                                <tr>
-                                                    <td>{{ $i + 1 }}</td>
-                                                    <td>{{ $data->subject }}</td>
-                                                    <td>{{ $data->Topic->topicname ?? ' - ' }}</td>
-                                                    {{-- <td>{{($data->clie->name) ?? ' - '}}</td> --}}
-                                                    <td>{{ __('translation.' . $data->status) }}</td>
-                                                    <td>{{ $data->created_at }}</td>
-                                                    <td>
-                                                        <a href="{{ IsClient() ? route('ShowMssages', $data->id) : route('admin.ShowMssages', $data->id) }}"
-                                                            class="btn btn-sm btn-outline-primary">
-                                                            View
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                {{-- </tbody> --}}
-                                            @empty
-                                                <tr>
-                                                    <td colspan='12'> {{ __('translation.no_titket') }}</td>
-                                                </tr>
-                                            @endforelse
-                                            >>>>>>> Eslam
+                                        @endforelse
+
+                                        @forelse ($allTicket as $i => $data)
+                                            <tr>
+                                                <td>{{ $i + 1 }}</td>
+                                                <td>{{ $data->subject }}</td>
+                                                <td>{{ $data->Topic->topicname ?? ' - ' }}</td>
+                                                {{-- <td>{{($data->clie->name) ?? ' - '}}</td> --}}
+                                                <td>{{ __('translation.' . $data->status) }}</td>
+                                                <td>{{ $data->created_at }}</td>
+                                                <td>
+                                                    <a href="{{ IsClient() ? route('ShowMssages', $data->id) : route('admin.ShowMssages', $data->id) }}"
+                                                        class="btn btn-sm btn-outline-primary">
+                                                        View
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            {{-- </tbody> --}}
+                                        @empty
+                                            {{-- <tr>
+                                                <td colspan='12'> {{ __('translation.no_titket') }}</td>
+                                            </tr> --}}
+                                        @endforelse
+
                                     </tbody>
                                     <tfoot>
-                                        <tr>
+                                        <tr class="text-center">
                                             <th>{{ __('translation.No') }}</th>
                                             <th>{{ __('translation.subject') }}</th>
                                             <th>{{ __('translation.topic') }}</th>

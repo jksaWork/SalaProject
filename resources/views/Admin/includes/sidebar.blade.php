@@ -89,17 +89,17 @@
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item ">
-                            <<<<<<< HEAD <a href="{{ route('Add.product') }}">New Order</a>
+                            <a href="{{ route('Add.product') }}">
+                                <i class="bi bi-cart-dash"></i>&nbsp;
+                                <span> New Order</span></a>
                         </li>
-                        =======
-                        <a href="{{ route('Add.product') }}">
-                            <i class="bi bi-cart-dash"></i>&nbsp;
-                            <span> New Order</span></a>
+
+
 
 
                 </li>
 
-                >>>>>>> Eslam
+
                 <li class="submenu-item ">
                     <a href="{{ route('OrderHistory') }}">Orders History</a>
                 </li>
@@ -112,21 +112,15 @@
                     <span>linked Product</span>
                 </a>
                 <ul class="submenu">
-                    <<<<<<< HEAD <li class="submenu-item ">
+
+                    <li class="submenu-item ">
+                        <a href="{{ route('related.Products') }}">Show Linked Product</a>
+                    </li>
+                    <li class="submenu-item ">
                         <a href="{{ route('link.product') }}">Link Product</a>
-            </li>
-            <li class="submenu-item ">
-                <a href="{{ route('related.Products') }}">Show Linked Product</a>
-            </li>
-            =======
-            <li class="submenu-item ">
-                <a href="{{ route('related.Products') }}">Show Linked Product</a>
-            </li>
-            <li class="submenu-item ">
-                <a href="{{ route('link.product') }}">Link Product</a>
-            </li>
-            >>>>>>> Eslam
-            </ul>
+                    </li>
+
+                </ul>
             </li>
             <li class="sidebar-item">
                 <a href="{{ route('technical.support') }}" class='sidebar-link'>
