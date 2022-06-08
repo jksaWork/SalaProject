@@ -1,5 +1,5 @@
 @extends('Admin.app')
-@section('BreadCrumbs', 'Card Proudct')
+@section('BreadCrumbs', 'botagaty Card')
 @section('content')
     <div class="container-fluid py-4">
         <div class="row mt-4">
@@ -7,7 +7,7 @@
                 <div class="card z-index-2 h-100">
                     <div class="card-header pb-0 pt-3 bg-transparent">
                         <div class="d-flex justify-content-between">
-                            <h6 class="text-capitalize col-4"> Proudct</h6>
+                            <h6 class="text-capitalize col-4"> botagaty Card</h6>
                             <div class="col-6"></div>
                             {{-- <div class="col-2"> --}}
                             {{-- </div> --}}
@@ -43,7 +43,7 @@
 
                                         <td>Name</td>
                                         <td> Price </td>
-                                        <td> Action</td>
+                                        <td> Card code</td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -82,7 +82,7 @@
                                                     </select>
                                                 </div>
                                             </td> --}}
-                                            <td><button type="button" class="btn btn-primary">Save</button></td>
+                                            <td>{{ $PosProduct->product_code }}</td>
 
                                         </tr>
                                     @empty
@@ -110,7 +110,7 @@
                                 <tfoot>
                                     <td>Name</td>
                                     <td>Price</td>
-                                    <td>Action</td>
+                                    <td>Card Number</td>
                                 </tfoot>
                             </table>
                         </div>

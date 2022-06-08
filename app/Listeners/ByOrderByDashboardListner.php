@@ -37,6 +37,8 @@ class ByOrderByDashboardListner
             'Authorization' => 'Bearer ' . $Token,
             'Accept' => 'Application/json',
         ])->get($ProductUrl);
+        $quantity = $ProductUrlReponse->object()->data->quantity;
+
         $Url = "https://api.salla.dev/admin/v2/products/{$ProductId}/digital-codes"; //updated Oroduct 
         // dd($Url);
         $posUsername = $Client->pos_email;

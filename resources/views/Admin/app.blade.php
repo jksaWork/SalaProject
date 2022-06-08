@@ -1,8 +1,7 @@
-<html lang="en" dir="{{app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
+<html lang="en" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title> @yield('title') - Mazer Admin Dashboard</title>
     @include('Admin.includes.styles')
 </head>
@@ -32,4 +31,5 @@
         </div>
         @include('Admin.includes.scripts')
 </body>
+
 </html>

@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function OrderHistory(){
+    public function OrderHistory()
+    {
         $Orders = OrderHistory::paginate(10);
         return view('orders.history', compact('Orders'));
     }

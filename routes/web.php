@@ -12,9 +12,6 @@ use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\GEtTables;
 use App\Http\Controllers\AddProduct;
 use App\Http\Controllers\TestMiddle;
-use App\Notifications\TickitCreated;
-use App\Http\Controllers\CardProduct;
-use App\Http\Controllers\UpdateOrder;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CardProducts;
 use App\Http\Controllers\SallaProduct;
@@ -26,17 +23,17 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TicketController;
-use Illuminate\Notifications\Notification;
 use App\Http\Controllers\RefreshController;
 use App\Http\Controllers\SettingController;
-use App\Notifications\OrderDoneSuccessfuly;
 use App\Http\Controllers\OrgnazationProfile;
 use App\Http\Controllers\AuthTokenControoler;
+use App\Models\FrequentlyAskedQuestionsTable;
 use App\Http\Controllers\pointOfSaleController;
 use App\Http\Controllers\TiketMessageController;
 use App\Http\Controllers\LinkedProductController;
 use App\Http\Controllers\SubscriptionControoller;
-use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\FrequentlyAskedQuestions;
+use App\Http\Controllers\FrequentlyAskedQuestionsTableController;
 use Illuminate\Support\Facades\Notification as FacadesNotification;
 
 /*
@@ -48,17 +45,20 @@ use Illuminate\Support\Facades\Notification as FacadesNotification;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
+Route::resource('FAQ2', FrequentlyAskedQuestionsTableController::class);
+
+
+
+
+Route::resource('FAQ', FrequentlyAskedQuestions::class);
 
 /*
 Admin Route ______________________________--
-*/
+ */
 
 Route::middleware(['auth:client', 'subscription'])->get('role', [TestMiddle::class, 'index']);
-
-
-
 
 Route::prefix('admin')->group(function () {
     Route::get('', [AdminController::class, 'index']);
@@ -82,21 +82,33 @@ Route::get('notification', function () {
     return view('Admin.notification');
 });
 
+Route::get('notification', function () {
+    return view('Admin.notification');
+});
+
 Route::get('subscription', function () {
     return view('Admin.subscription');
 });
+
+Route::get('', [LinkedProductController::class, 'LinkProduct']);
+
+// Route::get('', function () {
+//     return view('Admin.SallaProduct.Add New.Add');
+// })->;
 
 Route::get('/webhock', [AuthTokenControoler::class, 'getTokenWithCode']);
 Route::get('/webhock2', [hock2::class, 'hock2']);
 Route::post('/webhock2', [hock2::class, 'hock2']);
 
 Route::get('order-history', [OrderController::class, 'OrderHistory'])->name('OrderHistory');
-Route::get('login', [AuthController::class,  'getLoginFrom'])->middleware('guest');
-Route::post('login', [AuthController::class,  'login'])->name('login');
+Route::get('login', [AuthController::class, 'getLoginFrom'])->middleware('guest');
+Route::post('login', [AuthController::class, 'login'])->name('login');
 Route::middleware('auth:client')->group(function () {
-    Route::post('logout', [logout::class, 'logout'])->name('logout');
-    Route::get('salla-card', [CardProducts::class, 'index'])->name('Card');
-    Route::get('/', [Dashboard::class, 'index']);
+    Route::get('Add-products', [AddProduct::class, 'index'])->name('Add.product');
+    Route::post('add-order', [AddProduct::class, 'store'])->name('add.order');
+
+    Route::get('botagaty-card', [CardProducts::class, 'index'])->name('Card');
+    Route::get('/', [Dashboard::class, 'index'])->name('home');
     Route::get('dashboard', [Dashboard::class, 'index'])->name('Dashboard');
     // Link Product                         ############################################
     Route::get('related-product', [SallaProducts::class, 'selectedProduct'])->name('related.Products');
@@ -116,11 +128,12 @@ Route::middleware('auth:client')->group(function () {
     Route::get('get-products', [pointOfSaleController::class, 'Products']);
     Route::get('getblance', [GEtTables::class, 'getblance']);
     Route::post('GetOneProdectFromPosToSalla', [GEtTables::class, 'GetOneProdectFromPosToSalla'])->name("GetOneProdectFromPosToSalla");
+    // Route::get('product-code', [GEtTables::class, 'ProductCode']);
+    Route::post('product-code', [GEtTables::class, 'ProductCodeStore'])->name('product.code.store');
     Route::get('refresh-product', [RefreshController::class, 'Product'])->name('refresh.product');
     Route::get('refresh-pos-product', [RefreshController::class, 'PosProduct'])->name('refresh.pos.product');
 });
-
-
+Route::post('logout', [logout::class, 'logout'])->name('logout');
 
 Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::name('admin.')->prefix('admin')->group(function () {
@@ -135,7 +148,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
         Route::resource('users', UserController::class);
     });
 });
-
 
 Route::middleware('auth')->get('exception', function () {
     $arry = ['sad'];
@@ -166,3 +178,12 @@ Route::middleware('auth:client')->get('/log', function () {
     UserLog('conteont', 'log');
     dd('klsa');
 });
+
+Route::get('low-blance', function () {
+    $user = User::first();
+    FacadesNotification::send($user, new LowBlance(2));
+});
+
+// Route::get('event', function () {
+//     event(new BuyOrderByDashboard('jksa', '22'));
+// });

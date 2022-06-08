@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TiketMessage;
 use Illuminate\Http\Request;
+use App\Models\FrequentlyAskedQuestion;
+use App\Models\FrequentlyAskedQuestionsTable;
+use Illuminate\Support\Facades\DB;
 
-class TiketMessageController extends Controller
+class FrequentlyAskedQuestionsTableController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,8 @@ class TiketMessageController extends Controller
      */
     public function index()
     {
-        //
+        $faq = DB::table('_f_a_q')->where('isActive', 1)->paginate(5);
+        return view('Admin.FAQ.index', compact('faq'));
     }
 
     /**
@@ -35,29 +38,16 @@ class TiketMessageController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request;
-        $validaotr = validator($request->all(), [
-            'text' => 'required',
-        ]);
-        if ($validaotr->fails()) return redirect()->back()->withErrors($validaotr->errors());
-        // $senderArray =   [] ;
-        // dd();
-
-        TiketMessage::create([
-            'content' => $request->text,
-            'ticket_id' => $request->ticket_id,
-            IsClient() ? 'sender' : 'admin_id' => auth()->user()->id,
-        ]);
-        return redirect()->back();
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\TiketMessage  $tiketMessage
+     * @param  \App\Models\FrequentlyAskedQuestionsTable  $frequentlyAskedQuestionsTable
      * @return \Illuminate\Http\Response
      */
-    public function show(TiketMessage $tiketMessage)
+    public function show(FrequentlyAskedQuestionsTable $frequentlyAskedQuestionsTable)
     {
         //
     }
@@ -65,10 +55,10 @@ class TiketMessageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TiketMessage  $tiketMessage
+     * @param  \App\Models\FrequentlyAskedQuestionsTable  $frequentlyAskedQuestionsTable
      * @return \Illuminate\Http\Response
      */
-    public function edit(TiketMessage $tiketMessage)
+    public function edit(FrequentlyAskedQuestionsTable $frequentlyAskedQuestionsTable)
     {
         //
     }
@@ -77,10 +67,10 @@ class TiketMessageController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TiketMessage  $tiketMessage
+     * @param  \App\Models\FrequentlyAskedQuestionsTable  $frequentlyAskedQuestionsTable
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TiketMessage $tiketMessage)
+    public function update(Request $request, FrequentlyAskedQuestionsTable $frequentlyAskedQuestionsTable)
     {
         //
     }
@@ -88,10 +78,10 @@ class TiketMessageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TiketMessage  $tiketMessage
+     * @param  \App\Models\FrequentlyAskedQuestionsTable  $frequentlyAskedQuestionsTable
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TiketMessage $tiketMessage)
+    public function destroy(FrequentlyAskedQuestionsTable $frequentlyAskedQuestionsTable)
     {
         //
     }

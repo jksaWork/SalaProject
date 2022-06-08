@@ -12,64 +12,13 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <i class="bi bi-users"></i>
-                                        <div class="stats-icon purple">
+                                        <div class="stats-icon blue">
                                             <i class="iconly-boldProfile"></i>
                                         </div>
                                     </div>
                                     <div class="col-md-8">
                                         <h6 class="text-muted font-semibold">users</h6>
                                         <h6 class="font-extrabold mb-0">{{ $UserCount }}</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-lg-3 col-md-6">
-                        <div class="card">
-                            <div class="card-body px-3 py-4-5">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="stats-icon blue">
-                                            <i class="iconly-boldShield-Fail"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <h6 class="text-muted font-semibold">Expired subscription</h6>
-                                        <h6 class="font-extrabold mb-0">{{ $ActivesubscriptionCount }}</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-lg-3 col-md-6">
-                        <div class="card">
-                            <div class="card-body px-3 py-4-5">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="stats-icon blue">
-                                            <i class="iconly-boldShield-Done"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <h6 class="text-muted font-semibold">Active subscription</h6>
-                                        <h6 class="font-extrabold mb-0">{{ $ActiveCount }}</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-lg-3 col-md-6">
-                        <div class="card">
-                            <div class="card-body px-3 py-4-5">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="stats-icon red">
-                                            <i class="iconly-boldNotification"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <h6 class="text-muted font-semibold">About To Expired </h6>
-                                        <h6 class="font-extrabold mb-0">{{ $AboutExpiredCount }}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -116,12 +65,64 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="stats-icon green">
-                                            <i class="iconly-boldShow"></i>
+                                            <i class="iconly-boldShield-Done"></i>
                                         </div>
                                     </div>
                                     <div class="col-md-8">
                                         <h6 class="text-muted font-semibold">Completed Ticket</h6>
                                         <h6 class="font-extrabold mb-0">{{ $completeticket }}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body px-3 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="stats-icon blue">
+                                            <i class="iconly-boldActivity"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h6 class="text-muted font-semibold">Active subscription</h6>
+                                        <h6 class="font-extrabold mb-0">{{ $ActiveCount }}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body px-3 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="stats-icon red">
+                                            <i class="iconly-boldNotification"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h6 class="text-muted font-semibold">About To Expired </h6>
+                                        <h6 class="font-extrabold mb-0">{{ $AboutExpiredCount }}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body px-3 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="stats-icon blue">
+                                            <i class="iconly-boldShield-Fail"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h6 class="text-muted font-semibold">Expired subscription</h6>
+                                        <h6 class="font-extrabold mb-0">{{ $ActivesubscriptionCount }}</h6>
                                     </div>
                                 </div>
                             </div>

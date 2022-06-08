@@ -98,6 +98,7 @@
                                 <tbody>
                                     @forelse ($Packages as $key => $Package)
                                         <tr>
+
                                             <td>{{ $Package->id }}</td>
                                             <td>{{ $Package->name }}</td>
                                             <td>{{ $Package->price * $Package->subscription->count() }}</td>

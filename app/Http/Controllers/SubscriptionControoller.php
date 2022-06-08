@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 
 class SubscriptionControoller extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $Subscriptions =  Subscription::paginate(10);
         return view('subscrption.index', compact('Subscriptions'));
     }
