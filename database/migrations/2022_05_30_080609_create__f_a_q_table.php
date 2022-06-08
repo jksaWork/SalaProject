@@ -17,6 +17,7 @@ class CreateFAQTable extends Migration
             $table->id();
             $table->string('question');
             $table->string('answer');
+            $table->boolean('isActive');
             $table->timestamps();
             $table->softDeletes();
         });

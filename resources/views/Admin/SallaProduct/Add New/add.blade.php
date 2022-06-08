@@ -58,9 +58,12 @@
                             <br>
                             <div class="row">
                                 <div>
-                                    <button type="submit" class="btn btn-primary" onclick="PerformRequestByAjax()">
+                                    <a href="{{ route('refresh.product') }}" onclick="PerformRequestByAjax()"
+                                        class="btn btn-sm btn-outline-primary align-self-center p-l-2" type="submit"
+                                        style="padding: inherit;padding-top: 4px;padding-bottom: 4px;">
+
                                         buy
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </FORM>

@@ -44,11 +44,14 @@ class FrequentlyAskedQuestions extends Controller
 
     public function store(Request $request)
     {
-        // dd($request);
+
         FrequentlyAskedQuestion::create([
+
             'id' => $request->id,
             'question' => $request->question,
             'answer' => $request->content,
+            'isActive' => $request->isActive = 1,
+
         ]);
 
         return redirect('FAQ');
@@ -85,7 +88,7 @@ class FrequentlyAskedQuestions extends Controller
         // return $request;
 
         $fq = FrequentlyAskedQuestion::find($id);
-        $fq->update(['question' => $request->question, 'answer' => $request->answer]);
+        $fq->update(['isActive' => $request->isActive = 1, 'question' => $request->question, 'answer' => $request->answer]);
         return redirect()->back();
     }
 

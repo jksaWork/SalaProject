@@ -16,7 +16,7 @@ class FrequentlyAskedQuestionsTableController extends Controller
      */
     public function index()
     {
-        $faq = DB::table('_f_a_q')->paginate(5);
+        $faq = DB::table('_f_a_q')->where('isActive', 1)->paginate(5);
         return view('Admin.FAQ.index', compact('faq'));
     }
 
