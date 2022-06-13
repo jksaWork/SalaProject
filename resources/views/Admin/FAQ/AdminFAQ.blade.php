@@ -54,7 +54,7 @@
                                                                                                                                                                                                                 ">
                                             <label class="switch">
                                                 <input type="checkbox" name="isActive">
-                                                <span class="slider round"></span>
+                                                {{-- <span class="slider round"></span> --}}
                                             </label>
                                         </div>
 
@@ -114,7 +114,7 @@
 
                         <label class="switch mt-3">
                             <input type="checkbox" na>
-                            <span class="slider round"></span>
+                            {{-- <span class="slider round"></span> --}}
                         </label> &nbsp;&nbsp;&nbsp;&nbsp;
                         <button type="button" class="btn btn-sm btn-outline-secondary align-self-center ">Update</button>
                         &nbsp;&nbsp;
@@ -271,3 +271,4 @@
     </style>
 
 @endsection
+`
