@@ -35,7 +35,7 @@ class AddProduct extends Controller
 
         // dd($Product);
 
-        return view('admin.sallaproduct.add new.add', compact('Products', 'BotagatyProducty', 'SalaProducts'));
+        return view('Admin.SallaProduct.Add New.add', compact('Products', 'BotagatyProducty', 'SalaProducts'));
     }
 
 
