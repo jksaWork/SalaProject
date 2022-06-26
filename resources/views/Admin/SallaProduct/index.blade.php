@@ -7,7 +7,7 @@
                 <div class="card z-index-2 h-100">
                     <div class="card-header pb-0 pt-3 bg-transparent">
                         <div class="d-flex justify-content-between">
-                            <h6 class="text-capitalize col-4">Salla Proudct</h6>
+                            <h6 class="text-capitalize col-4">{{ __('translation.Salla_Proudct') }}</h6>
 
 
 
@@ -15,8 +15,8 @@
                                 @csrf
                                 <div>
                                     <div class="input-group rounded ">
-                                        <input type="search" class="form-control rounded" placeholder="Search" name="search"
-                                            aria-label="Search" aria-describedby="search-addon" />
+                                        <input type="search" class="form-control rounded" placeholder="Search"
+                                            name="search" aria-label="Search" aria-describedby="search-addon" />
                                         <span class="input-group-text border-0" id="search-addon">
 
                                             <button class="gg-search"></button>
@@ -66,7 +66,8 @@
                                     @forelse ($Products as $Product)
                                         <tr>
                                             {{-- <td>{{ $Product->id }}</td> --}}
-                                            <td> <img src="{{ $Product->image }}" widtd="50px" height="50px" alt="">
+                                            <td> <img src="{{ $Product->image }}" widtd="50px" height="50px"
+                                                    alt="">
                                             </td>
                                             <td>{{ $Product->name }}</td>
                                             <td>{{ $Product->price }}</td>
@@ -92,7 +93,7 @@
                                                             } catch (Exception $e) {
                                                                 $x = 0;
                                                             }
-                                                            
+
                                                         @endphp
                                                         {{-- <select class="form-control" name="ProductCode" id=""
                                                             onchange="this.form.submit()">   {{-- <select class="form-control" name="ProductCode" id=""

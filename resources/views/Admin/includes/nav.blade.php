@@ -3,9 +3,9 @@
         <div class="d-flex justify-content-between align-items-center">
             <div>
                 <span>
-                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                    {{-- <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                         <path fill="currentColor" d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
-                    </svg>
+                    </svg> --}}
                 </span>
                 <span class="mx-1">
                     <svg style="width:24px;height:24px" viewBox="0 0 24 24">
@@ -42,9 +42,10 @@
                         aria-haspopup="true" aria-expanded="true">
                         <div class="d-flex align-items-center ">
                             <span class="mx-2">
-                                jksa altifani osan
+
                             </span>
-                            <img src="{{ asset('undraw_profile_pic_ic5t.png') }}" width="30px" height="30px" alt="">
+                            <img src="{{ asset('undraw_profile_pic_ic5t.png') }}" width="30px" height="30px"
+                                alt="">
                         </div>
                     </span>
                     <div class="dropdown-menu"
@@ -53,7 +54,7 @@
                         <a href="{{ route('setting') }}" style="color:#000">
                             <div class=" px-3">
                                 <div class="d-flex justify-content-between">
-                                    <span>Setting</span>
+                                    <span>{{ __('translation.Setting') }}</span>
                                     <span class="icon">
                                         <svg style="width:20px;height:20px" viewBox="0 0 24 24">
                                             <path fill="currentColor"
@@ -70,7 +71,7 @@
                         <a href="#" style="color:#000" onclick="document.getElementById('Logout').submit()">
                             <div class="px-3">
                                 <div class="d-flex justify-content-between">
-                                    <span>Logout </span>
+                                    <span>{{ __('translation.Logout') }} </span>
                                     <span class="icon">
                                         <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                                             <path fill="currentColor"

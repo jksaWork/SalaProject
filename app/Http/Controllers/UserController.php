@@ -6,6 +6,7 @@ use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -14,10 +15,19 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    public function getId()
     {
-        $Users  = User::with('Permission')->get();
-        return view('users.index', compact('Users'));
+        return $this->id;
+    }
+
+    public function index(request $request)
+    {
+        $userId = Auth::user();
+        $iss = Auth::id();
+        $Users = User::with('Permission')->get();
+
+        return view('users.index', compact('Users', 'iss'));
     }
 
     /**
@@ -52,7 +62,7 @@ class UserController extends Controller
         // dd($data);
         $User = User::create($data);
         $User->Permission()->create(
-            ['roles' => json_encode($data['perms']),]
+            ['roles' => json_encode($data['perms'])]
         );
 
         return redirect()->route('admin.users.index');
@@ -98,11 +108,15 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+
+    public function destroy(request $Request, $id)
     {
+
+        // @dd($id);
         try {
             User::find($id)->delete();
             return redirect()->back();
+
         } catch (Exception $e) {
             return redirect()->back();
         }

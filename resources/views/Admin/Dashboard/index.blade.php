@@ -17,7 +17,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <h6 class="text-muted font-semibold">users</h6>
+                                        <h6 class="text-muted font-semibold">{{ __('translation.users') }}</h6>
                                         <h6 class="font-extrabold mb-0">{{ $UserCount }}</h6>
                                     </div>
                                 </div>
@@ -34,7 +34,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <h6 class="text-muted font-semibold">New Ticket</h6>
+                                        <h6 class="text-muted font-semibold">{{ __('translation.New_Ticket') }}</h6>
                                         <h6 class="font-extrabold mb-0">{{ $newticket }}</h6>
                                     </div>
                                 </div>
@@ -52,7 +52,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <h6 class="text-muted font-semibold">In progress</h6>
+                                        <h6 class="text-muted font-semibold">{{ __('translation.In_progress') }}</h6>
                                         <h6 class="font-extrabold mb-0">{{ $progressticket }}</h6>
                                     </div>
                                 </div>
@@ -69,7 +69,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <h6 class="text-muted font-semibold">Completed Ticket</h6>
+                                        <h6 class="text-muted font-semibold">{{ __('translation.Completed_Ticket') }}</h6>
                                         <h6 class="font-extrabold mb-0">{{ $completeticket }}</h6>
                                     </div>
                                 </div>
@@ -87,7 +87,8 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <h6 class="text-muted font-semibold">Active subscription</h6>
+                                        <h6 class="text-muted font-semibold">{{ __('translation.Active_subscription') }}
+                                        </h6>
                                         <h6 class="font-extrabold mb-0">{{ $ActiveCount }}</h6>
                                     </div>
                                 </div>
@@ -104,7 +105,8 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <h6 class="text-muted font-semibold">About To Expired </h6>
+                                        <h6 class="text-muted font-semibold">{{ __('translation.About_To_Expired') }}
+                                        </h6>
                                         <h6 class="font-extrabold mb-0">{{ $AboutExpiredCount }}</h6>
                                     </div>
                                 </div>
@@ -121,7 +123,8 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <h6 class="text-muted font-semibold">Expired subscription</h6>
+                                        <h6 class="text-muted font-semibold">{{ __('translation.Expired_subscription') }}
+                                        </h6>
                                         <h6 class="font-extrabold mb-0">{{ $ActivesubscriptionCount }}</h6>
                                     </div>
                                 </div>
@@ -148,7 +151,7 @@
                 <div class="col-12 col-xl-4">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Top Sala Product Ordered </h4>
+                            <h4>{{ __('translation.Top_Sala_Product_Ordered') }}</h4>
                         </div>
                         <div class="card-body">
                             @forelse ($ProductOrdered as $Product)
@@ -170,16 +173,16 @@
                 <div class="col-12 col-xl-8">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Latest Orders</h4>
+                            <h4>{{ __('translation.Latest_Orders') }}</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-hover table-lg">
                                     <thead>
                                         <tr>
-                                            <th>product</th>
-                                            <th>Product Count</th>
-                                            <th>date</th>
+                                            <th>{{ __('translation.product') }}</th>
+                                            <th>{{ __('translation.Product_Count') }}</th>
+                                            <th>{{ __('translation.date') }}</th>
                                         </tr>
                                     </thead>
 
@@ -224,13 +227,13 @@
         console.log(CartData);
 
 
- const  array = @json($charttwo);
-                // cahrt tow option -----------------------------------------
-                const labels2 =  array.map(item => item.label);
-                const CartData2 = {
-                labels: labels2,
-                datasets: [{
-                label:"{{ __('translation.subscriptios') }}",
+        const array = @json($charttwo);
+        // cahrt tow option -----------------------------------------
+        const labels2 = array.map(item => item.label);
+        const CartData2 = {
+            labels: labels2,
+            datasets: [{
+                label: "{{ __('translation.subscriptios') }}",
                 backgroundColor: [
                     'rgb(255 ,145, 73,0.5)',
                     'rgb(102 ,110, 232,0.5)',

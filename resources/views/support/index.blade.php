@@ -9,11 +9,13 @@
                         <div class="d-flex justify-content-between">
                             <h6 class="text-capitalize col-4"> {{ __('translation.ticket_table') }} </h6>
                             <span> <a href="{{ route('ticket.create') }}"
-                                    class="btn btn-sm btn-outline-primary align-self-center " type="button"
-                                    style="padding: inherit;padding: 10px;">
+                                    class="btn btn-sm btn-outline-primary align-self-center ">
+                                    <svg style="width:20px;height:20px" viewBox="0 0 24 24">
+                                    </svg>
 
                                     {{ __('translation.new_ticket') }}
                                 </a></span>
+
 
 
 

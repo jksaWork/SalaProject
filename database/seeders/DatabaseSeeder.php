@@ -20,23 +20,29 @@ class DatabaseSeeder extends Seeder
 
         $this->call(UserSedder::class);
         \App\Models\User::create([
-            'name' =>'Test Admin',
+            'name' => 'Test Admin',
             'email' => 'admin@gmail.com',
-            'password' =>bcrypt('123456'),
+            'password' => bcrypt('123456'),
         ]);
-        $Codes = ['123123', '123123' , '12312' , 'mohamme' , 'hd3' , 'mohammed' , 'mohammed'];
+        $this->call(UserSedder::class);
+        \App\Models\Client::create([
+            'name' => 'Test user',
+            'email' => 'onebrand.1b@outlook.com',
+            'password' => bcrypt('onebrand.1b@outlook.com'),
+        ]);
+        $Codes = ['123123', '123123', '12312', 'mohamme', 'hd3', 'mohammed', 'mohammed'];
         \App\Models\OrderHistory::create(
             [
                 'product_id' => 123123,
                 'product_name' => 'mohammed altignai',
                 'history_code' => json_encode($Codes),
             ]
-            );
-            Topic::create(['topicname'=> 'topic 1']);
-            OrganizationProfile::create([
-                'name' => 'Sall & Point f sala',
-                'logo' => 'logo/logo.svg',
-            ]);
+        );
+        Topic::create(['topicname' => 'topic 1']);
+        OrganizationProfile::create([
+            'name' => 'Sall & Point f sala',
+            'logo' => 'logo/logo.svg',
+        ]);
 
         $roles = [
             'client',

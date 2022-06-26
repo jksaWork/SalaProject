@@ -7,7 +7,7 @@
                 <div class="card z-index-2 h-100">
                     <div class="card-header pb-0 pt-3 bg-transparent">
                         <div class="d-flex justify-content-between">
-                            <h6 class="text-capitalize col-4"> botagaty Card</h6>
+                            <h6 class="text-capitalize col-4"> __('translation.botagaty Card')</h6>
                             <div class="col-6"></div>
                             {{-- <div class="col-2"> --}}
                             {{-- </div> --}}
@@ -18,8 +18,8 @@
                                 @csrf
                                 <div>
                                     <div class="input-group rounded ">
-                                        <input type="search" class="form-control rounded" placeholder="Search" name="search"
-                                            aria-label="Search" aria-describedby="search-addon" />
+                                        <input type="search" class="form-control rounded" placeholder="Search"
+                                            name="search" aria-label="Search" aria-describedby="search-addon" />
                                         <span class="input-group-text border-0" id="search-addon">
 
                                             <button class="gg-search"></button>
@@ -41,9 +41,9 @@
                                 <thead>
                                     <tr>
 
-                                        <td>Name</td>
-                                        <td> Price </td>
-                                        <td> Card code</td>
+                                        <td> __('translation.Name')</td>
+                                        <td> __('translation.Price') </td>
+                                        <td> __('translation.Card_code')</td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -88,7 +88,8 @@
                                     @empty
                                         <tr>
                                             <td colspan="6">
-                                                <div class="d-flex justify-content-center p-2">No Data To Show</div>
+                                                <div class="d-flex justify-content-center p-2">
+                                                    __('translation.No_Data_To_Show')</div>
                                             </td>
                                         </tr>
                                     @endforelse
@@ -108,9 +109,9 @@
 
                                 </tbody>
                                 <tfoot>
-                                    <td>Name</td>
-                                    <td>Price</td>
-                                    <td>Card Number</td>
+                                    <td>__('translation.Name')</td>
+                                    <td>__('translation.Price')</td>
+                                    <td>__('translation.Card_Number')</td>
                                 </tfoot>
                             </table>
                         </div>
@@ -133,6 +134,5 @@
         td {
             text-align: center;
         }
-
     </style>
 @endsection

@@ -7,28 +7,28 @@
                 <div class="card z-index-2 h-100">
                     <div class="card-header pb-0 pt-3 bg-transparent">
                         <div class="d-flex justify-content-between">
-                            <h6 class="text-capitalize col-4">Subscription table</h6>
+                            <h6 class="text-capitalize col-4">{{ __('translation.Subscription_table') }}</h6>
 
                         </div>
                         <div class="table-responsive mt-5">
                             <table class="table align-items-center table-bordered  ">
                                 <thead>
                                     <tr>
-                                        <td>id</td>
-                                        <td>client </td>
-                                        <td> plan name </td>
-                                        <td> plan type </td>
-                                        <td> start date </td>
-                                        <td> end date</td>
-                                        <td> price</td>
-                                        <td> total</td>
+                                        <td>{{ __('translation.id') }}</td>
+                                        <td>{{ __('translation.client') }} </td>
+                                        <td> {{ __('translation.plan_name') }} </td>
+                                        <td> {{ __('translation.plan_type') }} </td>
+                                        <td>{{ __('translation.start_date') }} </td>
+                                        <td>{{ __('translation.end_date') }} </td>
+                                        <td>{{ __('translation.price') }} </td>
+                                        <td> {{ __('translation.total') }}</td>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @forelse ($Subscriptions as $key => $Subscription)
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
-                                            <td>{{ $Subscription->Client->name }}</td>
+                                            <td>{{ $Subscription->Client->name ?? '-' }}</td>
                                             <td>{{ $Subscription->plan_name ?? '-' }} </td>
                                             <td>{{ $Subscription->plan_type ?? '-' }} </td>
                                             <td>{{ $Subscription->StratDateHum }}</td>
@@ -46,14 +46,14 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td>id</td>
-                                        <td>client </td>
-                                        <td> plan name </td>
-                                        <td> plan type </td>
-                                        <td> start date </td>
-                                        <td> end date</td>
-                                        <td> price</td>
-                                        <td> total</td>
+                                        <td>{{ __('translation.id') }}</td>
+                                        <td>{{ __('translation.client') }} </td>
+                                        <td> {{ __('translation.plan_name') }} </td>
+                                        <td> {{ __('translation.plan_type') }} </td>
+                                        <td>{{ __('translation.start_date') }} </td>
+                                        <td>{{ __('translation.end_date') }} </td>
+                                        <td>{{ __('translation.price') }} </td>
+                                        <td> {{ __('translation.total') }}</td>
                                     </tr>
                                 </tfoot>
                             </table>

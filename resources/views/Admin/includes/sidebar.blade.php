@@ -8,11 +8,11 @@
                 <small style="font-size: 15px">{{ $OrganizationProfile->name }}</small>
             </div>
             <div class="d-flex justify-content-between align-items-center ">
-                <span>
+                {{-- <span>
                     <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                         <path fill="currentColor" d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
                     </svg>
-                </span>
+                </span> --}}
             </div>
             <div class="toggler">
                 <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -28,14 +28,14 @@
                     <a href="{{ route('admin.dashboard') }}" class='sidebar-link'>
                         {{-- <i class="fa fa-assistive-listening-systems"></i> --}}
                         <i class="bi bi-menu-button-wide-fill"></i>
-                        <span>Dashboard</span>
+                        <span>{{ __('translation.Dashboard') }}</span>
                     </a>
                 </li>
                 @can('client')
                     <li class="sidebar-item">
                         <a href="{{ route('client.index') }}" class='sidebar-link'>
                             <i class="bi bi-person-bounding-box"></i>
-                            <span>Client Mangemtn</span>
+                            <span>{{ __('translation.Client_Mangemtn') }}</span>
                         </a>
                     </li>
                 @endcan
@@ -43,7 +43,7 @@
                     <li class="sidebar-item">
                         <a href="{{ route('admin.users.index') }}" class='sidebar-link'>
                             <i class="bi bi-person"></i>
-                            <span>User Mangemtn</span>
+                            <span>{{ __('translation.User_Mangemtn') }}</span>
                         </a>
                     </li>
                 @endcan
@@ -51,7 +51,7 @@
                     <li class="sidebar-item">
                         <a href="{{ route('admin.subscription.index') }}" class='sidebar-link'>
                             <i class="bi bi-credit-card-2-front"></i>
-                            <span>Subscription</span>
+                            <span>{{ __('translation.Subscription') }}</span>
                         </a>
                     </li>
                 @endcan
@@ -59,7 +59,7 @@
                     <li class="sidebar-item">
                         <a href="{{ route('admin.technical.support') }}" class='sidebar-link'>
                             <i class="bi bi-chat-dots-fill"></i>
-                            <span>Support Ticket</span>
+                            <span>{{ __('translation.Support_Ticket') }}</span>
                         </a>
                     </li>
                 @endcan
@@ -68,14 +68,14 @@
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-calendar2-week"></i>
-                        <span>Product</span>
+                        <span>{{ __('translation.Product') }}</span>
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item ">
-                            <a href="{{ route('SallaProduct') }}">salla Product</a>
+                            <a href="{{ route('SallaProduct') }}">{{ __('translation.salla_Product') }}</a>
                         </li>
                         <li class="submenu-item">
-                            <a href="{{ route('Card') }}">botagaty Card</a>
+                            <a href="{{ route('Card') }}">{{ __('translation.botagaty_Card') }}</a>
                         </li>
                         {{-- <li class="submenu-item">
                         <a href="{{ route('related.Products') }}">Related Products</a>
@@ -85,13 +85,13 @@
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-bag-check-fill"></i>
-                        <span>Orders</span>
+                        <span>{{ __('translation.Orders') }}</span>
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item ">
                             <a href="{{ route('Add.product') }}">
                                 <i class="bi bi-cart-dash"></i>&nbsp;
-                                <span> New Order</span></a>
+                                <span>{{ __('translation.New_Order') }} </span></a>
                         </li>
 
 
@@ -101,7 +101,7 @@
 
 
                 <li class="submenu-item ">
-                    <a href="{{ route('OrderHistory') }}">Orders History</a>
+                    <a href="{{ route('OrderHistory') }}">{{ __('translation.Orders_History') }}</a>
                 </li>
 
             </ul>
@@ -109,15 +109,15 @@
             <li class="sidebar-item   has-sub">
                 <a href="#" class='sidebar-link'>
                     <i class="bi bi-flag"></i>
-                    <span>linked Product</span>
+                    <span>{{ __('translation.linked_Product') }}</span>
                 </a>
                 <ul class="submenu">
 
                     <li class="submenu-item ">
-                        <a href="{{ route('related.Products') }}">Show Linked Product</a>
+                        <a href="{{ route('related.Products') }}">{{ __('translation.Show_Linked_Product') }}</a>
                     </li>
                     <li class="submenu-item ">
-                        <a href="{{ route('link.product') }}">Link Product</a>
+                        <a href="{{ route('link.product') }}">{{ __('translation.Link_Product') }}</a>
                     </li>
 
                 </ul>
@@ -125,27 +125,28 @@
             <li class="sidebar-item">
                 <a href="{{ route('technical.support') }}" class='sidebar-link'>
                     <i class="bi bi-chat-dots-fill"></i>
-                    <span>Support Ticket</span>
+                    <span>{{ __('translation.Support_Ticket') }}</span>
                 </a>
             </li>
         @endAdmin
         <li class="sidebar-item  has-sub">
             <a href="#" class='sidebar-link'>
                 <i class="bi bi-gear"></i>
-                <span>Setting</span>
+                <span>{{ __('translation.Setting') }}</span>
             </a>
             <ul class="submenu">
                 @Admin
                     @can('setting')
                         <li class="submenu-item">
-                            <a href="{{ route('admin.orgnazition.profile') }}">Orgniazation Profile</a>
+                            <a
+                                href="{{ route('admin.orgnazition.profile') }}">{{ __('translation.Orgniazation_Profile') }}</a>
                         </li>
                     @endcan
-                    <li class="submenu-item ">
-                        <a href="{{ route('setting') }}">POS Setting </a>
-                    </li>
                 @elseAdmin
                 @endAdmin
+                <li class="submenu-item ">
+                    <a href="{{ route('setting') }}">{{ __('translation.POS_Setting') }} </a>
+                </li>
             </ul>
             </ul>
     </div>

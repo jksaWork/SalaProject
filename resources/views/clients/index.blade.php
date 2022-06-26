@@ -7,36 +7,36 @@
                 <div class="card z-index-2 h-100">
                     <div class="card-header pb-0 pt-3 bg-transparent">
                         <div class="d-flex justify-content-between">
-                            <h6 class="text-capitalize col-4">Client Table</h6>
+                            <h6 class="text-capitalize col-4">{{ __('translation.Client_Table') }}</h6>
                         </div>
                         <div class="table-responsive mt-5">
                             <table class="table align-items-center table-bordered  ">
                                 <thead>
                                     <tr>
-                                        <td>id</td>
-                                        <td>merchant id </td>
-                                        <td>client name </td>
-                                        <td>email  </td>
-                                        <td>token Expired Data</td>
-                                        <td>option</td>
+                                        <td>{{ __('translation.id') }}</td>
+                                        <td>{{ __('translation.merchant_id') }} </td>
+                                        <td>{{ __('translation.client_name') }} </td>
+                                        <td>{{ __('translation.email') }} </td>
+                                        <td>{{ __('translation.token_Expired_Data') }}</td>
+                                        <td>{{ __('translation.option') }}</td>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @forelse ($Clients as $Client)
                                         <tr>
-                                            <td>{{$Client->id}}</td>
-                                            <td>{{$Client->merchant_id}}</td>
+                                            <td>{{ $Client->id }}</td>
+                                            <td>{{ $Client->merchant_id }}</td>
 
-                                            <td>{{$Client->name}}</td>
-                                            <td>{{$Client->email}}</td>
-                                            <td> {{$Client->ExpiredDate2}} </td>
+                                            <td>{{ $Client->name }}</td>
+                                            <td>{{ $Client->email }}</td>
+                                            <td> {{ $Client->ExpiredDate2 }} </td>
                                             <td>
-                                                <form action="{{route('client.destroy' , $Client->id)}}" method="post">
-                                                @csrf
-                                                @method("DELETE")
-                                                <button class="btn btn-sm btn-outline-danger">
-                                                    <i class="bi bi-trash2"></i>
-                                                </button>
+                                                <form action="{{ route('client.destroy', $Client->id) }}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-sm btn-outline-danger">
+                                                        <i class="bi bi-trash2"></i>
+                                                    </button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -50,12 +50,12 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td>id</td>
-                                        <td>merchant id </td>
-                                        <td>client name </td>
-                                        <td>email  </td>
-                                        <td>token Expired Data</td>
-                                        <td>option</td>
+                                        <td>{{ __('translation.id') }}</td>
+                                        <td>{{ __('translation.merchant_id') }} </td>
+                                        <td>{{ __('translation.client_name') }} </td>
+                                        <td>{{ __('translation.email') }} </td>
+                                        <td>{{ __('translation.token_Expired_Data') }}</td>
+                                        <td>{{ __('translation.option') }}</td>
                                     </tr>
                                 </tfoot>
                             </table>
