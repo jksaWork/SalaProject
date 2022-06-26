@@ -43,16 +43,10 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-<<<<<<< Updated upstream
-Route::resource('FAQ2', FrequentlyAskedQuestionsTableController::class);
-
-Route::resource('FAQ', FrequentlyAskedQuestions::class);
-=======
 Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::resource('FAQ2', FrequentlyAskedQuestionsTableController::class);
 
     Route::resource('FAQ', FrequentlyAskedQuestions::class);
->>>>>>> Stashed changes
 
 /*
 Admin Route ______________________________--
